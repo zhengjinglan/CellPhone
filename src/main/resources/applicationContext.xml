@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+ <context:component-scan base-package="com.aaa.*"></context:component-scan>
+ <context:annotation-config></context:annotation-config>
+	
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+
+	<!-- 本地数据源 -->
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${name}"></property>
+		<property name="password" value="${pwd}"></property>
+	</bean>
+	
+	<!-- mybatis核心SqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"></property>
+		<!-- 映射文件路径 -->
+		<property name="mapperLocations" value="classpath:com/aaa/mapper/*.xml"></property>
+		<!-- 别名 -->
+		<property name="typeAliasesPackage" value="com.aaa.entity"></property>
+	</bean>
+	
+	<!-- 映射文件扫描配置 -->
+	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 接口文件 -->
+		<property name="basePackage" value="com.aaa.dao"></property>
+	</bean>
+</beans>
