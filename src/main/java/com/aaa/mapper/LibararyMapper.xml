@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.LibararyDao">
+	
+	<select id="query" resultType="Map">
+		select libid id,lname text,url,icon iconCls from libarary where parentlibid=#{0}
+	</select>
+<select resultType="Map" id="queryByRid"> 
+select libid id,lname text,url,icon iconCls from (SELECT * FROM libarary WHERE libid in (SELECT lid FROM role_lib WHERE rid = #{1})) l where parentlibid=#{0} 
+</select>
+
+</mapper>
