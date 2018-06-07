@@ -33,4 +33,6 @@
 		<!-- 接口文件 -->
 		<property name="basePackage" value="com.aaa.dao"></property>
 	</bean>
+	
+	
 </beans>

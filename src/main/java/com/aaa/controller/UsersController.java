@@ -36,5 +36,11 @@ public class UsersController {
 	public int update(Users u) {
 		return userService.update(u);
 	}
-	
+
+	@RequestMapping("outlogin")
+	public String outlogin(HttpSession session) {
+		session.invalidate();
+		return "back/login";
+	}
+
 }

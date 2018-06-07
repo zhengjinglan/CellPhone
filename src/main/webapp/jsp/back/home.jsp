@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login.jsp' starting page</title>
+    <title>后台管理</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -18,12 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<!-- 引入easyui -->
-	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	
+	<%@include file="top.jsp" %>
 	<script type="text/javascript">
 		$(function(){
 			$("#tree").tree({
@@ -84,10 +79,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body class="easyui-layout">
-  	<div data-options="region:'north',title:'导航栏'" style="width:100%;height:10%">
-  		背景图
-  		<a href="javascript:void(0)" onclick="addTab('jsp/back/personal.jsp','个人中心')">${logUser.uname }</a><br/>
-  		<a href="#">退出</a>
+  	<div data-options="region:'north'" style="width:100%;height:11%;background-color: #99CCFF">
+  		<h1><span style="color: white;font-family:'宋体';font-style: italic;font-size:larger;">客户</span>
+  		<span style="color:'#DDDDDD';font-family:'宋体';font-style: italic;font-size:larger;">无忧</span>
+  		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:larger;">手机维修管理系统</span>
+  		<span><img src="image/top1.jpg" width="30px" height="30px">	</span>
+  		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:'30px';">登录人：<a href="javascript:void(0)" onclick="addTab('jsp/back/personal.jsp','个人中心')">${logUser.uname }</a></span>
+  		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:'30px';"><a href="users/outlogin">退出</a></span>
+  		</h1>
   	</div>
   	<div data-options="region:'west',title:'导航栏'" style="width:15%;">
   		<ul id="tree"></ul>

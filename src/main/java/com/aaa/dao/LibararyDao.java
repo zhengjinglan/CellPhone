@@ -6,6 +6,12 @@ import java.util.Map;
 public interface LibararyDao {
 
 	public List<Map<String, Object>> query(Integer parentlibid);
-// 查询指定角色的全列列表
+
 	public List<Map<String, Object>> queryByRid(Integer parentlibid, Integer rid);
+
+	public List<Map<String, Object>> queryPage(Integer offset, Integer pageSize);
+
+	public int addNode(Map<String, Object> node);
+
+	public int updateNode(Map<String, Object> node);
 }

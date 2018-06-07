@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login.jsp' starting page</title>
+    <title>后台登录</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -61,8 +61,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
   </head>
   
-  <body>
-  	<div class="easyui-window" title="登录" maximizable="false" style="top:20px;width:500px;height:300px;padding:30px 40px"
+  <body style="background:url(image/login.jpg) no-repeat ; width: 100%;height: 100%">
+  	<div class="easyui-window" title="登录" maximizable="false" style="top:50px;left:60%;width:500px;height:300px;padding:30px 40px;"
   		data-options="collapsible:false,minimizable:false,closable:false,draggable:false,resizable:false,border:false" >
   		<form id="fm" method="post">
 			<div style="margin-bottom: 30px">

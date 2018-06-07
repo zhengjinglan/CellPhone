@@ -9,14 +9,16 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aaa.controller.LoginController;
+
 /**
  * 登录拦截器
+ * 
  * @author lenovo
- *
+ * 
  */
 
-public class BackLoginIntercepter implements HandlerInterceptor{
-	
+public class BackLoginIntercepter implements HandlerInterceptor {
+
 	/**
 	 * 处理器(方法)调用之前执行
 	 * 
@@ -26,8 +28,7 @@ public class BackLoginIntercepter implements HandlerInterceptor{
 	public void afterCompletion(HttpServletRequest arg0,
 			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
-		
-		
+
 	}
 
 	/**
@@ -36,8 +37,7 @@ public class BackLoginIntercepter implements HandlerInterceptor{
 	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,
 			Object arg2, ModelAndView arg3) throws Exception {
-		
-		
+
 	}
 
 	/**
@@ -66,4 +66,3 @@ public class BackLoginIntercepter implements HandlerInterceptor{
 
 	}
 }
-

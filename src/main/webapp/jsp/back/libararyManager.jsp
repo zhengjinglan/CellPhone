@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'libararyManager.jsp' starting page</title>
+    <title>菜单管理</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -38,9 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        {field:'lname',title:'名称',width:60,editor:{type:'text'}},
 			        {field:'url',title:'url',width:80,editor:{type:'text'}},
 			        {field:'icon',title:'图标',width:80,editor:{type:'text'}},
+			      //  {field:'lname',title:'父节点',width:60,editor:{type:'combobox',options:{'url':'lib/queryAll',valueField:'id',textField:'lname'}}},
 			        {field:'_parentId',title:'父节点',width:80,editor:{type:'combobox',options:{'url':'lib/queryAll',valueField:'id',textField:'lname'}}},
 			        {field:'uid',title:'修改人编号',width:80,hidden:true},
-			        {field:'upname',title:'修改人',width:80},
+			        {field:'upname',title:'修改人',width:80,editor:{type:'text'}},
 			        {field:'uptime',title:'修改时间',width:80,editor:{type:'datebox'}}
 			    ]],
 			    loadFilter:function(data){
@@ -57,13 +58,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    toolbar: [{
 					text:"添加同级节点",
 			    	iconCls: 'icon-edit',
+			
 					handler: function(){
+					
 						if(editId == -1){
 							insertNode();
 						}else{
 							$.messager.confirm('提示',"是否要保存正在编辑的节点?",function(r){
 								if(r){
-									// 保存
+						$("#tb").treegrid("endEdit",9999);
+						// 保存
+						var saveNode = $("#tb").treegrid("find",9999);
+						alert(JSON.stringify(saveNode));
+						
+						$.ajax({
+							type:"post",
+							url:"lib/addNode",
+							data:JSON.stringify(saveNode),
+							contentType:"application/json",
+							success:function(data){
+								if(data){
+									$('#tb').treegrid('reload');
+									editId = -1;
+								}
+							}
+						});
+					
 									
 								}else{
 									$("#tb").treegrid("cancelEdit",9999);
@@ -75,29 +95,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				},'-',{
 					text:"添加子节点",
-					iconCls: 'icon-help',
+					iconCls: 'icon-edit',
+			
 					handler: function(){
-						alert('帮助按钮');
+					
+						if(editId == -1){
+							insertNode();
+						}else{
+							$.messager.confirm('提示',"是否要保存正在编辑的节点?",function(r){
+								if(r){
+								$("#tb").treegrid("endEdit",9999);
+						// 保存
+						var saveNode = $("#tb").treegrid("find",9999);
+									$.ajax({
+							type:"post",
+							url:"lib/addNode",
+							data:JSON.stringify(saveNode),
+							contentType:"application/json",
+							success:function(data){
+								if(data){
+									$('#tb').treegrid('reload');
+									editId = -1;
+								}
+							}
+						});
+									
+								}else{
+									$("#tb").treegrid("cancelEdit",9999);
+									$("#tb").treegrid("remove",9999);
+									insertNode();
+								}
+							});
+						}
 					}
-				},'-',{
+				},/* '-',{
 					text:"编辑节点",
-					iconCls: 'icon-help',
+					iconCls: 'icon-edit',
 					handler: function(){
 						// 判断是否有选中项
 						var node = $("#tb").treegrid("getSelected");
 						if(node){
 							$("#tb").treegrid("beginEdit",node.id);
 							$("#tb").treegrid("getEditors",node.id);
+							
+							var saveNode = $("#tb").treegrid("find",9999);
+						//alert(JSON.stringify(saveNode));
+						
+						$.ajax({
+							type:"post",
+							url:"lib/updateNode",
+							data:JSON.stringify(saveNode),
+							contentType:"application/json",
+							success:function(data){
+								if(data){
+									$('#tb').treegrid('reload');
+									editId = -1;
+								}
+							}
+						});
 						}
 					}
-				},'-',{
+				}, */'-',{
 					text:"保存",
-					iconCls: 'icon-help',
+					iconCls: 'icon-edit',
 					handler: function(){
 						$("#tb").treegrid("endEdit",9999);
 						// 保存
 						var saveNode = $("#tb").treegrid("find",9999);
-						alert(JSON.stringify(saveNode));
+						//alert(JSON.stringify(saveNode));
 						
 						$.ajax({
 							type:"post",

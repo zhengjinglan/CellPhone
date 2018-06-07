@@ -16,12 +16,11 @@ public class UsersService {
 	@Autowired
 	private UsersDao userdao;
 
-
 	public int checkUsers(Users u, HttpSession session) {
 		List<Users> list = userdao.query(u);
 		if (list.size() == 1) {
 			session.setAttribute("logUser", list.get(0));
-			System.out.println(list.get(0));
+			// System.out.println(list.get(0));
 			return 0;
 		} else if (list.size() > 1) {
 			return 1;
@@ -33,9 +32,9 @@ public class UsersService {
 	public List<Users> queryUsers(Users u) {
 		return userdao.query(u);
 	}
-	
+
 	public int update(Users u) {
-		
+
 		return userdao.update(u);
 	}
 }
