@@ -3,13 +3,13 @@
 <mapper namespace="com.aaa.dao.UsersDao">
 	
 	<sql id="columns">
-		uid,uname,pwd,rid,empid,uptime
+		uid,uname,pwd,rid,emp_id,uptime
 	</sql>
 	
 	<select id="query" parameterType="Users" resultType="Users">
 		select 
 		<include refid="columns"></include>
-		from users
+		from manager
 		<where>
 			<if test="uid != null">
 				uid = #{uid}
@@ -22,13 +22,13 @@
 			</if>
 			
 			<if test="empid != null">
-				and empid = #{empid}
+				and emp_id = #{empid}
 			</if>
 		</where>
 		order by uid
 	</select>
 	<update id="update" parameterType="Users">
-		update users
+		update manager
 		<set>
 			<if test="uname !=null">
 				uname=#{uname},

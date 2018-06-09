@@ -11,7 +11,7 @@ select libid id,lname text,url,icon iconCls from (SELECT * FROM libarary WHERE l
 <select resultType="Map" id="queryPage"> 
 	SELECT l.libid id,l.lname,url,l.icon icon,l.parentlibid _parentId,
 	l.parentlibid,u.uname upname,u.uid,l.uptime uptime from libarary l 
-	left join users u on u.rid=l.uid
+	left join manager u on u.rid=l.rid
 <if test="param1 != null and param2 != null"> limit #{0},#{1} </if> 
 </select> 
 <insert id="addNode" parameterType="Map"> 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.ColorDao">
+	
+	<sql id="columns">
+		color_id,color_name,color_code,gmt_create,gmt_modified,operator
+	</sql>
+	
+	<select id="queryPage" resultType="Map">
+		select 
+		<include refid="columns"></include>
+		 from color 
+		order by color_id desc
+		<if test="param1 != null and param2 != null">
+			limit #{0},#{1}
+		</if>
+	</select>
+	
+	
+	<delete id="dels">
+		delete from color where color_id in(-1
+		<foreach collection="array" index="index" item="color_id" open="," separator=",">
+			#{color_id}
+		</foreach>
+		)
+	</delete>
+	
+	<insert id="add" parameterType="Color">
+		insert into color(<include refid="columns"></include>) 
+		values(#{color_id},#{color_name},#{color_code},now(),now(),#{operator})
+	</insert>
+	<update id="update" parameterType="Color">
+		update color
+		<set>
+			<if test="color_name !=null">
+				color_name=#{color_name},
+			</if>
+			<if test="color_code !=null">
+				color_code=#{color_code},
+			</if>
+			<if test="gmt_create !=null">
+				gmt_create=#{gmt_create}
+			</if>
+			<if test="gmt_modified !=null">
+				gmt_modified=#{gmt_modified},
+			</if>
+			<if test="operator !=null">
+				operator=#{operator},
+			</if>
+			where color_id=#{color_id}
+		</set>
+	</update>
+
+</mapper>
