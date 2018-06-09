@@ -39,8 +39,6 @@ public class LibararyController {
 	@RequestMapping("queryPage")
 	@ResponseBody
 	public EasyuiPage queryPage(Integer page, Integer rows) {
-		System.out.println("controlller" + libService.queryPage(page, rows)
-				+ "" + libService.queryPage(null, null).size());
 		return new EasyuiPage(libService.queryPage(page, rows), libService
 				.queryPage(null, null).size());
 	}

@@ -70,6 +70,7 @@
   <sql id="Base_Column_List">
     color_id, color_name, color_code, gmt_create, gmt_modified, operator
   </sql>
+  
   <select id="selectByExample" parameterType="com.aaa.entity.ColorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
