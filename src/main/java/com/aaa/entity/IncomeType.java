@@ -4,15 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * income_type
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class IncomeType implements Serializable {
+    private Integer incomeTypeId;
 
-    private String deptName;
-
-    private String deptLoc;
+    private String incomeTypeName;
 
     private Date gmtCreate;
 
@@ -22,28 +20,20 @@ public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getIncomeTypeId() {
+        return incomeTypeId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setIncomeTypeId(Integer incomeTypeId) {
+        this.incomeTypeId = incomeTypeId;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getIncomeTypeName() {
+        return incomeTypeName;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-
-    public String getDeptLoc() {
-        return deptLoc;
-    }
-
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setIncomeTypeName(String incomeTypeName) {
+        this.incomeTypeName = incomeTypeName;
     }
 
     public Date getGmtCreate() {
@@ -81,10 +71,9 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        IncomeType other = (IncomeType) that;
+        return (this.getIncomeTypeId() == null ? other.getIncomeTypeId() == null : this.getIncomeTypeId().equals(other.getIncomeTypeId()))
+            && (this.getIncomeTypeName() == null ? other.getIncomeTypeName() == null : this.getIncomeTypeName().equals(other.getIncomeTypeName()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
@@ -94,9 +83,8 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getIncomeTypeId() == null) ? 0 : getIncomeTypeId().hashCode());
+        result = prime * result + ((getIncomeTypeName() == null) ? 0 : getIncomeTypeName().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
@@ -109,9 +97,8 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", incomeTypeId=").append(incomeTypeId);
+        sb.append(", incomeTypeName=").append(incomeTypeName);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);

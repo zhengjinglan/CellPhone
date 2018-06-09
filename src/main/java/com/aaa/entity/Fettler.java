@@ -4,46 +4,58 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * fettler
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class Fettler implements Serializable {
+    private Integer fettlerId;
 
-    private String deptName;
+    private Integer empId;
 
-    private String deptLoc;
+    private String fettlerPhone;
+
+    private String workCity;
 
     private Date gmtCreate;
 
     private Date gmtModified;
 
+    private String state;
+
     private String operator;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getFettlerId() {
+        return fettlerId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setFettlerId(Integer fettlerId) {
+        this.fettlerId = fettlerId;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
-    public String getDeptLoc() {
-        return deptLoc;
+    public String getFettlerPhone() {
+        return fettlerPhone;
     }
 
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setFettlerPhone(String fettlerPhone) {
+        this.fettlerPhone = fettlerPhone;
+    }
+
+    public String getWorkCity() {
+        return workCity;
+    }
+
+    public void setWorkCity(String workCity) {
+        this.workCity = workCity;
     }
 
     public Date getGmtCreate() {
@@ -60,6 +72,14 @@ public class Dept implements Serializable {
 
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getOperator() {
@@ -81,12 +101,14 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        Fettler other = (Fettler) that;
+        return (this.getFettlerId() == null ? other.getFettlerId() == null : this.getFettlerId().equals(other.getFettlerId()))
+            && (this.getEmpId() == null ? other.getEmpId() == null : this.getEmpId().equals(other.getEmpId()))
+            && (this.getFettlerPhone() == null ? other.getFettlerPhone() == null : this.getFettlerPhone().equals(other.getFettlerPhone()))
+            && (this.getWorkCity() == null ? other.getWorkCity() == null : this.getWorkCity().equals(other.getWorkCity()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
+            && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
     }
 
@@ -94,11 +116,13 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getFettlerId() == null) ? 0 : getFettlerId().hashCode());
+        result = prime * result + ((getEmpId() == null) ? 0 : getEmpId().hashCode());
+        result = prime * result + ((getFettlerPhone() == null) ? 0 : getFettlerPhone().hashCode());
+        result = prime * result + ((getWorkCity() == null) ? 0 : getWorkCity().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
+        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
         return result;
     }
@@ -109,11 +133,13 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", fettlerId=").append(fettlerId);
+        sb.append(", empId=").append(empId);
+        sb.append(", fettlerPhone=").append(fettlerPhone);
+        sb.append(", workCity=").append(workCity);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", state=").append(state);
         sb.append(", operator=").append(operator);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

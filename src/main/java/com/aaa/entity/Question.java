@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * question
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class Question implements Serializable {
+    private Integer id;
 
-    private String deptName;
+    private String content;
 
-    private String deptLoc;
+    private String reply;
 
     private Date gmtCreate;
 
@@ -22,28 +22,28 @@ public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getContent() {
+        return content;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getDeptLoc() {
-        return deptLoc;
+    public String getReply() {
+        return reply;
     }
 
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 
     public Date getGmtCreate() {
@@ -81,10 +81,10 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        Question other = (Question) that;
+        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
+            && (this.getReply() == null ? other.getReply() == null : this.getReply().equals(other.getReply()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
@@ -94,9 +94,9 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
+        result = prime * result + ((getReply() == null) ? 0 : getReply().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
@@ -109,9 +109,9 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", id=").append(id);
+        sb.append(", content=").append(content);
+        sb.append(", reply=").append(reply);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);

@@ -4,15 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * consume_item
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class ConsumeItem implements Serializable {
+    private Integer itemId;
 
-    private String deptName;
+    private Integer typeId;
 
-    private String deptLoc;
+    private String itemName;
+
+    private Integer itemNum;
 
     private Date gmtCreate;
 
@@ -22,28 +24,36 @@ public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
-    public String getDeptLoc() {
-        return deptLoc;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public Integer getItemNum() {
+        return itemNum;
+    }
+
+    public void setItemNum(Integer itemNum) {
+        this.itemNum = itemNum;
     }
 
     public Date getGmtCreate() {
@@ -81,10 +91,11 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        ConsumeItem other = (ConsumeItem) that;
+        return (this.getItemId() == null ? other.getItemId() == null : this.getItemId().equals(other.getItemId()))
+            && (this.getTypeId() == null ? other.getTypeId() == null : this.getTypeId().equals(other.getTypeId()))
+            && (this.getItemName() == null ? other.getItemName() == null : this.getItemName().equals(other.getItemName()))
+            && (this.getItemNum() == null ? other.getItemNum() == null : this.getItemNum().equals(other.getItemNum()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
@@ -94,9 +105,10 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getItemId() == null) ? 0 : getItemId().hashCode());
+        result = prime * result + ((getTypeId() == null) ? 0 : getTypeId().hashCode());
+        result = prime * result + ((getItemName() == null) ? 0 : getItemName().hashCode());
+        result = prime * result + ((getItemNum() == null) ? 0 : getItemNum().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
@@ -109,9 +121,10 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", itemId=").append(itemId);
+        sb.append(", typeId=").append(typeId);
+        sb.append(", itemName=").append(itemName);
+        sb.append(", itemNum=").append(itemNum);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);

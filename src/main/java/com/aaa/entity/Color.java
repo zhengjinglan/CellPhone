@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * color
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class Color implements Serializable {
+    private Integer colorId;
 
-    private String deptName;
+    private String colorName;
 
-    private String deptLoc;
+    private String colorCode;
 
     private Date gmtCreate;
 
@@ -22,28 +22,28 @@ public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getColorId() {
+        return colorId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setColorId(Integer colorId) {
+        this.colorId = colorId;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getColorName() {
+        return colorName;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
-    public String getDeptLoc() {
-        return deptLoc;
+    public String getColorCode() {
+        return colorCode;
     }
 
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
     }
 
     public Date getGmtCreate() {
@@ -81,10 +81,10 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        Color other = (Color) that;
+        return (this.getColorId() == null ? other.getColorId() == null : this.getColorId().equals(other.getColorId()))
+            && (this.getColorName() == null ? other.getColorName() == null : this.getColorName().equals(other.getColorName()))
+            && (this.getColorCode() == null ? other.getColorCode() == null : this.getColorCode().equals(other.getColorCode()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
@@ -94,9 +94,9 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getColorId() == null) ? 0 : getColorId().hashCode());
+        result = prime * result + ((getColorName() == null) ? 0 : getColorName().hashCode());
+        result = prime * result + ((getColorCode() == null) ? 0 : getColorCode().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
@@ -109,9 +109,9 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", colorId=").append(colorId);
+        sb.append(", colorName=").append(colorName);
+        sb.append(", colorCode=").append(colorCode);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);
