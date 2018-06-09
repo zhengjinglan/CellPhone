@@ -36,13 +36,10 @@ public class LibararyService {
 		Integer offset = null;
 		if (page != null) {
 			offset = (page - 1) * rows;
-			/*
-			 * System.out.println(offset); System.out.println("sevice" +
-			 * libararydao.queryPage(page, rows));
-			 */
+
 		}
 		System.out.println("sevice" + libararydao.queryPage(page, rows));
-		return libararydao.queryPage(page, rows);
+		return libararydao.queryPage(offset, rows);
 	}
 
 	public boolean addNode(Map<String, Object> node, HttpSession session) {
