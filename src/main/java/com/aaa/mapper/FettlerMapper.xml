@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.dao.ColorMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.entity.Color">
-    <id column="color_id" jdbcType="INTEGER" property="colorId" />
-    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
-    <result column="color_code" jdbcType="VARCHAR" property="colorCode" />
+<mapper namespace="com.aaa.dao.FettlerMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.Fettler">
+    <id column="fettler_id" jdbcType="INTEGER" property="fettlerId" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="fettler_phone" jdbcType="VARCHAR" property="fettlerPhone" />
+    <result column="work_city" jdbcType="VARCHAR" property="workCity" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,15 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    color_id, color_name, color_code, gmt_create, gmt_modified, operator
+    fettler_id, emp_id, fettler_phone, work_city, gmt_create, gmt_modified, state, operator
   </sql>
-  <select id="selectByExample" parameterType="com.aaa.entity.ColorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.aaa.entity.FettlerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from color
+    from fettler
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,39 +97,44 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    from fettler
+    where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    delete from fettler
+    where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.aaa.entity.ColorExample">
-    delete from color
+  <delete id="deleteByExample" parameterType="com.aaa.entity.FettlerExample">
+    delete from fettler
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insert" parameterType="com.aaa.entity.Fettler">
+    <selectKey keyProperty="fettlerId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color (color_name, color_code, gmt_create, 
-      gmt_modified, operator)
-    values (#{colorName,jdbcType=VARCHAR}, #{colorCode,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+    insert into fettler (emp_id, fettler_phone, work_city, 
+      gmt_create, gmt_modified, state, 
+      operator)
+    values (#{empId,jdbcType=INTEGER}, #{fettlerPhone,jdbcType=VARCHAR}, #{workCity,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.aaa.entity.Fettler">
+    <selectKey keyProperty="fettlerId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color
+    insert into fettler
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        color_name,
+      <if test="empId != null">
+        emp_id,
       </if>
-      <if test="colorCode != null">
-        color_code,
+      <if test="fettlerPhone != null">
+        fettler_phone,
+      </if>
+      <if test="workCity != null">
+        work_city,
       </if>
       <if test="gmtCreate != null">
         gmt_create,
@@ -135,16 +142,22 @@
       <if test="gmtModified != null">
         gmt_modified,
       </if>
+      <if test="state != null">
+        state,
+      </if>
       <if test="operator != null">
         operator,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        #{colorName,jdbcType=VARCHAR},
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
       </if>
-      <if test="colorCode != null">
-        #{colorCode,jdbcType=VARCHAR},
+      <if test="fettlerPhone != null">
+        #{fettlerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workCity != null">
+        #{workCity,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -152,34 +165,43 @@
       <if test="gmtModified != null">
         #{gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
       <if test="operator != null">
         #{operator,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.aaa.entity.ColorExample" resultType="java.lang.Long">
-    select count(*) from color
+  <select id="countByExample" parameterType="com.aaa.entity.FettlerExample" resultType="java.lang.Long">
+    select count(*) from fettler
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update color
+    update fettler
     <set>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
+      <if test="record.fettlerId != null">
+        fettler_id = #{record.fettlerId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorName != null">
-        color_name = #{record.colorName,jdbcType=VARCHAR},
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorCode != null">
-        color_code = #{record.colorCode,jdbcType=VARCHAR},
+      <if test="record.fettlerPhone != null">
+        fettler_phone = #{record.fettlerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workCity != null">
+        work_city = #{record.workCity,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null">
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtModified != null">
         gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
       </if>
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
@@ -190,25 +212,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update color
-    set color_id = #{record.colorId,jdbcType=INTEGER},
-      color_name = #{record.colorName,jdbcType=VARCHAR},
-      color_code = #{record.colorCode,jdbcType=VARCHAR},
+    update fettler
+    set fettler_id = #{record.fettlerId,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
+      fettler_phone = #{record.fettlerPhone,jdbcType=VARCHAR},
+      work_city = #{record.workCity,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=VARCHAR},
       operator = #{record.operator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Color">
-    update color
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Fettler">
+    update fettler
     <set>
-      <if test="colorName != null">
-        color_name = #{colorName,jdbcType=VARCHAR},
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
       </if>
-      <if test="colorCode != null">
-        color_code = #{colorCode,jdbcType=VARCHAR},
+      <if test="fettlerPhone != null">
+        fettler_phone = #{fettlerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workCity != null">
+        work_city = #{workCity,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -216,19 +243,24 @@
       <if test="gmtModified != null">
         gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
       <if test="operator != null">
         operator = #{operator,jdbcType=VARCHAR},
       </if>
     </set>
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Color">
-    update color
-    set color_name = #{colorName,jdbcType=VARCHAR},
-      color_code = #{colorCode,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Fettler">
+    update fettler
+    set emp_id = #{empId,jdbcType=INTEGER},
+      fettler_phone = #{fettlerPhone,jdbcType=VARCHAR},
+      work_city = #{workCity,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
       operator = #{operator,jdbcType=VARCHAR}
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </update>
 </mapper>

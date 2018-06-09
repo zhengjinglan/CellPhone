@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.dao.ColorMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.entity.Color">
-    <id column="color_id" jdbcType="INTEGER" property="colorId" />
-    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
-    <result column="color_code" jdbcType="VARCHAR" property="colorCode" />
+<mapper namespace="com.aaa.dao.ModelMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.Model">
+    <id column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="series_id" jdbcType="INTEGER" property="seriesId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="model_photo" jdbcType="VARCHAR" property="modelPhoto" />
+    <result column="colors" jdbcType="VARCHAR" property="colors" />
+    <result column="model_description" jdbcType="VARCHAR" property="modelDescription" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
@@ -68,15 +71,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    color_id, color_name, color_code, gmt_create, gmt_modified, operator
+    model_id, series_id, model_name, model_photo, colors, model_description, gmt_create, 
+    gmt_modified, operator
   </sql>
-  <select id="selectByExample" parameterType="com.aaa.entity.ColorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.aaa.entity.ModelExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from color
+    from model
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,39 +99,50 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    from model
+    where model_id = #{modelId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    delete from model
+    where model_id = #{modelId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.aaa.entity.ColorExample">
-    delete from color
+  <delete id="deleteByExample" parameterType="com.aaa.entity.ModelExample">
+    delete from model
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insert" parameterType="com.aaa.entity.Model">
+    <selectKey keyProperty="modelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color (color_name, color_code, gmt_create, 
+    insert into model (series_id, model_name, model_photo, 
+      colors, model_description, gmt_create, 
       gmt_modified, operator)
-    values (#{colorName,jdbcType=VARCHAR}, #{colorCode,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+    values (#{seriesId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{modelPhoto,jdbcType=VARCHAR}, 
+      #{colors,jdbcType=VARCHAR}, #{modelDescription,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.aaa.entity.Model">
+    <selectKey keyProperty="modelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color
+    insert into model
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        color_name,
+      <if test="seriesId != null">
+        series_id,
       </if>
-      <if test="colorCode != null">
-        color_code,
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="modelPhoto != null">
+        model_photo,
+      </if>
+      <if test="colors != null">
+        colors,
+      </if>
+      <if test="modelDescription != null">
+        model_description,
       </if>
       <if test="gmtCreate != null">
         gmt_create,
@@ -140,11 +155,20 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        #{colorName,jdbcType=VARCHAR},
+      <if test="seriesId != null">
+        #{seriesId,jdbcType=INTEGER},
       </if>
-      <if test="colorCode != null">
-        #{colorCode,jdbcType=VARCHAR},
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelPhoto != null">
+        #{modelPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="colors != null">
+        #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDescription != null">
+        #{modelDescription,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -157,23 +181,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.aaa.entity.ColorExample" resultType="java.lang.Long">
-    select count(*) from color
+  <select id="countByExample" parameterType="com.aaa.entity.ModelExample" resultType="java.lang.Long">
+    select count(*) from model
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update color
+    update model
     <set>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
+      <if test="record.modelId != null">
+        model_id = #{record.modelId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorName != null">
-        color_name = #{record.colorName,jdbcType=VARCHAR},
+      <if test="record.seriesId != null">
+        series_id = #{record.seriesId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorCode != null">
-        color_code = #{record.colorCode,jdbcType=VARCHAR},
+      <if test="record.modelName != null">
+        model_name = #{record.modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelPhoto != null">
+        model_photo = #{record.modelPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colors != null">
+        colors = #{record.colors,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelDescription != null">
+        model_description = #{record.modelDescription,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null">
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -190,10 +223,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update color
-    set color_id = #{record.colorId,jdbcType=INTEGER},
-      color_name = #{record.colorName,jdbcType=VARCHAR},
-      color_code = #{record.colorCode,jdbcType=VARCHAR},
+    update model
+    set model_id = #{record.modelId,jdbcType=INTEGER},
+      series_id = #{record.seriesId,jdbcType=INTEGER},
+      model_name = #{record.modelName,jdbcType=VARCHAR},
+      model_photo = #{record.modelPhoto,jdbcType=VARCHAR},
+      colors = #{record.colors,jdbcType=VARCHAR},
+      model_description = #{record.modelDescription,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       operator = #{record.operator,jdbcType=VARCHAR}
@@ -201,14 +237,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Color">
-    update color
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Model">
+    update model
     <set>
-      <if test="colorName != null">
-        color_name = #{colorName,jdbcType=VARCHAR},
+      <if test="seriesId != null">
+        series_id = #{seriesId,jdbcType=INTEGER},
       </if>
-      <if test="colorCode != null">
-        color_code = #{colorCode,jdbcType=VARCHAR},
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelPhoto != null">
+        model_photo = #{modelPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="colors != null">
+        colors = #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDescription != null">
+        model_description = #{modelDescription,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -220,15 +265,18 @@
         operator = #{operator,jdbcType=VARCHAR},
       </if>
     </set>
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where model_id = #{modelId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Color">
-    update color
-    set color_name = #{colorName,jdbcType=VARCHAR},
-      color_code = #{colorCode,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Model">
+    update model
+    set series_id = #{seriesId,jdbcType=INTEGER},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      model_photo = #{modelPhoto,jdbcType=VARCHAR},
+      colors = #{colors,jdbcType=VARCHAR},
+      model_description = #{modelDescription,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       operator = #{operator,jdbcType=VARCHAR}
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where model_id = #{modelId,jdbcType=INTEGER}
   </update>
 </mapper>

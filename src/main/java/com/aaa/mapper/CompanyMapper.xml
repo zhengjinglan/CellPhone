@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.dao.ColorMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.entity.Color">
-    <id column="color_id" jdbcType="INTEGER" property="colorId" />
-    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
-    <result column="color_code" jdbcType="VARCHAR" property="colorCode" />
+<mapper namespace="com.aaa.dao.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.Company">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_linkman" jdbcType="VARCHAR" property="companyLinkman" />
+    <result column="company_tel" jdbcType="VARCHAR" property="companyTel" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
@@ -68,15 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    color_id, color_name, color_code, gmt_create, gmt_modified, operator
+    company_id, company_name, company_address, company_linkman, company_tel, gmt_create, 
+    gmt_modified, operator
   </sql>
-  <select id="selectByExample" parameterType="com.aaa.entity.ColorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.aaa.entity.CompanyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from color
+    from company
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,39 +98,47 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.aaa.entity.ColorExample">
-    delete from color
+  <delete id="deleteByExample" parameterType="com.aaa.entity.CompanyExample">
+    delete from company
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insert" parameterType="com.aaa.entity.Company">
+    <selectKey keyProperty="companyId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color (color_name, color_code, gmt_create, 
-      gmt_modified, operator)
-    values (#{colorName,jdbcType=VARCHAR}, #{colorCode,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+    insert into company (company_name, company_address, company_linkman, 
+      company_tel, gmt_create, gmt_modified, 
+      operator)
+    values (#{companyName,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, #{companyLinkman,jdbcType=VARCHAR}, 
+      #{companyTel,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.aaa.entity.Company">
+    <selectKey keyProperty="companyId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color
+    insert into company
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        color_name,
+      <if test="companyName != null">
+        company_name,
       </if>
-      <if test="colorCode != null">
-        color_code,
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="companyLinkman != null">
+        company_linkman,
+      </if>
+      <if test="companyTel != null">
+        company_tel,
       </if>
       <if test="gmtCreate != null">
         gmt_create,
@@ -140,11 +151,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        #{colorName,jdbcType=VARCHAR},
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="colorCode != null">
-        #{colorCode,jdbcType=VARCHAR},
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLinkman != null">
+        #{companyLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        #{companyTel,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -157,23 +174,29 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.aaa.entity.ColorExample" resultType="java.lang.Long">
-    select count(*) from color
+  <select id="countByExample" parameterType="com.aaa.entity.CompanyExample" resultType="java.lang.Long">
+    select count(*) from company
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update color
+    update company
     <set>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
+      <if test="record.companyId != null">
+        company_id = #{record.companyId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorName != null">
-        color_name = #{record.colorName,jdbcType=VARCHAR},
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
       </if>
-      <if test="record.colorCode != null">
-        color_code = #{record.colorCode,jdbcType=VARCHAR},
+      <if test="record.companyAddress != null">
+        company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLinkman != null">
+        company_linkman = #{record.companyLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyTel != null">
+        company_tel = #{record.companyTel,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null">
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -190,10 +213,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update color
-    set color_id = #{record.colorId,jdbcType=INTEGER},
-      color_name = #{record.colorName,jdbcType=VARCHAR},
-      color_code = #{record.colorCode,jdbcType=VARCHAR},
+    update company
+    set company_id = #{record.companyId,jdbcType=INTEGER},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      company_linkman = #{record.companyLinkman,jdbcType=VARCHAR},
+      company_tel = #{record.companyTel,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       operator = #{record.operator,jdbcType=VARCHAR}
@@ -201,14 +226,20 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Color">
-    update color
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Company">
+    update company
     <set>
-      <if test="colorName != null">
-        color_name = #{colorName,jdbcType=VARCHAR},
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="colorCode != null">
-        color_code = #{colorCode,jdbcType=VARCHAR},
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLinkman != null">
+        company_linkman = #{companyLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        company_tel = #{companyTel,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -220,15 +251,17 @@
         operator = #{operator,jdbcType=VARCHAR},
       </if>
     </set>
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where company_id = #{companyId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Color">
-    update color
-    set color_name = #{colorName,jdbcType=VARCHAR},
-      color_code = #{colorCode,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Company">
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_linkman = #{companyLinkman,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       operator = #{operator,jdbcType=VARCHAR}
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where company_id = #{companyId,jdbcType=INTEGER}
   </update>
 </mapper>

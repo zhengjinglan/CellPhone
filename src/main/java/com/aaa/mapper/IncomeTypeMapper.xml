@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.dao.ColorMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.entity.Color">
-    <id column="color_id" jdbcType="INTEGER" property="colorId" />
-    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
-    <result column="color_code" jdbcType="VARCHAR" property="colorCode" />
+<mapper namespace="com.aaa.dao.IncomeTypeMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.IncomeType">
+    <id column="income_type_id" jdbcType="INTEGER" property="incomeTypeId" />
+    <result column="income_type_name" jdbcType="VARCHAR" property="incomeTypeName" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
@@ -68,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    color_id, color_name, color_code, gmt_create, gmt_modified, operator
+    income_type_id, income_type_name, gmt_create, gmt_modified, operator
   </sql>
-  <select id="selectByExample" parameterType="com.aaa.entity.ColorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.aaa.entity.IncomeTypeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from color
+    from income_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,39 +94,36 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    from income_type
+    where income_type_id = #{incomeTypeId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from color
-    where color_id = #{colorId,jdbcType=INTEGER}
+    delete from income_type
+    where income_type_id = #{incomeTypeId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.aaa.entity.ColorExample">
-    delete from color
+  <delete id="deleteByExample" parameterType="com.aaa.entity.IncomeTypeExample">
+    delete from income_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insert" parameterType="com.aaa.entity.IncomeType">
+    <selectKey keyProperty="incomeTypeId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color (color_name, color_code, gmt_create, 
-      gmt_modified, operator)
-    values (#{colorName,jdbcType=VARCHAR}, #{colorCode,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+    insert into income_type (income_type_name, gmt_create, gmt_modified, 
+      operator)
+    values (#{incomeTypeName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.entity.Color">
-    <selectKey keyProperty="colorId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.aaa.entity.IncomeType">
+    <selectKey keyProperty="incomeTypeId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into color
+    insert into income_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        color_name,
-      </if>
-      <if test="colorCode != null">
-        color_code,
+      <if test="incomeTypeName != null">
+        income_type_name,
       </if>
       <if test="gmtCreate != null">
         gmt_create,
@@ -140,11 +136,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="colorName != null">
-        #{colorName,jdbcType=VARCHAR},
-      </if>
-      <if test="colorCode != null">
-        #{colorCode,jdbcType=VARCHAR},
+      <if test="incomeTypeName != null">
+        #{incomeTypeName,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -157,23 +150,20 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.aaa.entity.ColorExample" resultType="java.lang.Long">
-    select count(*) from color
+  <select id="countByExample" parameterType="com.aaa.entity.IncomeTypeExample" resultType="java.lang.Long">
+    select count(*) from income_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update color
+    update income_type
     <set>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
+      <if test="record.incomeTypeId != null">
+        income_type_id = #{record.incomeTypeId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorName != null">
-        color_name = #{record.colorName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.colorCode != null">
-        color_code = #{record.colorCode,jdbcType=VARCHAR},
+      <if test="record.incomeTypeName != null">
+        income_type_name = #{record.incomeTypeName,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null">
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -190,10 +180,9 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update color
-    set color_id = #{record.colorId,jdbcType=INTEGER},
-      color_name = #{record.colorName,jdbcType=VARCHAR},
-      color_code = #{record.colorCode,jdbcType=VARCHAR},
+    update income_type
+    set income_type_id = #{record.incomeTypeId,jdbcType=INTEGER},
+      income_type_name = #{record.incomeTypeName,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       operator = #{record.operator,jdbcType=VARCHAR}
@@ -201,14 +190,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Color">
-    update color
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.IncomeType">
+    update income_type
     <set>
-      <if test="colorName != null">
-        color_name = #{colorName,jdbcType=VARCHAR},
-      </if>
-      <if test="colorCode != null">
-        color_code = #{colorCode,jdbcType=VARCHAR},
+      <if test="incomeTypeName != null">
+        income_type_name = #{incomeTypeName,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -220,15 +206,14 @@
         operator = #{operator,jdbcType=VARCHAR},
       </if>
     </set>
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where income_type_id = #{incomeTypeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Color">
-    update color
-    set color_name = #{colorName,jdbcType=VARCHAR},
-      color_code = #{colorCode,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.IncomeType">
+    update income_type
+    set income_type_name = #{incomeTypeName,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       operator = #{operator,jdbcType=VARCHAR}
-    where color_id = #{colorId,jdbcType=INTEGER}
+    where income_type_id = #{incomeTypeId,jdbcType=INTEGER}
   </update>
 </mapper>
