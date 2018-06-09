@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * dept
+ * job
  * @author 
  */
-public class Dept implements Serializable {
-    private Integer deptId;
+public class Job implements Serializable {
+    private Integer jobId;
 
-    private String deptName;
+    private String jobName;
 
-    private String deptLoc;
+    private Long jobSalary;
 
     private Date gmtCreate;
 
@@ -22,28 +22,28 @@ public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getJobId() {
+        return jobId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getJobName() {
+        return jobName;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setJobName(String jobName) {
+        this.jobName = jobName;
     }
 
-    public String getDeptLoc() {
-        return deptLoc;
+    public Long getJobSalary() {
+        return jobSalary;
     }
 
-    public void setDeptLoc(String deptLoc) {
-        this.deptLoc = deptLoc;
+    public void setJobSalary(Long jobSalary) {
+        this.jobSalary = jobSalary;
     }
 
     public Date getGmtCreate() {
@@ -81,10 +81,10 @@ public class Dept implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Dept other = (Dept) that;
-        return (this.getDeptId() == null ? other.getDeptId() == null : this.getDeptId().equals(other.getDeptId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null : this.getDeptName().equals(other.getDeptName()))
-            && (this.getDeptLoc() == null ? other.getDeptLoc() == null : this.getDeptLoc().equals(other.getDeptLoc()))
+        Job other = (Job) that;
+        return (this.getJobId() == null ? other.getJobId() == null : this.getJobId().equals(other.getJobId()))
+            && (this.getJobName() == null ? other.getJobName() == null : this.getJobName().equals(other.getJobName()))
+            && (this.getJobSalary() == null ? other.getJobSalary() == null : this.getJobSalary().equals(other.getJobSalary()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
@@ -94,9 +94,9 @@ public class Dept implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getDeptId() == null) ? 0 : getDeptId().hashCode());
-        result = prime * result + ((getDeptName() == null) ? 0 : getDeptName().hashCode());
-        result = prime * result + ((getDeptLoc() == null) ? 0 : getDeptLoc().hashCode());
+        result = prime * result + ((getJobId() == null) ? 0 : getJobId().hashCode());
+        result = prime * result + ((getJobName() == null) ? 0 : getJobName().hashCode());
+        result = prime * result + ((getJobSalary() == null) ? 0 : getJobSalary().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
@@ -109,9 +109,9 @@ public class Dept implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", deptId=").append(deptId);
-        sb.append(", deptName=").append(deptName);
-        sb.append(", deptLoc=").append(deptLoc);
+        sb.append(", jobId=").append(jobId);
+        sb.append(", jobName=").append(jobName);
+        sb.append(", jobSalary=").append(jobSalary);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);
