@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.UsersDao">
+	
+	<sql id="columns">
+		uid,uname,pwd,rid,emp_id,uptime
+	</sql>
+	
+	<select id="query" parameterType="Users" resultType="Users">
+		select 
+		<include refid="columns"></include>
+		from manager
+		<where>
+			<if test="uid != null">
+				uid = #{uid}
+			</if>
+			<if test="uname != null">
+				and uname = #{uname}
+			</if>
+			<if test="pwd != null">
+				and pwd = md5(#{pwd})
+			</if>
+			
+			<if test="empid != null">
+				and emp_id = #{empid}
+			</if>
+		</where>
+		order by uid
+	</select>
+	<update id="update" parameterType="Users">
+		update manager
+		<set>
+			<if test="uname !=null">
+				uname=#{uname},
+			</if>
+			<if test="rid !=null">
+				rid=#{rid}
+			</if>
+			<if test="pwd !=null">
+				pwd=md5(#{pwd})
+			</if>
+			where uid=#{uid}
+		</set>
+	</update>
+</mapper>
