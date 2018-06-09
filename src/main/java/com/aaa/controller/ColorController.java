@@ -1,7 +1,6 @@
 package com.aaa.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ public class ColorController {
 	@RequestMapping("queryPage")
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
-		List<Map<String, Object>> list = colorService.queryPage(page, rows);
+		List<Color> list = colorService.queryPage(page, rows);
 		int total = colorService.queryPage(null, null).size();
 		return new EasyuiPage(list, total);
 	}
