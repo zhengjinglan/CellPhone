@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
   	
   	<div data-options="region:'south'" style="width:100%;height:5%">
-  		<center>版权所有GS397</center>
+  		<center>版权所有***一组***</center>
   	</div>
   </body>
 </html>

@@ -1,30 +1,39 @@
 package com.aaa.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aaa.dao.ColorDao;
+import com.aaa.dao.ColorMapper;
 import com.aaa.entity.Color;
+import com.aaa.entity.ColorExample;
 
 @Service
 public class ColorService {
 
 	@Autowired
-	ColorDao colorDao;
+	ColorMapper colorMapper;
 
-	public List<Map<String, Object>> queryPage(Integer pageNum, Integer pageSize) {
-		Integer offset = null;
+	public List<Color> queryPage(Integer pageNum, Integer pageSize) {
+		ColorExample color = new ColorExample();
+
 		if (pageNum != null) {
-			offset = (pageNum - 1) * pageSize;
+			color.setOffset((pageNum - 1) * pageSize);
+			color.setLimit(pageSize);
 		}
-		return colorDao.queryPage(offset, pageSize);
+		return colorMapper.selectByExample(color);
 	}
 
 	public int dels(int[] ids) {
-		int rs = colorDao.dels(ids);
+		List<Integer> list = new ArrayList<Integer>();
+		for (int i : ids) {
+			list.add(i);
+		}
+		ColorExample color = new ColorExample();
+		color.createCriteria().andColorIdIn(list);
+		int rs = colorMapper.deleteByExample(color);
 		if (rs == ids.length) {
 			return 0;
 		} else {
@@ -33,11 +42,13 @@ public class ColorService {
 	}
 
 	public int add(Color e) {
-		return colorDao.add(e);
+		return colorMapper.insert(e);
 	}
 
-	public int update(Color e) {
+	public int update(Color col) {
+		ColorExample color = new ColorExample();
+		color.createCriteria().andColorIdEqualTo(col.getColorId());
 
-		return colorDao.update(e);
+		return colorMapper.updateByExampleSelective(col, color);
 	}
 }

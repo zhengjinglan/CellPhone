@@ -5,5 +5,9 @@
   <installed facet="jst.web" version="3.0"/>
   <installed facet="maven" version="1.0"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
+<<<<<<< HEAD
   <installed facet="me.spring" version="4.1"/>
+=======
+  <installed facet="me.spring" version="2.0"/>
+>>>>>>> refs/remotes/origin/devlop
 </faceted-project>
