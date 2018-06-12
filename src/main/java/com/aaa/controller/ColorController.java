@@ -1,7 +1,6 @@
 package com.aaa.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +22,14 @@ public class ColorController {
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
 		List<Color> list = colorService.queryPage(page, rows);
-		int total = colorService.queryPage(null, null).size();
+		long total = colorService.getCount();
 		return new EasyuiPage(list, total);
 	}
 
 	@RequestMapping("dels")
 	@ResponseBody
-	public int dels(int[] ids) {
+	public int dels(Integer[] ids) {
+		System.out.println(ids);
 		return colorService.dels(ids);
 	}
 
@@ -43,6 +43,7 @@ public class ColorController {
 	@RequestMapping("update")
 	@ResponseBody
 	public int update(Color c) {
+		System.out.println(c);
 		return colorService.update(c);
 	}
 }

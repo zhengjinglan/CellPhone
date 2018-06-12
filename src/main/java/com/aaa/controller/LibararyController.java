@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aaa.entity.EasyuiPage;
 import com.aaa.entity.Manager;
 import com.aaa.entity.TreeNode;
-import com.aaa.entity.Users;
 import com.aaa.service.LibararyService;
 
 @Controller
@@ -39,11 +38,10 @@ public class LibararyController {
 
 	@RequestMapping("queryPage")
 	@ResponseBody
-	public EasyuiPage queryPage(Integer page, Integer rows) {
-		System.out.println("controlller" + libService.queryPage(page, rows)
-				+ "" + libService.queryPage(null, null).size());
-		return new EasyuiPage(libService.queryPage(page, rows), libService
-				.queryPage(null, null).size());
+	public EasyuiPage queryPage(int page, int rows) {
+		List<Map<String, Object>> libarary = libService.queryPage(page, rows);
+		long total = libService.queryPage(null, null).size();
+		return new EasyuiPage(libarary, total);
 	}
 
 	@RequestMapping("queryAll")

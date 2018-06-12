@@ -26,9 +26,9 @@ public class ColorService {
 		return colorMapper.selectByExample(color);
 	}
 
-	public int dels(int[] ids) {
+	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
-		for (int i : ids) {
+		for (Integer i : ids) {
 			list.add(i);
 		}
 		ColorExample color = new ColorExample();
@@ -51,5 +51,9 @@ public class ColorService {
 		color.createCriteria().andColorIdEqualTo(col.getColorId());
 
 		return colorMapper.updateByExampleSelective(col, color);
+	}
+
+	public long getCount() {
+		return colorMapper.countByExample(null);
 	}
 }

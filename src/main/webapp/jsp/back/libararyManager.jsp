@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 						}
 					}
-				},/* '-',{
+				}, /* '-',{
 					text:"编辑节点",
 					iconCls: 'icon-edit',
 					handler: function(){
@@ -155,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						});
 						}
 					}
-				}, */'-',{
+				}, */ '-',{
 					text:"保存",
 					iconCls: 'icon-edit',
 					handler: function(){
@@ -166,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						$.ajax({
 							type:"post",
-							url:"lib/addNode",
+							url:url,
 							data:JSON.stringify(saveNode),
 							contentType:"application/json",
 							success:function(data){

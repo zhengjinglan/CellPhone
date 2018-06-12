@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'employeeManager.jsp' starting page</title>
+    <title>颜色管理</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,14 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$("#tables").datagrid({
 				url:"color/queryPage",
 				columns:[[
-				  {field:'color_id',title:'颜色编号',width:40,checkbox:true},  
-				  {field:'color_name',title:'颜色名称',width:60},
-				  {field:'color_code',title:'颜色编码',width:100},
-				  {field:'gmt_create',title:'创建时间',width:100},
-				  {field:'gmt_modified',title:'修改时间',width:100},
+				  {field:'colorId',title:'颜色编号',width:40,checkbox:true},  
+				  {field:'colorName',title:'颜色名称',width:60},
+				  {field:'colorCode',title:'颜色编码',width:100},
+				  {field:'gmtCreate',title:'创建时间',width:100},
+				  {field:'gmtModified',title:'修改时间',width:100},
 				  {field:'operator',title:'修改人',width:100},
 				]],
-				idField:'color_id',
+				idField:'colorId',
 				fitColumns:true,
 				pagination:true, //显示分页工具栏
 				pageList:[10,15,20],
@@ -59,10 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var rows = $("#tables").datagrid("getChecked");
 			
 			if(rows!=""){
+			
 				var ids=[];
+				
 				for(var i=0;i<rows.length;i++){
-					ids[i] = rows[i].eid;
+					ids[i] = rows[i].colorId;
 				}
+				alert(ids);
 				$.post("color/dels",{"ids":ids.toString()},function(data){
 					if(data==0){
 						$.messager.show({
@@ -114,15 +117,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		// 提交
 		function submits(){
-			if($("#color_id").textbox("getValue")=="自动生成"){
-				$("#color_id").textbox("setValue",-1);
+			if($("#colorId").textbox("getValue")=="自动生成"){
+				$("#colorId").textbox("setValue",-1);
 			}	
-			$.post(url,{"color_id":$("#color_id").val(),"color_name":$("#color_name").val(),
-			"color_code":$("#color_code").val(),"gmt_create":$("#gmt_create").val(),
-			"gmt_modified":$("#gmt_modified").val(),"operator":$("operator").val()}
+			$.post(url,
+			{"colorId":$("#colorId").val(),"colorName":$("#colorName").val(),
+			"colorCode":$("#colorCode").val(),"operator":$("#operator").val()}
 				,function(data){
-				alert(url);
-				alert(data);
 					if(data==1){
 						$.messager.show({
 							title:'提示',
@@ -167,28 +168,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%" readonly="readonly"
-					id="color_id" name="color_id" data-options="label:'颜色编号:'" value="自动生成"/>
+					id="colorId" name="colorId" data-options="label:'颜色编号:'" value="自动生成"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'颜色名称:'" style="width:100%"
-					id="color_name" name="color_name" />
+					id="colorName" name="colorName" />
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'颜色编码:'" style="width:100%"
-					id="color_code" name="color_code" />
+					id="colorCode" name="colorCode" />
 			</div>
 			
-			<div style="margin-bottom: 20px">
+			<!-- <div style="margin-bottom: 20px">
 				<input class="easyui-datebox" data-options="label:'创建时间:'" style="width:100%;datebox"
-					name="gmt_create" id="gmt_create" />
+					name="gmtCreate" id="gmtCreate" />
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-datebox" data-options="label:'修改时间:'" style="width:100%"
-					name="gmt_modified" id="gmt_modified" />
-			</div>
+					name="gmtModified" id="gmtModified" />
+			</div> -->
 						
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

@@ -12,13 +12,13 @@ import java.util.List;
 public class EasyuiPage {
 
 	private List rows;// 显示的数据
-	private Integer total;// 总条数
+	private Long total;// 总条数
 
 	public EasyuiPage() {
 		super();
 	}
 
-	public EasyuiPage(List rows, Integer total) {
+	public EasyuiPage(List rows, Long total) {
 		super();
 		this.rows = rows;
 		this.total = total;
@@ -32,11 +32,11 @@ public class EasyuiPage {
 		this.rows = rows;
 	}
 
-	public Integer getTotal() {
+	public Long getTotal() {
 		return total;
 	}
 
-	public void setTotal(Integer total) {
+	public void setTotal(Long total) {
 		this.total = total;
 	}
 
