@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.entity.EasyuiPage;
+import com.aaa.entity.Manager;
 import com.aaa.entity.TreeNode;
 import com.aaa.entity.Users;
 import com.aaa.service.LibararyService;
@@ -32,7 +33,7 @@ public class LibararyController {
 	@RequestMapping("getTreeByRid")
 	@ResponseBody
 	public List<TreeNode> getTreeByRid(HttpSession session) {
-		Users u = (Users) session.getAttribute("logUser");
+		Manager u = (Manager) session.getAttribute("logUser");
 		return libService.getTreeByRid(u.getRid());
 	}
 

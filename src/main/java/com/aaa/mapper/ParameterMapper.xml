@@ -128,7 +128,7 @@
     values (#{modelId,jdbcType=INTEGER}, #{os,jdbcType=VARCHAR}, #{touchscreenType,jdbcType=VARCHAR}, 
       #{resolvingPower,jdbcType=VARCHAR}, #{cpuBrand,jdbcType=VARCHAR}, #{cpuVersion,jdbcType=VARCHAR}, 
       #{coreNum,jdbcType=VARCHAR}, #{ram,jdbcType=VARCHAR}, #{rom,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      now(),now(), #{operator,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Parameter">
@@ -278,8 +278,8 @@
       core_num = #{record.coreNum,jdbcType=VARCHAR},
       ram = #{record.ram,jdbcType=VARCHAR},
       rom = #{record.rom,jdbcType=VARCHAR},
-      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+     <!--  gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP}, -->
+      gmt_modified =now(),
       operator = #{record.operator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

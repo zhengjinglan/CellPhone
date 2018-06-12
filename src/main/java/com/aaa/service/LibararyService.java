@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aaa.dao.LibararyDao;
+import com.aaa.entity.Manager;
 import com.aaa.entity.TreeNode;
 import com.aaa.entity.Users;
 import com.aaa.util.EasyuiTreeByRidUtil;
@@ -49,7 +50,7 @@ public class LibararyService {
 		System.out.println(node.get("_parentId"));
 		node.put("parentlibid", node.get("_parentId"));
 		System.out.println(session.getAttribute("logUser"));
-		Users u = (Users) session.getAttribute("logUser");
+		Manager u = (Manager) session.getAttribute("logUser");
 		System.out.println(u.getRid());
 		node.put("uid", u.getRid());
 		System.out.println(node);
@@ -65,7 +66,7 @@ public class LibararyService {
 		System.out.println(node.get("_parentId"));
 		node.put("parentlibid", node.get("_parentId"));
 		System.out.println(session.getAttribute("logUser"));
-		Users u = (Users) session.getAttribute("logUser");
+		Manager u = (Manager) session.getAttribute("logUser");
 		System.out.println(u.getRid());
 		node.put("uid", u.getRid());
 		System.out.println(node);
