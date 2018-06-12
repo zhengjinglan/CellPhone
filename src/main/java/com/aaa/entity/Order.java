@@ -1,6 +1,5 @@
 package com.aaa.entity;
 
-<<<<<<< HEAD
 import java.io.Serializable;
 import java.util.Date;
 
@@ -277,8 +276,3 @@ public class Order implements Serializable {
         return sb.toString();
     }
 }
-=======
-public class Order {
-
-}
->>>>>>> refs/remotes/origin/lqx
