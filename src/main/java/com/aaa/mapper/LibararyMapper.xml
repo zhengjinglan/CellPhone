@@ -18,7 +18,7 @@ select libid id,lname text,url,icon iconCls from (SELECT * FROM libarary WHERE l
 <selectKey resultType="int" order="BEFORE" keyProperty="libid" keyColumn="libid"> 
 SELECT if(ISNULL(max(libid))=1,${parentlibid}*100+1,max(libid)+1) from libarary WHERE parentlibid=#{parentlibid}
 </selectKey> 
-insert into libarary values(#{libid},#{lname},#{url},#{icon},#{parentlibid},#{uid},null)
+insert into libarary values(#{libid},#{lname},#{url},#{icon},#{parentlibid},#{uid},now())
 </insert>
 <update id="updateNode" parameterType="Map">
 	update libarary

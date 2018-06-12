@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>颜色管理</title>
+    <title>机型管理</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,16 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		$(function(){
 			$("#tables").datagrid({
-				url:"color/queryPage",
+				url:"model/queryPage",
 				columns:[[
-				  {field:'colorId',title:'颜色编号',width:40,checkbox:true},  
-				  {field:'colorName',title:'颜色名称',width:60},
-				  {field:'colorCode',title:'颜色编码',width:100},
+				  {field:'modelId',title:'机型编号',width:40,checkbox:true},  
+				  {field:'seriesId',title:'系列编号',width:40},  
+				  {field:'modelName',title:'机型名称',width:60},
+				  {field:'modelPhoto',title:'机型图片',width:100},
+				  {field:'colors',title:'颜色',width:100},
+				  {field:'modelDescription',title:'机型描述',width:40},  
 				  {field:'gmtCreate',title:'创建时间',width:100},
 				  {field:'gmtModified',title:'修改时间',width:100},
 				  {field:'operator',title:'修改人',width:100},
 				]],
-				idField:'colorId',
+				idField:'modelId',
 				fitColumns:true,
 				pagination:true, //显示分页工具栏
 				pageList:[10,15,20],
@@ -59,14 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var rows = $("#tables").datagrid("getChecked");
 			
 			if(rows!=""){
-			
 				var ids=[];
-				
 				for(var i=0;i<rows.length;i++){
-					ids[i] = rows[i].colorId;
+					ids[i] = rows[i].modelId;
 				}
-				alert(ids);
-				$.post("color/dels",{"ids":ids.toString()},function(data){
+				$.post("model/dels",{"ids":ids.toString()},function(data){
 					if(data==0){
 						$.messager.show({
 							title:'提示',
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function add(){
 			$("#fm").form('reset');
 			$("#datawindow").window("open").window('setTitle',"新增");
-			url = "color/add";
+			url = "model/add";
 		}
 		
 		// 打开修改窗口
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				// 加载修改的数据信息
 				$("#fm").form('load',rows[0]);				
 				// 设置表单提交路径
-				url = "color/update";
+				url = "model/update";
 				// 打开窗口
 				$("#datawindow").window("open").window('setTitle',"修改");
 				
@@ -117,13 +117,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		// 提交
 		function submits(){
-			if($("#colorId").textbox("getValue")=="自动生成"){
-				$("#colorId").textbox("setValue",-1);
+			if($("#modelId").textbox("getValue")=="自动生成"){
+				$("#modelId").textbox("setValue",-1);
 			}	
-			$.post(url,
-			{"colorId":$("#colorId").val(),"colorName":$("#colorName").val(),
-			"colorCode":$("#colorCode").val(),"operator":$("#operator").val()}
+			$.post(url,{"modelId":$("#modelId").val(),"seriesId":$("#seriesId").val(),
+			"modelName":$("#modelName").val(),"modelPhoto":$("#modelPhoto").val(),
+			"colors":$("#colors").val(),
+			"modelDescription":$("#modelDescription").val(),"operator":$("#operator").val()}
 				,function(data){
+				
 					if(data==1){
 						$.messager.show({
 							title:'提示',
@@ -165,32 +167,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fm" method="post">
-			<div style="margin-bottom: 20px">
+		<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%" readonly="readonly"
-					id="colorId" name="colorId" data-options="label:'颜色编号:'" value="自动生成"/>
+					id="modelId" name="modelId" data-options="label:'机型编号:'" value="自动生成"/>
+			</div>
+			<div style="margin-bottom: 20px">
+				<!-- disabled：不提交 -->
+				<input class="easyui-textbox" style="width:100%"
+					id="seriesId" name="seriesId" data-options="label:'系列编号:'"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
-				<input class="easyui-textbox" data-options="label:'颜色名称:'" style="width:100%"
-					id="colorName" name="colorName" />
+				<input class="easyui-textbox" data-options="label:'机型名称:'" style="width:100%"
+					id="modelName" name="modelName" />
 			</div>
-			
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" data-options="label:'颜色编码:'" style="width:100%"
-					id="colorCode" name="colorCode" />
+				<input class="easyui-textbox" data-options="label:'机型图片:'" style="width:100%"
+					id="modelPhoto" name="modelPhoto" />
 			</div>
-			
-			<!-- <div style="margin-bottom: 20px">
-				<input class="easyui-datebox" data-options="label:'创建时间:'" style="width:100%;datebox"
-					name="gmtCreate" id="gmtCreate" />
-			</div>
-			
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datebox" data-options="label:'修改时间:'" style="width:100%"
-					name="gmtModified" id="gmtModified" />
-			</div> -->
-						
+				<input class="easyui-textbox" data-options="label:'颜色:'" style="width:100%"
+					id="colors" name="colors" />
+			</div>
+			<div style="margin-bottom: 20px">
+				<input class="easyui-textbox" data-options="label:'机型描述:'" style="width:100%"
+					id="modelDescription" name="modelDescription" />
+			</div>
+					
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
 					data-options="label:'修改人:'" style="width:100%"/>
