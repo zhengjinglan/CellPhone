@@ -7,43 +7,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aaa.entity.Color;
 import com.aaa.entity.EasyuiPage;
-import com.aaa.service.ColorService;
+import com.aaa.entity.Model;
+import com.aaa.service.ModelService;
 
 @Controller
-@RequestMapping("color")
-public class ColorController {
-
+@RequestMapping("model")
+public class ModelController {
 	@Autowired
-	private ColorService colorService;
+	private ModelService modelService;
 
 	@RequestMapping("queryPage")
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
-		List<Color> list = colorService.queryPage(page, rows);
-		long total = colorService.getCount();
+		List<Model> list = modelService.queryPage(page, rows);
+		long total = modelService.getCount();
 		return new EasyuiPage(list, total);
 	}
 
 	@RequestMapping("dels")
 	@ResponseBody
-	public int dels(Integer[] ids) {
-		System.out.println(ids);
-		return colorService.dels(ids);
+	public int dels(int[] ids) {
+		return modelService.dels(ids);
 	}
 
 	@RequestMapping("add")
 	@ResponseBody
-	public int add(Color c) {
-		System.out.println(c);
-		return colorService.add(c);
+	public int add(Model model) {
+		System.out.println(model);
+		return modelService.add(model);
 	}
 
 	@RequestMapping("update")
 	@ResponseBody
-	public int update(Color c) {
-		System.out.println(c);
-		return colorService.update(c);
+	public int update(Model model) {
+		return modelService.update(model);
 	}
 }

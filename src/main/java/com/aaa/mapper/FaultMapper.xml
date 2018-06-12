@@ -123,8 +123,8 @@
       gmt_modified, prediction_fault, prediction_solution, 
       operator)
     values (#{typeId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER}, #{faultPrice,jdbcType=DECIMAL}, 
-      #{faultName,jdbcType=VARCHAR}, #{faultDescription,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{predictionFault,jdbcType=VARCHAR}, #{predictionSolution,jdbcType=VARCHAR}, 
+      #{faultName,jdbcType=VARCHAR}, #{faultDescription,jdbcType=VARCHAR},now(), 
+      now(), #{predictionFault,jdbcType=VARCHAR}, #{predictionSolution,jdbcType=VARCHAR}, 
       #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Fault">
@@ -224,12 +224,7 @@
       <if test="record.faultDescription != null">
         fault_description = #{record.faultDescription,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+      
       <if test="record.predictionFault != null">
         prediction_fault = #{record.predictionFault,jdbcType=VARCHAR},
       </if>
@@ -239,6 +234,9 @@
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+     
+        gmt_modified = now(),
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

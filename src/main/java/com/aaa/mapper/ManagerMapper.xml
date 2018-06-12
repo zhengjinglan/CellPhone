@@ -116,7 +116,7 @@
     insert into manager (uname, pwd, emp_id, 
       rid, upuid, uptime
       )
-    values (#{uname,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, 
+    values (#{uname,jdbcType=VARCHAR}, #{md5(pwd),jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, 
       #{rid,jdbcType=INTEGER}, #{upuid,jdbcType=INTEGER}, #{uptime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -130,7 +130,7 @@
         uname,
       </if>
       <if test="pwd != null">
-        pwd,
+        md5(pwd),
       </if>
       <if test="empId != null">
         emp_id,
@@ -150,7 +150,7 @@
         #{uname,jdbcType=VARCHAR},
       </if>
       <if test="pwd != null">
-        #{pwd,jdbcType=VARCHAR},
+        #{md5(pwd),jdbcType=VARCHAR},
       </if>
       <if test="empId != null">
         #{empId,jdbcType=INTEGER},
@@ -182,7 +182,7 @@
         uname = #{record.uname,jdbcType=VARCHAR},
       </if>
       <if test="record.pwd != null">
-        pwd = #{record.pwd,jdbcType=VARCHAR},
+        pwd = #{md5(record.pwd),jdbcType=VARCHAR},
       </if>
       <if test="record.empId != null">
         emp_id = #{record.empId,jdbcType=INTEGER},
@@ -205,7 +205,7 @@
     update manager
     set uid = #{record.uid,jdbcType=INTEGER},
       uname = #{record.uname,jdbcType=VARCHAR},
-      pwd = #{record.pwd,jdbcType=VARCHAR},
+      pwd = #{md5(record.pwd),jdbcType=VARCHAR},
       emp_id = #{record.empId,jdbcType=INTEGER},
       rid = #{record.rid,jdbcType=INTEGER},
       upuid = #{record.upuid,jdbcType=INTEGER},
@@ -221,7 +221,7 @@
         uname = #{uname,jdbcType=VARCHAR},
       </if>
       <if test="pwd != null">
-        pwd = #{pwd,jdbcType=VARCHAR},
+        pwd = #{md5(pwd),jdbcType=VARCHAR},
       </if>
       <if test="empId != null">
         emp_id = #{empId,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
   <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Manager">
     update manager
     set uname = #{uname,jdbcType=VARCHAR},
-      pwd = #{pwd,jdbcType=VARCHAR},
+      pwd = #{md5(pwd),jdbcType=VARCHAR},
       emp_id = #{empId,jdbcType=INTEGER},
       rid = #{rid,jdbcType=INTEGER},
       upuid = #{upuid,jdbcType=INTEGER},

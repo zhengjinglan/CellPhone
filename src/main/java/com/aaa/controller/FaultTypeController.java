@@ -7,43 +7,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aaa.entity.Color;
 import com.aaa.entity.EasyuiPage;
-import com.aaa.service.ColorService;
+import com.aaa.entity.FaultType;
+import com.aaa.service.FaultTypeService;
 
 @Controller
-@RequestMapping("color")
-public class ColorController {
-
+@RequestMapping("faultType")
+public class FaultTypeController {
 	@Autowired
-	private ColorService colorService;
+	private FaultTypeService faultService;
+
+	@RequestMapping("/add")
+	@ResponseBody
+	public int add(FaultType faultType) {
+		System.out.println(faultType);
+		return faultService.add(faultType);
+	}
 
 	@RequestMapping("queryPage")
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
-		List<Color> list = colorService.queryPage(page, rows);
-		long total = colorService.getCount();
+		List<FaultType> list = faultService.queryPage(page, rows);
+		Long total = (long) faultService.getCount();
 		return new EasyuiPage(list, total);
 	}
 
 	@RequestMapping("dels")
 	@ResponseBody
-	public int dels(Integer[] ids) {
-		System.out.println(ids);
-		return colorService.dels(ids);
-	}
-
-	@RequestMapping("add")
-	@ResponseBody
-	public int add(Color c) {
-		System.out.println(c);
-		return colorService.add(c);
+	public int dels(int[] ids) {
+		return faultService.dels(ids);
 	}
 
 	@RequestMapping("update")
 	@ResponseBody
-	public int update(Color c) {
-		System.out.println(c);
-		return colorService.update(c);
+	public int update(FaultType fault) {
+		return faultService.update(fault);
 	}
 }

@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aaa.dao.LibararyDao;
+import com.aaa.entity.Manager;
 import com.aaa.entity.TreeNode;
-import com.aaa.entity.Users;
 import com.aaa.util.EasyuiTreeByRidUtil;
 import com.aaa.util.EasyuiTreeUtil;
 
@@ -43,13 +43,13 @@ public class LibararyService {
 	}
 
 	public boolean addNode(Map<String, Object> node, HttpSession session) {
-		System.out.println(node.get("_parentId"));
+
 		node.put("parentlibid", node.get("_parentId"));
-		System.out.println(session.getAttribute("logUser"));
-		Users u = (Users) session.getAttribute("logUser");
-		System.out.println(u.getRid());
+
+		Manager u = (Manager) session.getAttribute("logUser");
+
 		node.put("uid", u.getRid());
-		System.out.println(node);
+
 		int i = libararydao.addNode(node);
 		if (i == 1) {
 			return true;
@@ -59,13 +59,13 @@ public class LibararyService {
 	}
 
 	public boolean updateNode(Map<String, Object> node, HttpSession session) {
-		System.out.println(node.get("_parentId"));
+
 		node.put("parentlibid", node.get("_parentId"));
-		System.out.println(session.getAttribute("logUser"));
-		Users u = (Users) session.getAttribute("logUser");
-		System.out.println(u.getRid());
+
+		Manager u = (Manager) session.getAttribute("logUser");
+
 		node.put("uid", u.getRid());
-		System.out.println(node);
+
 		int rs = libararydao.updateNode(node);
 		if (rs == 1) {
 			return true;
