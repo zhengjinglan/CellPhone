@@ -1,2 +1,7 @@
 /target
 /.project
+/.settings
+/pom.xml
+/README.md
+/.springBeans
+/.classpath
