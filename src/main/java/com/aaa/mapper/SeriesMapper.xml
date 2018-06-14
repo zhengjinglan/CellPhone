@@ -113,10 +113,18 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into series (brand_id, series_name, gmt_create, 
+<<<<<<< HEAD
       gmt_modified, operator)
     values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}
     ,now(),now(),<!--  #{gmtCreate,jdbcType=TIMESTAMP},
       #{gmtModified,jdbcType=TIMESTAMP}, --> #{operator,jdbcType=VARCHAR})
+=======
+      gmt_modified, operator)
+    values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+    values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR},now(), 
+      now(), #{operator,jdbcType=VARCHAR})
+>>>>>>> refs/remotes/origin/devlop
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Series">
     <selectKey keyProperty="seriesId" order="AFTER" resultType="java.lang.Integer">
