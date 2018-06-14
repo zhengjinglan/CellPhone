@@ -26,6 +26,13 @@ public class JobController {
 		return new EasyuiPage(list, total);
 	}
 
+
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Job> queryAll(Job job) {
+		return jobService.queryAll(job);
+	}
+
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(Integer[] ids) {
