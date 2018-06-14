@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<!-- 引入easyui -->
 	<%@include file="/jsp/back/top.jsp" %>
+	<script class="resources library" src="jsp/before/area.js" type="text/javascript"></script>
+    <script type="text/javascript">_init_area();</script>
 	<script type="text/javascript">
 		var url;
 				$(function(){
@@ -45,58 +47,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				textField:'faultName'
 			}); */						
 		});
-		
-		$().ready(function(){
-			$("#province").change(
-				function() {
-					$.ajax( {
-						type : "post",
-						url : "<%=basePath %>/queryCity.do",
-						data : "pid=" + $("#province").val(),
-						cache : false,
-						dataType : "json",
-						success : function(json) {
-							var str = "<option>请选择</option>";
-							$("#city").html("");
-							for ( var i = 0; i < json.length; i++) {
-								str += "<option value='" + json[i].cid
-										+ "'>" + json[i].cname
-										+ "</option>";
-							}
-							$("#city").append(str);
-							$("#town").html("");
-							$("#town").append("<option>请选择</option>");
-						},
-						error : function() {
-							alert("请与管理员联系");
-						}
-					});
-				});
-			$("#city").change(
-				function() {
-					var params = $("#city").val();
-					$.ajax( {
-						type : "post",
-						url : "<%=basePath %>/queryTown.do",
-						data : "cid=" + params,
-						cache : false,
-						dataType : "json",
-						success : function(json) {
-							var str = "<option>请选择</option>";
-							$("#town").html("");
-							for ( var i = 0; i < json.length; i++) {
-								str += "<option value='" + json[i].tid
-										+ "'>" + json[i].tname
-										+ "</option>";
-							}
-							$("#town").append(str);
-						},
-						error : function() {
-							alert("请与管理员联系");
-						}
-				});
-			});
-		})
+		var Gid  = document.getElementById ;
+		var showArea = function(){
+			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
+			Gid('s_city').value + " - 县/区" + 
+			Gid('s_county').value + "</h3>"
+     	}
+		Gid('s_county').setAttribute('onchange','showArea()');
 		
 		
 	</script>
@@ -174,17 +131,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <p class="mode-name mode-name2">您的地址</p>
                 <div id="alladress"  class="model-info">
                     <div class="inputbox allprovince" style="margin-bottom: 20px">
-                        <select id="province"  name="province" data-province="浙江省"></select>
+						<select id="s_province" name="s_province"></select>
                     </div>
                     <div class="inputbox">
-                        <select id="city">
-                        </select>
-                        <!--<img class="arrow" src="http://static.shanxiuxia.com/activity/mi_arrow.png">-->
+                        <select id="s_city" name="s_city" ></select>
                     </div>
                     <div class="inputbox clean">
-                        <select id="areap">
-                        </select>
-                       <!-- <img class="arrow" src="http://static.shanxiuxia.com/activity/mi_arrow.png">-->
+                       <select id="s_county" name="s_county"></select>
                     </div>
                     <div class="clear"></div>
                 </div>
