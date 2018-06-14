@@ -27,6 +27,7 @@ public class ModelService {
 
 	public List<Model> queryAll(Model model) {
 		ModelExample modelExample = new ModelExample();
+
 		return modelMapper.selectByExample(modelExample);
 	}
 
