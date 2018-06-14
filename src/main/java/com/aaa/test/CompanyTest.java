@@ -48,11 +48,4 @@ public class CompanyTest {
             System.out.println(company);
         }
     }
-    @Test
-    public void selectPage(){
-        CompanyExample e= new CompanyExample();
-        e.createCriteria().andCompanyIdEqualTo(7);
-        mapper.selectByExample(e);
-        e.createCriteria().andcompanyid
-    }
 }
