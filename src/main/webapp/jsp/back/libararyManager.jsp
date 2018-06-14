@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		// treegrid:分页,_parentId
 		
 		var editId = -1;
-		
+		var url;
 		$(function(){
 			$('#tb').treegrid({    
 			    url:'lib/queryPage',    
@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    treeField:'lname',
 			    fitColumns:true,
 			    pagination:true,
+			    data:{},
 			    dnd:true,//是否可拖拽
 			    columns:[[
 					{field:'id',title:'编号',width:60,hidden:true},
@@ -128,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 						}
 					}
-				}, /* '-',{
+				}, '-',{
 					text:"编辑节点",
 					iconCls: 'icon-edit',
 					handler: function(){
@@ -155,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						});
 						}
 					}
-				}, */ '-',{
+				},  '-',{
 					text:"保存",
 					iconCls: 'icon-edit',
 					handler: function(){
@@ -166,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						$.ajax({
 							type:"post",
-							url:url,
+							url:"lib/addNode",
 							data:JSON.stringify(saveNode),
 							contentType:"application/json",
 							success:function(data){

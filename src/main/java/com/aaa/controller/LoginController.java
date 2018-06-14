@@ -8,22 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.entity.Manager;
-import com.aaa.entity.Users;
 import com.aaa.service.ManagerService;
-
 
 @Controller
 @RequestMapping("login")
 public class LoginController {
-	
+
 	@Autowired
 	ManagerService service;
-	
+
 	@RequestMapping("/backLogin")
 	@ResponseBody
-	public int BackLogin(HttpSession session ,Manager u){
-		return service.checkUsers(u, session);
-		
+	public int BackLogin(HttpSession session, Manager manager) {
+		return service.checkUsers(manager, session);
+
 	}
 
 }

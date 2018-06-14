@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%" readonly="readonly"
-					id="seriesId" name="seriesId" data-options="label:'品牌编号:'" value="自动生成"/>
+					id="seriesId" name="seriesId" data-options="label:'系列编号:'" value="自动生成"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
