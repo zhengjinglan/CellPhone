@@ -28,7 +28,6 @@ public class ColorService {
 
 	public List<Color> queryAll(Color color) {
 		ColorExample colorExample = new ColorExample();
-
 		return colorMapper.selectByExample(colorExample);
 	}
 

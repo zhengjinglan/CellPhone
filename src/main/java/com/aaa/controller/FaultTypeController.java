@@ -35,7 +35,6 @@ public class FaultTypeController {
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<FaultType> queryAll(FaultType faultType) {
-
 		return faultService.queryAll(faultType);
 	}
 

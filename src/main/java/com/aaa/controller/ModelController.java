@@ -28,7 +28,6 @@ public class ModelController {
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Model> queryAll(Model model) {
-
 		return modelService.queryAll(model);
 	}
 

@@ -29,7 +29,6 @@ public class JobController {
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Job> queryAll(Job job) {
-
 		return jobService.queryAll(job);
 	}
 
