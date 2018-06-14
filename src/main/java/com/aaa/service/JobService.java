@@ -28,7 +28,6 @@ public class JobService {
 
 	public List<Job> queryAll(Job job) {
 		JobExample jobExample = new JobExample();
-
 		return jobMapper.selectByExample(jobExample);
 	}
 

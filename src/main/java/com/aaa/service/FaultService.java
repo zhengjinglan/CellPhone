@@ -27,7 +27,6 @@ public class FaultService {
 
 	public List<Fault> queryAll(Fault fault) {
 		FaultExample faultExample = new FaultExample();
-
 		return faultMapper.selectByExample(faultExample);
 	}
 
