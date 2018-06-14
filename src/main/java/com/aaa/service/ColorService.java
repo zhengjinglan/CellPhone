@@ -26,12 +26,6 @@ public class ColorService {
 		return colorMapper.selectByExample(color);
 	}
 
-	public List<Color> queryAll(Color color) {
-		ColorExample colorExample = new ColorExample();
-
-		return colorMapper.selectByExample(colorExample);
-	}
-
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {

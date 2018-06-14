@@ -25,12 +25,6 @@ public class FaultService {
 		return faultMapper.selectByExample(fault);
 	}
 
-	public List<Fault> queryAll(Fault fault) {
-		FaultExample faultExample = new FaultExample();
-
-		return faultMapper.selectByExample(faultExample);
-	}
-
 	public int add(Fault fault) {
 		return faultMapper.insert(fault);
 
