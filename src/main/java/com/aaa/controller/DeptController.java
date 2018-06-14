@@ -26,6 +26,12 @@ public class DeptController {
 		return new EasyuiPage(list, total);
 	}
 
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Dept> queryAll(Dept dept) {
+		return deptService.queryAll(dept);
+	}
+
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(Integer[] ids) {

@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@include file="top.jsp" %>
 	<script type="text/javascript">
 		$(function(){
-		
 			$("#tables").datagrid({
 				url:"emp/queryPage",
 				columns:[[
@@ -43,7 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				pageList:[10,15,20],
 				pageSize:10,
 				striped:true,
-				
 			});
 		});
 		
@@ -54,9 +52,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//数据窗口隐藏
 			$("#datawindow").window("close");
 			$("#deptId").combobox({
-				url:"dept/queryPage",
+				url:"dept/queryAll",
 				valueField:'deptId', //提交
 				textField:'deptName',
+				
+			});
+			$("#jobId").combobox({
+				url:"job/queryAll",
+				valueField:'jobId', //提交
+				textField:'jobName',
 				
 			});
 		});
@@ -208,11 +212,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-combobox" style="width:100%"
-					id="deptId" name="deptId" data-options="label:'部门编号:'"/>
+					id="deptId" name="deptId" data-options="label:'部门名称:'"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
-				<input class="easyui-combobox" data-options="label:'职位编号:'" style="width:100%"
+				<input class="easyui-combobox" data-options="label:'职位名称:'" style="width:100%"
 					id="jobId" name="jobId" />
 			</div>
 			

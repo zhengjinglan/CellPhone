@@ -54,6 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
+			$("#seriesId").combobox({
+			url:"series/querySeries",
+				valueField:'seriesId', //提交
+				textField:'seriesName'
+			});
 		});
 		
 		// 删除
@@ -174,8 +179,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
-				<input class="easyui-textbox" style="width:100%"
-					id="seriesId" name="seriesId" data-options="label:'系列编号:'"/>
+				<input class="easyui-combobox" style="width:100%"
+					id="seriesId" name="seriesId" data-options="label:'系列名称:'"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 

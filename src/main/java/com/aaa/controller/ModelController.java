@@ -25,6 +25,13 @@ public class ModelController {
 		return new EasyuiPage(list, total);
 	}
 
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Model> queryAll(Model model) {
+
+		return modelService.queryAll(model);
+	}
+
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(int[] ids) {

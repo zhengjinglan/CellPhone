@@ -26,6 +26,13 @@ public class ColorController {
 		return new EasyuiPage(list, total);
 	}
 
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Color> queryAll(Color color) {
+
+		return colorService.queryAll(color);
+	}
+
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(Integer[] ids) {

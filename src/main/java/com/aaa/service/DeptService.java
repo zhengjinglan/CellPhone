@@ -26,6 +26,11 @@ public class DeptService {
 		return deptMapper.selectByExample(deptExample);
 	}
 
+	public List<Dept> queryAll(Dept dept) {
+		DeptExample deptExample = new DeptExample();
+		return deptMapper.selectByExample(deptExample);
+	}
+
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {

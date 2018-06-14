@@ -56,6 +56,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
+			$("#typeId").combobox({
+			url:"faultType/queryAll",
+				valueField:'typeId', //提交
+				textField:'typeName'
+			});
+			$("#modelId").combobox({
+			url:"model/queryAll",
+				valueField:'modelId', //提交
+				textField:'modelName'
+			});
+			
+			
 		});
 		
 		// 删除
@@ -178,12 +190,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
-				<input class="easyui-textbox" style="width:100%"
-					id="typeId" name="typeId" data-options="label:'类型编号:'"/>
+				<input class="easyui-combobox" style="width:100%"
+					id="typeId" name="typeId" data-options="label:'类型名称:'"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
-				<input class="easyui-textbox" data-options="label:'机型编号:'" style="width:100%"
+				<input class="easyui-combobox" data-options="label:'机型名称:'" style="width:100%"
 					id="modelId" name="modelId" />
 			</div>
 			<div style="margin-bottom: 20px">
