@@ -29,7 +29,6 @@ public class ColorController {
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Color> queryAll(Color color) {
-
 		return colorService.queryAll(color);
 	}
 
