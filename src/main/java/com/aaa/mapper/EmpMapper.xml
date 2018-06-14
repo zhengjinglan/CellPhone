@@ -123,7 +123,7 @@
       )
     values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
       #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      now(), now(), #{operator,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
@@ -220,15 +220,14 @@
       <if test="record.empAddress != null">
         emp_address = #{record.empAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+      
+     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+       
+        gmt_modified = now()
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
