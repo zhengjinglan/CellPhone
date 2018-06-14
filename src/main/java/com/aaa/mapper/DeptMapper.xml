@@ -114,8 +114,8 @@
     </selectKey>
     insert into dept (dept_name, dept_loc, gmt_create, 
       gmt_modified, operator)
-    values (#{deptName,jdbcType=VARCHAR}, #{deptLoc,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+    values (#{deptName,jdbcType=VARCHAR}, #{deptLoc,jdbcType=VARCHAR}, now(), 
+      now(), #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Dept">
     <selectKey keyProperty="deptId" order="AFTER" resultType="java.lang.Integer">
@@ -175,15 +175,14 @@
       <if test="record.deptLoc != null">
         dept_loc = #{record.deptLoc,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+       
+   
+        gmt_modified = now()
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
