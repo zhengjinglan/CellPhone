@@ -32,13 +32,6 @@ public class FaultController {
 		return new EasyuiPage(list, total);
 	}
 
-	@RequestMapping("queryAll")
-	@ResponseBody
-	public List<Fault> queryAll(Fault fault) {
-
-		return faultService.queryAll(fault);
-	}
-
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(int[] ids) {

@@ -117,7 +117,7 @@
       gmt_create, gmt_modified, operator
       )
     values (#{brandName,jdbcType=VARCHAR}, #{brandIcon,jdbcType=VARCHAR}, #{brandDescription,jdbcType=VARCHAR}, 
-      now(),now(), #{operator,jdbcType=VARCHAR}
+     now(), now(), #{operator,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Brand">
@@ -187,11 +187,18 @@
       <if test="record.brandDescription != null">
         brand_description = #{record.brandDescription,jdbcType=VARCHAR},
       </if>
-   
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <!-- <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if> -->
+      <if test="record.gmtModified != null">
+        gmt_modified = now(),
+      </if>
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
-      </if>    
-        gmt_modified = now()
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -203,8 +210,8 @@
       brand_name = #{record.brandName,jdbcType=VARCHAR},
       brand_icon = #{record.brandIcon,jdbcType=VARCHAR},
       brand_description = #{record.brandDescription,jdbcType=VARCHAR},
-      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      <!-- gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP}, -->
+      gmt_modified = now(),
       operator = #{record.operator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
