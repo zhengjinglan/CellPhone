@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url:"dept/queryPage",
 				valueField:'deptId', //提交
 				textField:'deptName',
-			
+				
 			});
 		});
 		
