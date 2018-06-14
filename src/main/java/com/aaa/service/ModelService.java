@@ -25,6 +25,12 @@ public class ModelService {
 		return modelMapper.selectByExample(model);
 	}
 
+	public List<Model> queryAll(Model model) {
+		ModelExample modelExample = new ModelExample();
+
+		return modelMapper.selectByExample(modelExample);
+	}
+
 	public int dels(int[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i : ids) {
