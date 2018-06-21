@@ -1,8 +1,5 @@
 package com.aaa.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +33,8 @@ public class CompanyController {
     }
     @RequestMapping("dels")
     @ResponseBody
-    public int dels(String ids){
+    public boolean dels(String ids){
         String[] strs = ids.split(",");
-        List<String> list = Arrays.asList(strs);
-        return 0;
+        return service.remove(StrUtil.parseToInteger(strs));
     }
 }  

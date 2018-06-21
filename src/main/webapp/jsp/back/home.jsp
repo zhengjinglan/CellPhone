@@ -79,7 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body class="easyui-layout">
-  	<div data-options="region:'north'" style="width:100%;height:11%;background-color: #99CCFF">
+  	<div class="user-info-panel" data-options="region:'north'" style="width:100%;height:11%;background-color: #99CCFF">
+  		<div class="center">
   		<h1><span style="color: white;font-family:'宋体';font-style: italic;font-size:larger;">客户</span>
   		<span style="color:'#DDDDDD';font-family:'宋体';font-style: italic;font-size:larger;">无忧</span>
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:larger;">手机维修管理系统</span>
@@ -87,7 +88,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:'30px';">登录人：<a href="javascript:void(0)" onclick="addTab('jsp/back/personal.jsp','个人中心')">${logUser.uname }</a></span>
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:'30px';"><a href="users/outlogin">退出</a></span>
   		</h1>
+  		</div>
   	</div>
+  	
   	<div data-options="region:'west',title:'导航栏'" style="width:15%;">
   		<ul id="tree"></ul>
   	</div>
@@ -95,7 +98,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div data-options="region:'center'">
   		<div class="easyui-tabs" style="height:100%" id="tabs"></div>
   	</div>
-  	
   	<div data-options="region:'south'" style="width:100%;height:5%">
   		<center>版权所有***一组***</center>
   	</div>

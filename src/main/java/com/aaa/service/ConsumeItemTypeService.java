@@ -46,4 +46,10 @@ public class ConsumeItemTypeService {
         }
         return mapper.selectByExample(exp);
     }
+    public long getCount(){
+        return mapper.countByExample(null);
+    }
+    public List<ConsumeItemType> list(){
+        return mapper.selectByExample(null);
+    }
 }
