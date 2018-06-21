@@ -26,6 +26,8 @@ public class Purchase implements Serializable {
 
     private Date gmtModified;
 
+    private String operator;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getPurchaseId() {
@@ -100,6 +102,14 @@ public class Purchase implements Serializable {
         this.gmtModified = gmtModified;
     }
 
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -120,7 +130,8 @@ public class Purchase implements Serializable {
             && (this.getPurchaseSum() == null ? other.getPurchaseSum() == null : this.getPurchaseSum().equals(other.getPurchaseSum()))
             && (this.getPurchaseBuyer() == null ? other.getPurchaseBuyer() == null : this.getPurchaseBuyer().equals(other.getPurchaseBuyer()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
-            && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()));
+            && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
+            && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
     }
 
     @Override
@@ -136,6 +147,7 @@ public class Purchase implements Serializable {
         result = prime * result + ((getPurchaseBuyer() == null) ? 0 : getPurchaseBuyer().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
+        result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
         return result;
     }
 
@@ -154,6 +166,7 @@ public class Purchase implements Serializable {
         sb.append(", purchaseBuyer=").append(purchaseBuyer);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", operator=").append(operator);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

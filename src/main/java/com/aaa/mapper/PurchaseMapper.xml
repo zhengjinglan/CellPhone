@@ -11,6 +11,7 @@
     <result column="purchase_buyer" jdbcType="VARCHAR" property="purchaseBuyer" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     purchase_id, item_id, company_id, purchase_num, purchase_price, purchase_sum, purchase_buyer, 
-    gmt_create, gmt_modified
+    gmt_create, gmt_modified, operator
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.PurchaseExample" resultMap="BaseResultMap">
     select
@@ -118,10 +119,12 @@
     </selectKey>
     insert into purchase (item_id, company_id, purchase_num, 
       purchase_price, purchase_sum, purchase_buyer, 
-      gmt_create, gmt_modified)
+      gmt_create, gmt_modified, operator
+      )
     values (#{itemId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{purchaseNum,jdbcType=INTEGER}, 
       #{purchasePrice,jdbcType=DECIMAL}, #{purchaseSum,jdbcType=DECIMAL}, #{purchaseBuyer,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Purchase">
     <selectKey keyProperty="purchaseId" order="AFTER" resultType="java.lang.Integer">
@@ -153,6 +156,9 @@
       <if test="gmtModified != null">
         gmt_modified,
       </if>
+      <if test="operator != null">
+        operator,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="itemId != null">
@@ -178,6 +184,9 @@
       </if>
       <if test="gmtModified != null">
         #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -217,6 +226,9 @@
       <if test="record.gmtModified != null">
         gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -232,7 +244,8 @@
       purchase_sum = #{record.purchaseSum,jdbcType=DECIMAL},
       purchase_buyer = #{record.purchaseBuyer,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -264,6 +277,9 @@
       <if test="gmtModified != null">
         gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
     </set>
     where purchase_id = #{purchaseId,jdbcType=INTEGER}
   </update>
@@ -276,7 +292,8 @@
       purchase_sum = #{purchaseSum,jdbcType=DECIMAL},
       purchase_buyer = #{purchaseBuyer,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
     where purchase_id = #{purchaseId,jdbcType=INTEGER}
   </update>
 </mapper>
