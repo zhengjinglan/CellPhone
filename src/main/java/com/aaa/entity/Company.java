@@ -3,6 +3,8 @@ package com.aaa.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * company
  * @author 
@@ -17,9 +19,9 @@ public class Company implements Serializable {
     private String companyLinkman;
 
     private String companyTel;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date gmtCreate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date gmtModified;
 
     private String operator;

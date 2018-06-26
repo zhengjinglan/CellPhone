@@ -99,6 +99,7 @@
     from consume_item
     where item_id = #{itemId,jdbcType=INTEGER}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from consume_item
     where item_id = #{itemId,jdbcType=INTEGER}
@@ -248,4 +249,37 @@
       operator = #{operator,jdbcType=VARCHAR}
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
+  <!-- 涉及多表 -->
+  <resultMap type="com.aaa.entity.ConsumeItem" id="fullMap" extends="BaseResultMap">
+  	<association property="consumeItemType" 
+  		resultMap="com.aaa.dao.ConsumeItemTypeMapper.BaseResultMap"
+  		columnPrefix="ref_">
+  	</association>
+  </resultMap>
+  <sql id="Type_Clolumn_List">
+  	base.item_id, base.type_id, base.item_name, base.item_num, base.gmt_create, base.gmt_modified, base.operator,
+  	type.type_id as ref_type_id, type.type_name as ref_type_name, type.gmt_create as ref_gmt_create, type.gmt_modified as ref_gmt_modified, type.operator as ref_operator
+  </sql>
+  <select id="selectFullByExample" parameterType="map" resultMap="fullMap">
+  	select
+    <include refid="Type_Clolumn_List" />
+    from consume_item base,consume_item_type type
+    <where>
+    	and ( type.type_id = base.type_id )
+    	<if test="typeId != null">
+    		and ( type.type_id = ${typeId} )
+    	</if>
+    </where>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    <if test="example.limit != null">
+      <if test="example.offset != null">
+        limit ${example.offset}, ${example.limit}
+      </if>
+      <if test="example.offset == null">
+        limit ${example.limit}
+      </if>
+    </if>
+  </select>
 </mapper>

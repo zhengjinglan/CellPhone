@@ -28,6 +28,8 @@ public class Emp implements Serializable {
 
     private String operator;
 
+    private Integer state;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getEmpId() {
@@ -110,6 +112,14 @@ public class Emp implements Serializable {
         this.operator = operator;
     }
 
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -131,7 +141,8 @@ public class Emp implements Serializable {
             && (this.getEmpAddress() == null ? other.getEmpAddress() == null : this.getEmpAddress().equals(other.getEmpAddress()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
-            && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()));
+            && (this.getOperator() == null ? other.getOperator() == null : this.getOperator().equals(other.getOperator()))
+            && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()));
     }
 
     @Override
@@ -148,6 +159,7 @@ public class Emp implements Serializable {
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getOperator() == null) ? 0 : getOperator().hashCode());
+        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         return result;
     }
 
@@ -167,6 +179,7 @@ public class Emp implements Serializable {
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", operator=").append(operator);
+        sb.append(", state=").append(state);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

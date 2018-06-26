@@ -21,7 +21,9 @@ public class ConsumeItem implements Serializable {
     private Date gmtModified;
 
     private String operator;
-
+    
+    private ConsumeItemType consumeItemType;
+    
     private static final long serialVersionUID = 1L;
 
     public Integer getItemId() {
@@ -78,6 +80,14 @@ public class ConsumeItem implements Serializable {
 
     public void setOperator(String operator) {
         this.operator = operator;
+    }
+    
+    public ConsumeItemType getConsumeItemType() {
+        return consumeItemType;
+    }
+
+    public void setConsumeItemType(ConsumeItemType consumeItemType) {
+        this.consumeItemType = consumeItemType;
     }
 
     @Override
