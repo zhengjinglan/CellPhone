@@ -2,9 +2,7 @@ package com.aaa.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
-
 import com.aaa.entity.Fault;
 import com.aaa.entity.FaultExample;
 
@@ -35,4 +33,8 @@ public interface FaultMapper {
 	int updateByPrimaryKeySelective(Fault record);
 
 	int updateByPrimaryKey(Fault record);
+    
+    List<Fault> queryFault(Fault f);
+    
+    List<Fault> queryFault(Fault f);
 }

@@ -177,11 +177,15 @@
       <if test="record.seriesName != null">
         series_name = #{record.seriesName,jdbcType=VARCHAR},
       </if>
-     
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
-      </if>   
-        gmt_modified = now()
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -227,4 +231,13 @@
       operator = #{operator,jdbcType=VARCHAR}
     where series_id = #{seriesId,jdbcType=INTEGER}
   </update>
+  
+  <select id="querySeries" parameterType="com.aaa.entity.Series" resultMap="BaseResultMap" >
+  	select * from series
+  	<where>
+  		<if test="brandId !=null">
+  			brand_id=#{brandId}
+  		</if>
+  	</where>
+  </select>
 </mapper>

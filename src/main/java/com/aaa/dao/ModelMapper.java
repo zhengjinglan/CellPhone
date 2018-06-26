@@ -34,4 +34,5 @@ public interface ModelMapper {
 	int updateByPrimaryKeySelective(Model record);
 
 	int updateByPrimaryKey(Model record);
+    List<Model> queryModel(Model m);
 }
