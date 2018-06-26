@@ -32,7 +32,6 @@ public class FaultTypeController {
 		return new EasyuiPage(list, total);
 	}
 
-
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<FaultType> queryAll(FaultType faultType) {

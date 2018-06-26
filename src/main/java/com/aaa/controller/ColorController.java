@@ -35,21 +35,18 @@ public class ColorController {
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(Integer[] ids) {
-		System.out.println(ids);
 		return colorService.dels(ids);
 	}
 
 	@RequestMapping("add")
 	@ResponseBody
 	public int add(Color c) {
-		System.out.println(c);
 		return colorService.add(c);
 	}
 
 	@RequestMapping("update")
 	@ResponseBody
 	public int update(Color c) {
-		System.out.println(c);
 		return colorService.update(c);
 	}
 }

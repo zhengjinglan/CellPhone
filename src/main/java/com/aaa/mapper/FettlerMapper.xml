@@ -118,7 +118,7 @@
       gmt_create, gmt_modified, state, 
       operator)
     values (#{empId,jdbcType=INTEGER}, #{fettlerPhone,jdbcType=VARCHAR}, #{workCity,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, 
+      now(), now(), #{state,jdbcType=VARCHAR}, 
       #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Fettler">
@@ -194,18 +194,16 @@
       <if test="record.workCity != null">
         work_city = #{record.workCity,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+    
       <if test="record.state != null">
         state = #{record.state,jdbcType=VARCHAR},
       </if>
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+        
+        gmt_modified = now()
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -263,4 +261,18 @@
       operator = #{operator,jdbcType=VARCHAR}
     where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </update>
+  <select id="queryByState">
+  select f.fettler_id fettlerId,f.emp_id empId,
+f.fettler_phone fettlerPhone,f.work_city workCity,
+f.gmt_create gmtCreate,f.gmt_modified gmtModifed,
+f.state state,f.operator operator,
+e.emp_id,e.emp_name empName
+from fettler f
+left join emp e
+on f.emp_id=e.emp_id
+where f.state='休息中'
+<if test="param1 != null">
+and f.work_city=#{param1}
+</if>
+  </select>
 </mapper>

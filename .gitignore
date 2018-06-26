@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 /target
 /.project
 /.settings/
 /.tern-project
+=======
+/target
+
+/.project
+
+/.settings
+/
+.tern-project
+>>>>>>> branch 'devlop' of https://github.com/zhengjinglan/CellPhone.git

@@ -12,6 +12,7 @@
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified, 
-    operator
+    operator, state
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.EmpExample" resultMap="BaseResultMap">
     select
@@ -125,13 +126,23 @@
       #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
       now(), now(), #{operator,jdbcType=VARCHAR}
       )
+=======
+    insert into emp (emp_id, dept_id, job_id, 
+      emp_name, emp_sex, emp_phone, 
+      emp_address, gmt_create, gmt_modified, 
+      operator, state)
+    values (#{empId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
+      #{empName,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, 
+      #{empAddress,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+>>>>>>> refs/remotes/origin/xhc
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
-    <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empId != null">
+        emp_id,
+      </if>
       <if test="deptId != null">
         dept_id,
       </if>
@@ -159,8 +170,14 @@
       <if test="operator != null">
         operator,
       </if>
+      <if test="state != null">
+        state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
       <if test="deptId != null">
         #{deptId,jdbcType=INTEGER},
       </if>
@@ -188,6 +205,9 @@
       <if test="operator != null">
         #{operator,jdbcType=VARCHAR},
       </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.aaa.entity.EmpExample" resultType="java.lang.Long">
@@ -199,7 +219,7 @@
   <update id="updateByExampleSelective" parameterType="map">
     update emp
     <set>
-      <if test="record.empId != null">
+  <if test="record.empId != null">
         emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
       <if test="record.deptId != null">
@@ -220,14 +240,14 @@
       <if test="record.empAddress != null">
         emp_address = #{record.empAddress,jdbcType=VARCHAR},
       </if>
-      
-     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
-       
         gmt_modified = now()
-     
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+        gmt_modified = now(),
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -244,7 +264,8 @@
       emp_address = #{record.empAddress,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      operator = #{record.operator,jdbcType=VARCHAR}
+      operator = #{record.operator,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -279,6 +300,9 @@
       <if test="operator != null">
         operator = #{operator,jdbcType=VARCHAR},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
     </set>
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
@@ -292,7 +316,8 @@
       emp_address = #{empAddress,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      operator = #{operator,jdbcType=VARCHAR}
+      operator = #{operator,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
 </mapper>

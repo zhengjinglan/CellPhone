@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 <!-- 引入easyui -->
 	<%@include file="top.jsp" %>
+<<<<<<< HEAD
 	<script type="text/javascript">
 		$(function(){
 			$("#tables").datagrid({
@@ -158,6 +159,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 	</script>
+=======
+>>>>>>> refs/remotes/origin/zzl
   </head>
   
   <body>
@@ -221,4 +224,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 	</div>
   </body>
+  <script type="text/javascript" src="jsp/back/js/fault.js"></script>
 </html>

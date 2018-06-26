@@ -38,7 +38,6 @@ public class LibararyService {
 			offset = (page - 1) * rows;
 
 		}
-		System.out.println("sevice" + libararydao.queryPage(page, rows));
 		return libararydao.queryPage(offset, rows);
 	}
 

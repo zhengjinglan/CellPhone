@@ -11,10 +11,11 @@
     <result column="purchase_buyer" jdbcType="VARCHAR" property="purchaseBuyer" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid">
           <trim prefix="(" prefixOverrides="and" suffix=")">
             <foreach collection="criteria.criteria" item="criterion">
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     purchase_id, item_id, company_id, purchase_num, purchase_price, purchase_sum, purchase_buyer, 
-    gmt_create, gmt_modified
+    gmt_create, gmt_modified, operator
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.PurchaseExample" resultMap="BaseResultMap">
     select
@@ -118,10 +119,12 @@
     </selectKey>
     insert into purchase (item_id, company_id, purchase_num, 
       purchase_price, purchase_sum, purchase_buyer, 
-      gmt_create, gmt_modified)
+      gmt_create, gmt_modified, operator
+      )
     values (#{itemId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{purchaseNum,jdbcType=INTEGER}, 
       #{purchasePrice,jdbcType=DECIMAL}, #{purchaseSum,jdbcType=DECIMAL}, #{purchaseBuyer,jdbcType=VARCHAR}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Purchase">
     <selectKey keyProperty="purchaseId" order="AFTER" resultType="java.lang.Integer">
@@ -153,6 +156,9 @@
       <if test="gmtModified != null">
         gmt_modified,
       </if>
+      <if test="operator != null">
+        operator,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="itemId != null">
@@ -178,6 +184,9 @@
       </if>
       <if test="gmtModified != null">
         #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -217,6 +226,9 @@
       <if test="record.gmtModified != null">
         gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -232,7 +244,8 @@
       purchase_sum = #{record.purchaseSum,jdbcType=DECIMAL},
       purchase_buyer = #{record.purchaseBuyer,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -264,6 +277,9 @@
       <if test="gmtModified != null">
         gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
     </set>
     where purchase_id = #{purchaseId,jdbcType=INTEGER}
   </update>
@@ -276,7 +292,49 @@
       purchase_sum = #{purchaseSum,jdbcType=DECIMAL},
       purchase_buyer = #{purchaseBuyer,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
     where purchase_id = #{purchaseId,jdbcType=INTEGER}
   </update>
+  <!-- 涉及多表 -->
+  <resultMap type="com.aaa.entity.Purchase" id="fullMap" extends="BaseResultMap">
+  <association property="company" 
+  		resultMap="com.aaa.dao.CompanyMapper.BaseResultMap"
+  		columnPrefix="ref1_">
+  	</association>
+  	<association property="consumeItem" 
+  		resultMap="com.aaa.dao.ConsumeItemMapper.BaseResultMap"
+  		columnPrefix="ref2_">
+  	</association>
+  </resultMap>
+  <sql id="Type_Clolumn_List">
+  	base.purchase_id, base.item_id, base.company_id, base.purchase_num, base.purchase_price, base.purchase_sum, base.purchase_buyer,base.gmt_create,base.gmt_modified,base.operator,
+  	company.company_id as ref1_company_id, company.company_name as ref1_company_name, company.company_address as ref1_company_address, company.company_linkman as ref1_company_linkman, company.company_tel as ref1_company_tel,company.gmt_create as ref1_gmt_create,company.gmt_modified as ref1_gmt_modified,company.operator as ref1_operator,
+  	item.item_id as ref2_item_id,item.type_id as ref2_type_id,item.item_name as ref2_item_name,item.item_num as ref2_item_num,item.gmt_create as ref2_gmt_create,item.gmt_modified as ref2_gmt_modified,item.operator as ref2_operator
+  </sql>
+  <select id="selectFullByExample" parameterType="map" resultMap="fullMap">
+  	select
+    <include refid="Type_Clolumn_List" />
+    from purchase base,company,consume_item item
+    <where>
+    	and ( base.item_id = item.item_id ) and (company.company_id = base.company_id)
+    	<if test="companyId != null">
+    		and ( company.company_id = ${companyId} )
+    	</if>
+    	<if test="itemId != null">
+    		and ( item.itemId = ${itemId} )
+    	</if>
+    </where>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    <if test="example.limit != null">
+      <if test="example.offset != null">
+        limit ${example.offset}, ${example.limit}
+      </if>
+      <if test="example.offset == null">
+        limit ${example.limit}
+      </if>
+    </if>
+  </select>
 </mapper>

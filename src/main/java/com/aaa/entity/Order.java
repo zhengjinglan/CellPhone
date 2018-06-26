@@ -3,6 +3,8 @@ package com.aaa.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * order
  * 
@@ -28,9 +30,9 @@ public class Order implements Serializable {
 	private String assigner;
 
 	private String predeterminedTime;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date realBegin;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date realEnd;
 
 	private Date assignTime;

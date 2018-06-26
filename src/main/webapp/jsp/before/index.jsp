@@ -19,6 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
+  <script type="text/javascript" src="jsp/before/js/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+
+		$(function(){
+			window.location="jsp/before/macservice.jsp";
+			
+	
+});
+</script>
   
   <body>
     This is my JSP page. <br>

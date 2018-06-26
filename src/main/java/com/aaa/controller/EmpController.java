@@ -26,24 +26,28 @@ public class EmpController {
 		return new EasyuiPage(list, total);
 	}
 
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Emp> queryAll(Emp emp) {
+
+		return empService.queryAll(emp);
+	}
+
 	@RequestMapping("dels")
 	@ResponseBody
 	public int dels(Integer[] ids) {
-		System.out.println(ids);
 		return empService.dels(ids);
 	}
 
 	@RequestMapping("add")
 	@ResponseBody
 	public int add(Emp emp) {
-		System.out.println(emp);
 		return empService.add(emp);
 	}
 
 	@RequestMapping("update")
 	@ResponseBody
 	public int update(Emp emp) {
-		System.out.println(emp);
 		return empService.update(emp);
 	}
 }

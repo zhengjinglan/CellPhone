@@ -26,7 +26,6 @@ public class ColorService {
 		return colorMapper.selectByExample(color);
 	}
 
-
 	public List<Color> queryAll(Color color) {
 		ColorExample colorExample = new ColorExample();
 		return colorMapper.selectByExample(colorExample);
@@ -55,7 +54,6 @@ public class ColorService {
 	public int update(Color col) {
 		ColorExample color = new ColorExample();
 		color.createCriteria().andColorIdEqualTo(col.getColorId());
-
 		return colorMapper.updateByExampleSelective(col, color);
 	}
 

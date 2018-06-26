@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,14 @@ public class FaultService {
 		return faultMapper.selectByExample(fault);
 	}
 
+	public List<Map<String, Object>> query(Fault fault, Integer page,
+			Integer rows) {
+		Integer offer = null;
+		if (page != null) {
+			offer = (page - 1) * rows;
+		}
+		return faultMapper.queryPage(fault, offer, rows);
+	}
 
 	public List<Fault> queryAll(Fault fault) {
 		FaultExample faultExample = new FaultExample();

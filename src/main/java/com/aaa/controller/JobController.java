@@ -26,7 +26,6 @@ public class JobController {
 		return new EasyuiPage(list, total);
 	}
 
-
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Job> queryAll(Job job) {
