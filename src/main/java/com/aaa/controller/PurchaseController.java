@@ -23,12 +23,6 @@ public class PurchaseController {
     @ResponseBody
     public EasyuiPage queryPage(Integer page, Integer rows){
         List<Purchase> list = service.queryPage(page, rows);
-        for (Purchase purchase : list) {
-            System.out.println("==================");
-            System.out.println(purchase.getConsumeItem());
-            System.out.println(purchase.getCompany());
-            System.out.println("==================");
-        }
         return new EasyuiPage(list,service.getCount());
     }
     @RequestMapping("add")
@@ -43,5 +37,13 @@ public class PurchaseController {
             res = service.add(purchase);
         }
         return res>0?true:false;
+    }
+    @RequestMapping("update")
+    @ResponseBody
+    public boolean update(Purchase purchase){
+        System.out.println("=====================");
+        System.out.println(purchase);
+        System.out.println("=====================");
+        return true;
     }
 }

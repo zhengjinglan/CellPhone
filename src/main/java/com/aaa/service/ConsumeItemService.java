@@ -54,6 +54,9 @@ public class ConsumeItemService {
             exp.setOffset((pageNum - 1) * pageSize);
             exp.setLimit(pageSize);
         }
+        if(typeId == 0){
+            typeId = null;
+        }
         return mapper.selectFullByExample(exp,typeId);
     }
 
