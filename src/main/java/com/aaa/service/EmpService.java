@@ -26,6 +26,11 @@ public class EmpService {
 		return empMapper.selectByExample(emp);
 	}
 
+	public List<Emp> queryAll(Emp emp) {
+		EmpExample empExample = new EmpExample();
+		return empMapper.selectByExample(empExample);
+	}
+
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {
@@ -48,8 +53,7 @@ public class EmpService {
 
 	public int update(Emp emp) {
 		EmpExample empExample = new EmpExample();
-		empExample.createCriteria().andEmpIdEqualTo(emp.getDeptId());
-
+		empExample.createCriteria().andEmpIdEqualTo(emp.getEmpId());
 		return empMapper.updateByExampleSelective(emp, empExample);
 	}
 

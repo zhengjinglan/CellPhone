@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,15 @@ public class FaultController {
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
 		List<Fault> list = faultService.queryPage(page, rows);
+		Long total = (long) faultService.getCount();
+		return new EasyuiPage(list, total);
+	}
+
+	@RequestMapping("query")
+	@ResponseBody
+	public EasyuiPage query(Fault fault, int page, int rows) {
+		List<Map<String, Object>> list = faultService.query(fault, page, rows);
+		System.out.println(list);
 		Long total = (long) faultService.getCount();
 		return new EasyuiPage(list, total);
 	}

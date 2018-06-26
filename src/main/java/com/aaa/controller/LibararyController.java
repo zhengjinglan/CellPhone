@@ -39,6 +39,7 @@ public class LibararyController {
 	@RequestMapping("queryPage")
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
+
 		List<Map<String, Object>> libarary = libService.queryPage(page, rows);
 		long total = libService.queryPage(null, null).size();
 		return new EasyuiPage(libarary, total);
@@ -63,7 +64,8 @@ public class LibararyController {
 	@ResponseBody
 	public boolean updateNode(@RequestBody Map<String, Object> node,
 			HttpSession session) {
-
+		System.out.println("1111111");
+		System.out.println("update lib" + libService.updateNode(node, session));
 		return libService.updateNode(node, session);
 	}
 }

@@ -1,30 +1,38 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Fault;
-import com.aaa.entity.FaultExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Fault;
+import com.aaa.entity.FaultExample;
+
 public interface FaultMapper {
-    long countByExample(FaultExample example);
 
-    int deleteByExample(FaultExample example);
+	List<Map<String, Object>> queryPage(Fault fault, Integer page, Integer rows);
 
-    int deleteByPrimaryKey(Integer faultId);
+	long countByExample(FaultExample example);
 
-    int insert(Fault record);
+	int deleteByExample(FaultExample example);
 
-    int insertSelective(Fault record);
+	int deleteByPrimaryKey(Integer faultId);
 
-    List<Fault> selectByExample(FaultExample example);
+	int insert(Fault record);
 
-    Fault selectByPrimaryKey(Integer faultId);
+	int insertSelective(Fault record);
 
-    int updateByExampleSelective(@Param("record") Fault record, @Param("example") FaultExample example);
+	List<Fault> selectByExample(FaultExample example);
 
-    int updateByExample(@Param("record") Fault record, @Param("example") FaultExample example);
+	Fault selectByPrimaryKey(Integer faultId);
 
-    int updateByPrimaryKeySelective(Fault record);
+	int updateByExampleSelective(@Param("record") Fault record,
+			@Param("example") FaultExample example);
 
-    int updateByPrimaryKey(Fault record);
+	int updateByExample(@Param("record") Fault record,
+			@Param("example") FaultExample example);
+
+	int updateByPrimaryKeySelective(Fault record);
+
+	int updateByPrimaryKey(Fault record);
 }

@@ -1,30 +1,37 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Fettler;
-import com.aaa.entity.FettlerExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Fettler;
+import com.aaa.entity.FettlerExample;
+
 public interface FettlerMapper {
-    long countByExample(FettlerExample example);
+	List<Map<String, Object>> queryByState(String city);
 
-    int deleteByExample(FettlerExample example);
+	long countByExample(FettlerExample example);
 
-    int deleteByPrimaryKey(Integer fettlerId);
+	int deleteByExample(FettlerExample example);
 
-    int insert(Fettler record);
+	int deleteByPrimaryKey(Integer fettlerId);
 
-    int insertSelective(Fettler record);
+	int insert(Fettler record);
 
-    List<Fettler> selectByExample(FettlerExample example);
+	int insertSelective(Fettler record);
 
-    Fettler selectByPrimaryKey(Integer fettlerId);
+	List<Fettler> selectByExample(FettlerExample example);
 
-    int updateByExampleSelective(@Param("record") Fettler record, @Param("example") FettlerExample example);
+	Fettler selectByPrimaryKey(Integer fettlerId);
 
-    int updateByExample(@Param("record") Fettler record, @Param("example") FettlerExample example);
+	int updateByExampleSelective(@Param("record") Fettler record,
+			@Param("example") FettlerExample example);
 
-    int updateByPrimaryKeySelective(Fettler record);
+	int updateByExample(@Param("record") Fettler record,
+			@Param("example") FettlerExample example);
 
-    int updateByPrimaryKey(Fettler record);
+	int updateByPrimaryKeySelective(Fettler record);
+
+	int updateByPrimaryKey(Fettler record);
 }

@@ -1,6 +1,8 @@
 package com.aaa.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,11 +35,48 @@ public class ManagerService {
 		}
 	}
 
-	/*
-	 * public List<Users> queryUsers(Users u) { return userdao.query(u); }
-	 * 
-	 * public int update(Users u) {
-	 * 
-	 * return userdao.update(u); }
-	 */
+	public int add(Manager manager) {
+		return managerMapper.insert(manager);
+	}
+
+	// 查询用户信息
+	public List<Manager> queryUsers(Manager manager, Integer page, Integer rows) {
+		ManagerExample manageExample = new ManagerExample();
+
+		if (page != null) {
+			manageExample.setOffset((page - 1) * rows);
+			manageExample.setLimit(rows);
+		}
+		return managerMapper.selectByExample(manageExample);
+	}
+
+	public int dels(Integer[] ids) {
+		List<Integer> list = new ArrayList<Integer>();
+		for (Integer i : ids) {
+			list.add(i);
+		}
+		ManagerExample manageExample = new ManagerExample();
+		manageExample.createCriteria().andUidIn(list);
+		int rs = managerMapper.deleteByExample(manageExample);
+		if (rs == ids.length) {
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+
+	public int update(Manager manager) {
+		ManagerExample managerExmple = new ManagerExample();
+		managerExmple.createCriteria().andUidEqualTo(manager.getUid());
+
+		return managerMapper.updateByExampleSelective(manager, managerExmple);
+	}
+
+	public long getCount() {
+		return managerMapper.countByExample(null);
+	}
+
+	public List<Map<String, Object>> query() {
+		return managerMapper.query();
+	}
 }

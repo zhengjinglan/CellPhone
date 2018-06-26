@@ -18,46 +18,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<!-- 引入easyui -->
-	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	
+	<%@ include file="top.jsp" %>
 	<script type="text/javascript">
 		$(function(){
-		});
-		
-		function submits(){
-			$("#fm").form('submit',{
-				url:"login/backLogin",
-						onSubmit:function(){
-			return $(this).form('validate');
-		},
-				success:function(data){
-					if(data==0){
-						$.messager.show({
-							title:"提示",
-							msg:"登陆成功"
-						});
-						window.location="jsp/back/home.jsp";
-					}else if(data==1){
-						$.messager.show({
-							title:"提示",
-							msg:"账号异常"
-						});
-						$("#fm").form('clear');
-					}else{
-						$.messager.show({
-							title:"提示",
-							msg:"登陆失败"
-						});
-						$("#fm").form('clear');
-					}
+	});
+	
+	function submits(){
+		$("#fm").form('submit',{
+			url:"login/backLogin",
+					onSubmit:function(){
+		return $(this).form('validate');
+	},
+			success:function(data){
+				if(data==0){
+					$.messager.show({
+						title:"提示",
+						msg:"登陆成功"
+					});
+					window.location="jsp/back/home.jsp";
+				}else if(data==1){
+					$.messager.show({
+						title:"提示",
+						msg:"账号异常"
+					});
+					$("#fm").form('clear');
+				}else{
+					$.messager.show({
+						title:"提示",
+						msg:"登陆失败"
+					});
+					$("#fm").form('clear');
 				}
-				
-			});
-		}
+			}
+			
+		});
+	}
 	</script>
   </head>
   
@@ -82,4 +77,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</form>
   	</div>
   </body>
+
 </html>

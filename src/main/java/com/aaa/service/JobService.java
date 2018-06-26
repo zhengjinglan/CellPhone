@@ -26,6 +26,11 @@ public class JobService {
 		return jobMapper.selectByExample(job);
 	}
 
+	public List<Job> queryAll(Job job) {
+		JobExample jobExample = new JobExample();
+		return jobMapper.selectByExample(jobExample);
+	}
+
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {

@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class ModelService {
 			model.setLimit(pageSize);
 		}
 		return modelMapper.selectByExample(model);
+	}
+
+	public List<Model> queryAll(Model model) {
+		ModelExample modelExample = new ModelExample();
+
+		return modelMapper.selectByExample(modelExample);
 	}
 
 	public int dels(int[] ids) {
@@ -54,5 +61,13 @@ public class ModelService {
 
 	public long getCount() {
 		return modelMapper.countByExample(null);
+	}
+
+	public List<Map<String, Object>> query(Model model, int page, int rows) {
+		Integer offer = null;
+		if (page != 0) {
+			offer = (page - 1) * rows;
+		}
+		return modelMapper.query(model, offer, rows);
 	}
 }

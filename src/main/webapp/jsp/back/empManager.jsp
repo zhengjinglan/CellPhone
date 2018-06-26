@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 <!-- 引入easyui -->
 	<%@include file="top.jsp" %>
+<<<<<<< HEAD
 	<script type="text/javascript">
 		$(function(){
 		
@@ -187,6 +188,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 	</script>
+=======
+
+>>>>>>> refs/remotes/origin/zzl
   </head>
   
   <body>
@@ -200,13 +204,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fm" method="post">
+			<div id="emp">
 			<div style="margin-bottom: 20px">
-				<!-- disabled：不提交 -->
-				<input class="easyui-textbox" style="width:100%" readonly="readonly"
+				
+				<input class="easyui-combobox" style="width:100%" readonly="readonly"
 					id="empId" name="empId" data-options="label:'员工编号:'" value="自动生成"/>
 			</div>
 			<div style="margin-bottom: 20px">
-				<!-- disabled：不提交 -->
+				
 				<input class="easyui-combobox" style="width:100%"
 					id="deptId" name="deptId" data-options="label:'部门编号:'"/>
 			</div>
@@ -240,13 +245,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
 					data-options="label:'修改人:'" style="width:100%"/>
 			</div>
-			
 			<div style="margin-bottom: 20px;text-align: center">
 				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="resets()">重置</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="concel()">取消</a>
 			</div>
-		</form>
-	</div>
+			</div>
+			</form>
+			</div>
+	
   </body>
+  <script type="text/javascript" src="jsp/back/js/emp.js"></script>
 </html>

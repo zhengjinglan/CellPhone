@@ -309,4 +309,30 @@
       operator = #{operator,jdbcType=VARCHAR}
     where fault_id = #{faultId,jdbcType=INTEGER}
   </update>
+  <select id="queryPage" resultType="map" parameterType="Fault">
+  		select f.fault_id faultId,f.fault_price faultPrice,
+		f.fault_name faultName,f.fault_description faultDescription,f.model_id modelId,
+		f.gmt_create gmtCreate,f.gmt_modified gmtModified,f.type_id typeId,
+		f.prediction_fault predictionFault,f.prediction_solution predictionSolution,
+		f.operator operator,type.type_id,type.type_name typeName,
+		model.model_id,model.model_name modelName 
+		from fault f
+		LEFT join fault_type type
+		on f.type_id=type.type_id
+		LEFT join model model
+		on model.model_id=f.model_id
+		<where>
+	<if test="param1 != null and param1.modelId != null">
+     	f.model_id=#{param1.modelId} and
+    </if>
+    <if test="param1 != null and param1.typeId != null">
+     	f.type_id=#{param1.typeId} 
+    </if>
+  <!--    order by f.fault_id desc -->
+    </where>
+     <if test="param2 != null and param3 !=null">
+        limit #{param2},#{param3}
+    </if>
+     
+  </select>
 </mapper>

@@ -384,14 +384,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="weixiu-cotent">
                                     <div id="weixiu-dropdown-content" class="dropdown-content">
                                         <ul id="weixiu_ul">
+                                        <select id="brandId">
+                                <c:forEach items="${blist }" var="b">
+                                	<option value="${b.brandId }">${b.brandName }</option>
+                                </c:forEach>                                
+                                </select>
                                         </ul>
                                     </div>
                                     <div id="xh1" class="sj-dropdown-content">
                                         <ul id="xh1_ul">
-                                        </ul>
+                                        <select id="seriesId">
+                                <c:forEach items="${slist }" var="s">
+                                	<option value="${s.seriesId }">${s.seriesName }</option>
+                                </c:forEach>                                
+                                </select>                                        </ul>
                                     </div>
                                     <div class="color-dropdown-content" id="color-dropdown">
                                         <ul>
+                                       <select id="modelId">
+                                <c:forEach items="${mlist }" var="m">
+                                	<option value="${m.modelId }">${m.modelName }</option>
+                                </c:forEach>                                
+                                </select>
                                         </ul>
                                     </div>
                                 </div>
@@ -2150,17 +2164,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var context = "";
             for (var i = 0; i < brands.length; i++) {
                 var mr = (brandId == brands[i].id) ? "mr" : "";
-                // $('#weixiu_ul').append("<li brandId='" + brands[i].id + "' class='"+mr+"'>" + brands[i].name + "</li>");
                 context = context + "<li brandId='" + brands[i].id + "' class='"+mr+"'>" + brands[i].name + "</li>";
-                // context = context + "<li deviceid='" + devices[i].id + "' class='"+mr+"'>" + devices[i].model + "</li>";
             }
             $('#weixiu_ul').html(context);
         });
     }
-    /*function getServerDate(){
-        var date =new Date($.ajax({async: false}).getResponseHeader("Date"));
-        return date;
-    }*/
     function getServerDate(){
 
             var xhr = null;
