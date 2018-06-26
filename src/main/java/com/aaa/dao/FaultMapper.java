@@ -35,6 +35,4 @@ public interface FaultMapper {
 	int updateByPrimaryKey(Fault record);
     
     List<Fault> queryFault(Fault f);
-    
-    List<Fault> queryFault(Fault f);
 }
