@@ -16,7 +16,7 @@ public class OrderService {
 	OrderMapper maper;
 	
 	public int add(Order o){
-		return maper.insertSelective(o);
+		return maper.insert(o);
 	}
 	public List<Order> queryOrder(Order o){
 		OrderExample order=new OrderExample();

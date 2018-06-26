@@ -277,4 +277,13 @@
       operator = #{operator,jdbcType=VARCHAR}
     where model_id = #{modelId,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryModel" parameterType="com.aaa.entity.Model" resultMap="BaseResultMap">
+  	select * from model
+  	<where>
+  		<if test="seriesId !=null">
+  			series_id=#{seriesId}
+  		</if>
+  	</where>
+  </select>
 </mapper>

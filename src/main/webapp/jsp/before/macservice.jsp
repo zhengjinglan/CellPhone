@@ -24,6 +24,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/tuiguang_order.css">
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+ 	 <!-- 评价 -->
+ 	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  
+ 	
+ 	
+ 	
  		<style type="text/css">
  			.disabled{
  				pointer-events:none;
@@ -39,6 +51,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+				<div class="contact">
+			
+			<div class="container">
+				<h1>您的评价</h1>
+			<div class="contact-form">
+				
+				<div class="col-md-8 contact-grid">
+					<form action="assessment/inserts" method="post">	
+						<input type="text" name="fettlerId" value="维修工id" style="width:100px; height=20px;" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='维修工编号';}">
+					
+						<input type="text" name="userId" value="用户id" style="width:200px; height=20px;"onfocus="this.value='';" onblur="if (this.value == '') {this.value ='用户编号';}">
+							<select name="level"  >   
+								  <option value="0">请选择评分</option>   
+								  <option value="1" >1</option>  
+								  <option value="2" >2</option>
+								  <option value="3" >3</option>  
+                                  <option value="4" >4</option>
+                                  <option value="5" >5</option>   
+								  <option value="6" >6</option>  
+								  <option value="7" >7</option>
+								  <option value="8" >8</option>  
+                                  <option value="9" >9</option>
+                                  <option value="9" >10</option>
+                                  
+                            </select>
+						<textarea cols="77" rows="6" value=" " name="content" onfocus="this.value='';" style="width:440px; height=400px;" onblur="if (this.value == '') {this.value = '评价内容';}">评价内容</textarea>
+						<div class="send">
+							<input type="submit" value="提交" class="btn btn-primary btn-lg " onclick="addUser()">
+							<input type="button" value="关闭"class="btn btn-default" data-dismiss="modal">
+				         ${inserUser }<br>  
+						</div>
+					
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				按下 ESC 按钮退出。
+			</div>
+			
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <header id="header">
     <div class="wrap">
@@ -185,56 +254,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>
         </div>
     </article>
-
-
-            <form  id="biddingForm" action="order/add">
+            <form  action="../../order/add" id="biddingForm" method="post">
                 <div class="ksxdUpdate">
-                    <h3>我要报修</h3>
+                 <div class="butbox">
+                    <button  type="button" id="Besuch" >上门维修</button>
+                    <button  type="button"  id="Mail" >邮寄维修</button>
+                        <!-- <button  type="submit" id="OrderSubmit" >确认下单</button> -->
+                    </div>
                     <div  id="maodian">
                         <div class="table_div">
                             <div class="weixiu">                               
-                                <div id="weixiu-cotent">
-                                <select id="brandId">
-                                <c:forEach items="${blist }" var="b">
-                                	<option value="${b.brandId }">${b.brandName }</option>
-                                </c:forEach>                                
-                                </select>
-                                <select id="seriesId">
-                                <c:forEach items="${slist }" var="s">
-                                	<option value="${s.seriesId }">${s.seriesName }</option>
-                                </c:forEach>                                
-                                </select> 
-                                 <select id="modelId">
-                                <c:forEach items="${mlist }" var="m">
-                                	<option value="${m.modelId }">${m.modelName }</option>
-                                </c:forEach>                                
-                                </select>
-                                 <select id="faultId">
-                                <c:forEach items="${flist }" var="f">
-                                	<option value="${f.faultId }">${f.faultName }</option>
-                                </c:forEach>                                
-                                </select>       
-                                 <select id="colorId" name="color">
-                                <c:forEach items="${clist }" var="c">
-                                	<option value="${c.colorId }">${c.colorName }</option>
-                                </c:forEach>                                
+                               <select id="brandId">  
+								<option value="">请选择</option>                            
+								</select>
+								
+								<select id="seriesId">                              
+								</select> 
+								
+								 <select id="modelId">                               
+								</select>
+								
+								 <select id="faultId" name="faultId">                               
+								</select> 
+								        
+                                 <select id="colorId">                           
                                 </select>                                                       
-                                </div>
-<!--                             <div class="guzhang">
-                                <span id="jjfa">确认故障与维修方案</span>
-                                <s></s>
-                                <div id="sjgz-dropdown-content" class="dropdown-content">
-                                    <div class="sjwt">
-                                        <ul class="sjwt_ul">
-                                        </ul>
-                                    </div>
-
-                                    <div class="wxfa" id="wxfa1" >
-                                        <ul>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="table_div">
@@ -247,16 +291,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         
                           <div class="sex">
-                            <input type="text" placeholder="填写您的性别" 
-                            class="txt" id="userSex" name="userSex">
-                        </div>
+                    </div>
                     </div>
                     <div class="table_div" style="margin-bottom:0">
                         <div class="place" >
-                        <select id="s_province" ></select>&nbsp;&nbsp;
-	    				<select id="s_city"  ></select>&nbsp;&nbsp;
-	    				<select id="s_county"></select>
-
+                        <select id="s_province" name="s_province" diaabled onChange="javascript:doit(this.form);"></select>&nbsp;&nbsp;
+	    				<select id="s_city"  name="s_city" diaabled onChange="javascript:doit(this.form);"></select>&nbsp;&nbsp;
+	    				<select id="s_county" name="s_county" diaabled onChange="javascript:doit(this.form);"></select>
                         </div>
                         <div class="position">
                             <input type="text" placeholder="你所在的位置，如：街道名/小区/大厦名.." 
@@ -267,55 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                         </div>
                     </div>
-                    <div class="note" id="door_range_cite" ></div>
-                    <div class="table_div" style="margin-bottom:0">
-                        <div class="time" >
-                            <span id="time_code">选择上门时间</span>
-                            <input type="hidden" id="myself_time" value="" style="display: none">
-                            <s></s>
-                            <div id="sm-time" style="display:none" class="dropdown-content">
-                                <div id="sm-dropdown-content">
-                                    <ul>
-
-                                    </ul>
-                                </div>
-                                <div class="sm-dropdown-content-sj" id="sm-dropdown-content-sj">
-                                    <ul>
-                                        <li class="t9" time="9">09:00</li>
-                                        <li class="t10" time="10">10:00</li>
-                                        <li class="t11" time="11">11:00</li>
-                                        <li class="t12" time="12">12:00</li>
-                                        <li class="t13" time="13">13:00</li>
-                                        <li class="t14" time="14">14:00</li>
-                                        <li class="t15" time="15">15:00</li>
-                                        <li class="t16" time="16">16:00</li>
-                                        <li class="t17" time="17">17:00</li>
-                                        <li class="t18" time="18">18:00</li>
-                                        <li class="t19" time="19">19:00</li>
-                                    </ul>
-                                </div>
-                                <div class="sm-dropdown-content-js" id="sm-dropdown-content-js">
-                                    <ul>
-                                        <li class="t10" time="10">10:00</li>
-                                        <li class="t11" time="11">11:00</li>
-                                        <li class="t12" time="12">12:00</li>
-                                        <li class="t13" time="13">13:00</li>
-                                        <li class="t14" time="14">14:00</li>
-                                        <li class="t15" time="15">15:00</li>
-                                        <li class="t16" time="16">16:00</li>
-                                        <li class="t17" time="17">17:00</li>
-                                        <li class="t18" time="18">18:00</li>
-                                        <li class="t19" time="19">19:00</li>
-                                        <li class="t19" time="20">20:00</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="yzm">
-                            <input type="text" placeholder="输入验证码" class="txt" id="yzm" style="width:258px">
-                            <img onclick="this.src='/order/quick/authcodeImg?rnd=' + Math.random();" src='/order/quick/authcodeImg'id="yzmsx" >
-                        </div>
-                    </div>
+                    <div class="note" id="door_range_cite" ></div>                  
                     <textarea  id="other" cols="30" rows="10" class="txt" placeholder="您可以详细描述手机故障或其他要求（选填）" style="width:764px;height:104px"></textarea>
                     <div class="agreement">
                         <input type="checkbox" id="agreement" checked>
@@ -323,27 +316,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a href="http://www.jikexiu.com/article/articleDetails/62.html" target="_blank">《极客修服务协议》</a>
                         </label>
                     </div>
-                    <div class="butbox">
-                        <button  type="submit" id="OrderSubmit" >确认下单</button>
+                    <div class="butbox">                  
+                       <button  type="submit" id="OrderSubmit" onclick="submits()">确认下单</button> 
                     </div>
                 </div>
             </form>
-            <input type="hidden" id="malfunction_id" >
-            <input type="hidden" id="f_malfunction_id" >
-            <input type="hidden" id="sm_id">
-            <input type="hidden"   id="repairMethod" />
         <div class="tjts">
             <p>*工作时间(8:00-22:00)将有来自工程师或区号023的座机与您联系，请保持电话畅通</p>
         </div>
     <div class="kj-survice site-inner clearFix">
         <!--dyh1031-->
         <p class="title">用户对我们的信任</p>
+        <a href="#" data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-default btn-lg" >添加您的评价</button></a>
+            
+  </form>
         <div class="float-left user-evaluate">
+            <div id="scroll">
+                <ul class="user-evaluate-list" style="top: 0px;">
+            <c:forEach items="${userList }" var="l">
+                            <li class="clearFix">
+                                <div class="user-img float-left">
+                                    <img src="//rs.jikexiu.com/resources/Nimages/landing/user.png" alt="">
+                                    <p>${l.id}</p>
+                                </div>
+                                <div class="user-name float-left">
+                                     <p class="mar-b-10 stars">
+                                        ${l.level }分
+                                    </p> 
+                                    <p class="col-hui" title="下完订单后，夏师傅很快联系我，预约上门时间，全过程录像，很专业，有问必答，耐心。非常满意！会推荐给同事～">${l.content }</p>
+                                    <p class="timeShow">${l.gmtCreate }</p>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            </ul>
+            </div>
         </div>
         <div class="img-right">
             <img src="//rs.jikexiu.com/resources/Nimages/landing/img-right.png" alt="">
         </div>
     </div>
+
     <article class="col problem" id="col5">
         <div class="wrap">
             <h3>您可能关心的问题</h3>
@@ -391,42 +403,155 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
-<footer id="footer">
-    <div class="wrap">
-        <div class="webInfo">
-               
-             <p class="info_aboutUs"><a href="">关于我们</a></p>
-                <p class="info_aboutUs"><a href="">联系我们</a></p>
- 
 
-            <p class="Cust_Ser"><a href="javascript:void(0);"class="robot">在线客服</a><span>40008-000-00<time>服务时间：8:00-22:00</time></span></p>
-        </div>
-
-            <div class="Copyright">Copyright &copy;  </div>
-    </div>
-</footer>
-    <script class="resources library" src="area.js" type="text/javascript"></script>
+    <script class="resources library" src="../before/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script>
-<script type="text/javascript">
-        
+<script type="text/javascript"> 
+
+  $(document).ready(function(){
+  $.ajax({
+  url: '../../brand/queryBrand' ,
+  success: function(data){
+  if( !data)return;
+  var html= "";
+  for(var e in data){
+  html += '<option value=' +data[e]. brandId+' >'+data[e]. brandName+' </option>';
+ }
+ $("#brandId").append(html);
+ //通过change方法调用
+  $("#brandId"). change(function(){
+  $("#seriesId").html("");
+  $("#modelId"). html("");
+  $("#faultId"). html("");
+  getSeries($(this).val());
+  });
+  }
+  });
+  
+    //根据品牌获取系列
+  function getSeries(id){
+  $.ajax({
+  url:'../../series/querySeries',
+  data: {brandId:id},//传入的id
+  success: function(data){
+  
+  if(! data)return;
+  var html='';
+  for(var i in data){
+  html +='<option value='+data[i].seriesId+'>' +data[i]. seriesName+' </option>';
+  }
+  $("#seriesId").append(html);
+  //通辻change方法去調用
+  $("#seriesId"). change(function(){
+  $("#modelId") . html("");
+  $("#faultId"). html(""); 
+  getModel($(this) .val());
+  });
+  $("#seriesId").get(0). selectedIndex=0;
+ 	getModel($("#seriesId").val());	
+  }
+  });
+  }
+  
+  //根据系列选择机型
+  function getModel(id){
+  	$.ajax({
+  		url:'../../model/queryAll',
+  		data:{seriesId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			for(var i in data){
+  			html +='<option value='+data[i].modelId+'>' +data[i]. modelName+' </option>';
+  			} 
+  			 $("#modelId").append(html);
+  			  $("#modelId"). change(function(){
+              $("#faultId"). html(""); 
+              getFault($(this) .val());
+  });
+  			$("#modelId").get(0). selectedIndex=0;
+ 			getFault($("#modelId").val());	  			
+  		}
+  	});  
+  }
+  
+    //根据机型选择故障
+  function getFault(id){
+  	$.ajax({
+  		url:'../../fault/queryAll',
+  		data:{modelId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			for(var i in data){
+  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
+  			} 
+  			 $("#faultId").append(html);
+
+  		}
+  	});  
+  }
+//显示颜色
+	$.ajax({
+	  url: '../../color/queryAll' ,
+	  success: function(data){
+	  if( !data)return;
+	  var html= "";
+	  for(var e in data){
+	  html += '<option value=' +data[e]. colorId+' >'+data[e]. colorName+' </option>';
+	 }
+	 $("#colorId").append(html);
+	 }
+	 });
+	 
+	 
+	 //点击上门维修
+	 
+
+  });
+		 //地址
+		 function doit(ofrm){ 
+		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;  
+		}   
         //城市选择
-        var Gid  = document.getElementById ;
-		
-		
+        var Gid  = document.getElementById ;		
 		var showArea = function(){
 			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
 			Gid('s_city').value + " - 县/区" + 
 			Gid('s_county').value + "</h3>"
-     }
-     
+     }    
 		Gid('s_county').setAttribute('onchange','showArea()');
-
-$(function(){
-	
-});
-
-           
-        
+		
+/* // 提交
+		function submits(){
+		alert(123);
+			$("#biddingForm").form("submit",{
+				url:"order/add",
+				
+				success:function(data){
+				alert(url);
+				alert(data);
+					if(data==1){
+						$.messager.show({
+							title:'提示',
+							msg:"订单提交成功！"
+						});
+						window.location="macservice.jsp";
+					}else{
+						$.messager.show({
+							title:'提示',
+							msg:"订单提交失败！"
+						});
+					}
+				}
+			});
+		}     */      
+        function addUser(){  
+        var form = document.forms[0];  
+        form.action = "<%=basePath%>assessment/inserts";  
+        form.method="post";  
+        form.submit();  
+    }  
   </script>
 </body>
 </html>
