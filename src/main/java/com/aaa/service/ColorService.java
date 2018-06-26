@@ -54,7 +54,6 @@ public class ColorService {
 	public int update(Color col) {
 		ColorExample color = new ColorExample();
 		color.createCriteria().andColorIdEqualTo(col.getColorId());
-
 		return colorMapper.updateByExampleSelective(col, color);
 	}
 

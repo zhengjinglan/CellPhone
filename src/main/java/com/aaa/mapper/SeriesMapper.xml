@@ -175,15 +175,11 @@
       <if test="record.seriesName != null">
         series_name = #{record.seriesName,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
-      </if>
+      </if>   
+        gmt_modified = now()
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

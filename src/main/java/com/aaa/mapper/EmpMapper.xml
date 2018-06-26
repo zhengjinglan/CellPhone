@@ -199,7 +199,7 @@
   <update id="updateByExampleSelective" parameterType="map">
     update emp
     <set>
-      <if test="record.empId != null">
+  <if test="record.empId != null">
         emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
       <if test="record.deptId != null">
@@ -220,14 +220,10 @@
       <if test="record.empAddress != null">
         emp_address = #{record.empAddress,jdbcType=VARCHAR},
       </if>
-      
-     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
-      </if>
-       
-        gmt_modified = now()
-     
+      </if>      
+        gmt_modified = now(),
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

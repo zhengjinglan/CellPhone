@@ -1,30 +1,37 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Manager;
-import com.aaa.entity.ManagerExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Manager;
+import com.aaa.entity.ManagerExample;
+
 public interface ManagerMapper {
-    long countByExample(ManagerExample example);
+	List<Map<String, Object>> query();
 
-    int deleteByExample(ManagerExample example);
+	long countByExample(ManagerExample example);
 
-    int deleteByPrimaryKey(Integer uid);
+	int deleteByExample(ManagerExample example);
 
-    int insert(Manager record);
+	int deleteByPrimaryKey(Integer uid);
 
-    int insertSelective(Manager record);
+	int insert(Manager record);
 
-    List<Manager> selectByExample(ManagerExample example);
+	int insertSelective(Manager record);
 
-    Manager selectByPrimaryKey(Integer uid);
+	List<Manager> selectByExample(ManagerExample example);
 
-    int updateByExampleSelective(@Param("record") Manager record, @Param("example") ManagerExample example);
+	Manager selectByPrimaryKey(Integer uid);
 
-    int updateByExample(@Param("record") Manager record, @Param("example") ManagerExample example);
+	int updateByExampleSelective(@Param("record") Manager record,
+			@Param("example") ManagerExample example);
 
-    int updateByPrimaryKeySelective(Manager record);
+	int updateByExample(@Param("record") Manager record,
+			@Param("example") ManagerExample example);
 
-    int updateByPrimaryKey(Manager record);
+	int updateByPrimaryKeySelective(Manager record);
+
+	int updateByPrimaryKey(Manager record);
 }

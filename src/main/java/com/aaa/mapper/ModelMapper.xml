@@ -277,4 +277,23 @@
       operator = #{operator,jdbcType=VARCHAR}
     where model_id = #{modelId,jdbcType=INTEGER}
   </update>
+  <select id="query" resultType="map" parameterType="map">
+  	select m.model_id modelId,m.series_id seriesId,
+m.model_name modelName,m.model_photo modelPhoto,
+m.colors colors,m.model_description modelDescription,
+m.gmt_create gmtCreate,m.gmt_modified gmtModified,
+m.operator operator,s.series_id,s.series_name seriesName
+from model m
+left join series s
+on s.series_id=m.series_id
+<where>
+	<if test="param1 !=null and param1.seriesId!=null">
+	m.series_id=#{param1.seriesId} and
+	</if>
+	
+</where>
+<if test="param2!=null and param3!=null">
+	limit #{param2},#{param3}
+	</if>
+  </select>
 </mapper>

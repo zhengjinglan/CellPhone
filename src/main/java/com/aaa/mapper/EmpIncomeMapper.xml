@@ -117,7 +117,7 @@
       gmt_create, gmt_modified, operator
       )
     values (#{incomeTypeId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{incomePrice,jdbcType=DECIMAL}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      now(), now(), #{operator,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.EmpIncome">
@@ -187,15 +187,13 @@
       <if test="record.incomePrice != null">
         income_price = #{record.incomePrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+     
+        gmt_modified = now()
+    
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

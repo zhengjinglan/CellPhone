@@ -1,30 +1,38 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Order;
-import com.aaa.entity.OrderExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Order;
+import com.aaa.entity.OrderExample;
+
 public interface OrderMapper {
-    long countByExample(OrderExample example);
 
-    int deleteByExample(OrderExample example);
+	List<Map<String, Object>> query(Order order, int page, int rows);
 
-    int deleteByPrimaryKey(Integer orderId);
+	long countByExample(OrderExample example);
 
-    int insert(Order record);
+	int deleteByExample(OrderExample example);
 
-    int insertSelective(Order record);
+	int deleteByPrimaryKey(Integer orderId);
 
-    List<Order> selectByExample(OrderExample example);
+	int insert(Order record);
 
-    Order selectByPrimaryKey(Integer orderId);
+	int insertSelective(Order record);
 
-    int updateByExampleSelective(@Param("record") Order record, @Param("example") OrderExample example);
+	List<Order> selectByExample(OrderExample example);
 
-    int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
+	Order selectByPrimaryKey(Integer orderId);
 
-    int updateByPrimaryKeySelective(Order record);
+	int updateByExampleSelective(@Param("record") Order record,
+			@Param("example") OrderExample example);
 
-    int updateByPrimaryKey(Order record);
+	int updateByExample(@Param("record") Order record,
+			@Param("example") OrderExample example);
+
+	int updateByPrimaryKeySelective(Order record);
+
+	int updateByPrimaryKey(Order record);
 }

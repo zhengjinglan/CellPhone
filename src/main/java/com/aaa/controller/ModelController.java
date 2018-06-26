@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,14 @@ public class ModelController {
 	@ResponseBody
 	public EasyuiPage queryPage(int page, int rows) {
 		List<Model> list = modelService.queryPage(page, rows);
+		long total = modelService.getCount();
+		return new EasyuiPage(list, total);
+	}
+
+	@RequestMapping("query")
+	@ResponseBody
+	public EasyuiPage query(Model model, int page, int rows) {
+		List<Map<String, Object>> list = modelService.query(model, page, rows);
 		long total = modelService.getCount();
 		return new EasyuiPage(list, total);
 	}
