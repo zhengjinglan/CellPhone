@@ -14,7 +14,7 @@ import com.aaa.entity.CompanyExample;
 public class CompanyService {
     @Autowired
     CompanyMapper mapper;
-    
+
     public List<Company> queryPage(Integer pageNum,Integer pageSize){
         CompanyExample exp = new CompanyExample();
         if (pageNum != null) {
@@ -61,5 +61,8 @@ public class CompanyService {
     public int update(Company company){
         company.setGmtModified(new Date());
         return mapper.updateByPrimaryKeySelective(company);
+    }
+    public List<Company> list(){
+        return mapper.selectByExample(null);
     }
 }

@@ -43,9 +43,7 @@ public class ConsumeItemTypeController {
     }
     @RequestMapping("queryAll")
     @ResponseBody
-    public String queryAll(){
-        List<ConsumeItemType> list = service.list();
-        JSONArray array = JSONArray.fromObject(list);
-        return array.toString();
+    public List<ConsumeItemType> queryAll(){
+        return service.list();
     }
 }  

@@ -16,9 +16,9 @@ public class Purchase implements Serializable {
 
     private Integer purchaseNum;
 
-    private Long purchasePrice;
+    private Double purchasePrice;
 
-    private Long purchaseSum;
+    private Double purchaseSum;
 
     private String purchaseBuyer;
 
@@ -27,6 +27,10 @@ public class Purchase implements Serializable {
     private Date gmtModified;
 
     private String operator;
+    
+    private ConsumeItem consumeItem;
+    private Company company;
+    
 
     private static final long serialVersionUID = 1L;
 
@@ -62,19 +66,19 @@ public class Purchase implements Serializable {
         this.purchaseNum = purchaseNum;
     }
 
-    public Long getPurchasePrice() {
+    public Double getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(Long purchasePrice) {
+    public void setPurchasePrice(Double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public Long getPurchaseSum() {
+    public Double getPurchaseSum() {
         return purchaseSum;
     }
 
-    public void setPurchaseSum(Long purchaseSum) {
+    public void setPurchaseSum(Double purchaseSum) {
         this.purchaseSum = purchaseSum;
     }
 
@@ -108,6 +112,22 @@ public class Purchase implements Serializable {
 
     public void setOperator(String operator) {
         this.operator = operator;
+    }
+
+    public ConsumeItem getConsumeItem() {
+        return consumeItem;
+    }
+
+    public void setConsumeItem(ConsumeItem consumeItem) {
+        this.consumeItem = consumeItem;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override

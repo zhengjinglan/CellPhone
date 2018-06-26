@@ -16,7 +16,7 @@ import com.aaa.entity.ConsumeItemTypeExample;
 public class ConsumeItemService {
     @Autowired
     ConsumeItemMapper mapper;
-    
+
     public int add(ConsumeItem consumeItem){
         consumeItem.setGmtCreate(new Date());
         return mapper.insertSelective(consumeItem);
@@ -47,7 +47,7 @@ public class ConsumeItemService {
         }
         return mapper.selectFullByExample(exp,null);
     }
-    
+
     public List<ConsumeItem> queryPage(Integer pageNum,Integer pageSize,Integer typeId){
         ConsumeItemExample exp = new ConsumeItemExample();
         if(pageNum != null){
@@ -56,7 +56,7 @@ public class ConsumeItemService {
         }
         return mapper.selectFullByExample(exp,typeId);
     }
-    
+
     public long getCount(){
         return mapper.countByExample(null);
     }
@@ -64,5 +64,8 @@ public class ConsumeItemService {
         ConsumeItemExample exp = new ConsumeItemExample();
         exp.createCriteria().andTypeIdEqualTo(typeId);
         return mapper.countByExample(exp);
+    }
+    public List<ConsumeItem> list(){
+        return mapper.selectByExample(null);
     }
 }
