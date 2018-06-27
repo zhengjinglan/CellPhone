@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    model_id, series_id, model_name, model_photo, colors, model_description, gmt_create, 
+    model_id, series_id, model_name, model_photo, colors, model_description, gmt_create,
     gmt_modified, operator
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.ModelExample" resultMap="BaseResultMap">
@@ -97,7 +97,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from model
     where model_id = #{modelId,jdbcType=INTEGER}
@@ -116,11 +116,11 @@
     <selectKey keyProperty="modelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into model (series_id, model_name, model_photo, 
-      colors, model_description, gmt_create, 
+    insert into model (series_id, model_name, model_photo,
+      colors, model_description, gmt_create,
       gmt_modified, operator)
-    values (#{seriesId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{modelPhoto,jdbcType=VARCHAR}, 
-      #{colors,jdbcType=VARCHAR}, #{modelDescription,jdbcType=VARCHAR}, now(), 
+    values (#{seriesId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{modelPhoto,jdbcType=VARCHAR},
+      #{colors,jdbcType=VARCHAR}, #{modelDescription,jdbcType=VARCHAR}, now(),
       now(), #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Model">
@@ -208,13 +208,13 @@
       <if test="record.modelDescription != null">
         model_description = #{record.modelDescription,jdbcType=VARCHAR},
       </if>
-     
+
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
-     
+
         gmt_modified = now(),
-    
+
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -290,13 +290,13 @@ on s.series_id=m.series_id
 	<if test="param1 !=null and param1.seriesId!=null">
 	m.series_id=#{param1.seriesId} and
 	</if>
-	
+
 </where>
 <if test="param2!=null and param3!=null">
 	limit #{param2},#{param3}
 	</if>
   </select>
-  
+
   <select id="queryModel" parameterType="com.aaa.entity.Model" resultMap="BaseResultMap">
   	select * from model
   	<where>

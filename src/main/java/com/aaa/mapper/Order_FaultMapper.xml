@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.Order_FaultMapper">
+<resultMap id="BaseResultMap" type="com.aaa.entity.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <id column="fault_id" jdbcType="INTEGER" property="faultId" />
+  </resultMap>
+   <insert id="add" parameterType="com.aaa.entity.Order_Fault">
+  		<selectKey keyColumn="orderId" keyProperty="orderId" order="BEFORE" resultType="Integer">
+			SELECT max(order_id) order_id FROM `order`
+	</selectKey>
+	insert into order_fault (fault_id,order_id) values(#{faultId},#{orderId})
+  	</insert> 
+</mapper>

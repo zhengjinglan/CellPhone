@@ -33,6 +33,6 @@ public interface FaultMapper {
 	int updateByPrimaryKeySelective(Fault record);
 
 	int updateByPrimaryKey(Fault record);
-    
+
     List<Fault> queryFault(Fault f);
 }

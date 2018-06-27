@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <title>手机维修</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta http-equiv="Content-Language" content="zh-CN" />
-  
+
       <meta http-equiv="X-UA-Compatible" content="IE=edge" >
       <meta itemprop="name" content="值得信赖的手机维修平台">
       <meta itemprop="image" content="images/logo.jpg">
@@ -24,21 +24,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/tuiguang_order.css">
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+ 	 <!-- 评价 -->
+ 	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
  		<style type="text/css">
  			.disabled{
  				pointer-events:none;
  			}
  		</style>
- 	
+
 <!--     <script type="text/javascript" >
         window.ctx = "";
         window.resourcePath = "//rs.jikexiu.com";
         var _Width = $(window).width();
-     
+
     </script> -->
 </head>
 
 <body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+				<div class="contact">
+
+			<div class="container">
+				<h1>您的评价</h1>
+			<div class="contact-form">
+
+				<div class="col-md-8 contact-grid">
+					<form action="assessment/inserts" method="post">
+						<input type="text" name="fettlerId" value="维修工id" style="width:100px; height=20px;" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='维修工编号';}">
+
+						<input type="text" name="userId" value="用户id" style="width:200px; height=20px;"onfocus="this.value='';" onblur="if (this.value == '') {this.value ='用户编号';}">
+							<select name="level"  >
+								  <option value="0">请选择评分</option>
+								  <option value="1" >1</option>
+								  <option value="2" >2</option>
+								  <option value="3" >3</option>
+                                  <option value="4" >4</option>
+                                  <option value="5" >5</option>
+								  <option value="6" >6</option>
+								  <option value="7" >7</option>
+								  <option value="8" >8</option>
+                                  <option value="9" >9</option>
+                                  <option value="9" >10</option>
+
+                            </select>
+						<textarea cols="77" rows="6" value=" " name="content" onfocus="this.value='';" style="width:440px; height=400px;" onblur="if (this.value == '') {this.value = '评价内容';}">评价内容</textarea>
+						<div class="send">
+							<input type="submit" value="提交" class="btn btn-primary btn-lg " onclick="addUser()">
+							<input type="button" value="关闭"class="btn btn-default" data-dismiss="modal">
+				         ${inserUser }<br>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				按下 ESC 按钮退出。
+			</div>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <header id="header">
     <div class="wrap">
@@ -50,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="#col5" target="_self">常见问题</a></li>
             <li><a href="company.jsp" target="_self">公司动态</a></li>
             <li><a href="contact.jsp" target="_self">意见反馈</a></li>
-            
+
              <li><a href="login.jsp" target="_self">查询订单</a></li>
         </ul>
         <span><s></s>预约热线:4008-112-112</span>
@@ -115,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="load"><s></s></div>
                 <p class="ps">*同一机型不同颜色换屏价格略有差异，请以客服最终报价为准<font>其他故障请咨询：4008-112-112。</font></p>
-                
+
         </div>
     </article>
 
@@ -185,47 +254,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>
         </div>
     </article>
-            <form  id="biddingForm" method="post">
+            <form  action="../../order/add" id="biddingForm" method="post">
                 <div class="ksxdUpdate">
-                    <h3>我要报修</h3>
+                 <div class="butbox">
+                    <button  type="button" id="Besuch" >上门维修</button>
+                    <button  type="button"  id="Mail" >邮寄维修</button>
+                        <!-- <button  type="submit" id="OrderSubmit" >确认下单</button> -->
+                    </div>
                     <div  id="maodian">
                         <div class="table_div">
-                            <div class="weixiu">                               
+                            <div class="weixiu">
                                 <div id="weixiu-cotent">
-                               <select id="brandId">  
-								<option value="">请选择</option>                            
+                               <select id="brandId">
+								<option value="">请选择</option>
 								</select>
-								
-								<select id="seriesId">                              
-								</select> 
-								
-								 <select id="modelId">                               
+
+								<select id="seriesId">
 								</select>
-								
-								 <select id="faultId" name="faultId">                               
-								</select>         
+
+								 <select id="modelId">
+								</select>
+
+								 <select id="faultId" name="faultId">
+								</select>
                                  <select id="colorId">
                                 <%-- <c:forEach items="${clist }" var="c">
                                 	<option value="${c.colorId }">${c.colorName }</option>
-                                </c:forEach>  --%>                               
-                                </select>                                                       
+                                </c:forEach>  --%>
+                                </select>
                                 </div>
                         </div>
                     </div>
                     <div class="table_div">
                     <div class="tel">
-                            <input type="text" placeholder="填写能联系到您的电话" 
+                            <input type="text" placeholder="填写能联系到您的电话"
                             class="txt" id="userPhone" name="userPhone">
                         </div>
                         <div class="name">
                             <input type="text" placeholder="怎么称呼你" name="userName" id="userName" class="txt">
-                        </div>
-                        
-                          <div class="sex">
-                            <!-- <input type="text" placeholder="填写您的性别" 
-                            class="txt" id="userSex" name="userSex"> -->
-                           <!--  <input type="radio" name="userSex" id="userSex" checked="checked" value="男">男
-                            <input type="radio" name="userSex" id="userSex"  value="女">女 -->
                         </div>
                     </div>
                     <div class="table_div" style="margin-bottom:0">
@@ -235,7 +301,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    				<select id="s_county" name="s_county" diaabled onChange="javascript:doit(this.form);"></select>
                         </div>
                         <div class="position">
-                            <input type="text" placeholder="你所在的位置，如：街道名/小区/大厦名.." 
+                            <input type="text" placeholder="你所在的位置，如：街道名/小区/大厦名.."
                             id="placePositon" class="txt" name="address">
                             <div class="area_position" style="display: none" >
                                 <ul >
@@ -244,24 +310,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="note" id="door_range_cite" ></div>
-                    <div class="table_div" style="margin-bottom:0">
-                        <div class="time" >
-                            <span id="time_code">选择上门时间</span>
-                            <input type="hidden" id="myself_time" value="" style="display: none">
-                            <s></s>
-                            <div id="sm-time" style="display:none" class="dropdown-content">
-                                <div id="sm-dropdown-content">
-                                    <ul>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="yzm">
-                            <input type="text" placeholder="输入验证码" class="txt" id="yzm" style="width:258px">
-                            <img onclick="this.src='/order/quick/authcodeImg?rnd=' + Math.random();" src='/order/quick/authcodeImg'id="yzmsx" >
-                        </div>
-                    </div>
                     <textarea  id="other" cols="30" rows="10" class="txt" placeholder="您可以详细描述手机故障或其他要求（选填）" style="width:764px;height:104px"></textarea>
                     <div class="agreement">
                         <input type="checkbox" id="agreement" checked>
@@ -270,7 +318,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </label>
                     </div>
                     <div class="butbox">
-                        <button  type="submit" id="OrderSubmit" >确认下单</button>
+                       <button  type="submit" id="OrderSubmit" onclick="submits()">确认下单</button>
                     </div>
                 </div>
             </form>
@@ -280,12 +328,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="kj-survice site-inner clearFix">
         <!--dyh1031-->
         <p class="title">用户对我们的信任</p>
+        <a href="#" data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-default btn-lg" >添加您的评价</button></a>
+
+  </form>
         <div class="float-left user-evaluate">
+            <div id="scroll">
+                <ul class="user-evaluate-list" style="top: 0px;">
+            <c:forEach items="${userList }" var="l">
+                            <li class="clearFix">
+                                <div class="user-img float-left">
+                                    <img src="//rs.jikexiu.com/resources/Nimages/landing/user.png" alt="">
+                                    <p>${l.id}</p>
+                                </div>
+                                <div class="user-name float-left">
+                                     <p class="mar-b-10 stars">
+                                        ${l.level }分
+                                    </p>
+                                    <p class="col-hui" title="下完订单后，夏师傅很快联系我，预约上门时间，全过程录像，很专业，有问必答，耐心。非常满意！会推荐给同事～">${l.content }</p>
+                                    <p class="timeShow">${l.gmtCreate }</p>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            </ul>
+            </div>
         </div>
         <div class="img-right">
             <img src="//rs.jikexiu.com/resources/Nimages/landing/img-right.png" alt="">
         </div>
     </div>
+
     <article class="col problem" id="col5">
         <div class="wrap">
             <h3>您可能关心的问题</h3>
@@ -333,23 +404,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
-<footer id="footer">
-    <div class="wrap">
-        <div class="webInfo">
-               
-             <p class="info_aboutUs"><a href="">关于我们</a></p>
-                <p class="info_aboutUs"><a href="">联系我们</a></p>
- 
 
-            <p class="Cust_Ser"><a href="javascript:void(0);"class="robot">在线客服</a><span>40008-000-00<time>服务时间：8:00-22:00</time></span></p>
-        </div>
-
-            <div class="Copyright">Copyright &copy;  </div>
-    </div>
-</footer>
     <script class="resources library" src="../before/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script>
-<script type="text/javascript"> 
+<script type="text/javascript">
 
   $(document).ready(function(){
   $.ajax({
@@ -370,14 +428,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   });
   }
   });
-  
+
     //根据品牌获取系列
   function getSeries(id){
   $.ajax({
   url:'../../series/querySeries',
   data: {brandId:id},//传入的id
   success: function(data){
-  
+
   if(! data)return;
   var html='';
   for(var i in data){
@@ -387,15 +445,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   //通辻change方法去調用
   $("#seriesId"). change(function(){
   $("#modelId") . html("");
-  $("#faultId"). html(""); 
+  $("#faultId"). html("");
   getModel($(this) .val());
   });
   $("#seriesId").get(0). selectedIndex=0;
- 	getModel($("#seriesId").val());	
+ 	getModel($("#seriesId").val());
   }
   });
   }
-  
+
   //根据系列选择机型
   function getModel(id){
   	$.ajax({
@@ -406,18 +464,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			var html='';
   			for(var i in data){
   			html +='<option value='+data[i].modelId+'>' +data[i]. modelName+' </option>';
-  			} 
+  			}
   			 $("#modelId").append(html);
   			  $("#modelId"). change(function(){
-              $("#faultId"). html(""); 
+              $("#faultId"). html("");
               getFault($(this) .val());
   });
   			$("#modelId").get(0). selectedIndex=0;
- 			getFault($("#modelId").val());	  			
+ 			getFault($("#modelId").val());
   		}
-  	});  
+  	});
   }
-  
+
     //根据机型选择故障
   function getFault(id){
   	$.ajax({
@@ -428,11 +486,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			var html='';
   			for(var i in data){
   			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
-  			} 
+  			}
   			 $("#faultId").append(html);
 
   		}
-  	});  
+  	});
   }
 //显示颜色
 	$.ajax({
@@ -447,25 +505,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 }
 	 });
 
+
+	 //点击上门维修
+
+
   });
 		 //地址
-		 function doit(ofrm){ 
-		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;  
-		}   
+		 function doit(ofrm){
+		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;
+		}
         //城市选择
-        var Gid  = document.getElementById ;		
+        var Gid  = document.getElementById ;
 		var showArea = function(){
-			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
-			Gid('s_city').value + " - 县/区" + 
+			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+			Gid('s_city').value + " - 县/区" +
 			Gid('s_county').value + "</h3>"
-     }    
+     }
 		Gid('s_county').setAttribute('onchange','showArea()');
-		
-// 提交
+
+/* // 提交
 		function submits(){
+		alert(123);
 			$("#biddingForm").form("submit",{
 				url:"order/add",
+
 				success:function(data){
+				alert(url);
 				alert(data);
 					if(data==1){
 						$.messager.show({
@@ -481,8 +546,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				}
 			});
-		}          
-        
+		}     */
+        function addUser(){
+        var form = document.forms[0];
+        form.action = "<%=basePath%>assessment/inserts";
+        form.method="post";
+        form.submit();
+    }
   </script>
 </body>
 </html>

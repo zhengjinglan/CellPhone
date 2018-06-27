@@ -8,27 +8,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+
     <title>员工管理</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-	
+
+
 <!-- 引入easyui -->
 	<%@include file="top.jsp" %>
-<<<<<<< HEAD
 	<script type="text/javascript">
 		$(function(){
-		
+
 			$("#tables").datagrid({
 				url:"emp/queryPage",
 				columns:[[
-				  {field:'empId',title:'员工编号',width:40,checkbox:true},  
-				  {field:'deptId',title:'部门编号',width:40},  
+				  {field:'empId',title:'员工编号',width:40,checkbox:true},
+				  {field:'deptId',title:'部门编号',width:40},
 				  {field:'jobId',title:'职位',width:60},
 				  {field:'empName',title:'员工名称',width:60},
 				  {field:'empSex',title:'员工性别',width:100},
@@ -44,13 +43,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				pageList:[10,15,20],
 				pageSize:10,
 				striped:true,
-				
+
 			});
 		});
-		
-		
+
+
 		var url;
-	
+
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
@@ -58,19 +57,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url:"dept/queryPage",
 				valueField:'deptId', //提交
 				textField:'deptName',
-			
+
 			});
 		});
-		
+
 		// 删除
 		function dels(){
 			// 获取所有选中行
 			var rows = $("#tables").datagrid("getChecked");
-			
+
 			if(rows!=""){
-			
+
 				var ids=[];
-				
+
 				for(var i=0;i<rows.length;i++){
 					ids[i] = rows[i].empId;
 				}
@@ -81,21 +80,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							title:'提示',
 							msg:"删除成功！"
 						});
-						$("#tables").datagrid("reload");	
+						$("#tables").datagrid("reload");
 					}
 				});
 			}else{
 				$.messager.alert('提示','请选择要删除的数据');
 			}
 		}
-		
+
 		// 打开新增窗口
 		function add(){
 			$("#fm").form('reset');
 			$("#datawindow").window("open").window('setTitle',"新增");
 			url = "emp/add";
 		}
-		
+
 		// 打开设置管理员窗口
 		function edit(){
 			// 判断是否有选中项
@@ -104,12 +103,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				// 重置表单
 				$("#fm").form('reset');
 				// 加载修改的数据信息
-				$("#fm").form('load',rows[0]);				
+				$("#fm").form('load',rows[0]);
 				// 设置表单提交路径
 				url = "";
 				// 打开窗口
 				$("#managerwindow").window("open").window('setTitle',"设置管理员");
-				
+
 			}else if(rows.length > 1){
 				$.messager.show({
 					title:'提示',
@@ -130,12 +129,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				// 重置表单
 				$("#fm").form('reset');
 				// 加载修改的数据信息
-				$("#fm").form('load',rows[0]);				
+				$("#fm").form('load',rows[0]);
 				// 设置表单提交路径
 				url = "emp/update";
 				// 打开窗口
 				$("#datawindow").window("open").window('setTitle',"修改");
-				
+
 			}else if(rows.length > 1){
 				$.messager.show({
 					title:'提示',
@@ -148,12 +147,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 			}
 		}
-		
+
 		// 提交
 		function submits(){
 			if($("#empId").textbox("getValue")=="自动生成"){
 				$("#empId").textbox("setValue",-1);
-			}	
+			}
 			$.post(url,
 			{"empId":$("#empId").val(),"deptId":$("#deptId").val(),
 			"jobId":$("#jobId").val(),"empName":$("#empName").val(),
@@ -175,72 +174,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 			}
-		
+
 		// 取消
 		function concel(){
 			$("#datawindow").window("close");
 		}
-		
+
 		// 重置
 		function resets(){
 			$("#fm").form('reset');
 		}
-		
-		
-	</script>
-=======
 
->>>>>>> refs/remotes/origin/zzl
+
+	</script>
   </head>
-  
+
   <body>
     <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
-    
+
      <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
     </div>
- 
+
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fm" method="post">
 			<div id="emp">
 			<div style="margin-bottom: 20px">
-				
+
 				<input class="easyui-combobox" style="width:100%" readonly="readonly"
 					id="empId" name="empId" data-options="label:'员工编号:'" value="自动生成"/>
 			</div>
 			<div style="margin-bottom: 20px">
-				
+
 				<input class="easyui-combobox" style="width:100%"
 					id="deptId" name="deptId" data-options="label:'部门编号:'"/>
 			</div>
-			
-			<div style="margin-bottom: 20px"> 
+
+			<div style="margin-bottom: 20px">
 				<input class="easyui-combobox" data-options="label:'职位编号:'" style="width:100%"
 					id="jobId" name="jobId" />
 			</div>
-			
-			<div style="margin-bottom: 20px"> 
+
+			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'员工姓名:'" style="width:100%"
 					id="empName" name="empName" />
 			</div>
-			<div style="margin-bottom: 20px"> 
+			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'员工性别:'" style="width:100%"
 					id="empSex" name="empSex" />
 			</div>
-			
-			<div style="margin-bottom: 20px"> 
+
+			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'员工联系方式:'" style="width:100%"
 					id="empPhone" name="empPhone" />
 			</div>
-			
+
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'地址:'" style="width:100%"
 					id="empAddress" name="empAddress" />
 			</div>
-			
-						
+
+
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
 					data-options="label:'修改人:'" style="width:100%"/>
@@ -253,7 +249,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			</form>
 			</div>
-	
+
   </body>
   <script type="text/javascript" src="jsp/back/js/emp.js"></script>
 </html>
