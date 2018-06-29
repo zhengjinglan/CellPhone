@@ -113,7 +113,7 @@
     </selectKey>
     insert into income_type (income_type_name, gmt_create, gmt_modified, 
       operator)
-    values (#{incomeTypeName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+    values (#{incomeTypeName,jdbcType=VARCHAR}, now(), now(), 
       #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.IncomeType">
@@ -165,15 +165,13 @@
       <if test="record.incomeTypeName != null">
         income_type_name = #{record.incomeTypeName,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+     
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+     
+        gmt_modified = now(),
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

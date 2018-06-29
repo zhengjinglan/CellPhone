@@ -1,30 +1,38 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Model;
-import com.aaa.entity.ModelExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Model;
+import com.aaa.entity.ModelExample;
+
 public interface ModelMapper {
-    long countByExample(ModelExample example);
+	List<Map<String, Object>> query(Model model, int page, int rows);
 
-    int deleteByExample(ModelExample example);
+	long countByExample(ModelExample example);
 
-    int deleteByPrimaryKey(Integer modelId);
+	int deleteByExample(ModelExample example);
 
-    int insert(Model record);
+	int deleteByPrimaryKey(Integer modelId);
 
-    int insertSelective(Model record);
+	int insert(Model record);
 
-    List<Model> selectByExample(ModelExample example);
+	int insertSelective(Model record);
 
-    Model selectByPrimaryKey(Integer modelId);
+	List<Model> selectByExample(ModelExample example);
 
-    int updateByExampleSelective(@Param("record") Model record, @Param("example") ModelExample example);
+	Model selectByPrimaryKey(Integer modelId);
 
-    int updateByExample(@Param("record") Model record, @Param("example") ModelExample example);
+	int updateByExampleSelective(@Param("record") Model record,
+			@Param("example") ModelExample example);
 
-    int updateByPrimaryKeySelective(Model record);
+	int updateByExample(@Param("record") Model record,
+			@Param("example") ModelExample example);
 
-    int updateByPrimaryKey(Model record);
+	int updateByPrimaryKeySelective(Model record);
+
+	int updateByPrimaryKey(Model record);
+    List<Model> queryModel(Model m);
 }

@@ -26,9 +26,14 @@ public class ColorService {
 		return colorMapper.selectByExample(color);
 	}
 
-	public int dels(int[] ids) {
+	public List<Color> queryAll(Color color) {
+		ColorExample colorExample = new ColorExample();
+		return colorMapper.selectByExample(colorExample);
+	}
+
+	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
-		for (int i : ids) {
+		for (Integer i : ids) {
 			list.add(i);
 		}
 		ColorExample color = new ColorExample();
@@ -42,13 +47,17 @@ public class ColorService {
 	}
 
 	public int add(Color e) {
+		System.out.println(e);
 		return colorMapper.insert(e);
 	}
 
 	public int update(Color col) {
 		ColorExample color = new ColorExample();
 		color.createCriteria().andColorIdEqualTo(col.getColorId());
-
 		return colorMapper.updateByExampleSelective(col, color);
+	}
+
+	public long getCount() {
+		return colorMapper.countByExample(null);
 	}
 }

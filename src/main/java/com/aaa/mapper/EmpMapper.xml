@@ -115,6 +115,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aaa.entity.Emp">
+    <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into emp (dept_id, job_id, emp_name, 
+      emp_sex, emp_phone, emp_address, 
+      gmt_create, gmt_modified, operator
+      )
+    values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
+      #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
+      now(), now(), #{operator,jdbcType=VARCHAR}
+      )
+=======
     insert into emp (emp_id, dept_id, job_id, 
       emp_name, emp_sex, emp_phone, 
       emp_address, gmt_create, gmt_modified, 
@@ -123,6 +135,7 @@
       #{empName,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, 
       #{empAddress,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{operator,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+>>>>>>> refs/remotes/origin/xhc
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
     insert into emp
@@ -206,7 +219,7 @@
   <update id="updateByExampleSelective" parameterType="map">
     update emp
     <set>
-      <if test="record.empId != null">
+  <if test="record.empId != null">
         emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
       <if test="record.deptId != null">
@@ -227,18 +240,14 @@
       <if test="record.empAddress != null">
         emp_address = #{record.empAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
+        gmt_modified = now()
       <if test="record.state != null">
         state = #{record.state,jdbcType=INTEGER},
       </if>
+        gmt_modified = now(),
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

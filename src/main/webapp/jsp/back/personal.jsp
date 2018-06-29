@@ -17,55 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
-	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	
-	<script type="text/javascript">
-		$(function(){
-			$("#submits,#repwd,#cancle").hide();
-			$("#uid").textbox("disable");
-			$("#uname").textbox("disable");
-			$("#pwd").textbox("disable");
-			$("#uptime").textbox("disable");
-			
-			
-			$("#edit").click(function(){
-				$("#submits,#repwd,#cancle").show();
-				$("#edit").hide();
-			$("#uname").textbox("enable");
-			$("#pwd").textbox("enable");		
-			});
-			//修改提交
-			$("#submits").click(function(){
-			$.post("users/update",{"uid":$("#uid").val(),
-			"uname":$("#uname").val(),"pwd":$("#pwd").val()},
-			function(data){
-			if(data ==1){
-				//window.location.href="/ssm3/jsp/back/login.jsp";
-				//rel="external nofollow";
-				//alert(data);
-				//window.close();
-				window.open('jsp/back/login.jsp');//重新打开一个页面
-				
-			}
-				});
-			});
-			
-			$("#cancle").click(function(){
-				$("#submits,#repwd,#cancle").hide();
-				$("#edit").show();
-				// 重新加载
-				$.post("users/getLogUsers",function(data){
-					$("#fm").form('load',data);
-				});
-			});
-			
-		});
-	
-	</script>
+<%@ include file="top.jsp" %>
+
   </head>
   
   <body>
@@ -116,4 +69,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     </form>
   </body>
+  <script type="text/javascript" src="jsp/back/js/personal.js"></script>
 </html>
