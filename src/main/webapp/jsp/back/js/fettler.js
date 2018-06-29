@@ -4,7 +4,8 @@ $(function(){
 		url:"fettler/queryPage",
 		columns:[[
 		  {field:'fettlerId',title:'维修工编号',width:40,checkbox:true},  
-		  {field:'empId',title:'员工编号',width:60},
+		  {field:'empId',title:'员工编号',width:60,hidden:true},
+		  {field:'empName',title:'员工姓名',width:60},
 		  {field:'fettlerPhone',title:'维修工电话',width:100},
 		  {field:'workCity',title:'所在城市',width:100},
 		  {field:'state',title:'当前状态',width:100},

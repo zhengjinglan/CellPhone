@@ -49,7 +49,7 @@ public class OrderController {
 	@RequestMapping("update")
 	@ResponseBody
 	public int query(Order order) {
-
+		System.out.println(order);
 		return oservice.update(order);
 	}
 

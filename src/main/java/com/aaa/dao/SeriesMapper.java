@@ -1,30 +1,37 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Series;
-import com.aaa.entity.SeriesExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Series;
+import com.aaa.entity.SeriesExample;
+
 public interface SeriesMapper {
-    long countByExample(SeriesExample example);
+	List<Map<String, Object>> query(Series series, int page, int rows);
 
-    int deleteByExample(SeriesExample example);
+	long countByExample(SeriesExample example);
 
-    int deleteByPrimaryKey(Integer seriesId);
+	int deleteByExample(SeriesExample example);
 
-    int insert(Series record);
+	int deleteByPrimaryKey(Integer seriesId);
 
-    int insertSelective(Series record);
+	int insert(Series record);
 
-    List<Series> selectByExample(SeriesExample example);
+	int insertSelective(Series record);
 
-    Series selectByPrimaryKey(Integer seriesId);
+	List<Series> selectByExample(SeriesExample example);
 
-    int updateByExampleSelective(@Param("record") Series record, @Param("example") SeriesExample example);
+	Series selectByPrimaryKey(Integer seriesId);
 
-    int updateByExample(@Param("record") Series record, @Param("example") SeriesExample example);
+	int updateByExampleSelective(@Param("record") Series record,
+			@Param("example") SeriesExample example);
 
-    int updateByPrimaryKeySelective(Series record);
+	int updateByExample(@Param("record") Series record,
+			@Param("example") SeriesExample example);
 
-    int updateByPrimaryKey(Series record);
+	int updateByPrimaryKeySelective(Series record);
+
+	int updateByPrimaryKey(Series record);
 }

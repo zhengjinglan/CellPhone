@@ -21,8 +21,9 @@ public class FettlerController {
 
 	@RequestMapping("queryPage")
 	@ResponseBody
-	public EasyuiPage queryPage(int page, int rows) {
-		List<Fettler> list = fettlerService.queryPage(page, rows);
+	public EasyuiPage queryPage(Fettler fettler, int page, int rows) {
+		List<Map<String, Object>> list = fettlerService.query(fettler, page,
+				rows);
 		long total = fettlerService.getCount();
 		return new EasyuiPage(list, total);
 	}
@@ -36,7 +37,14 @@ public class FettlerController {
 
 	@RequestMapping("queryByState")
 	@ResponseBody
-	public List<Map<String, Object>> queryByState(String city, Integer orderId) {
+	public List<Map<String, Object>> queryByState() {
+
+		return fettlerService.queryByState(null);
+	}
+
+	@RequestMapping("query")
+	@ResponseBody
+	public List<Map<String, Object>> query(String city, Integer orderId) {
 		System.out.println(orderId);
 		return fettlerService.queryByState(city);
 	}

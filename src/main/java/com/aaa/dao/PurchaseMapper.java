@@ -1,9 +1,11 @@
 package com.aaa.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.aaa.entity.Purchase;
 import com.aaa.entity.PurchaseExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface PurchaseMapper {
     long countByExample(PurchaseExample example);
@@ -15,7 +17,8 @@ public interface PurchaseMapper {
     int insert(Purchase record);
 
     int insertSelective(Purchase record);
-
+    List<Purchase> selectFullByExample(@Param("example")PurchaseExample example,@Param("itemId")Integer itemId,@Param("companyId")Integer companyId);
+    
     List<Purchase> selectByExample(PurchaseExample example);
 
     Purchase selectByPrimaryKey(Integer purchaseId);

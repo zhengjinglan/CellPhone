@@ -43,6 +43,7 @@ public class LibararyController {
 		List<Map<String, Object>> libarary = libService.queryPage(page, rows);
 		long total = libService.queryPage(null, null).size();
 		return new EasyuiPage(libarary, total);
+
 	}
 
 	@RequestMapping("queryAll")

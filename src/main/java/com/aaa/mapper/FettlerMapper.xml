@@ -275,4 +275,22 @@ where f.state='休息中'
 and f.work_city=#{param1}
 </if>
   </select>
+   <select id="query" parameterType="map" resultType="map">
+  select f.fettler_id fettlerId,f.emp_id empId,
+f.fettler_phone fettlerPhone,f.work_city workCity,
+f.gmt_create gmtCreate,f.gmt_modified gmtModified,
+f.state state,f.operator operator,
+e.emp_id,e.emp_name empName
+from fettler f
+left join emp e
+on f.emp_id=e.emp_id
+<where>
+<if test="param1 != null and param1.empId != null">
+	f.emp_id=#{empId}
+</if>
+</where>
+<if test="param2 != null and param3 != null">
+	limit #{param2},#{param3}
+</if>
+  </select>
 </mapper>

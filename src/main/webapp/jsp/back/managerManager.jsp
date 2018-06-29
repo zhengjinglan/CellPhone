@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<th data-options="field:'emp_name',width:40,align:'center'">员工姓名</th>
     			<th data-options="field:'rid',width:40,align:'center',hidden:true">角色编号</th>
     			<th data-options="field:'rname',width:40,align:'center'">角色</th>
+    			<th data-options="field:'state',width:40,align:'center'">状态</th>
     			<th data-options="field:'upuid',width:40,align:'center',hidden:true">最后修改用户编号</th>
 				<th data-options="field:'upuname',width:40,align:'center'">修改人</th>
     			<th data-options="field:'uptime',width:50,align:'center'">修改时间</th>

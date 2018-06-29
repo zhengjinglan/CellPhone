@@ -1,5 +1,7 @@
 /target
+
 /.project
-/.springBeans
-/.classpath
-/pom.xml
+
+/.settings
+
+/.tern-project

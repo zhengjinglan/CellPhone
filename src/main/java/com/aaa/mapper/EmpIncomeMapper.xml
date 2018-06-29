@@ -246,4 +246,27 @@
       operator = #{operator,jdbcType=VARCHAR}
     where income_id = #{incomeId,jdbcType=INTEGER}
   </update>
+  <select id="query" resultType="map" parameterType="map">
+  select em.income_id incomeId,em.income_type_id incomeTypeId,
+em.emp_id empId,em.income_price incomePrice,
+em.gmt_create gmtCreate,em.gmt_modified gmtModified,
+em.operator operator,type.income_type_name incomeTypeName,
+e.emp_Name empName
+from emp_income em
+left join income_type type
+on em.income_type_id=type.income_type_id
+left join emp e
+on em.emp_id=e.emp_id
+<where>
+	<if test="param1 != null and param1.incomeTypeId != null">
+	em.income_type_id=#{param1.incomeTypeId}
+	</if>
+	<if test="param1 != null and param1.incomeTypeId != null">
+	em.emp_id=#{param1.empId}
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+  </select>
 </mapper>

@@ -16,14 +16,15 @@ public class FaultService {
 	@Autowired
 	private FaultMapper faultMapper;
 
-	public List<Fault> queryPage(Integer pageNum, Integer pageSize) {
+	public List<Fault> queryPage(Integer pageNum, Integer pageSize,
+			Integer typeId) {
 		FaultExample fault = new FaultExample();
 
 		if (pageNum != null) {
 			fault.setOffset((pageNum - 1) * pageSize);
 			fault.setLimit(pageSize);
 		}
-		return faultMapper.selectByExample(fault);
+		return faultMapper.selectFullByExample(fault, typeId);
 	}
 
 	public List<Map<String, Object>> query(Fault fault, Integer page,

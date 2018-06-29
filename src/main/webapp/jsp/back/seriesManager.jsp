@@ -27,13 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<!-- url:访问路径,返回json, fitColumns:true列宽自动调整,th中设置width -->
     <table id="tables" class="easyui-datagrid" style="width:100%;height: 100%"
-    	data-options="url:'series/querySeries',fitColumns:true,toolbar:'#tools',idField:'seriesId'
-    	">
+    	data-options="url:'series/query',fitColumns:true,toolbar:'#tools',idField:'seriesId',pagination:true,pageList:[10,15,20],pageSize:10,striped:true">
     	<thead>
     		<tr>
     			<th data-options="field:'seriesId',width:20,checkbox:true,align:'center'">编号</th>	
     			<th data-options="field:'seriesName',width:40,align:'center'">名称</th>
-    			<th data-options="field:'brandId',width:20,align:'center'">品牌</th>
+    			<th data-options="field:'brandId',width:20,align:'center',hidden:true">品牌Id</th>
+    			<th data-options="field:'brandName',width:20,align:'center'">品牌名称</th>
     			<th data-options="field:'gmtCreate',width:40,align:'center'">创建时间</th>
     			<th data-options="field:'gmtModified',width:40,align:'center'">修改时间</th>
     			<th data-options="field:'operator',width:40,align:'center'">修改人</th>

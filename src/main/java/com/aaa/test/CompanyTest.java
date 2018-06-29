@@ -11,13 +11,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.aaa.dao.CompanyMapper;
 import com.aaa.entity.Company;
+import com.aaa.entity.CompanyExample;
+import com.aaa.entity.CompanyExample.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class CompanyTest {
     @Autowired
     CompanyMapper mapper;
-    @Test
+//    @Test
     public void insert(){
         System.out.println("===============插入===============");
         Integer id = null;

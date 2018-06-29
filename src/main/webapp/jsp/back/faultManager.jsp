@@ -29,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
+    	<select  data-options="label:'类型选择:'"  id="query" name="type" class="easyui-combobox" style="width:10%;">
+    	</select>
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">

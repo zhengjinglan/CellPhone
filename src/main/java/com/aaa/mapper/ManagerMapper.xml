@@ -9,6 +9,7 @@
     <result column="rid" jdbcType="INTEGER" property="rid" />
     <result column="upuid" jdbcType="INTEGER" property="upuid" />
     <result column="uptime" jdbcType="TIMESTAMP" property="uptime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid, uname, pwd, emp_id, rid, upuid, uptime
+    uid, uname, pwd, emp_id, rid, upuid, uptime, state
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.ManagerExample" resultMap="BaseResultMap">
     select
@@ -114,18 +115,18 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into manager (uname, pwd, emp_id, 
-      rid, upuid, uptime
+      rid, upuid, uptime, state
       )
     values (#{uname,jdbcType=VARCHAR}, md5(#{pwd,jdbcType=VARCHAR}), #{empId,jdbcType=INTEGER}, 
-      #{rid,jdbcType=INTEGER}, #{upuid,jdbcType=INTEGER}, now()
+      #{rid,jdbcType=INTEGER}, #{upuid,jdbcType=INTEGER}, now(), #{state,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Manager">
-    <selectKey keyProperty="uid" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into manager
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
       <if test="uname != null">
         uname,
       </if>
@@ -144,8 +145,14 @@
       <if test="uptime != null">
         uptime,
       </if>
+      <if test="state != null">
+        state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
       <if test="uname != null">
         #{uname,jdbcType=VARCHAR},
       </if>
@@ -163,6 +170,9 @@
       </if>
       <if test="uptime != null">
         #{uptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -194,6 +204,12 @@
         upuid = #{record.upuid,jdbcType=INTEGER},
       </if>
         uptime = now()
+      <if test="record.uptime != null">
+        uptime = #{record.uptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -207,7 +223,8 @@
       emp_id = #{record.empId,jdbcType=INTEGER},
       rid = #{record.rid,jdbcType=INTEGER},
       upuid = #{record.upuid,jdbcType=INTEGER},
-      uptime = #{record.uptime,jdbcType=TIMESTAMP}
+      uptime = #{record.uptime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,6 +250,9 @@
       <if test="uptime != null">
         uptime = #{uptime,jdbcType=TIMESTAMP},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
@@ -243,11 +263,12 @@
       emp_id = #{empId,jdbcType=INTEGER},
       rid = #{rid,jdbcType=INTEGER},
       upuid = #{upuid,jdbcType=INTEGER},
-      uptime = #{uptime,jdbcType=TIMESTAMP}
+      uptime = #{uptime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
   <select id="query" resultType="map">
-  		SELECT u1.uid,u1.uname,u1.pwd, u1.upuid,u2.uname upuname, 
+  		SELECT u1.uid,u1.uname,u1.pwd,u1.state state, u1.upuid,u2.uname upuname, 
   		e.emp_id,e.emp_name, u1.rid,r.rname,u1.uptime FROM manager u1 
   		LEFT JOIN manager u2 ON u1.upuid = u2.uid LEFT JOIN emp e 
   		ON u1.emp_id = e.emp_id LEFT JOIN roles r ON u1.rid = r.rid 

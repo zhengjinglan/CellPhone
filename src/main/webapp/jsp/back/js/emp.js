@@ -1,15 +1,18 @@
 document.write("<script language=javascript src='jsp/back/js/util.js'></script>");
 $(function(){
 	$("#tables").datagrid({
-		url:"emp/queryPage",
+		url:"emp/query",
 		columns:[[
 		  {field:'empId',title:'员工编号',width:40,checkbox:true},  
-		  {field:'deptId',title:'部门编号',width:40},  
-		  {field:'jobId',title:'职位',width:60},
+		  {field:'deptId',title:'部门编号',width:40,hidden:true}, 
+		  {field:'deptName',title:'部门名称',width:40},  
+		  {field:'jobId',title:'职位编号',width:60,hidden:true},
+		  {field:'jobName',title:'职位名称',width:60},
 		  {field:'empName',title:'员工名称',width:60},
 		  {field:'empSex',title:'员工性别',width:100},
 		  {field:'empPhone',title:'员工联系方式',width:60},
-		  {field:'empAddress',title:'员工地址',width:100},
+		  {field:'state',title:'状态',width:60},
+		  {field:'address',title:'员工地址',width:100},
 		  {field:'gmtCreate',title:'创建时间',width:100},
 		  {field:'gmtModified',title:'修改时间',width:100},
 		  {field:'operator',title:'修改人',width:100},
@@ -21,6 +24,17 @@ $(function(){
 		pageList:[10,15,20],
 		pageSize:10,
 		striped:true,
+		loadFilter:function(data){//所有数据,源数据被修改
+			var rows = data.rows;
+			for(var i=0;i<rows.length;i++){
+				if(rows[i].state==0){
+					rows[i].state ="在职";
+				}else if(rows[i].state==1){
+					rows[i].state ="离职";
+				}
+			}
+			return data;
+		}
 	});
 });
 

@@ -30,6 +30,7 @@ public class Emp implements Serializable {
 	private String operator;
 
 	private static final long serialVersionUID = 1L;
+	private Integer state;
 
 	public Integer getEmpId() {
 		return empId;
@@ -145,6 +146,14 @@ public class Emp implements Serializable {
 						: this.getOperator().equals(other.getOperator()));
 	}
 
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -189,6 +198,7 @@ public class Emp implements Serializable {
 		sb.append(", gmtCreate=").append(gmtCreate);
 		sb.append(", gmtModified=").append(gmtModified);
 		sb.append(", operator=").append(operator);
+		sb.append(", state=").append(state);
 		sb.append(", serialVersionUID=").append(serialVersionUID);
 		sb.append("]");
 		return sb.toString();

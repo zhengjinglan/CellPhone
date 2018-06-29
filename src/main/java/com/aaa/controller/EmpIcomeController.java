@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,10 @@ public class EmpIcomeController {
 
 	@RequestMapping("queryPage")
 	@ResponseBody
-	public EasyuiPage queryPage(int page, int rows) {
-		List<EmpIncome> list = incomeService.queryPage(page, rows);
+	public EasyuiPage queryPage(EmpIncome emp, int page, int rows) {
+		List<Map<String, Object>> list = incomeService.query(emp, page, rows);
 		long total = incomeService.getCount();
+		System.out.println(list);
 		return new EasyuiPage(list, total);
 	}
 

@@ -12,6 +12,7 @@
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified, 
-    operator
+    operator, state
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.EmpExample" resultMap="BaseResultMap">
     select
@@ -119,19 +120,19 @@
     </selectKey>
     insert into emp (dept_id, job_id, emp_name, 
       emp_sex, emp_phone, emp_address, 
-      gmt_create, gmt_modified, operator
+      gmt_create, gmt_modified, operator,state
       )
     values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
       #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
-      now(), now(), #{operator,jdbcType=VARCHAR}
+      now(), now(), #{operator,jdbcType=VARCHAR},#{state,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
-    <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empId != null">
+        emp_id,
+      </if>
       <if test="deptId != null">
         dept_id,
       </if>
@@ -159,8 +160,14 @@
       <if test="operator != null">
         operator,
       </if>
+      <if test="state != null">
+        state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
       <if test="deptId != null">
         #{deptId,jdbcType=INTEGER},
       </if>
@@ -187,6 +194,9 @@
       </if>
       <if test="operator != null">
         #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -224,6 +234,9 @@
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>      
         gmt_modified = now(),
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -240,7 +253,8 @@
       emp_address = #{record.empAddress,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      operator = #{record.operator,jdbcType=VARCHAR}
+      operator = #{record.operator,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -275,6 +289,9 @@
       <if test="operator != null">
         operator = #{operator,jdbcType=VARCHAR},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
     </set>
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
@@ -288,7 +305,33 @@
       emp_address = #{empAddress,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      operator = #{operator,jdbcType=VARCHAR}
+      operator = #{operator,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
+  <select id="query" parameterType="map" resultType="map">
+  select e.emp_id empId,e.dept_id deptId,e.job_id jobId,
+e.emp_name empName,e.emp_sex empSex,e.emp_phone empPhone,
+e.gmt_create gmtCreate,e.gmt_modified gmtModified,
+e.state state,e.emp_address address,
+e.operator operator,d.dept_id,d.dept_name deptName,
+j.job_id,j.job_name jobName
+from emp e
+left join dept d
+on e.dept_id=d.dept_id
+left join job j
+on e.job_id=j.job_id
+<where>
+	<if test="param1 != null and param1.deptId != null">
+	 e.dept_id=#{param1.deptId}
+	</if>
+	<if test="param1 != null and param1.jobId != null">
+	 e.dept_id=#{param1.jobId}
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+
+  </select>
 </mapper>

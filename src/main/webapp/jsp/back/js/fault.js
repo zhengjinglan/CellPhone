@@ -24,10 +24,12 @@ $(function(){
 				pageSize:10,
 				striped:true,
 				order:"desc",
-				
+				loadFilter:function(data){// 所有数据,源数据被修改
+					console.log(data);
+					return data;
+				}
 			});
 		});
-		
 		
 		var url;
 	

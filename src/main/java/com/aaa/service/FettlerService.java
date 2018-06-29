@@ -36,6 +36,15 @@ public class FettlerService {
 		return fettlerMapper.queryByState(city);
 	}
 
+	public List<Map<String, Object>> query(Fettler fettler, int page, int rows) {
+
+		Integer offer = null;
+		if (page != 0) {
+			offer = (page - 1) * rows;
+		}
+		return fettlerMapper.query(fettler, offer, rows);
+	}
+
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {
