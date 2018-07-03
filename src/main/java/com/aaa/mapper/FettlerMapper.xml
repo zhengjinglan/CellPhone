@@ -285,8 +285,8 @@ from fettler f
 left join emp e
 on f.emp_id=e.emp_id
 <where>
-<if test="param1 != null and param1.empId != null">
-	f.emp_id=#{empId}
+<if test="param1 != null">
+	e.emp_name like CONCAT(CONCAT('%',#{param1}),'%') 
 </if>
 </where>
 <if test="param2 != null and param3 != null">

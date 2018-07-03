@@ -24,13 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
-    
+  
      <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
-    	<select  data-options="label:'类型选择:'"  id="query" name="type" class="easyui-combobox" style="width:10%;">
-    	</select>
+   			<input type="text" id="type"  size="24" maxlength="50" class="easyui-combobox" data-options="required:false,validType:'special'"/>
+   			<input type="text" id="model"  size="24" maxlength="50" class="easyui-combobox" data-options="required:false,validType:'special'"/>
+   			<a onclick="Myquery()" class="easyui-linkbutton" iconCls="icon-search">搜索</a>	
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">

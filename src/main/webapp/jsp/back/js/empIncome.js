@@ -23,7 +23,21 @@ $(function(){
 	});
 });
 
-
+$(document).ready(function(){
+	//自动搜索 
+	$('#incomeType').combobox({
+	url:'incomeType/queryAll',
+	valueField:'incomeTypeId',
+	textField:'incomeTypeName',
+	delay:500
+	});
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		incomeTypeId:$("#incomeType").val(),
+		empName:$("#name").val(),
+	});
+}
 var url;
 
 $(function(){

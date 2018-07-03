@@ -30,13 +30,35 @@ $(function(){
 				}
 			});
 		});
-		
+$(document).ready(function(){
+	//自动搜索 
+	$('#type').combobox({
+	mode:'remote' ,
+	url:'faultType/queryAll' ,
+	valueField:'typeId' ,
+	textField:'typeName' ,
+	delay:500
+	});
+	//自动搜索 
+	$('#model').combobox({
+	mode:'remote' ,
+	url:'model/queryAll' ,
+	valueField:'modelId' ,
+	textField:'modelName' ,
+	delay:500
+	});
+
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		typeId:$("#type").val(),
+	});
+}
 		var url;
 	
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
-			
 		});
 		
 		// 删除

@@ -259,10 +259,10 @@ left join emp e
 on em.emp_id=e.emp_id
 <where>
 	<if test="param1 != null and param1.incomeTypeId != null">
-	em.income_type_id=#{param1.incomeTypeId}
+	em.income_type_id=#{param1.incomeTypeId} and
 	</if>
 	<if test="param1 != null and param1.incomeTypeId != null">
-	em.emp_id=#{param1.empId}
+	em.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%')
 	</if>
 </where>
 <if test="param2 != null and param3 != null">

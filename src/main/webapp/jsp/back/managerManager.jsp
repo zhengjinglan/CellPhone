@@ -22,26 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<!-- url:访问路径,返回json, fitColumns:true列宽自动调整,th中设置width -->
-    <table id="tables" class="easyui-datagrid" style="width:100%;height: 100%"
-    	data-options="url:'manager/query',fitColumns:true,toolbar:'#tools',idField:'uid',
-    	pagination:true,rownumbers:true">
-    	<thead>
-    		<tr>
-    			<th data-options="field:'uid',width:20,checkbox:true,align:'center'">用户编号</th>
-    			<th data-options="field:'uname',width:20,align:'center'">用户名</th>
-    			<th data-options="field:'emp_id',width:40,align:'center',hidden:true">员工编号</th>
-    			<th data-options="field:'emp_name',width:40,align:'center'">员工姓名</th>
-    			<th data-options="field:'rid',width:40,align:'center',hidden:true">角色编号</th>
-    			<th data-options="field:'rname',width:40,align:'center'">角色</th>
-    			<th data-options="field:'state',width:40,align:'center'">状态</th>
-    			<th data-options="field:'upuid',width:40,align:'center',hidden:true">最后修改用户编号</th>
-				<th data-options="field:'upuname',width:40,align:'center'">修改人</th>
-    			<th data-options="field:'uptime',width:50,align:'center'">修改时间</th>
-    		</tr>
-    	</thead>
-    </table>
-    
+  <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
     <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
@@ -80,7 +61,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="easyui-combobox" data-options="label:'角色:'" style="width:100%"
 					id="rid" name="rid"/>
 			</div>
-			
+			<div style="margin-bottom: 20px">
+				<select class="easyui-combobox" data-options="label:'状态:'" style="width:100%"
+					id="state" name="state">
+					<option value="0">启用</option>
+					<option value="1">禁用</option>
+					</select>
+			</div>
 			<div style="margin-bottom: 20px">
 				<input type="hidden" name="upuid" value="${logUser.uid }"/>
 				<input class="easyui-textbox" value="${logUser.uname }" disabled="disabled"

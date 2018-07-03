@@ -21,8 +21,8 @@ public class FettlerController {
 
 	@RequestMapping("queryPage")
 	@ResponseBody
-	public EasyuiPage queryPage(Fettler fettler, int page, int rows) {
-		List<Map<String, Object>> list = fettlerService.query(fettler, page,
+	public EasyuiPage queryPage(String empName, int page, int rows) {
+		List<Map<String, Object>> list = fettlerService.query(empName, page,
 				rows);
 		long total = fettlerService.getCount();
 		return new EasyuiPage(list, total);

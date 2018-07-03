@@ -11,7 +11,7 @@ import com.aaa.entity.FettlerExample;
 public interface FettlerMapper {
 	List<Map<String, Object>> queryByState(String city);
 
-	List<Map<String, Object>> query(Fettler fettler, int page, int rows);
+	List<Map<String, Object>> query(String empName, int page, int rows);
 
 	long countByExample(FettlerExample example);
 

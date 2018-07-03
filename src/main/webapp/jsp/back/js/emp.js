@@ -26,6 +26,7 @@ $(function(){
 		striped:true,
 		loadFilter:function(data){//所有数据,源数据被修改
 			var rows = data.rows;
+			
 			for(var i=0;i<rows.length;i++){
 				if(rows[i].state==0){
 					rows[i].state ="在职";
@@ -38,7 +39,32 @@ $(function(){
 	});
 });
 
+$(document).ready(function(){
+	//自动搜索 
+	$('#dept').combobox({
+	mode:'remote' ,
+	url:'dept/queryAll' ,
+	valueField:'deptId' ,
+	textField:'deptName' ,
+	delay:500
+	});
+	//自动搜索 
+	$('#job').combobox({
+	mode:'remote' ,
+	url:'job/queryAll' ,
+	valueField:'jobId' ,
+	textField:'jobName' ,
+	delay:500
+	});
 
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		deptId:$("#dept").val(),
+		jobId:$("#job").val(),
+		empName:$("#Name").val(),
+	});
+}
 var url;
 var data;
 

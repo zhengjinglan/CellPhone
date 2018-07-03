@@ -33,6 +33,11 @@ $(function(){
 	});
 });
 
+function Myquery(){
+	$("#tables").datagrid("load",{
+		empName:$("#emp").val(),
+	});
+}
 
 var url;
 

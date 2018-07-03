@@ -234,7 +234,7 @@ left join brand b
  on s.brand_id=b.brand_id
  <where>
  	<if test="param1 != null and param1.brandId != null">
- 		s.Brand_id=#{param1.brandId}
+ 		s.brand_id=#{param1.brandId}
  	</if>
  </where>
  <if test="param2 != null and param3 != null">

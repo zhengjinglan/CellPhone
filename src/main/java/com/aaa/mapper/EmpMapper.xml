@@ -323,10 +323,13 @@ left join job j
 on e.job_id=j.job_id
 <where>
 	<if test="param1 != null and param1.deptId != null">
-	 e.dept_id=#{param1.deptId}
+	 e.dept_id=#{param1.deptId} and
 	</if>
 	<if test="param1 != null and param1.jobId != null">
-	 e.dept_id=#{param1.jobId}
+	 e.dept_id=#{param1.jobId} and
+	</if>
+	<if test="param1 != null and param1.empName != null">
+	 e.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%') 
 	</if>
 </where>
 <if test="param2 != null and param3 != null">

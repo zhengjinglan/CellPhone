@@ -13,6 +13,7 @@
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
+     state=0 and
       <foreach collection="oredCriteria" item="criteria" separator="or">
         <if test="criteria.valid">
           <trim prefix="(" prefixOverrides="and" suffix=")">
@@ -38,6 +39,7 @@
           </trim>
         </if>
       </foreach>
+     
     </where>
   </sql>
   <sql id="Update_By_Example_Where_Clause">
@@ -269,7 +271,7 @@
   </update>
   <select id="query" resultType="map">
   		SELECT u1.uid,u1.uname,u1.pwd,u1.state state, u1.upuid,u2.uname upuname, 
-  		e.emp_id,e.emp_name, u1.rid,r.rname,u1.uptime FROM manager u1 
+  		e.emp_id empId,e.emp_name empName, u1.rid,r.rname,u1.uptime FROM manager u1 
   		LEFT JOIN manager u2 ON u1.upuid = u2.uid LEFT JOIN emp e 
   		ON u1.emp_id = e.emp_id LEFT JOIN roles r ON u1.rid = r.rid 
   </select>
