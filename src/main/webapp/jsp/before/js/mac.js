@@ -1,4 +1,3 @@
-<script>
     jQuery(function ($) {
         getSysTime();
         //根据渠道显示电话  begin
@@ -1616,12 +1615,10 @@
             $(".tuijian").find("li:odd").css("background","#f5e9ce");
         }
     }
-</script>
 
-<script type="text/javascript">
-$("body").on("click", "#appO", function () {
+
+/*$("body").on("click", "#appO", function () {
 var domId = $($(this).attr('href')), scrollHeight = domId.offset().top;
 $("html,body").animate({"scrollTop": scrollHeight - 100});
 return false;
-});
-</script>
+});*/
