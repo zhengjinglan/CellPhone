@@ -23,28 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body class="easyui-layout">
-<<<<<<< HEAD
-  	<div class="user-info-panel" data-options="region:'north'" style="width:100%;height:11%;background-color: #99CCFF">
-  		<div class="center">
-  		<h1><span style="color: white;font-family:'宋体';font-style: italic;font-size:larger;">客户</span>
-  		<span style="color:'#DDDDDD';font-family:'宋体';font-style: italic;font-size:larger;">无忧</span>
-  		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:larger;">手机维修管理系统</span>
-=======
   	<div data-options="region:'north'" style="width:100%;height:11%;background-color: #99CCFF">
-  		
   		<h1><span style="color: white;font-family:'宋体';font-style: italic;font-size:40px;">客户</span>
   		<span style="color:'#DDDDDD';font-family:'宋体';font-style: italic;font-size:40px;">无忧</span>
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:40px;">手机维修管理系统</span>
->>>>>>> refs/remotes/origin/zzl
   		<span><img src="image/top1.jpg" width="30px" height="30px">	</span>
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:30px;">登录人：<a href="javascript:void(0)" onclick="addTab('jsp/back/personal.jsp','个人中心')"><span style="font-size:30px">${logUser.uname }</span></a></span>
   		<span style="color:'#C0C0C0';font-family:'宋体';font-style: italic;font-size:30px;"><a href="manager/outlogin"><span style="font-size:30px">退出</span></a></span>
   		</h1>
-<<<<<<< HEAD
-  		</div>
-=======
-  		
->>>>>>> refs/remotes/origin/zzl
   	</div>
   	
   	<div data-options="region:'west',title:'导航栏'" style="width:15%;">
