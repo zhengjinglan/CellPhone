@@ -114,8 +114,6 @@
     </selectKey>
     insert into series (brand_id, series_name, gmt_create, 
       gmt_modified, operator)
-    values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
     values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR},now(), 
       now(), #{operator,jdbcType=VARCHAR})
   </insert>
