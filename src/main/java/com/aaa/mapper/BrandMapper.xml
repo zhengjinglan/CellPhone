@@ -117,9 +117,6 @@
       gmt_create, gmt_modified, operator
       )
     values (#{brandName,jdbcType=VARCHAR}, #{brandIcon,jdbcType=VARCHAR}, #{brandDescription,jdbcType=VARCHAR}, 
-
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
-
       now(),now(), #{operator,jdbcType=VARCHAR}
 
       )
@@ -197,9 +194,6 @@
       <if test="record.gmtModified != null">
         gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
-=======
-   
->>>>>>> refs/remotes/origin/zzl
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>    
