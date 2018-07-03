@@ -39,8 +39,6 @@ public class OrderService {
 	}
 
 	public int update(Order order) {
-		OrderExample orderExample = new OrderExample();
-		orderExample.createCriteria().andOrderIdEqualTo(order.getOrderId());
-		return maper.updateByExampleSelective(order, orderExample);
+	    return maper.updateByPrimaryKeySelective(order);
 	}
 }

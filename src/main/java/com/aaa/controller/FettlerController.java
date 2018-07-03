@@ -38,7 +38,6 @@ public class FettlerController {
 	@RequestMapping("queryByState")
 	@ResponseBody
 	public List<Map<String, Object>> queryByState() {
-
 		return fettlerService.queryByState(null);
 	}
 
@@ -68,5 +67,9 @@ public class FettlerController {
 	public int update(Fettler fettler) {
 		System.out.println(fettler);
 		return fettlerService.update(fettler);
+	}
+	
+	public List<Fettler> queryWithOrder(int orderId){
+	    return fettlerService.listWithOrder(orderId);
 	}
 }

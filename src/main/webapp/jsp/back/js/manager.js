@@ -76,8 +76,10 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 	function add(){
 		$("#fm").form('reset');
 		// 设置重复密码值等于密码
-		$("#repwd").passwordbox("setValue",rows[0].pwd);
+//		$("#repwd").passwordbox("setValue",rows[0].pwd);
 		$("#datawindow").window("open").window('setTitle',"新增");
+		$("#repwdDiv").show();
+		$("#pwdDiv").show();
 		loadSelect("empId","emp/queryAll","empName","empId",true);
 		loadSelect("rid","roles/queryAll","rname","rid",true);
 		url = "manager/add";
@@ -85,8 +87,9 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 	
 	// 打开修改窗口
 	function edit(){
-		
-		// 判断是否有选中项
+		$("#repwdDiv").hide();
+		$("#pwdDiv").hide();
+		// 判断是否有选中项 
 		var rows = $("#tables").datagrid("getSelections");
 		if(rows.length == 1){
 			// 重置表单

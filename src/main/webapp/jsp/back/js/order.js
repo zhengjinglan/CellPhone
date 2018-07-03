@@ -47,7 +47,6 @@ function edit(){
 	//alert($("#tables").datagrid("getSelections"));
 	// 判断是否有选中项
 	var rows = $("#tables").datagrid("getSelections");
-	alert(JSON.stringify(rows.orderId));
 	if(rows.length == 1){
 		//loadSelect("fettlerId","fettler/queryByState?city=","empName","fettlerId",true);
 		// 重置表单
@@ -106,4 +105,31 @@ function concel(){
 // 重置
 function resets(){
 	$("#fm").form('reset');
+}
+function allot(){
+	// 判断是否有选中项
+	var rows = $("#tables").datagrid("getSelections");
+	rows = 1;
+	if(rows.length == 1){
+		//loadSelect("fettlerId","fettler/queryByState?city=","empName","fettlerId",true);
+		// 重置表单
+		$("#fm").form('reset');
+		// 加载修改的数据信息
+		$("#fm").form('load',rows[0]);				
+		// 设置表单提交路径
+		url = "order/update";
+		// 打开窗口
+		$("#datawindow").window("open").window('setTitle',"分配订单");
+		
+	}else if(rows.length > 1){
+		$.messager.show({
+			title:'提示',
+			msg:"一次只能分配一个订单,请重新选择！"
+		});
+	}else{
+		$.messager.show({
+			title:'提示',
+			msg:"请选择要分配的订单！"
+		});
+	}
 }

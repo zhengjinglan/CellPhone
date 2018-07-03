@@ -42,12 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="uname" name="uname" />
 			</div>
 			
-			<div style="margin-bottom: 20px">
+			<div style="margin-bottom: 20px" id="pwdDiv">
 				<input class="easyui-passwordbox" data-options="label:'密码:'" style="width:100%"
 					id="pwd" name="pwd" value="111"/>
 			</div>
 			
-			<div style="margin-bottom: 20px">
+			<div style="margin-bottom: 20px" id="repwdDiv">
 				<input class="easyui-passwordbox" data-options="label:'确认密码:'" style="width:100%"
 					id="repwd" value="111"/>
 			</div>
