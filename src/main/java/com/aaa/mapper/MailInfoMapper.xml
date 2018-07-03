@@ -114,16 +114,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aaa.entity.MailInfo">
-    <selectKey keyProperty="infoId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
+    <selectKey keyColumn="orderId" keyProperty="orderId" order="BEFORE" resultType="Integer">
+			SELECT max(order_id) order_id FROM `order`
+	</selectKey>
     insert into mail_info (order_id, category, mail_num, 
       state, sender, reciver, 
       IMEI, gmt_create, gmt_modified
       )
-    values (#{orderId,jdbcType=INTEGER}, #{category,jdbcType=VARCHAR}, #{mailNum,jdbcType=VARCHAR}, 
-      #{state,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR}, #{reciver,jdbcType=VARCHAR}, 
-      #{imei,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+    values (#{orderId,jdbcType=INTEGER}, '自费邮寄', #{mailNum,jdbcType=VARCHAR}, 
+    '寄出中', #{sender,jdbcType=VARCHAR}, '闪修侠售后', 
+      #{imei,jdbcType=VARCHAR},now(),now()
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.MailInfo">
