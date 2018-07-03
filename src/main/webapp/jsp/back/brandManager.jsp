@@ -75,17 +75,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				name="operator" readonly="readonly" id="operator"
 					data-options="label:'操作人:'" style="width:100%"/>
 			</div>
-			
-			<div style="margin-bottom: 20px">
-				<input  type="hidden" easyui-datebox" data-options="label:'创建时间时间:'" value="now()" 
-				name="gmtCreate" id="gmtCreate" style="width:100%"/>
-			</div>
-			
-			<div style="margin-bottom: 20px">
-				<input class="easyui-datebox" data-options="label:'修改时间:'" value="now()" 
-				name="gmtModified" id="gmtModified" style="width:100%" disabled="disabled"/>
-			</div>
-			
 			<div style="margin-bottom: 20px;text-align: center">
 				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="resets()">重置</a>
