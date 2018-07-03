@@ -26,9 +26,9 @@ public class ModelService {
 	}
 
 	public List<Model> queryAll(Model model) {
-		ModelExample modelExample = new ModelExample();
+		//ModelExample modelExample = new ModelExample();
 
-		return modelMapper.selectByExample(modelExample);
+		return modelMapper.queryModel(model);
 	}
 
 	public int dels(int[] ids) {

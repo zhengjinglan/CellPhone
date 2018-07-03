@@ -3,5 +3,4 @@
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
 <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-<link rel="stylesheet" type="text/css" href="themes/icons/easyui.css">
 <script type="text/javascript" src="easyui/validator.js"></script>
