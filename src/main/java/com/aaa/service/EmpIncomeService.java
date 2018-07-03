@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,13 +17,12 @@ public class EmpIncomeService {
 	@Autowired
 	EmpIncomeMapper incomeMapper;
 
-	public List<EmpIncome> queryPage(Integer pageNum, Integer pageSize) {
-		EmpIncomeExample incomeExample = new EmpIncomeExample();
-		if (pageNum != null) {
-			incomeExample.setOffset((pageNum - 1) * pageSize);
-			incomeExample.setLimit(pageSize);
+	public List<Map<String, Object>> query(EmpIncome emp, int page, int rows) {
+		Integer offer = null;
+		if (page != 0) {
+			offer = (page - 1) * rows;
 		}
-		return incomeMapper.selectByExample(incomeExample);
+		return incomeMapper.query(emp, offer, rows);
 	}
 
 	public List<EmpIncome> queryAll(EmpIncome income) {

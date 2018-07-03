@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,14 @@ public class SeriesService {
 		SeriesExample series = new SeriesExample();
 		return maper.selectByExample(series);
 
+	}
+
+	public List<Map<String, Object>> query(Series series, int page, int rows) {
+		Integer offer = null;
+		if (page != 0) {
+			offer = (page - 1) * rows;
+		}
+		return maper.query(series, offer, rows);
 	}
 
 	public int add(Series s) {
@@ -47,6 +56,10 @@ public class SeriesService {
 		series.createCriteria().andSeriesIdEqualTo(s.getSeriesId());
 		return maper.updateByExampleSelective(s, series);
 
+	}
+
+	public long getCount() {
+		return maper.countByExample(null);
 	}
 
 }

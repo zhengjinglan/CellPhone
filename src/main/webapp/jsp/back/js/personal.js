@@ -15,7 +15,7 @@ $(function(){
 	});
 	//修改提交
 	$("#submits").click(function(){
-	$.post("users/update",{"uid":$("#uid").val(),
+	$.post("manager/edit",{"uid":$("#uid").val(),
 	"uname":$("#uname").val(),"pwd":$("#pwd").val()},
 	function(data){
 	if(data ==1){
@@ -29,7 +29,7 @@ $(function(){
 		$("#submits,#repwd,#cancle").hide();
 		$("#edit").show();
 		// 重新加载
-		$.post("users/getLogUsers",function(data){
+		$.post("manager/getLogUsers",function(data){
 			$("#fm").form('load',data);
 		});
 	});

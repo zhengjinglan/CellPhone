@@ -57,22 +57,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body style="background:url(image/login.jpg) no-repeat ; width: 100%;height: 100%">
-  	<div class="easyui-window" title="登录" maximizable="false" style="top:50px;left:60%;width:500px;height:300px;padding:30px 40px;"
+  	<div class="easyui-window" title="登录" maximizable="false" style="top:50px;left:60%;width:500px;height:305px;padding:30px 40px;"
   		data-options="collapsible:false,minimizable:false,closable:false,draggable:false,resizable:false,border:false" >
   		<form id="fm" method="post">
-			<div style="margin-bottom: 30px">
+			<div style="margin-bottom: 21px">
 				<input class="easyui-textbox" style="width:100%" name="uname" 
 					data-options="label:'用户名:',iconCls:'icon-man'" required=true/>
 			</div>
 			
-			<div style="margin-bottom: 30px"> 
+			<div style="margin-bottom: 21px"> 
 				<input class="easyui-passwordbox"  style="width:100%" name="pwd" 
 					data-options="label:'密码:'" required=true />
 			</div>
   			
-  			<div style="margin-bottom: 30px;text-align: center">
+  			<div style="margin-bottom: 21px;text-align: center">
 				<a class="easyui-linkbutton" href="javascript:void(0)" 
-				onclick="submits()" data-options="iconCls:'icon-save'">提交</a>
+				onclick="submits()" data-options="iconCls:'icon-ok'">登录</a>
 			</div>
   		</form>
   	</div>

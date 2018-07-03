@@ -1,5 +1,20 @@
 document.write("<script language=javascript src='jsp/back/js/util.js'></script>");
-	var url;
+$(document).ready(function(){
+	//自动搜索 
+	$('#brand').combobox({
+	mode:'remote' ,
+	url:'brand/queryBrand' ,
+	valueField:'brandId' ,
+	textField:'brandName' ,
+	delay:500
+	});
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		brandId:$("#brand").val(),
+	});
+}
+var url;
 
 	$(function(){
 		//数据窗口隐藏

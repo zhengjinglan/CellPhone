@@ -44,7 +44,7 @@ public class ManagerController {
 	@RequestMapping("query")
 	@ResponseBody
 	public List<Map<String, Object>> query() {
-		System.out.println(managerService.query());
+
 		return managerService.query();
 	}
 

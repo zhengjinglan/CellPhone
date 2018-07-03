@@ -44,10 +44,10 @@ $(function(){
 // 打开修改窗口
 function edit(){
 	
-	
+	//alert($("#tables").datagrid("getSelections"));
 	// 判断是否有选中项
 	var rows = $("#tables").datagrid("getSelections");
-	alert(rows.orderId);
+	alert(JSON.stringify(rows.orderId));
 	if(rows.length == 1){
 		//loadSelect("fettlerId","fettler/queryByState?city=","empName","fettlerId",true);
 		// 重置表单

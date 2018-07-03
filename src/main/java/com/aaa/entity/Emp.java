@@ -32,6 +32,7 @@ public class Emp implements Serializable {
 	private Integer state;
 
 	private static final long serialVersionUID = 1L;
+	private Integer state;
 
 	public Integer getEmpId() {
 		return empId;
@@ -155,6 +156,14 @@ public class Emp implements Serializable {
 						: this.getOperator().equals(other.getOperator()))
 				&& (this.getState() == null ? other.getState() == null : this
 						.getState().equals(other.getState()));
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
 	}
 
 	@Override

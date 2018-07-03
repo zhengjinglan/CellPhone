@@ -1,30 +1,37 @@
 package com.aaa.dao;
 
-import com.aaa.entity.EmpIncome;
-import com.aaa.entity.EmpIncomeExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.EmpIncome;
+import com.aaa.entity.EmpIncomeExample;
+
 public interface EmpIncomeMapper {
-    long countByExample(EmpIncomeExample example);
+	List<Map<String, Object>> query(EmpIncome emp, int page, int rows);
 
-    int deleteByExample(EmpIncomeExample example);
+	long countByExample(EmpIncomeExample example);
 
-    int deleteByPrimaryKey(Integer incomeId);
+	int deleteByExample(EmpIncomeExample example);
 
-    int insert(EmpIncome record);
+	int deleteByPrimaryKey(Integer incomeId);
 
-    int insertSelective(EmpIncome record);
+	int insert(EmpIncome record);
 
-    List<EmpIncome> selectByExample(EmpIncomeExample example);
+	int insertSelective(EmpIncome record);
 
-    EmpIncome selectByPrimaryKey(Integer incomeId);
+	List<EmpIncome> selectByExample(EmpIncomeExample example);
 
-    int updateByExampleSelective(@Param("record") EmpIncome record, @Param("example") EmpIncomeExample example);
+	EmpIncome selectByPrimaryKey(Integer incomeId);
 
-    int updateByExample(@Param("record") EmpIncome record, @Param("example") EmpIncomeExample example);
+	int updateByExampleSelective(@Param("record") EmpIncome record,
+			@Param("example") EmpIncomeExample example);
 
-    int updateByPrimaryKeySelective(EmpIncome record);
+	int updateByExample(@Param("record") EmpIncome record,
+			@Param("example") EmpIncomeExample example);
 
-    int updateByPrimaryKey(EmpIncome record);
+	int updateByPrimaryKeySelective(EmpIncome record);
+
+	int updateByPrimaryKey(EmpIncome record);
 }

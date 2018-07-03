@@ -4,10 +4,11 @@ $(function(){
 		url:"income/queryPage",
 		columns:[[
 		  {field:'incomeId',title:'薪资编号',width:40,checkbox:true},  
-		 	{field:'incomeTypeId',title:'类型编号',width:60},
-		 /*  {field:'incomeTypeName',title:'类型名称',width:60}, */
-		 {field:'empId',title:'员工编号',width:60},
-		 {field:'incomePrice',title:'薪资金额',width:60},
+		  {field:'incomeTypeId',title:'类型编号',width:60,hidden:true},
+		  {field:'incomeTypeName',title:'类型名称',width:60},
+		  {field:'empId',title:'员工编号',width:60,hidden:true},
+		  {field:'empName',title:'员工姓名',width:60},
+		  {field:'incomePrice',title:'薪资金额',width:60},
 		  {field:'gmtCreate',title:'创建时间',width:100},
 		  {field:'gmtModified',title:'修改时间',width:100},
 		  {field:'operator',title:'修改人',width:100},
@@ -22,7 +23,21 @@ $(function(){
 	});
 });
 
-
+$(document).ready(function(){
+	//自动搜索 
+	$('#incomeType').combobox({
+	url:'incomeType/queryAll',
+	valueField:'incomeTypeId',
+	textField:'incomeTypeName',
+	delay:500
+	});
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		incomeTypeId:$("#incomeType").val(),
+		empName:$("#name").val(),
+	});
+}
 var url;
 
 $(function(){
