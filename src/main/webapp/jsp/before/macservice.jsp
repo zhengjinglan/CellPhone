@@ -6,7 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
 <head>
       <title>手机维修</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
