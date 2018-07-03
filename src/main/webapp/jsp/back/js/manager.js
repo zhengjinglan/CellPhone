@@ -76,7 +76,7 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 	function add(){
 		$("#fm").form('reset');
 		// 设置重复密码值等于密码
-		$("#repwd").passwordbox("setValue",rows[0].pwd);
+		//$("#repwd").passwordbox("setValue",rows[0].pwd);
 		$("#datawindow").window("open").window('setTitle',"新增");
 		loadSelect("empId","emp/queryAll","empName","empId",true);
 		loadSelect("rid","roles/queryAll","rname","rid",true);

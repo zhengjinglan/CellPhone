@@ -43,7 +43,7 @@ public class BrandService {
 	public int update(Brand b) {
 		BrandExample brand = new BrandExample();
 		brand.createCriteria().andBrandIdEqualTo(b.getBrandId());
-		return dao.updateByExample(b, brand);
+		return dao.updateByExampleSelective(b, brand);
 	}
 
 }

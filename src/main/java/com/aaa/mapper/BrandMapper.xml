@@ -187,7 +187,6 @@
       <if test="record.brandDescription != null">
         brand_description = #{record.brandDescription,jdbcType=VARCHAR},
       </if>
-   
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>    
@@ -222,15 +221,11 @@
       <if test="brandDescription != null">
         brand_description = #{brandDescription,jdbcType=VARCHAR},
       </if>
-      <if test="gmtCreate != null">
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null">
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
+      
       <if test="operator != null">
         operator = #{operator,jdbcType=VARCHAR},
       </if>
+        gmt_modified = now()
     </set>
     where brand_id = #{brandId,jdbcType=INTEGER}
   </update>
