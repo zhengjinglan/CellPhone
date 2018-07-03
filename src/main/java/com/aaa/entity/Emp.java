@@ -29,11 +29,9 @@ public class Emp implements Serializable {
 
 	private String operator;
 
-	private Integer state;
-
 	private static final long serialVersionUID = 1L;
 	private Integer state;
-
+ 
 	public Integer getEmpId() {
 		return empId;
 	}
@@ -158,13 +156,6 @@ public class Emp implements Serializable {
 						.getState().equals(other.getState()));
 	}
 
-	public Integer getState() {
-		return state;
-	}
-
-	public void setState(Integer state) {
-		this.state = state;
-	}
 
 	@Override
 	public int hashCode() {
