@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" 
-						aria-hidden="true">×
+						aria-hidden="true">
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
 				<div class="contact">
@@ -281,9 +281,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--tabBar star-->
 
     <!--from star-->
-    <div class="container-fluid listContent">
+    <div class="container-fluid listContent" id="maodian">
         <div class="container listBox">
-        	<form id="fm" method="post" <!-- action="../../mail/addMail" -->>
+        	<form id="orderfm" method="post" >
             <div class="listBox-left">
             	<div id="nameBox" class="input-group nameBox">
 	                <span class="input-group-addon namePic">
@@ -364,6 +364,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <div id="imeiTips"  class="imeiTipsBox">
 	                <p class="tips">在拨号面板入输 *#06#；或查看设置－通用－关于本机即可获得IMEI码</p>
 	            </div>	
+	             <div class="fixBtn">
+	                <button  class="btn btn-default  next" type="submit" id="orderBtn"
+	                >提交订单</button> 
+	               、</div>
 	           
             </div>
             <div class="listBox-right">
@@ -389,12 +393,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="price" name="orderPrice" >预计价格:￥</div>   
             </div>
         </div>
-         <div class="fixBtn">
-	                <!-- <button  class="btn btn-default  next" type="submit" onclick="submits()"
-	                >提交订单</button> -->
-	                <input type="submit"  class="btn btn-default  next" onclick="submits()" 
-	                value="提交订单"/>
-	            </div>
+        
         </form>
     </div>
    
@@ -439,7 +438,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <p class="title">用户对我们的信任</p>
         <a href="#" data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-default btn-lg" >添加您的评价</button></a>
             
-  </form>
         <div class="float-left user-evaluate">
             <div id="scroll">
                 <ul class="user-evaluate-list" style="top: 0px;">
@@ -513,13 +511,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
-<script type="text/javascript" src="js/mac.js"></script>
+<!-- <script type="text/javascript" src="js/mac.js"></script> -->
     <script class="resources library" src="../before/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script>
 <script type="text/javascript"> 
 var url;
   $(document).ready(function(){
 	  //默认显示上门服务
+	  url="../../order/add";
 	    $("#imeiBox").hide();
 	    $("#addressBox").show();
 	    $("#imeiTips").hide();
@@ -528,8 +527,7 @@ var url;
 	    $("#serviceCenterBox").hide();
 	    $("#serviceCenterInfoBox").hide();
 	    $("#mailBox").hide();
-	    
-	    
+	   
 	  
   $.ajax({
   url: '../../brand/queryBrand' ,
@@ -707,7 +705,22 @@ var url;
 	    $("#stepSix").html('06 杞处浠樻');
 	});
 	 
-
+	//表单提交	
+  $("#orderBtn").click(function() {  
+            var params = $("#orderfm").serialize();  
+            $.ajax( {  
+                type : "POST",  
+                url : url,  
+                data : params,  
+                success : function(msg) {  
+                	msg.
+                	alert("订单提交成功");
+                    window.location="macservice.jsp";
+                }  
+           
+            });  
+  	});  
+	
   });
   function repairSave(){
 			window.location.href="fixWay.jsp";
@@ -732,30 +745,7 @@ var url;
         form.method="post";  
         form.submit();  
     }  
-
-   	 // 提交
-    	function submits(){
-    	alert(123);
-    	alert(url);
-    		$("#fm").form("submit",{
-    			url:url,   			
-    			success:function(data){
-    				if(data==1){
-    					$.messager.show({
-    						title:'提示',
-    						msg:"订单提交成功！"
-    					});
-    					window.location="macservice.jsp";
-    				}else{
-    					$.messager.show({
-    						title:'提示',
-    						msg:"订单提交失败！"
-    					});
-    				}
-    			}
-    		});
-    	}     
-
+        
   </script>
 </body>
 </html>
