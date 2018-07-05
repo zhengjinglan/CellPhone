@@ -31,7 +31,7 @@ public class ConsumeItemService {
     }
     public boolean remove(List<Integer> ids){
         ConsumeItemExample exp = new ConsumeItemExample();
-        exp.createCriteria().andTypeIdIn(ids);
+        exp.createCriteria().andItemIdIn(ids);
         int res = mapper.deleteByExample(exp);
         return res>0?true:false;
     }
