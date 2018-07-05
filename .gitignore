@@ -1,4 +1,8 @@
-/target
-/.project
-/.settings/
-/.tern-project
+# Eclipse Project files
+.classpath
+.project
+.settings/
+.tern-project
+
+# maven
+target/
