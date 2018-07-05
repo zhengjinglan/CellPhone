@@ -19,13 +19,26 @@ public class OrderService {
 	public int add(Order o) {
 		return maper.insert(o);
 	}
-
-	public List<Order> queryOrder(Order o) {
-		OrderExample order = new OrderExample();
-		return maper.selectByExample(order);
-
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月5日
+	 * @return
+	 */
+	public List<Order> list(){
+	    return maper.selectByExample(null);
 	}
-
+	/**
+	 * @author 小黑
+	 * @param fettlerId
+	 * @return
+	 */
+	public List<Order> listByFettler(int fettlerId){
+	    OrderExample exp = new OrderExample();
+	    exp.createCriteria().andFettlerIdEqualTo(fettlerId);
+	    return maper.selectByExample(exp);
+	}
+	
 	public List<Map<String, Object>> query(Order order, int page, int rows) {
 		Integer offer = null;
 		if (page != 0) {

@@ -49,7 +49,17 @@ public class OrderController {
 		long total = oservice.count();
 		return new EasyuiPage(list, total);
 	}
-
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月5日
+	 * @return
+	 */
+	@RequestMapping("list")
+	@ResponseBody
+	public List<Order> list(){
+	    return oservice.list();
+	}
 	@RequestMapping("update")
 	@ResponseBody
 	public int query(Order order) {
