@@ -3,6 +3,8 @@
 .project
 .settings/
 .tern-project
+/.externalToolBuilders/
 
 # maven
 target/
+
