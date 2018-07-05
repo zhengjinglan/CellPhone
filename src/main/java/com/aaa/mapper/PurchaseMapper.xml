@@ -319,10 +319,10 @@
     <where>
     	and ( base.item_id = item.item_id ) and (company.company_id = base.company_id)
     	<if test="companyId != null">
-    		and ( company.company_id = ${companyId} )
+    		and ( company.company_id = #{companyId} )
     	</if>
     	<if test="itemId != null">
-    		and ( item.itemId = ${itemId} )
+    		and ( item.itemId = #{itemId} )
     	</if>
     </where>
     <if test="example.orderByClause != null">
