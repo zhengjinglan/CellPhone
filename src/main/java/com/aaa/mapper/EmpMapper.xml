@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified, 
+    emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified,
     operator, state
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.EmpExample" resultMap="BaseResultMap">
@@ -99,7 +99,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from emp
     where emp_id = #{empId,jdbcType=INTEGER}
@@ -118,24 +118,14 @@
     <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into emp (dept_id, job_id, emp_name, 
-      emp_sex, emp_phone, emp_address, 
+    insert into emp (dept_id, job_id, emp_name,
+      emp_sex, emp_phone, emp_address,
       gmt_create, gmt_modified, operator,state
       )
-    values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
-      #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
+    values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR},
+      #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR},
       now(), now(), #{operator,jdbcType=VARCHAR},#{state,jdbcType=INTEGER}
       )
-=======
-    insert into emp (emp_id, dept_id, job_id, 
-      emp_name, emp_sex, emp_phone, 
-      emp_address, gmt_create, gmt_modified, 
-      operator, state)
-    values (#{empId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
-      #{empName,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, 
-      #{empAddress,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{operator,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
->>>>>>> refs/remotes/origin/xhc
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
     insert into emp
@@ -343,7 +333,7 @@ on e.job_id=j.job_id
 	 e.dept_id=#{param1.jobId} and
 	</if>
 	<if test="param1 != null and param1.empName != null">
-	 e.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%') 
+	 e.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%')
 	</if>
 </where>
 <if test="param2 != null and param3 != null">

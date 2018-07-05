@@ -28,7 +28,7 @@ public class SeriesController {
 
     @RequestMapping("/query")
     @ResponseBody
-    public EasyuiPage query(Series series, int page, int rows) {
+    public EasyuiPage query(Series series, Integer page, Integer rows) {
         List<Map<String, Object>> list = service.query(series, page, rows);
         System.out.println(list);
         Long total = (long) service.getCount();
