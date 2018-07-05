@@ -59,4 +59,7 @@ public class ConsumeItemRecordService {
         exp.createCriteria().andRecordIdIn(ids);
         return mapper.deleteByExample(exp) > 0 ? true : false;
     }
+    public long getCount(){
+        return mapper.countByExample(null);
+    }
 }
