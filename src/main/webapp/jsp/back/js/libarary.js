@@ -30,7 +30,7 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			    		}
 			    	}
 		    	}
-		    	console.log(data);
+		    	/*console.log(data);*/
 		    	return data;
 		    	
 		    },

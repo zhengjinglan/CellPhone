@@ -114,8 +114,6 @@
     </selectKey>
     insert into series (brand_id, series_name, gmt_create, 
       gmt_modified, operator)
-    values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
     values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR},now(), 
       now(), #{operator,jdbcType=VARCHAR})
   </insert>
@@ -239,5 +237,21 @@
   			brand_id=#{brandId}
   		</if>
   	</where>
+  </select>
+  <select id="query" parameterType="map" resultType="map">
+  select s.series_id seriesId,s.brand_id brandId,s.series_name seriesName,
+s.gmt_create gmtCreate,s.gmt_modified gmtModified,s.operator operator,
+b.brand_id,b.brand_name brandName
+from series s
+left join brand b
+ on s.brand_id=b.brand_id
+ <where>
+ 	<if test="param1 != null and param1.brandId != null">
+ 		s.brand_id=#{param1.brandId}
+ 	</if>
+ </where>
+ <if test="param2 != null and param3 != null">
+ limit #{param2},#{param3}
+ </if>
   </select>
 </mapper>

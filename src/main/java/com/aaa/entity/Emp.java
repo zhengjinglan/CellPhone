@@ -29,10 +29,9 @@ public class Emp implements Serializable {
 
 	private String operator;
 
-	private Integer state;
-
 	private static final long serialVersionUID = 1L;
-
+	private Integer state;
+ 
 	public Integer getEmpId() {
 		return empId;
 	}
@@ -156,6 +155,7 @@ public class Emp implements Serializable {
 				&& (this.getState() == null ? other.getState() == null : this
 						.getState().equals(other.getState()));
 	}
+
 
 	@Override
 	public int hashCode() {

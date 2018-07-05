@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified, 
+    emp_id, dept_id, job_id, emp_name, emp_sex, emp_phone, emp_address, gmt_create, gmt_modified,
     operator, state
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.EmpExample" resultMap="BaseResultMap">
@@ -99,7 +99,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from emp
     where emp_id = #{empId,jdbcType=INTEGER}
@@ -118,24 +118,14 @@
     <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into emp (dept_id, job_id, emp_name, 
-      emp_sex, emp_phone, emp_address, 
-      gmt_create, gmt_modified, operator
+    insert into emp (dept_id, job_id, emp_name,
+      emp_sex, emp_phone, emp_address,
+      gmt_create, gmt_modified, operator,state
       )
-    values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
-      #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
-      now(), now(), #{operator,jdbcType=VARCHAR}
+    values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR},
+      #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR},
+      now(), now(), #{operator,jdbcType=VARCHAR},#{state,jdbcType=INTEGER}
       )
-=======
-    insert into emp (emp_id, dept_id, job_id, 
-      emp_name, emp_sex, emp_phone, 
-      emp_address, gmt_create, gmt_modified, 
-      operator, state)
-    values (#{empId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
-      #{empName,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, 
-      #{empAddress,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{operator,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
->>>>>>> refs/remotes/origin/xhc
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">
     insert into emp
@@ -248,6 +238,9 @@
         state = #{record.state,jdbcType=INTEGER},
       </if>
         gmt_modified = now(),
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -320,4 +313,32 @@
       state = #{state,jdbcType=INTEGER}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
+  <select id="query" parameterType="map" resultType="map">
+  select e.emp_id empId,e.dept_id deptId,e.job_id jobId,
+e.emp_name empName,e.emp_sex empSex,e.emp_phone empPhone,
+e.gmt_create gmtCreate,e.gmt_modified gmtModified,
+e.state state,e.emp_address address,
+e.operator operator,d.dept_id,d.dept_name deptName,
+j.job_id,j.job_name jobName
+from emp e
+left join dept d
+on e.dept_id=d.dept_id
+left join job j
+on e.job_id=j.job_id
+<where>
+	<if test="param1 != null and param1.deptId != null">
+	 e.dept_id=#{param1.deptId} and
+	</if>
+	<if test="param1 != null and param1.jobId != null">
+	 e.dept_id=#{param1.jobId} and
+	</if>
+	<if test="param1 != null and param1.empName != null">
+	 e.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%')
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+
+  </select>
 </mapper>

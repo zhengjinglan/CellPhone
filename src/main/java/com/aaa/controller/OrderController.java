@@ -1,5 +1,7 @@
 package com.aaa.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import com.aaa.entity.EasyuiPage;
 import com.aaa.entity.Order;
 import com.aaa.entity.Order_Fault;
 import com.aaa.entity.User;
+import com.aaa.service.FettlerService;
 //import com.aaa.entity.Model;
 import com.aaa.service.OrderService;
 import com.aaa.service.Order_FalutService;
@@ -27,7 +30,8 @@ public class OrderController {
 	UserService uservice;
 	@Autowired
 	Order_FalutService ofservice;
-
+	@Autowired
+	FettlerService fettlerService;
 	@RequestMapping("/add")
 	@ResponseBody
 	public int add(User u, Order o, Order_Fault ofa) {
@@ -49,8 +53,17 @@ public class OrderController {
 	@RequestMapping("update")
 	@ResponseBody
 	public int query(Order order) {
-
+		System.out.println(order);
 		return oservice.update(order);
 	}
-
-}
+	public int allot(Order order){
+	    int res = 0;
+	    if(order.getFettlerId() != null){
+	        if(fettlerService.get(order.getFettlerId()) != null){
+	            order.setPredeterminedTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+	            res = oservice.update(order);
+	        }
+	    }
+	    return res;
+	}
+}  

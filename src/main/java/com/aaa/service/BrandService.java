@@ -2,7 +2,6 @@ package com.aaa.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,23 +9,19 @@ import org.springframework.stereotype.Service;
 import com.aaa.dao.BrandMapper;
 import com.aaa.entity.Brand;
 import com.aaa.entity.BrandExample;
-import com.aaa.entity.ColorExample;
 
 @Service
 public class BrandService {
 
 	@Autowired
 	BrandMapper dao;
-	
+
 	public List<Brand> queryBrand(Brand b) {
-		BrandExample brand=new BrandExample();
+		BrandExample brand = new BrandExample();
 		return dao.selectByExample(brand);
 	}
 
 	public int add(Brand b) {
-		BrandExample brand=new BrandExample();
-		System.out.println("-----------");
-		System.out.println(b+"****");
 		return dao.insert(b);
 	}
 
@@ -35,7 +30,7 @@ public class BrandService {
 		for (int i : ids) {
 			list.add(i);
 		}
-		BrandExample brand=new BrandExample();
+		BrandExample brand = new BrandExample();
 		brand.createCriteria().andBrandIdIn(list);
 		int rs = dao.deleteByExample(brand);
 		if (rs == ids.length) {
@@ -46,9 +41,9 @@ public class BrandService {
 	}
 
 	public int update(Brand b) {
-		BrandExample brand=new BrandExample();
+		BrandExample brand = new BrandExample();
 		brand.createCriteria().andBrandIdEqualTo(b.getBrandId());
-		return dao.updateByExample(b, brand);
+		return dao.updateByExampleSelective(b, brand);
 	}
 
 }

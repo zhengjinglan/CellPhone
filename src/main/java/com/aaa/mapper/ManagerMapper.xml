@@ -114,20 +114,12 @@
     <selectKey keyProperty="uid" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into manager (uname, pwd, emp_id, 
-      rid, upuid, uptime
-      )
-    values (#{uname,jdbcType=VARCHAR}, md5(#{pwd,jdbcType=VARCHAR}), #{empId,jdbcType=INTEGER}, 
-      #{rid,jdbcType=INTEGER}, #{upuid,jdbcType=INTEGER}, now()
-      )
-=======
     insert into manager (uid, uname, pwd, 
       emp_id, rid, upuid, 
       uptime, state)
-    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+    values (#{uid,jdbcType=INTEGER}, md5(#{uname,jdbcType=VARCHAR}), #{pwd,jdbcType=VARCHAR}, 
       #{empId,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{upuid,jdbcType=INTEGER}, 
       #{uptime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
->>>>>>> refs/remotes/origin/xhc
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Manager">
     insert into manager

@@ -25,19 +25,19 @@ public class FaultController {
 		return faultService.add(fault);
 	}
 
-	@RequestMapping("queryPage")
+	@RequestMapping("queryByTypeId")
 	@ResponseBody
-	public EasyuiPage queryPage(int page, int rows) {
-		List<Fault> list = faultService.queryPage(page, rows);
-		Long total = (long) faultService.getCount();
-		return new EasyuiPage(list, total);
+	public EasyuiPage queryByTypeId(Integer page, Integer rows, Integer typeId) {
+		System.out.println(typeId);
+		return new EasyuiPage(faultService.queryPage(page, rows, typeId),
+				faultService.getCount());
 	}
 
 	@RequestMapping("query")
 	@ResponseBody
 	public EasyuiPage query(Fault fault, int page, int rows) {
 		List<Map<String, Object>> list = faultService.query(fault, page, rows);
-		System.out.println(list);
+		System.out.println("query" + list);
 		Long total = (long) faultService.getCount();
 		return new EasyuiPage(list, total);
 	}

@@ -26,7 +26,21 @@ $(function(){
 		}
 	});
 });
-
+$(document).ready(function(){
+	//自动搜索 
+	$('#series').combobox({
+	mode:'remote' ,
+	url:'series/querySeries' ,
+	valueField:'seriesId' ,
+	textField:'seriesName' ,
+	delay:500
+	});
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		seriesId:$("#series").val(),
+	});
+}
 
 var url;
 

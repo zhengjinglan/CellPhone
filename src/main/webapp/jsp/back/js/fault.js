@@ -24,17 +24,41 @@ $(function(){
 				pageSize:10,
 				striped:true,
 				order:"desc",
-				
+				loadFilter:function(data){// 所有数据,源数据被修改
+					console.log(data);
+					return data;
+				}
 			});
 		});
-		
-		
+$(document).ready(function(){
+	//自动搜索 
+	$('#type').combobox({
+	mode:'remote' ,
+	url:'faultType/queryAll' ,
+	valueField:'typeId' ,
+	textField:'typeName' ,
+	delay:500
+	});
+	//自动搜索 
+	$('#model').combobox({
+	mode:'remote' ,
+	url:'model/queryAll' ,
+	valueField:'modelId' ,
+	textField:'modelName' ,
+	delay:500
+	});
+
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		typeId:$("#type").val(),
+	});
+}
 		var url;
 	
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
-			
 		});
 		
 		// 删除

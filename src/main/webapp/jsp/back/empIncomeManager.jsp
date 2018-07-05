@@ -30,6 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
+   <input type="text" id="incomeType" size="24" maxlength="50" class="easyui-combobox" data-options="required:false,validType:'special'"/>
+    <input type="text" id="name" size="24" maxlength="50" class="easyui-textbox" data-options="required:false,validType:'special'"/>
+   		<a onclick="Myquery()" class="easyui-linkbutton" iconCls="icon-search">搜索</a>	
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">

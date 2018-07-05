@@ -1,30 +1,37 @@
 package com.aaa.dao;
 
-import com.aaa.entity.Emp;
-import com.aaa.entity.EmpExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.aaa.entity.Emp;
+import com.aaa.entity.EmpExample;
+
 public interface EmpMapper {
-    long countByExample(EmpExample example);
+	List<Map<String, Object>> query(Emp emp, int page, int rows);
 
-    int deleteByExample(EmpExample example);
+	long countByExample(EmpExample example);
 
-    int deleteByPrimaryKey(Integer empId);
+	int deleteByExample(EmpExample example);
 
-    int insert(Emp record);
+	int deleteByPrimaryKey(Integer empId);
 
-    int insertSelective(Emp record);
+	int insert(Emp record);
 
-    List<Emp> selectByExample(EmpExample example);
+	int insertSelective(Emp record);
 
-    Emp selectByPrimaryKey(Integer empId);
+	List<Emp> selectByExample(EmpExample example);
 
-    int updateByExampleSelective(@Param("record") Emp record, @Param("example") EmpExample example);
+	Emp selectByPrimaryKey(Integer empId);
 
-    int updateByExample(@Param("record") Emp record, @Param("example") EmpExample example);
+	int updateByExampleSelective(@Param("record") Emp record,
+			@Param("example") EmpExample example);
 
-    int updateByPrimaryKeySelective(Emp record);
+	int updateByExample(@Param("record") Emp record,
+			@Param("example") EmpExample example);
 
-    int updateByPrimaryKey(Emp record);
+	int updateByPrimaryKeySelective(Emp record);
+
+	int updateByPrimaryKey(Emp record);
 }

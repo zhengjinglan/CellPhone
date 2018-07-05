@@ -33,6 +33,12 @@ public class ModelController {
 		long total = modelService.getCount();
 		return new EasyuiPage(list, total);
 	}
+	
+    @RequestMapping("queryAll")
+    @ResponseBody
+    public List<Model> queryAll(Model model) {
+        return modelService.queryAll(model);
+    }
 
 	@RequestMapping("dels")
 	@ResponseBody

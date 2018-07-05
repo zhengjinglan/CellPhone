@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
     
      <div id="tools">
-    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">订单分配</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="allot()">订单分配</a>
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
@@ -70,6 +70,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
 					data-options="label:'修改人:'" style="width:100%"/>
 			</div>
+			
+			<div style="margin-bottom: 20px;text-align: center">
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
+		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="resets()">重置</a>
+		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="concel()">取消</a>
+			</div>
+		</form>
+		<form id="fmAllot" method="post">
+			<div style="margin-bottom: 20px">
+				<!-- disabled：不提交 -->
+				<input class="easyui-textbox" style="width:100%" readonly="readonly"
+					id="orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
+			</div>	
 			
 			<div style="margin-bottom: 20px;text-align: center">
 				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
