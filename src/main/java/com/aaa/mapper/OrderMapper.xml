@@ -84,6 +84,19 @@
     assigner, predetermined_time, real_begin, real_end, assign_time, diagnosis_result, 
     real_solution, address, color, forecast_price
   </sql>
+  <!-- 订单季度报表 -->
+  <select id="OrderReport" resultType="java.util.Map">
+		select YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1 gmt_create,count(*) idds
+        from `order`
+        group by YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1;
+  </select>
+<!-- 订单月份报表 -->
+  <select id="OrderReportMonth" resultType="java.util.Map">
+	    SELECT count(s.order_id) idds,
+		date_format(s.gmt_create,'%m') gmt_create
+		FROM `order` s
+		group by date_format(s.gmt_create,'%m')
+  </select>
   <select id="selectByExample" parameterType="com.aaa.entity.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -123,18 +136,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aaa.entity.Order">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into order (user_id, fettler_id, order_price, 
+
+   <selectKey keyColumn="userId" keyProperty="userId" order="BEFORE" resultType="Integer">
+			SELECT max(user_id) userId FROM user
+	</selectKey> 
+
+    insert into `order` (user_id, fettler_id, order_price, 
       pay_way, gmt_create, gmt_modified, 
       state, assigner, predetermined_time, 
       real_begin, real_end, assign_time, 
       diagnosis_result, real_solution, address, 
       color, forecast_price)
     values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL}, 
-      #{payWay,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=VARCHAR}, #{assigner,jdbcType=VARCHAR}, #{predeterminedTime,jdbcType=VARCHAR}, 
+      #{payWay,jdbcType=VARCHAR}, now(), now(), 
+      '未分配', #{assigner,jdbcType=VARCHAR}, #{predeterminedTime,jdbcType=VARCHAR}, 
       #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP}, 
       #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{color,jdbcType=VARCHAR}, #{forecastPrice,jdbcType=DECIMAL})
@@ -143,7 +158,10 @@
     <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into order
+<!--     <selectKey keyColumn="userId" keyProperty="userId" order="BEFORE" resultType="Integer">
+			SELECT max(userId) userId FROM user
+	</selectKey>  -->
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
@@ -258,7 +276,7 @@
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update `order`
     <set>
       <if test="record.orderId != null">
         order_id = #{record.orderId,jdbcType=INTEGER},
@@ -421,4 +439,34 @@
       forecast_price = #{forecastPrice,jdbcType=DECIMAL}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
+  <select id="query" resultType="map">
+  select o.order_id orerId,o.user_id userId,
+	o.fettler_id fettlerId,o.order_price orderPrice,
+	o.pay_way payWay,o.gmt_create gmtCreate,
+	o.gmt_modified gmtModified,o.state state,
+	o.assigner assigner,o.predetermined_time predeterminedTime,
+	o.real_begin realBegin,o.real_end realEnd,
+	o.assign_time assignTime,o.diagnosis_result diagnosisResult,
+	o.real_solution realSolution,o.address address,
+	o.color color,o.forecast_price forecastPrice ,u.user_id userId,
+	u.user_name userName,f.fettler_id fettlerId,e.emp_name fettlerName 
+	from `order` o 
+	left join `user` u 
+	on u.user_id=o.user_id 
+	left join fettler f 
+	on o.fettler_id=f.fettler_id 
+	left join emp e
+	on f.emp_id=e.emp_id
+	<where>
+	<if test="param1 != null and param1.userId != null">
+	o.user_id=#{param1.userId} and
+	</if>
+	<if test="param1 != null and param1.fettlerId != null">
+	o.fettler_id=#{param1.fettlerId}
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+  </select>
 </mapper>
