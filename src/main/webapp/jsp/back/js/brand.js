@@ -4,6 +4,7 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
+			
 		});
 	
 		
@@ -75,8 +76,9 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			if($("#brandId").textbox("getValue")=="自动生成"){
 				$("#brandId").textbox("setValue",-1);
 			}
+			alert($("#filebox_file_id_1").val());
 			$.post(url,{"brandId":$("#brandId").val(),
-			"brandName":$("#brandName").val(),"brandIcon":$("#brandIcon").val()
+			"brandName":$("#brandName").val(),"brandIcon":$("#filebox_file_id_1").val()//使用EasyUI　上传文件控件　获取数据时　不能使用创建时的ＩＤ　需要找到其自动给创建的 input 的ID
 			,"brandDescription":$("#brandDescription").val(),
 			"operator":$("#operator").val()},
 			function(data){

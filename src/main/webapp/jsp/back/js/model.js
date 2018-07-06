@@ -7,7 +7,9 @@ $(function(){
 		  {field:'seriesId',title:'系列编号',width:40,hidden:true}, 
 		  {field:'seriesName',title:'系列名称',width:40}, 
 		  {field:'modelName',title:'机型名称',width:60},
-		  {field:'modelPhoto',title:'机型图片',width:100},
+		  {field:'modelPhoto',title:'机型图片',width:100,formatter:function(value, rec){//使用formatter格式化刷子
+			  return '<img src='+value+'/>';
+ }},
 		  {field:'colors',title:'颜色',width:100},
 		  {field:'modelDescription',title:'机型描述',width:40},  
 		  {field:'gmtCreate',title:'创建时间',width:100},
@@ -108,14 +110,14 @@ function edit(){
 	}
 }
 
-
 // 提交
 function submits(){
 	if($("#modelId").textbox("getValue")=="自动生成"){
 		$("#modelId").textbox("setValue",-1);
-	}	
+	}
+	alert($("#modelPhoto").val());
 	$.post(url,{"modelId":$("#modelId").val(),"seriesId":$("#seriesId").val(),
-	"modelName":$("#modelName").val(),"modelPhoto":$("#modelPhoto").val(),
+	"modelName":$("#modelName").val(),"Photo":$("#modelPhoto").val(),
 	"colors":$("#colors").val(),
 	"modelDescription":$("#modelDescription").val(),"operator":$("#operator").val()}
 		,function(data){

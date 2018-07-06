@@ -124,7 +124,7 @@
       )
     values (#{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
       #{empSex,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR}, #{empAddress,jdbcType=VARCHAR}, 
-      now(), now(), #{operator,jdbcType=VARCHAR},#{state,jdbcType=INTEGER}
+      now(), now(), #{operator,jdbcType=VARCHAR},0
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Emp">

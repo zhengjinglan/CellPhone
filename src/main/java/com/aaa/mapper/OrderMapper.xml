@@ -123,18 +123,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aaa.entity.Order">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
+    <selectKey keyProperty="userId" order="BEFORE" resultType="java.lang.Integer">
+      SELECT max(user_id) userId from user
     </selectKey>
-    insert into order (user_id, fettler_id, order_price, 
+    insert into `order` (user_id, fettler_id, order_price, 
       pay_way, gmt_create, gmt_modified, 
       state, assigner, predetermined_time, 
       real_begin, real_end, assign_time, 
       diagnosis_result, real_solution, address, 
       color, forecast_price)
     values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL}, 
-      #{payWay,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=VARCHAR}, #{assigner,jdbcType=VARCHAR}, #{predeterminedTime,jdbcType=VARCHAR}, 
+      #{payWay,jdbcType=VARCHAR}, now(), now(), 
+      '待处理', #{assigner,jdbcType=VARCHAR}, now(), 
       #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP}, 
       #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{color,jdbcType=VARCHAR}, #{forecastPrice,jdbcType=DECIMAL})
@@ -257,6 +257,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  
   <update id="updateByExampleSelective" parameterType="map">
     update `order`
     <set>
@@ -275,15 +276,7 @@
       <if test="record.payWay != null">
         pay_way = #{record.payWay,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.state != null">
-        state = #{record.state,jdbcType=VARCHAR},
-      </if>
+    
       <if test="record.assigner != null">
         assigner = #{record.assigner,jdbcType=VARCHAR},
       </if>
@@ -314,6 +307,8 @@
       <if test="record.forecastPrice != null">
         forecast_price = #{record.forecastPrice,jdbcType=DECIMAL},
       </if>
+        state = '处理中',
+        gmt_modified = now()
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -444,7 +439,10 @@ on f.emp_id=e.emp_id
 	o.user_id=#{param1.userId} and
 	</if>
 	<if test="param1 != null and param1.fettlerId != null">
-	o.fettler_id=#{param1.fettlerId}
+	o.fettler_id=#{param1.fettlerId} and
+	</if>
+	<if test="param1 != null and param1.state != null">
+	o.state=#{param1.state}
 	</if>
 </where>
 <if test="param2 != null and param3 != null">

@@ -30,9 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
-   <input type="text" id="dept"  size="24" maxlength="50" class="easyui-combobox" data-options="required:false,validType:'special'"/>
-   			<input type="text" id="job"  size="24" maxlength="50" class="easyui-combobox" data-options="required:false,validType:'special'"/>
-   			<input class="easyui-textbox" id="Name" name="Name"/>
+   <input type="text" id="dept"  size="24" maxlength="50" class="easyui-combobox" data-options="label:'部门:',required:false,validType:'special'"/>
+   			<input type="text" id="job"  size="24" maxlength="50" class="easyui-combobox" data-options="label:'职位:',required:false,validType:'special'"/>
+   			<input class="easyui-textbox" id="Name" name="Name" data-options="label:'姓名:'"/>
    			<a onclick="Myquery()" class="easyui-linkbutton" iconCls="icon-search">搜索</a>	
     </div>
  
@@ -59,9 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="easyui-textbox" data-options="label:'员工姓名:'" style="width:100%"
 					id="empName" name="empName" />
 			</div>
-			<div style="margin-bottom: 20px"> 
-				<input class="easyui-textbox" data-options="label:'员工性别:'" style="width:100%"
-					id="empSex" name="empSex" />
+			<div style="margin-bottom: 20px" style="width:100%"> 
+            <select class="easyui-combobox" data-options="label:'性别:'" style="width:100%"
+					id="empSex" name="empSex" id="cc" >
+					<option>---请选择---</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+					</select>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 

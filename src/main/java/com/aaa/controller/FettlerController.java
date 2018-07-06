@@ -31,7 +31,7 @@ public class FettlerController {
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Fettler> queryAll(Fettler fettler) {
-
+		System.out.println(fettlerService.queryAll(fettler));
 		return fettlerService.queryAll(fettler);
 	}
 
@@ -39,14 +39,7 @@ public class FettlerController {
 	@ResponseBody
 	public List<Map<String, Object>> queryByState() {
 
-		return fettlerService.queryByState(null);
-	}
-
-	@RequestMapping("query")
-	@ResponseBody
-	public List<Map<String, Object>> query(String city, Integer orderId) {
-		System.out.println(orderId);
-		return fettlerService.queryByState(city);
+		return fettlerService.queryByState();
 	}
 
 	@RequestMapping("dels")

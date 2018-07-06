@@ -28,47 +28,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">订单分配</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="add()">添加订单</a>
+    <input type="text" id="fettler" size="24" maxlength="50" class="easyui-combobox" data-options="label:'维修工姓名:',required:false,validType:'special'"/>
+    <select type="text" id="status" size="24" maxlength="100" style="width: 150px" class="easyui-combobox" data-options="label:'状态:',required:false,validType:'special'">
+    	<option>---请选择---</option>
+    	<option value="待处理">待处理</option>
+    	<option value="处理中">处理中</option>
+    	<option value="邮寄中">邮寄中</option>
+    </select>
+   		<a onclick="Myquery()" class="easyui-linkbutton" iconCls="icon-search">搜索</a>	
     </div>
     
-	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
+	<div id="datawindow" class="easyui-window" style="width:100%;max-width:700px;padding:30px 40px">
 		<form id="fm" method="post">
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
-				<input class="easyui-textbox" style="width:100%" readonly="readonly"
+				<input class="easyui-textbox" style="width:30%" readonly="readonly"
 					id="orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
+			<input class="easyui-textbox" style="width:30%"
+					id="color" name="color" data-options="label:'颜色:'"/>
+					<input class="easyui-combobox" style="width:30%"
+					id="brandId" name="brandId" data-options="label:'品牌名称:'"/>
+			</div>
+			<div style="margin-bottom: 20px">
+			<input class="easyui-combobox" style="width:30%"
+					id="seriesId" name="seriesId" data-options="label:'系列名称:'"/>
+					<input class="easyui-combobox" style="width:30%"
+					id="modelId" name="modelId" data-options="label:'手机型号:'"/>
+				<input class="easyui-combobox" style="width:30%"
+					id="faultId" name="faultId" data-options="label:'故障信息:'"/>
+					
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-combobox" style="width:100%"
-					id="fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
-			</div>	
-			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%" 
+			<input class="easyui-textbox" style="width:30%" 
+					id="orderPrice" name="orderPrice" data-options="label:'预测价格:'"/>
+				<input class="easyui-textbox" style="width:30%" 
 					id="payWay" name="payWay" data-options="label:'支付途径:'"/>
-			</div>	
-			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%"
+					<input class="easyui-datetimebox" style="width:30%"
 					id="realBegin" name="realBegin" data-options="label:'实际开始时间:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%"
+			<input class="easyui-textbox" style="width:30%" 
+					id="userName" name="userName" data-options="label:'用户姓名:'"/>
+				<input class="easyui-datetimebox" style="width:30%"
 					id="realEnd" name="realEnd" data-options="label:'实际结束时间:'"/>
-			</div>	
-			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+					<input class="easyui-textbox" style="width:30%"
 					id="diagnosisResult" name="diagnosisResult" data-options="label:'诊断结果:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+			<input class="easyui-combobox" style="width:30%"
+					id="fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
+				<input class="easyui-textbox" style="width:30%"
 					id="realSolution" name="realSolution" data-options="label:'处理方式:'"/>
-			</div>	
-			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+					<input class="easyui-textbox" style="width:30%"
 					id="orderPrice" name="orderPrice" data-options="label:'订单价格:'"/>
 			</div>	
-			
-			<div style="margin-bottom: 20px">
+			<div style="margin-bottom: 20px,auto;">
+			<input class="easyui-textbox" style="width:30%"
+					id="address" name="address" data-options="label:'地址:'"/>
+					<input class="easyui-datetimebox" style="width:30%"
+					id="assignTime" name="assignTime" data-options="label:'分配时间:'"/>
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
-					data-options="label:'修改人:'" style="width:100%"/>
+					data-options="label:'修改人:'" style="width:50%,auto;" />
 			</div>
 			
 			<div style="margin-bottom: 20px;text-align: center">
@@ -78,6 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</form>
 	</div>
+	
   </body>
   <script type="text/javascript" src="jsp/back/js/order.js"></script>
 </html>

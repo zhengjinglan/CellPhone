@@ -34,7 +34,7 @@ public class Order implements Serializable {
 	private Date realBegin;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date realEnd;
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date assignTime;
 
 	private String diagnosisResult;

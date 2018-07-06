@@ -97,7 +97,7 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			// 设置表单提交路径
 			url = "manager/edit";
 			// 打开窗口
-			$("#pwd,#repwd").hide();
+			$("#pwd,#repwd").hideen();
 			$("#datawindow").window("open").window('setTitle',"修改");
 			
 		}else if(rows.length > 1){

@@ -31,9 +31,9 @@ public class FettlerService {
 		return fettlerMapper.selectByExample(fettlerExample);
 	}
 
-	public List<Map<String, Object>> queryByState(String city) {
+	public List<Map<String, Object>> queryByState() {
 
-		return fettlerMapper.queryByState(city);
+		return fettlerMapper.queryByState();
 	}
 
 	public List<Map<String, Object>> query(String empName, int page, int rows) {

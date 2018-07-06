@@ -3,14 +3,19 @@ package com.aaa.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aaa.entity.EasyuiPage;
 import com.aaa.entity.Model;
 import com.aaa.service.ModelService;
+import com.aaa.util.FileUpload;
 
 @Controller
 @RequestMapping("model")
@@ -48,8 +53,12 @@ public class ModelController {
 
 	@RequestMapping("add")
 	@ResponseBody
-	public int add(Model model) {
-		System.out.println(model);
+	public int add(
+			@RequestParam(value = "Photo", required = false) MultipartFile[] Photo,
+			Model model, HttpServletRequest request) {
+
+		List<String> rs = FileUpload.uplaods(Photo, request);
+		model.setModelPhoto(rs.get(0));
 		return modelService.add(model);
 	}
 

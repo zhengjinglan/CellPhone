@@ -38,7 +38,17 @@ $(function(){
 		}
 	});
 });
+$(function(){
 
+    $('#cc').combobox({    
+
+         required:true,    
+
+         multiple:true,
+
+         disabled:true  
+
+   });  
 $(document).ready(function(){
 	//自动搜索 
 	$('#dept').combobox({
@@ -144,7 +154,7 @@ function submits(){
 	}	
 	$.post(url,{"empId":$("#empId").val(),"deptId":$("#deptId").val(),
 	"jobId":$("#jobId").val(),"empName":$("#empName").val(),
-	"empSex":$("#empSex").val(),"empPhone":$("#empPhone").val(),
+	"empSex":$("input[name='empSex']").val(),"empPhone":$("#empPhone").val(),
 	"empAddress":$("#empAddress").val(),"operator":$("#operator").val()},function(data){
 	
 			if(data==1){

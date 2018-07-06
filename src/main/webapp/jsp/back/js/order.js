@@ -32,7 +32,23 @@ $(function(){
 		striped:true,
 	});
 });
-
+$(document).ready(function(){
+	//自动搜索 
+	$('#fettler').combobox({
+	mode:'remote' ,
+	url:'fettler/queryAll' ,
+	valueField:'fettlerId' ,
+	textField:'empName' ,
+	delay:500
+	});
+	
+	});
+function Myquery(){
+	$("#tables").datagrid("load",{
+		fettlerId:$("#fettler").val(),
+		state:$("#status").val(),
+	});
+}
 var url;
 var data;
 
@@ -41,6 +57,19 @@ $(function(){
 	$("#datawindow").window("close");
 
 });
+//打开新增窗口
+function add(){
+	$("#fm").form('reset');
+	loadSelect("fettlerId","fettler/queryByState","fettlerName","fettlerId",true);
+	loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
+	loadSelect("colorId","color/queryAll","colorName","colorId",true);
+	loadSelect("faultId","fault/queryAll","faultName","faultId",true);
+	loadSelect("modelId","model/queryAll","modelName","modelId",true);
+	loadSelect("seriesId","series/querySeries","seriesName","seriesId",true);
+	$("#datawindow").window("open").window('setTitle',"新增");
+	url = "order/add";
+}
+
 // 打开修改窗口
 function edit(){
 	
@@ -78,7 +107,11 @@ function submits(){
 		$("#orderId").textbox("setValue",-1);
 	}	
 	$.post(url,{"orderId":$("#orderId").val(),"fettlerId":$("#fettlerId").val(),
-	"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
+		"color":$("#colorId").val(),"modelId":$("#modelId").val(),
+		"brandId":$("#brandId").val(),"seriesId":$("#seriesId").val(),
+		"faultId":$("#faultId").val(),"assignTime":$("#assignTime").val(),
+		"address":$("#address").val(),
+		"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
 	"realEnd":$("#realEnd").val(),"diagnosisResult":$("#diagnosisResult").val(),
 	"realSolution":$("#realSolution").val(),"orderPrice":$("#orderPrice").val(),
 	"operator":$("#operator").val()},function(data){
