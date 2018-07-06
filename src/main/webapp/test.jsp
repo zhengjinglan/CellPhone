@@ -19,11 +19,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script type="text/javascript" src="jsp/before/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+	function submits(){
+	var p=$("#phone").val();
+	 $.post("user/checkUser",{userPhone:p},function(data){
+					if(data==0){
+					window.location.href="user/queryOfa?userPhone="+p;	 	             	
+	 	             }else{
+	 	            	alert("您还没有过订单！");           		
+            			$("#loginfm").form('reset');
+	 	             }
+	 	       }); 
+	 
+	}
+		            
+	</script>
   </head>
   
   <body>
-    <a href="jsp/back/brandManager.jsp">品牌</a>
-     <a href="jsp/back/seriesManager.jsp">系列</a>
+   <form id="loginfm" method="post">
+	<div class="loginPhoneBox">
+       <div class="loginPhone">
+           <input id="phone" name="userPhone" type="tel" class="login-text" maxlength="11" placeholder="输入我的手机号码">
+       </div>
+       <span id="phoneTips" class="phoneTips">请输入正确的手机号码</span>
+   </div>
+   <button id="loginSubmit" type="submit" class="btn-default loginSubmit" onclick="submits()">查询订单</button>
+	</form>
   </body>
 </html>

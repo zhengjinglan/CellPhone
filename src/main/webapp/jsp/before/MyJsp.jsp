@@ -87,7 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	});  
   }
   
-    //根据机型选择故障
   function getFault(id){
   	$.ajax({
   		url:'fault/queryAll',
@@ -95,19 +94,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		success:function(data){
 			if(! data)return;
   			var html='';
+  			var price='';
   			for(var i in data){
   			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
+  			price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
+  			
   			} 
+  			$("#price").html("");
   			 $("#faultId").append(html);
-
+  			 $("#price").append(price);
+  			
   		}
   	});  
   }
   
   
   
-  });
-
+ });
 </script>
   
   <body>
@@ -122,6 +125,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</select>
 		
 		 <select id="faultId">                               
-		</select>    
+		</select>  
+		<div id="price"></div>
+		
   </body>
 </html>

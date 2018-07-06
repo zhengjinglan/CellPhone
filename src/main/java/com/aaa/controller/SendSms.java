@@ -19,7 +19,7 @@ public class SendSms extends HttpServlet {
 	 @Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String phone=req.getParameter("phone");
+		String phone=req.getParameter("userPhone");
 		//根据获取到的手机号发送验证码
 		String code=GetMessageCode.getCode(phone); 
 		System.out.println(code);

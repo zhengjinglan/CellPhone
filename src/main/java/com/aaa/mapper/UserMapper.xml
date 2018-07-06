@@ -201,4 +201,28 @@
       user_sex = #{userSex,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  
+   	<select id="queryOfa" resultType="Map" 
+   	parameterType="com.aaa.entity.User" >
+ 	select u.user_name,m.model_name,f.fault_name,f.fault_price,
+	o.gmt_create,o.state
+	from order_fault ofa
+	join `order` o
+	on ofa.order_id=o.order_id
+	join  `user` u
+	on o.user_id=u.user_id
+	join fault f
+	on ofa.fault_id=f.fault_id
+	join model m
+	on m.model_id=f.model_id
+	where u.user_phone=#{userPhone}
+  	</select>
+  	<select id="queryUser" parameterType="com.aaa.entity.User" resultType="User">
+  		select * from `user`
+  		<where>
+  			<if test="userPhone !=null">
+  				user_phone=#{userPhone}
+  			</if>
+  		</where>
+  	</select>
 </mapper>

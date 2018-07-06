@@ -607,26 +607,16 @@ var url;
   			var price='';
   			for(var i in data){
   			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
-  			price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
+  			price +='预计价格:￥<span name="orderPrice" value='+data[i].faultId+'>'+data[i]. faultPrice+' </span>';
   			
   			} 
+  			$("#price").html("");
   			 $("#faultId").append(html);
   			 $("#price").append(price);
   			
   		}
   	});  
   }
-	  
-   //价格显示
-/*  $("#faultId").change(function(){
-	 alert(111);
-	 var price='';
-	 $.post("../../fault/queryAll",{"faultId":$("#faultId").val()},function(data){
-		 
-		 price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
-		 $("#price").append(price);
-	 });
- });  */
 //显示颜色
 	$.ajax({
 	  url: '../../color/queryAll' ,
@@ -654,6 +644,7 @@ var url;
 	    $("#serviceCenterBox").hide();
 	    $("#serviceCenterInfoBox").hide();
 	    $("#mailBox").hide();
+	    
 	    if(localStorage.invoice == 1){
 	    	$(".listBox-right").css("min-height","610px");
 	    	$(".listBox-right").css("height","610px");
@@ -735,7 +726,7 @@ var url;
 			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
 			Gid('s_city').value + " - 县/区" + 
 			Gid('s_county').value + "</h3>"
-     }    
+     }  
 		Gid('s_county').setAttribute('onchange','showArea()');
 
     
@@ -749,5 +740,4 @@ var url;
   </script>
 </body>
 </html>
-<div style="display: none"><!--BD static-->
     
