@@ -113,6 +113,11 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.22</version>
     </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20180130</version>
+    </dependency>
     <!--Jdbc 驱动依赖 结束 -->
 
     <!--Spring常用模块依赖 开始-->
@@ -186,7 +191,7 @@
 <dependency>
     <groupId>commons-io</groupId>
     <artifactId>commons-io</artifactId>
-    <version>2.5</version>
+    <version>2.2</version>
 </dependency>
 
 <dependency>
@@ -215,6 +220,13 @@
 	    <artifactId>commons-collections</artifactId>
 	    <version>3.2.1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/fr.matthieu-vergne/ioutils-core -->
+<dependency>
+    <groupId>fr.matthieu-vergne</groupId>
+    <artifactId>ioutils-core</artifactId>
+    <version>1.0</version>
+</dependency>
+	
 	<dependency>
 	    <groupId>net.sf.json-lib</groupId>
 	    <artifactId>json-lib</artifactId>

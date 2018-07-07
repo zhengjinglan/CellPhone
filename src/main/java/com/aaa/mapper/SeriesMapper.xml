@@ -114,6 +114,8 @@
     </selectKey>
     insert into series (brand_id, series_name, gmt_create, 
       gmt_modified, operator)
+    values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
     values (#{brandId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR},now(), 
       now(), #{operator,jdbcType=VARCHAR})
   </insert>
@@ -240,5 +242,13 @@ left join brand b
  <if test="param2 != null and param3 != null">
  limit #{param2},#{param3}
  </if>
+  </select>
+  <select id="querySeries" parameterType="com.aaa.entity.Series" resultMap="BaseResultMap" >
+  	select * from series
+  	<where>
+  		<if test="brandId !=null">
+  			brand_id=#{brandId}
+  		</if>
+  	</where>
   </select>
 </mapper>

@@ -34,4 +34,6 @@ public interface SeriesMapper {
 	int updateByPrimaryKeySelective(Series record);
 
 	int updateByPrimaryKey(Series record);
+
+	List<Series> querySeries(Series s);
 }

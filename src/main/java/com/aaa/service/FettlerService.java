@@ -26,9 +26,8 @@ public class FettlerService {
 		return fettlerMapper.selectByExample(fettlerExample);
 	}
 
-	public List<Fettler> queryAll(Fettler fettler) {
-		FettlerExample fettlerExample = new FettlerExample();
-		return fettlerMapper.selectByExample(fettlerExample);
+	public List<Map<String, Object>> queryAll() {
+		return fettlerMapper.queryAll();
 	}
 
 	public List<Map<String, Object>> queryByState() {

@@ -117,7 +117,11 @@
       gmt_create, gmt_modified, operator
       )
     values (#{brandName,jdbcType=VARCHAR}, #{brandIcon,jdbcType=VARCHAR}, #{brandDescription,jdbcType=VARCHAR}, 
+
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+
       now(),now(), #{operator,jdbcType=VARCHAR}
+
       )
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Brand">

@@ -82,6 +82,7 @@ from fettler f
 left join emp e
 on f.emp_id=e.emp_id
   </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -249,7 +250,7 @@ on f.emp_id=e.emp_id
       operator = #{operator,jdbcType=VARCHAR}
     where fettler_id = #{fettlerId,jdbcType=INTEGER}
   </update>
-  <select id="queryByState">
+  <select id="queryByState" resultType="map">
   select f.fettler_id fettlerId,f.emp_id empId,
 f.fettler_phone fettlerPhone,f.work_city workCity,
 f.gmt_create gmtCreate,f.gmt_modified gmtModifed,
@@ -277,5 +278,15 @@ on f.emp_id=e.emp_id
 <if test="param2 != null and param3 != null">
 	limit #{param2},#{param3}
 </if>
+  </select>
+  <select id="queryAll" parameterType="map" resultType="map">
+    select f.fettler_id fettlerId,f.emp_id empId,
+f.fettler_phone fettlerPhone,f.work_city workCity,
+f.gmt_create gmtCreate,f.gmt_modified gmtModified,
+f.state state,f.operator operator,
+e.emp_id,e.emp_name empName
+from fettler f
+left join emp e
+on f.emp_id=e.emp_id
   </select>
 </mapper>

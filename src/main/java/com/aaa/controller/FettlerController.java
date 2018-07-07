@@ -30,15 +30,15 @@ public class FettlerController {
 
 	@RequestMapping("queryAll")
 	@ResponseBody
-	public List<Fettler> queryAll(Fettler fettler) {
-		System.out.println(fettlerService.queryAll(fettler));
-		return fettlerService.queryAll(fettler);
+	public List<Map<String, Object>> queryAll() {
+		System.out.println("queryAll" + fettlerService.queryAll());
+		return fettlerService.queryAll();
 	}
 
 	@RequestMapping("queryByState")
 	@ResponseBody
 	public List<Map<String, Object>> queryByState() {
-
+		System.out.println("queryByState" + fettlerService.queryByState());
 		return fettlerService.queryByState();
 	}
 

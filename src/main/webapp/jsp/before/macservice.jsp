@@ -6,7 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
 <head>
       <title>手机维修</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,11 +24,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/tuiguang_order.css">
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+ 	 <!-- 评价 -->
+ 	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
+	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <!-- 故障 -->
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+    <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="http://static.shanxiuxia.com/weadoc/css/public.css" rel="stylesheet">
+    <link href="http://static.shanxiuxia.com/weadoc/css/fixWay.css" rel="stylesheet">
+    <link href="http://static.shanxiuxia.com/weadoc/css/laydate.css" rel="stylesheet">
+    <link href="css/publicOrder2.css" rel="stylesheet">
+   <!--  <script src="js/repairOrder2.js"></script> -->
+    <script src="js/config.js"></script>
+    
+    
+ 	
  		<style type="text/css">
  			.disabled{
  				pointer-events:none;
  			}
  		</style>
+<<<<<<< HEAD
  	
 <!--     <script type="text/javascript" >
         window.ctx = "";
@@ -36,9 +58,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var _Width = $(window).width();
      
     </script> -->
+=======
+
+>>>>>>> refs/remotes/origin/lqx
 </head>
 
 <body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+				<div class="contact">
+			
+			<div class="container">
+				<h1>您的评价</h1>
+			<div class="contact-form">
+				
+				<div class="col-md-8 contact-grid">
+					<form action="assessment/inserts" method="post">	
+						<input type="text" name="fettlerId" value="维修工id" style="width:100px; height=20px;" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='维修工编号';}">
+					
+						<input type="text" name="userId" value="用户id" style="width:200px; height=20px;"onfocus="this.value='';" onblur="if (this.value == '') {this.value ='用户编号';}">
+							<select name="level"  >   
+								  <option value="0">请选择评分</option>   
+								  <option value="1" >1</option>  
+								  <option value="2" >2</option>
+								  <option value="3" >3</option>  
+                                  <option value="4" >4</option>
+                                  <option value="5" >5</option>   
+								  <option value="6" >6</option>  
+								  <option value="7" >7</option>
+								  <option value="8" >8</option>  
+                                  <option value="9" >9</option>
+                                  <option value="9" >10</option>
+                                  
+                            </select>
+						<textarea cols="77" rows="6" value=" " name="content" onfocus="this.value='';" style="width:440px; height=400px;" onblur="if (this.value == '') {this.value = '评价内容';}">评价内容</textarea>
+						<div class="send">
+							<input type="submit" value="提交" class="btn btn-primary btn-lg " onclick="addUser()">
+							<input type="button" value="关闭"class="btn btn-default" data-dismiss="modal">
+				         ${inserUser }<br>  
+						</div>
+					
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				按下 ESC 按钮退出。
+			</div>
+			
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <header id="header">
     <div class="wrap">
@@ -185,6 +267,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>
         </div>
     </article>
+<<<<<<< HEAD
             <form  id="biddingForm" method="post">
                 <div class="ksxdUpdate">
                     <h3>我要报修</h3>
@@ -276,16 +359,218 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </form>
         <div class="tjts">
             <p>*工作时间(8:00-22:00)将有来自工程师或区号023的座机与您联系，请保持电话畅通</p>
+=======
+
+<!--Navigation over-->
+
+<section class="fixWay">
+    <!--tabBar star-->
+    <div class="container tabBar">
+        <div class="row tabBarWarp">
+            <div class="col-md-12 col-xs-12">
+                <ul class="main-icons text-center">
+                    <li id="fixMenuBtnOne" class="fixMenuBtn">
+                        <img id="menuL" src="http://static.shanxiuxia.com/weadoc/fix_tabmenu1_select2.png">
+                        <p id="smText" class="title">上门维修</p>
+                    </li>
+                    <li id="fixMenuBtnTwo" class="fixMenuBtn">
+                        <img id="menuR" src="http://static.shanxiuxia.com/weadoc/fix_tabmenu2-2.png">
+                        <p id="yjText" class="title">邮寄维修</p>
+                    </li>
+                </ul>
+            </div>
+>>>>>>> refs/remotes/origin/lqx
         </div>
+    </div>
+    <!--tabBar star-->
+
+    <!--from star-->
+    <div class="container-fluid listContent" id="maodian">
+        <div class="container listBox">
+        	<form id="orderfm" method="post" >
+            <div class="listBox-left">
+            	<div id="nameBox" class="input-group nameBox">
+	                <span class="input-group-addon namePic">
+	                    <img class="nameIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">	
+                    	<p class="listTitle">姓名：</p>
+	                </span>
+	                
+	                <input id="userName" name="userName" type="text" class="form-control nameText"
+	                 placeholder="输入我的姓名">
+	                
+	            </div>
+				<span id="nameFixTips" class="fixTips">请输入2-4个中文英文或者数字</span>
+	            <div id="phoneBox" class="input-group phoneBox">
+	                <span class="input-group-addon phonePic">
+	                   <img class="phoneIcon" src="http://static.shanxiuxia.com/weadoc/fix_telnum2.png">
+	                   	<p class="listTitle">手机号码：</p>
+	                </span>
+	                <input id="telPhone" name="userPhone" type="number" maxlength="11"
+	                 class="form-control phoneText" placeholder="输入我的手机号码">
+	                
+	            </div>
+				<span id="telFixTips" class="fixTips">请输入正确的手机号码</span>
+				
+				<div id="mailBox" class="input-group phoneBox">
+	                <span class="input-group-addon phonePic">
+	                   <img class="phoneIcon" src="http://static.shanxiuxia.com/weadoc/fix_tabmenu2-2.png">
+	                   	<p class="listTitle">快递单号：</p>
+	                </span>
+	                <input id="mailNum" name="mailNum" type="number" 
+	                 class="form-control phoneText" placeholder="输入快递单号">
+	                
+	            </div>
+				
+	            <div id="serviceCenterBox" class="input-group serviceCenterBox">
+	                <span class="input-group-addon serviceCenterPic">
+                     	<img class="serviceCenterIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">
+                     	<p class="listTitle">邮寄地址：</p>
+	                </span>
+	               <div id="serviceCenterInfoBox" class="input-group serviceCenterInfoBox">
+	                <span class="input-group-addon serviceCenterInfoPic" disabled>
+	                	河南省郑州市二七区政通路25号
+	                	*邮费自费
+	                </span>
+	                <div id="centerDetails" class="centerDetails">
+	                </div>
+	            </div>
+	            </div>
+	
+	            
+	
+	            <div id="addressBox" class="input-group addressBox">
+	                <span class="input-group-addon addressPic">
+                     	<img class="addressIcon" src="http://static.shanxiuxia.com/weadoc/fix_address2.png">
+                     	<p class="listTitle">地址：</p>
+	                </span>
+	                	<select class="form-control province" id="s_province" name="s_province"
+	                	 diaabled onChange="javascript:doit(this.form);"></select>
+	    				<select class="form-control province" id="s_city"  name="s_city" 
+	    				diaabled onChange="javascript:doit(this.form);"></select>
+	    				<select class="form-control province" id="s_county" name="s_county" 
+	    				diaabled onChange="javascript:doit(this.form);"></select>
+	            </div>
+	            <div id="streetBox" class="input-group streetBox">
+	                <span class="input-group-addon streetPic">
+	                    <img class="streetIcon" src="http://static.shanxiuxia.com/weadoc/fix_street.png">
+	                </span>
+	                <textarea id="street" name="address" class="form-control streetText" placeholder="输入具体街道地址"></textarea>
+	                <span id="streetFixTips" class="fixTips">请输入6-32个文字</span>
+	            </div>
+	            	<div id="imeiBox" class="input-group imeiBox">
+	                <span class="input-group-addon imeiPic">
+	                   <img class="imeiIcon" src="http://static.shanxiuxia.com/weadoc/fix_imei2.png">
+	                   	<p class="listTitle">IMEI：</p>
+	                </span>
+	                <input id="imei" name="imei" type="text" class="form-control imeiText" placeholder="输入IMEI码">
+	                <span class="fixTips">请输入IMEI码</span>
+	            </div>
+	            <div id="imeiTips"  class="imeiTipsBox">
+	                <p class="tips">在拨号面板入输 *#06#；或查看设置－通用－关于本机即可获得IMEI码</p>
+	            </div>	
+	             <div class="fixBtn">
+	                <button  class="btn btn-default  next" type="submit" id="orderBtn"
+	                >提交订单</button> 
+	               、</div>
+	           
+            </div>
+            <div class="listBox-right">
+            	<li class="fault-title">故障维修信息</li>
+            	 <div class="input-group">   
+            	 				<span>请选择品牌</span> <br>                           
+                               <select id="brandId" class="form-control">  
+								<option value="">请选择</option>                            
+								</select>
+								<span>请选择系列</span><br>
+								<select id="seriesId" class="form-control">                              
+								</select> 
+								<span>请选择手机型号</span><br>
+								 <select id="modelId" class="form-control">                               
+								</select>
+								<span>请选择故障信息</span><br>
+								 <select id="faultId" name="faultId" class="form-control">                               
+								</select> 
+								  <span>请选择手机颜色</span><br>      
+                                 <select id="colorId" class="form-control">                           
+                                </select>   
+                               <!--  <span id="price" name="orderPrice">预计价格:￥</span> -->
+                                <div id="price" name="orderPrice" >预计价格:￥</div>   
+            </div>
+        </div>
+        
+        </form>
+    </div>
+   
+    </div>
+     
+    <!--from over-->
+	<div class="invoice-box">
+    	<div class="invoice-prompt">
+	    	<p class="prompt-title">开票须知</p>
+	    	<p class="prompt-text">应国家税务总局要求，自2017年7月1日起，您若开具增值税普通发票，须同时提供企业抬头及税号，否则发票将无法用于企业报销。</p>
+	    	<p class="prompy-btn">我知道了</p>
+	    </div>
+    </div>
+    <!--bottom star-->
+    <div class="container-fluid fixBottom">
+        <div class="container bottomBox">
+            <p class="step">
+                <a id="stepB" class="btn btn-default menuBtn">上门服务</a>
+                <a id="stepA" class="btn btn-default menuBtn">邮寄服务</a>
+                <a id="stepC" class="btn btn-default menuBtn" type="button">到店服务</a>
+            </p>
+            <ul id="contentA" class="list-group content">
+                <li class="list-group-item pull-left menu">01 提交订单</li>
+                <li class="list-group-item pull-left menuPic"><img src="http://static.shanxiuxia.com/weadoc/fix_button_arrow.png"></li>
+                <li class="list-group-item pull-left menu">02 客服确认</li>
+                <li class="list-group-item pull-left menuPic"><img src="http://static.shanxiuxia.com/weadoc/fix_button_arrow.png"></li>
+                <li id="stepThree" class="list-group-item pull-left menu">03 邮寄设备</li>
+                <li class="list-group-item pull-left menuPic"><img src="http://static.shanxiuxia.com/weadoc/fix_button_arrow.png"></li>
+                <li class="list-group-item pull-left menu">04 维修完成</li>
+                <li class="list-group-item pull-left menuPic"><img src="http://static.shanxiuxia.com/weadoc/fix_button_arrow.png"></li>
+                <li id="stepFive" class="list-group-item pull-left menu">05 转账付款</li>
+                <li class="list-group-item pull-left menuPic"><img src="http://static.shanxiuxia.com/weadoc/fix_button_arrow.png"></li>
+                <li id="stepSix" class="list-group-item pull-left menu">06 寄回设备</li>
+            </ul>
+        </div>
+    </div>
+    <!--bottom over-->
+</section>
+
     <div class="kj-survice site-inner clearFix">
         <!--dyh1031-->
         <p class="title">用户对我们的信任</p>
+        <a href="#" data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-default btn-lg" >添加您的评价</button></a>
+            
         <div class="float-left user-evaluate">
+<<<<<<< HEAD
+=======
+            <div id="scroll">
+                <ul class="user-evaluate-list" style="top: 0px;">
+            <c:forEach items="${userList }" var="l">
+                            <li class="clearFix">
+                                <div class="user-img float-left">
+                                    <img src="//rs.jikexiu.com/resources/Nimages/landing/user.png" alt="">
+                                    <p>${l.id}</p>
+                                </div>
+                                <div class="user-name float-left">
+                                     <p class="mar-b-10 stars">
+                                        ${l.level }分
+                                    </p> 
+                                    <p class="col-hui" title="下完订单后，夏师傅很快联系我，预约上门时间，全过程录像，很专业，有问必答，耐心。非常满意！会推荐给同事～">${l.content }</p>
+                                    <p class="timeShow">${l.gmtCreate }</p>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            </ul>
+            </div>
+>>>>>>> refs/remotes/origin/lqx
         </div>
         <div class="img-right">
             <img src="//rs.jikexiu.com/resources/Nimages/landing/img-right.png" alt="">
         </div>
     </div>
+
     <article class="col problem" id="col5">
         <div class="wrap">
             <h3>您可能关心的问题</h3>
@@ -333,14 +618,234 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
-<footer id="footer">
-    <div class="wrap">
-        <div class="webInfo">
-               
-             <p class="info_aboutUs"><a href="">关于我们</a></p>
-                <p class="info_aboutUs"><a href="">联系我们</a></p>
- 
+<!-- <script type="text/javascript" src="js/mac.js"></script> -->
+    <script class="resources library" src="../before/area.js" type="text/javascript"></script>
+    <script type="text/javascript">_init_area();</script>
+<script type="text/javascript"> 
+var url;
+  $(document).ready(function(){
+	  //默认显示上门服务
+	  url="../../order/add";
+	    $("#imeiBox").hide();
+	    $("#addressBox").show();
+	    $("#imeiTips").hide();
+	    $("#time").show();
+	    $("#timeTipsBox").show();
+	    $("#serviceCenterBox").hide();
+	    $("#serviceCenterInfoBox").hide();
+	    $("#mailBox").hide();
+	   
+	  
+  $.ajax({
+  url: '../../brand/queryBrand' ,
+  success: function(data){
+  if( !data)return;
+  var html= "";
+  for(var e in data){
+  html += '<option value=' +data[e]. brandId+' >'+data[e]. brandName+' </option>';
+ }
+ $("#brandId").append(html);
+ //通过change方法调用
+  $("#brandId"). change(function(){
+  $("#seriesId").html("");
+  $("#modelId"). html("");
+  $("#faultId"). html("");
+  getSeries($(this).val());
+  });
+  }
+  });
+  
+    //根据品牌获取系列
+  function getSeries(id){
+  $.ajax({
+  url:'../../series/querySeries',
+  data: {brandId:id},//传入的id
+  success: function(data){
+  
+  if(! data)return;
+  var html='';
+  for(var i in data){
+  html +='<option value='+data[i].seriesId+'>' +data[i]. seriesName+' </option>';
+  }
+  $("#seriesId").append(html);
+  //通辻change方法去調用
+  $("#seriesId"). change(function(){
+  $("#modelId") . html("");
+  $("#faultId"). html(""); 
+  getModel($(this) .val());
+  });
+  $("#seriesId").get(0). selectedIndex=0;
+ 	getModel($("#seriesId").val());	
+  }
+  });
+  }
+  
+  //根据系列选择机型
+  function getModel(id){
+  	$.ajax({
+  		url:'../../model/queryAll',
+  		data:{seriesId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			for(var i in data){
+  			html +='<option value='+data[i].modelId+'>' +data[i]. modelName+' </option>';
+  			} 
+  			 $("#modelId").append(html);
+  			  $("#modelId"). change(function(){
+              $("#faultId"). html(""); 
+              getFault($(this) .val());
+  });
+  			$("#modelId").get(0). selectedIndex=0;
+ 			getFault($("#modelId").val());	  	
+    			
+  		}
+  	});  
+  }
+  
+    //根据机型选择故障
+  function getFault(id){
+  	$.ajax({
+  		url:'../../fault/queryAll',
+  		data:{modelId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			var price='';
+  			for(var i in data){
+  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
+  			price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
+  			
+  			} 
+  			 $("#faultId").append(html);
+  			 $("#price").append(price);
+  			
+  		}
+  	});  
+  }
+	  
+   //价格显示
+/*  $("#faultId").change(function(){
+	 alert(111);
+	 var price='';
+	 $.post("../../fault/queryAll",{"faultId":$("#faultId").val()},function(data){
+		 
+		 price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
+		 $("#price").append(price);
+	 });
+ });  */
+//显示颜色
+	$.ajax({
+	  url: '../../color/queryAll' ,
+	  success: function(data){
+	  if( !data)return;
+	  var html= "";
+	  for(var e in data){
+	  html += '<option value=' +data[e]. colorId+' >'+data[e]. colorName+' </option>';
+	 }
+	 $("#colorId").append(html);
+	 }
+	 });
+		
+	 //点击上门维修
+	$("#fixMenuBtnOne").click(function () {
+		url = "../../order/add";
+	    category = 1;
+	    $("#smText").css("color","#f37b46");
+	    $("#yjText").css("color","#777371");
+	    $("#imeiBox").hide();
+	    $("#addressBox").show();
+	    $("#imeiTips").hide();
+	    $("#time").show();
+	    $("#timeTipsBox").show();
+	    $("#serviceCenterBox").hide();
+	    $("#serviceCenterInfoBox").hide();
+	    $("#mailBox").hide();
+	    if(localStorage.invoice == 1){
+	    	$(".listBox-right").css("min-height","610px");
+	    	$(".listBox-right").css("height","610px");
+	    }else if(localStorage.invoice == 0){
+	    	$(".listBox-right").css("height","530px");
+	    	$(".listBox-right").css("min-height","530px");
+	    }
+	    $("#fixMenuBtnOne #menuL").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu1_select2.png");
+	    $("#fixMenuBtnTwo #menuR").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu2-2.png");
+	});
+	//点击邮寄维修
+	$("#fixMenuBtnTwo").click(function () {
+		url = "../../mail/addMail";
+	    category = 2;
+	    $("#smText").css("color","#777371");
+	    $("#yjText").css("color","#f37b46");
+	    $("#imeiBox").show();
+	    $("#addressBox").show();
+	   // $("#addressAll").show();
+	    $("#imeiTips").show();
+	    $("#time").hide();
+	    $("#timeTipsBox").hide();
+	    $("#serviceCenterBox").show();
+	    $("#serviceCenterInfoBox").show();
+	    $("#mailBox").show();
+	    if(localStorage.invoice == 1){
+	    	$(".listBox-right").css("min-height","896px");
+	    }else if(localStorage.invoice == 0){
+	    	$(".listBox-right").css("min-height","816px");   	
+	    }
+		
+	    $("#fixMenuBtnOne #menuL").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu1.png");
+	    $("#fixMenuBtnTwo #menuR").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu2_select2.png");
+	});        
+	//点击底部
+	$('#stepA').hover(function () {
+	    $("#stepThree").html('03邮寄设备');
+	    $("#stepFive").html('05 转账付钱');
+	    $("#stepSix").html('06 设备寄回');
+	});
+	$('#stepB').hover(function () {
+	    $("#stepThree").html('03  鐢ㄦ埛楠屾敹');
+	    $("#stepFive").html('05 鐢ㄦ埛楠屾敹');
+	    $("#stepSix").html('06 杞处浠樻');
+	});
+	$('#stepC').hover(function () {
+	    $("#stepThree").html('03 鍒板簵缁翠慨');
+	    $("#stepFive").html('05 鐢ㄦ埛楠屾敹');
+	    $("#stepSix").html('06 杞处浠樻');
+	});
+	 
+	//表单提交	
+  $("#orderBtn").click(function() {  
+            var params = $("#orderfm").serialize();  
+            $.ajax( {  
+                type : "POST",  
+                url : url,  
+                data : params,  
+                success : function(msg) {  
+                	msg.
+                	alert("订单提交成功");
+                    window.location="macservice.jsp";
+                }  
+           
+            });  
+  	});  
+	
+  });
+  function repairSave(){
+			window.location.href="fixWay.jsp";
+		}
+		 //地址
+		 function doit(ofrm){ 
+		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;  
+		}   
+        //城市选择
+        var Gid  = document.getElementById ;		
+		var showArea = function(){
+			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
+			Gid('s_city').value + " - 县/区" + 
+			Gid('s_county').value + "</h3>"
+     }    
+		Gid('s_county').setAttribute('onchange','showArea()');
 
+<<<<<<< HEAD
             <p class="Cust_Ser"><a href="javascript:void(0);"class="robot">在线客服</a><span>40008-000-00<time>服务时间：8:00-22:00</time></span></p>
         </div>
 
@@ -482,8 +987,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			});
 		}          
+=======
+    
+        function addUser(){  
+        var form = document.forms[0];  
+        form.action = "<%=basePath%>assessment/inserts";  
+        form.method="post";  
+        form.submit();  
+    }  
+>>>>>>> refs/remotes/origin/lqx
         
   </script>
 </body>
 </html>
 <div style="display: none"><!--BD static-->
+    

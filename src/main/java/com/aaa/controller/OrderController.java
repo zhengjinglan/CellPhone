@@ -32,9 +32,11 @@ public class OrderController {
 	@ResponseBody
 	public int add(User u, Order o, Order_Fault ofa) {
 		int us = uservice.add(u);
+		System.out.println("us" + us);
 		int rs = oservice.add(o);
+		System.out.println("rs" + rs);
 		ofservice.add(ofa);
-		System.out.println(ofa);
+		System.out.println("ofa" + ofa);
 		return rs;
 	}
 

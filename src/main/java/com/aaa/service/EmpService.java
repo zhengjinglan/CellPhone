@@ -63,6 +63,7 @@ public class EmpService {
 	public int update(Emp emp) {
 		EmpExample empExample = new EmpExample();
 		empExample.createCriteria().andEmpIdEqualTo(emp.getEmpId());
+		empExample.createCriteria().andEmpIdEqualTo(emp.getDeptId());
 		return empMapper.updateByExampleSelective(emp, empExample);
 	}
 

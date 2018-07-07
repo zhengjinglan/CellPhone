@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="tab-cont-brand">
                 <div class="item tuijian" id="tuijian" style="display: none">
                     <ul>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="235" mid="70" deviceid="17">
-                                    <div class="div1" deviceid="17">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="235" mid="70" seriesId="17">
+                                    <div class="div1" seriesId="17">
                                         <p class="model">iPhone 6</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -116,8 +116,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="280" mid="70" deviceid="18">
-                                    <div class="div1" deviceid="18">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="280" mid="70" seriesId="18">
+                                    <div class="div1" seriesId="18">
                                         <p class="model">iPhone 6 Plus</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -129,8 +129,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="5327" mid="70" deviceid="117">
-                                    <div class="div1" deviceid="117">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="5327" mid="70" seriesId="117">
+                                    <div class="div1" seriesId="117">
                                         <p class="model">iPhone 6S</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -142,8 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="5329" mid="70" deviceid="118">
-                                    <div class="div1" deviceid="118">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="5329" mid="70" seriesId="118">
+                                    <div class="div1" seriesId="118">
                                         <p class="model">iPhone 6S Plus</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -155,8 +155,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="6256" mid="70" deviceid="260">
-                                    <div class="div1" deviceid="260">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="6256" mid="70" seriesId="260">
+                                    <div class="div1" seriesId="260">
                                         <p class="model">iPhone 7 Plus</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -168,8 +168,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="6253" mid="70" deviceid="259">
-                                    <div class="div1" deviceid="259">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="6253" mid="70" seriesId="259">
+                                    <div class="div1" seriesId="259">
                                         <p class="model">iPhone 7</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -181,8 +181,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="9317" mid="70" deviceid="153">
-                                    <div class="div1" deviceid="153">
+                                <a href="#maodian"><li sulotionid="" malfunction="外屏碎（图像正常）" brandid="" fmid="12" smid="9317" mid="70" seriesId="153">
+                                    <div class="div1" seriesId="153">
                                         <p class="model">Mate 8</p>
                                         <p class="fault">外屏碎（图像正常）</p>
                                         <p class="price">￥<big>
@@ -194,8 +194,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="升级为64G" brandid="" fmid="179" smid="5891" mid="181" deviceid="17">
-                                    <div class="div1" deviceid="17">
+                                <a href="#maodian"><li sulotionid="" malfunction="升级为64G" brandid="" fmid="179" smid="5891" mid="181" seriesId="17">
+                                    <div class="div1" seriesId="17">
                                         <p class="model">iPhone 6</p>
                                         <p class="fault">升级为64G</p>
                                         <p class="price">￥<big>
@@ -207,8 +207,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="升级为128G" brandid="" fmid="179" smid="6020" mid="180" deviceid="117">
-                                    <div class="div1" deviceid="117">
+                                <a href="#maodian"><li sulotionid="" malfunction="升级为128G" brandid="" fmid="179" smid="6020" mid="180" seriesId="117">
+                                    <div class="div1" seriesId="117">
                                         <p class="model">iPhone 6S</p>
                                         <p class="fault">升级为128G</p>
                                         <p class="price">￥<big>
@@ -220,8 +220,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="268" mid="55" deviceid="17">
-                                    <div class="div1" deviceid="17">
+                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="268" mid="55" seriesId="17">
+                                    <div class="div1" seriesId="17">
                                         <p class="model">iPhone 6</p>
                                         <p class="fault">电池续航时间短</p>
                                         <p class="price">￥<big>
@@ -233,8 +233,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="5619" mid="55" deviceid="117">
-                                    <div class="div1" deviceid="117">
+                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="5619" mid="55" seriesId="117">
+                                    <div class="div1" seriesId="117">
                                         <p class="model">iPhone 6S</p>
                                         <p class="fault">电池续航时间短</p>
                                         <p class="price">￥<big>
@@ -246,8 +246,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="313" mid="55" deviceid="18">
-                                    <div class="div1" deviceid="18">
+                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="313" mid="55" seriesId="18">
+                                    <div class="div1" seriesId="18">
                                         <p class="model">iPhone 6 Plus</p>
                                         <p class="fault">电池续航时间短</p>
                                         <p class="price">￥<big>
@@ -259,8 +259,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="5605" mid="55" deviceid="118">
-                                    <div class="div1" deviceid="118">
+                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="5605" mid="55" seriesId="118">
+                                    <div class="div1" seriesId="118">
                                         <p class="model">iPhone 6S Plus</p>
                                         <p class="fault">电池续航时间短</p>
                                         <p class="price">￥<big>
@@ -272,8 +272,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <span></span>
                                 </li></a>
-                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="9332" mid="55" deviceid="153">
-                                    <div class="div1" deviceid="153">
+                                <a href="#maodian"><li sulotionid="" malfunction="电池续航时间短" brandid="" fmid="52" smid="9332" mid="55" seriesId="153">
+                                    <div class="div1" seriesId="153">
                                         <p class="model">Mate 8</p>
                                         <p class="fault">电池续航时间短</p>
                                         <p class="price">￥<big>
@@ -384,28 +384,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="weixiu-cotent">
                                     <div id="weixiu-dropdown-content" class="dropdown-content">
                                         <ul id="weixiu_ul">
+<<<<<<< HEAD
                                         <select id="brandId">
                                 <c:forEach items="${blist }" var="b">
                                 	<option value="${b.brandId }">${b.brandName }</option>
                                 </c:forEach>                                
                                 </select>
+=======
+                                        
+>>>>>>> refs/remotes/origin/lqx
                                         </ul>
                                     </div>
                                     <div id="xh1" class="sj-dropdown-content">
                                         <ul id="xh1_ul">
+<<<<<<< HEAD
                                         <select id="seriesId">
                                 <c:forEach items="${slist }" var="s">
                                 	<option value="${s.seriesId }">${s.seriesName }</option>
                                 </c:forEach>                                
                                 </select>                                        </ul>
+=======
+                                                                            </ul>
+>>>>>>> refs/remotes/origin/lqx
                                     </div>
                                     <div class="color-dropdown-content" id="color-dropdown">
                                         <ul>
+<<<<<<< HEAD
                                        <select id="modelId">
                                 <c:forEach items="${mlist }" var="m">
                                 	<option value="${m.modelId }">${m.modelName }</option>
                                 </c:forEach>                                
                                 </select>
+=======
+                                       
+>>>>>>> refs/remotes/origin/lqx
                                         </ul>
                                     </div>
                                 </div>
@@ -791,9 +803,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 url = url.replace("orderSource=0", "orderSource=" + orderSource);
                 $(this).attr("href", url);
             });
-            /* 	$("#shell").attr("href","http://www.jikexiu.com/order/quick/shell?orderSource="+orderSource);
-              $("#memory").attr("href","http://www.jikexiu.com/order/quick/memory?orderSource="+orderSource);*/
-            var channel = getChannelPhone(orderSource);
+        var channel = getChannelPhone(orderSource);
             if (channel && channel != null) {
                 var telphone = channel.phone;
                 var viewphone = channel.disp_phone;
@@ -869,23 +879,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var brandName = $(".hd .cur").find("label").html();
             var deviceName = $(".model-hd .cur").html();
             var brandId = $(".hd .cur").attr("brandId");
-            var deviceId = $(".model-hd .cur").attr("data-deviceid");
+            var seriesId = $(".model-hd .cur").attr("data-seriesId");
             $(".q_brand ul").siblings("code").text(brandName).css("color", "#666");
             // $(".q_fault ul").siblings("code").text(malfunction).css("color","#666");
             $(".q_model ul").siblings("code").text(deviceName).css("color", "#666");
             $("#brand").val(brandId);
-            $("#model").val(deviceId);
+            $("#model").val(seriesId);
             $("#malfunction").val(malfunction);
             $("#malfunction_id").val(malfunctionId);
             $("#sm_id").val(smid);
             $("#f_malfunction_id").val(fmid);
             //设备信息写入span
-            writeDevice(brandId,deviceId);
+            writeDevice(brandId,seriesId);
             if (malfunctionId != null && malfunctionId != '') {
-                getSolutionMalFunction2(brandId, deviceId, malfunctionId, 0);
-                getMalFunction1(deviceId);
+                getSolutionMalFunction2(brandId, seriesId, malfunctionId, 0);
+                getMalFunction1(seriesId);
             } else {
-                getMalFunction2(deviceId);
+                getMalFunction2(seriesId);
             }
             getDevice1(brandId);
 
@@ -896,7 +906,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var domId = $($(this).parent("a").attr('href')),scrollHeight = domId.offset().top;
             if (scrollHeight != 0) {
                 var brandId = $(this).attr("brandId");
-                var deviceId = $(this).attr("deviceid");
+                var seriesId = $(this).attr("seriesId");
                 var malfunctionid = $(this).attr("mid");
                 var malfunction = $(this).attr("malfunction");
                 var sulotionid = $(this).attr("sulotionid");
@@ -920,12 +930,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             }
 
-            $("#sjxh").attr("deviceId", deviceId);
+            $("#sjxh").attr("seriesId", seriesId);
             $("#sjxh").attr("brandId", brandId);
             writeBrandClass();
             getDevice(brandId);
-            initColorlist(smid,brandId,deviceId,malfunctionid);
-            getColorlist(deviceId);
+            initColorlist(smid,brandId,seriesId,malfunctionid);
+            getColorlist(seriesId);
             // scrollToLocation();
             $('.q_brand ul').find("li").each(function () {
                 if (brandId == $(this).attr("brandid")) {
@@ -988,13 +998,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(this).addClass("mr");
                 /* $("#color-dropdown").show();*/
                 var device=$(this).text();
-                var deviceId=$(this).attr("deviceid");
+                var seriesId=$(this).attr("seriesId");
 
-                $("#sjxh").attr("deviceId",deviceId);
+                $("#sjxh").attr("seriesId",seriesId);
                 // myself_data
                 var jQuery = $(this).html();
                 $("#myself_data").attr("value",jQuery);
-                getColorlist(deviceId);
+                getColorlist(seriesId);
 
             }
         });
@@ -1022,14 +1032,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 setTimeout(function () {
                     $("#weixiu-cotent").hide();
                     $("#sjgz-dropdown-content").show();
-                    var deviceId = $("#sjxh").attr("deviceid");
+                    var seriesId = $("#sjxh").attr("seriesId");
 
-                    if (deviceId == undefined || deviceId == "") {
+                    if (seriesId == undefined || seriesId == "") {
                         $("#sjgz-dropdown-content").hide();
                     } else {
                         $(".dropdown-content").hide();
                         $("#sjgz-dropdown-content").show();
-                        $.post(url + "/order/quick/getMalFunctionByModelId", {deviceId: deviceId}, function (d) {
+                        $.post(url + "fault/queryAll", {seriesId: seriesId}, function (d) {
                                     var data = JSON.parse(d);
 
                                     var condata = data.malfunctionList;
@@ -1053,7 +1063,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         var malfunctionid = $("#jjfa").attr("malfunctionid");
                                         var solutionid = $("#jjfa").attr("solutionid");
                                         var smid = $("#jjfa").attr("smid");
-                                        getSolution(smid,deviceId,malfunctionid,0)
+                                        getSolution(smid,seriesId,malfunctionid,0)
                                     }
                                 }
                         )
@@ -1078,7 +1088,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //故障选择  这里冒泡了 怎么处理
         $(".guzhang").click(function () {
 
-            var deviceId = $("#sjxh").attr("deviceId");
+            var seriesId = $("#sjxh").attr("seriesId");
             var colorId = $("#sjxh").attr("colorId");
             if($("#jjfa").text().indexOf("确认故障与维修方案") > -1){
                 $("#jjfa").attr("fmid",null);
@@ -1092,7 +1102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             } else {
 
                 $("#sjgz-dropdown-content,.sjwt,#wxfa1").show();
-                $.post(url + "/order/quick/getMalFunctionByModelId", {deviceId: deviceId}, function (d) {//初始化故障大类
+                $.post(url + "fault/queryAll", {seriesId: seriesId}, function (d) {//初始化故障大类
                             var data = JSON.parse(d);
                             var condata = data.malfunctionList;
                             var context = "";
@@ -1113,7 +1123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 var malfunctionid = $("#jjfa").attr("malfunctionid");
                                 var solutionid = $("#jjfa").attr("solutionid");
                                 var smid = $("#jjfa").attr("smid");
-                                getSolution(smid,deviceId,malfunctionid,0)
+                                getSolution(smid,seriesId,malfunctionid,0)
                             }
                         }
                 )
@@ -1123,7 +1133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //点击选择故障弹出故障信息
         $(".sjwt").on('click','li',function (event) {
             var malfunctionid=$(this).attr("malfunctionid");
-            var deviceId=$("#sjxh").attr("deviceId");
+            var seriesId=$("#sjxh").attr("seriesId");
             // $("#jjfa").attr("malfuntionId",malfuntionId);
             $("#jjfa").attr("fmid",$(this).attr("malfunctionid"));
             $('.sjwt ul li').removeClass("mr");
@@ -1133,39 +1143,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(malfunctionid==""||malfunctionid==0||malfunctionid=="null"){
                 flag=0;
             }
-            initSolutionMalFunction(deviceId,malfunctionid,flag);
+            initSolutionMalFunction(seriesId,malfunctionid,flag);
             event.stopPropagation();
 
-        });
-
-        //百度地图  SDK
-        $("#placePositon").keyup(function () {
-            var placeposition=$("#placePositon").val();
-            var region=$("#address").attr("region");
-            //display: none;
-            $(".area_position ul").css('display','block');
-            $.ajax({
-                url: '//api.map.baidu.com/place/v2/suggestion',
-                type: 'get',
-                data: {
-                    q:placeposition,
-                    region:region,
-                    ak:'G1qcYAT3eYiTBK9PeenB1SL9',
-                    output:'json'
-                },
-                dataType: 'JSONP',
-                success: function (data) {
-                    if(data.status==0){
-                        var result = data.result;
-                        var context="";
-                        for(var i=0;i<result.length;i++){
-                            context=context+"<li>"+result[i].name+"</li>"
-                        }
-                        $(".area_position").show();
-                        $(".area_position ul").html(context);
-                    }
-                }
-            });
         });
         $("body").click(function (e) {
             $(".area_position").hide();
@@ -1185,253 +1165,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#sjgz-dropdown-content").hide();
             e.stopPropagation();
         });
-        //地区选择
-        $(".place").click(function (event) {
-            $(".dropdown-content").hide();
-            $("#area_box").show();
-            if($("#address").text().indexOf("所在地区") > -1){
-                // $(".area-tab .province").show();
-
-
-            }
-            event.stopPropagation();
-        });
-        $(".province p").click(function () {
-            $("#mapPr").hide();
-            $("#areaMap").show();
-            $("#cityMap").show();
-        });
-
-        $("body").click(function (e) {
-            $("#area_box").hide();
-            var address = $("#address").text();
-                var split = address.split("/");
-                if(split.length < 3){
-                    $(".dropdown-content .province li p").removeClass("mr");
-                    $(".dropdown-content .city li").removeClass("mr");
-                    $("#address").text("所在地区").css("color","#999");
-                    $("#door_range_cite").html("");
-                    $("#door_range_cite").css("background-color","transparent");
-                    $(".dropdown-content dl dd").removeClass("areaCur");
-                    $(".dropdown-content dl dd:first").addClass("areaCur");
-                    $("#area_box .area-tab ul :first").css('display','block');
-                    $(".dropdown-content .province ").css('display','block');
-
-                    $(".dropdown-content .city ").css('display','none');
-                    $(".dropdown-content .area ").css('display','none');
-                    if(!$(".area-tab ul li p").hasClass("mr")){
-                        $(".area-tab .city li").css('display','none');
-
-                    }
-                    if(!$(".area-tab .city li").hasClass("mr")){
-                        $(".area-tab .area li").css('display','none');
-                    }
-                }
-
-            e.stopPropagation();
-        });
-        //上门时间
-        $(".time").click(function (e) {
-            $(".dropdown-content").hide();
-            $("#sm-time").show();
-            $("#sm-dropdown-content,#sm-dropdown-content-sj,#sm-dropdown-content-js").show();
-            $("#sm-dropdown-content ul").find("li").each(function () {
-                // alert(!$("#sm-dropdown-content ul li").hasClass("mr"));
-                if (!$("#sm-dropdown-content ul li").hasClass("mr")) {
-                    $("#sm-dropdown-content ul li:first").addClass("mr");
-                    $("#myself_time").attr("value", $("#sm-dropdown-content ul li:first").text()+"/");
-                }
-            });
-            if(!$("#sm-dropdown-content ul li").hasClass("mr")){
-                $("#sm-dropdown-content-sj").hide();
-            }
-            if(!$("#sm-dropdown-content-sj ul li").hasClass("mr")){
-                $("#sm-dropdown-content-js ul li").css('display', 'none');
-            }
-            e.stopPropagation();
-        });
-
-        $("#sm-dropdown-content-sj ul").on('click','li',function () {
-            $("#sm-dropdown-content-js ul li").removeClass("mr");
-        });
-
-        $('.time').on('click', function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-        });
-
-        $("body").click(function (e) {
-            $("#sm-time").hide();
-            e.stopPropagation();
-        });
-        //点击省市区，清除地址栏
-        $(".area-tab").click(function () {
-            $("#placePositon").val("");
-        });
-
-        //选择省份城市 弹出 地级城市
-        $(".province p").click(function () {
-            var url=window.ctx;
-            var provinceId=$(this).attr("data-id");
-            //清除隐藏域value值
-            $("#myself_palce").attr("value","");
-            //清除所在地区的文本框值
-            $("#address").text($(this).text()).css("color","#161938");
-            $("#door_range_cite").css("background-color","#fdf3e9");
-            // $("#address").attr("cityId","");
-
-            $("#address").attr("distId",null);
-            var name=$(this).text();
-            $.post(url+"/getCity.json",{privinceId:provinceId},function (d) {
-                var data=JSON.parse(d);
-                var cityList=data.cityList;
-
-                var context="";
-                for(var i=0;i<cityList.length;i++){
-                    context=context+"<li cityId="+cityList[i].id+">"+cityList[i].name+"</li>";
-                }
-                $("#cityMap").html(context);
-            });
-            $("#address").attr("provinceId",provinceId);
-            $("#address").attr("region",name);
-            var parent = $(this).parents('ul');
-            $('#area_box dd').removeClass('areaCur').eq(1).addClass('areaCur');
-            $('#area_box ul').hide().eq(1).show();
-            $('.province p').removeClass('mr');
-            var provinceName = $(this).addClass("mr").text();
-            if (provinceName.indexOf("北京") >= 0 || provinceName.indexOf("重庆") >= 0 || provinceName.indexOf("天津") >= 0 || provinceName.indexOf("上海") >= 0) {
-                provinceName = provinceName +"/" +provinceName+ "市";
-                $("#address").text(provinceName).css("color","#161938");
-                // $("#myself_palce").attr("value",provinceName)
-                $.post(url+"/getCity.json",{privinceId:provinceId},function (d) {
-                    var data=JSON.parse(d);
-                    var cityList=data.cityList;
-                    var context="";
-                    for(var i=0;i<cityList.length;i++){
-                        var mr = cityList.length == 1 ? "mr" : "";
-                        context=context+"<li class='"+mr+"' cityId="+cityList[i].id+">"+cityList[i].name+"</li>";
-
-                    }
-                    $("#cityMap").html(context);
-                    var cityId=$("#cityMap li:first").attr("cityId");
-                    $.post(url+"/getDist.json",{cityId:cityId},function (d) {
-                        var data=JSON.parse(d);
-                        var distList=data.distList;
-                        var context="";
-                        for(var i=0;i<distList.length;i++){
-                            context=context+"<li distId="+distList[i].id+">"+distList[i].name+"</li>";
-                        }
-                        $("#areaMap").html(context);
-                        $("#address").attr("cityId",cityId);
-
-                        initcityDoor();
-                    });
-                });
-
-                $('#area_box dd').removeClass('areaCur');
-
-                $('#area_box dd').eq(2).addClass('areaCur');
-                $('#area_box ul').hide().eq(2).show();
-
-
-            }else{
-                // $("#myself_palce").attr("value",provinceName);
-                $("#address").text(provinceName).css("color","#161938");
-            }
-            // place_click_body();
-        });
-
-        //点击城市 加载区县
-        $("#cityMap").on('click','li',function () {
-            var cityId=$(this).attr("cityId");
-            //清除所在地区的文本框值
-            // $("#address").text("所在地区").css("color","#999");
-            $.post(url+"/getDist.json",{cityId:cityId},function (d) {
-                var data=JSON.parse(d);
-                var distList=data.distList;
-                var context="";
-                for(var i=0;i<distList.length;i++){
-                    context=context+"<li distId="+distList[i].id+">"+distList[i].name+"</li>";
-                }
-                $("#areaMap").html(context);
-                $("#address").attr("cityId",cityId);
-
-                initcityDoor();
-            });
-            $('#area_box dd').removeClass('areaCur').eq(2).addClass('areaCur');
-            $('#area_box ul').hide().eq(2).show();
-            $('#cityMap li').removeClass('mr');
-            var cityName = $(this).addClass("mr").text();
-            // var place = $("#myself_palce").attr("value");
-            var place = $("#address").text();
-            if (place.indexOf("/") >= 0) {
-                var sjxhth = place.substring(place.indexOf("/"));
-                // $("#myself_palce").attr("value",place.replace(sjxhth, "/" + cityName));
-                $("#address").text(place.replace(sjxhth, "/" + cityName));
-            } else {
-                // $("#myself_palce").attr("value",place + "/" + cityName);
-                $("#address").text(place + "/" + cityName);
-            }
-
-        });
-        //绑定区县ID
-        $("#areaMap").on('click','li',function () {
-            var  distId=$(this).attr("distId");
-
-            $("#address").attr("distId",distId);
-            $('#areaMap li').removeClass('mr');
-            var mapName = $(this).addClass("mr").text();
-            // var place = $("#myself_palce").attr("value");
-            var place = $("#address").text();
-            $("#address").text();
-            if (place.indexOf("北京") >= 0 || place.indexOf("重庆") >= 0 || place.indexOf("天津") >= 0 || place.indexOf("上海") >= 0) {
-                if (place.indexOf("/") >= 0) {
-                    var sjxhth = place.substring(0,place.indexOf("市")+1);
-                    $(".place_code").text(sjxhth+ "/" + mapName).css("color","#161938");
-                } else {
-                    $(".place_code").text(place + "/" + mapName).css("color","#161938");
-                }
-            } else {
-                if (place.lastIndexOf("/") > 0) {
-                    var arr = place.split("/");
-                    $(".place_code").text(arr[0]+ "/" + arr[1] + "/" + mapName).css("color","#161938");
-                } else {
-                    $(".place_code").text(place + "/" + mapName).css("color","#161938");
-                }
-            }
-            if($(".place").hasClass("error")){
-                $(".place").removeClass("error");
-            }
-            setTimeout(function () {
-                $("#area_box").hide();
-                $("#placePositon").focus();
-
-            }, 50);
-            // place_click_body();
-            return false;
-        });
-
-        //查看支持上门城市
-        function initcityDoor() {
-
-            var cityId=$("#address").attr("cityId");
-            if(cityId != undefined && cityId != null){
-                // $("#door_range_cite").css("background","#fdf3e9");
-                $("#door_range_cite").show();
-            }
-            var doorRange = eval("(" + $.trim($("#City_Door_Range_div").text())+")");
-            var range = eval("doorRange["+cityId+"]");
-            if(range){
-                $("#repairMethod").val(1);
-                $("#door_range_cite").html(range);
-            } else{
-                $("#repairMethod").val(0);
-                // $("#door_range_cite").html("该地区不支持上门服务，需要您把设备邮寄到维修中心处理，请按需选择！");
-                $("#door_range_cite").html("");
-                $("#door_range_cite").css("background-color","transparent");
-            }
-
-        }
 
         //加载复活成功手机数量(每天统计一次)
         var script = window.document.createElement("script");
@@ -1682,7 +1415,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var domId = $($(this).children('a').attr('href')), scrollHeight = domId.offset().top;
             if (scrollHeight != 0) {
                 $("#myself_data").attr("value","");
-                var deviceid = $(".model-hd .cur").attr("data-deviceid");
+                var seriesId = $(".model-hd .cur").attr("data-seriesId");
                 if ($(".tab-cont-fault .con ul li a").hasClass("cur")) {
                     var smid = $(this).parent("li").attr("smid");
                     var malfunctionid = $(this).parent("li").attr("malfunctionid");
@@ -1712,12 +1445,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 var brandId = $(".hd .cur").attr("brandId");
             }
 
-            $("#sjxh").attr("deviceId", deviceid);
+            $("#sjxh").attr("seriesId", seriesId);
             $("#sjxh").attr("brandId", brandId);
             writeBrandClass();
             getDevice(brandId);
-            initColorlist(smid,brandId, deviceid, malfunctionid);
-            getColorlist(deviceid);
+            initColorlist(smid,brandId, seriesId, malfunctionid);
+            getColorlist(seriesId);
             // scrollToLocation();
             $("html,body").animate({"scrollTop": scrollHeight - 100});
 
@@ -1728,15 +1461,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $("body").on("click", ".morePrice", function () {
             var domId = $($(this).children('a').attr('href')), scrollHeight = domId.offset().top;
             var brandId = $(".hd .cur").attr("brandId");
-            var deviceid = $(".model-hd .cur").attr("data-deviceid");
+            var seriesId = $(".model-hd .cur").attr("data-seriesId");
             $("#jjfa").text("确认故障与维修方案").css("color","#999");
             $("#jjfa").attr("fmid",null);
-            $("#sjxh").attr("deviceId", deviceid);
+            $("#sjxh").attr("seriesId", seriesId);
             $("#sjxh").attr("brandId", brandId);
             writeBrandClass();
             getDevice(brandId);
-            initColorlist2(brandId, deviceid);
-            getColorlist(deviceid);
+            initColorlist2(brandId, seriesId);
+            getColorlist(seriesId);
             // scrollToLocation();
             $("html,body").animate({"scrollTop": scrollHeight - 100});
             return false;
@@ -1761,7 +1494,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 return false;
             }
             var brand = $("#sjxh").attr("brandId");
-            var model=$("#sjxh").attr("deviceId");
+            var model=$("#sjxh").attr("seriesId");
 
             var attributeId = $("#sjxh").attr("colorid");
             var  valueId= $("#sjxh").attr("valueid");
@@ -1960,21 +1693,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             $(this).addClass("bt-gray").html("提交中...");
 
-            //处理上门时间 02-28(今天)/16:00
-            var startTime = $("#time_code").attr("startTime");
-            var endTime = $("#time_code").attr("endTime");
-            var startDate = "";
-            var startHour = "";
-            var dataArr = startTime.split("/");
-
-            if (dataArr[0].indexOf(")") > 0) {
-                startDate = dataArr[0].substring(0, dataArr[0].indexOf("("));
-                startHour = dataArr[1] + ":00";
-            } else if (dataArr[0].indexOf(" ") > 0) {
-                startDate = dataArr[0].substring(0, dataArr[0].indexOf(" "));
-                startHour = dataArr[1] + ":00";
-            }
-
             //获取当前时间年份
             var date=new Date;
             var year=date.getFullYear().toString();
@@ -2008,8 +1726,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     }
     function show_guzhang_error(){
-        var deviceId = $("#sjxh").attr("deviceId");
-        var colorId = $("#sjxh").attr("colorId");
+        var seriesId = $("#sjxh").attr("seriesId");
+        var colorId = $("#sjxh").attr("modelId");
         $(".dropdown-content").hide();
         if (colorId == null) {
             $("#sjgz-dropdown-content").hide();
@@ -2019,7 +1737,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         } else {
 
             $("#sjgz-dropdown-content,.sjwt,#wxfa1").show();
-            $.post(url + "/order/quick/getMalFunctionByModelId", {deviceId: deviceId}, function (d) {//初始化故障大类
+            $.post(url + "/order/quick/getMalFunctionByModelId", {seriesId: seriesId}, function (d) {//初始化故障大类
                         var data = JSON.parse(d);
                         var condata = data.malfunctionList;
                         var context = "";
@@ -2041,7 +1759,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             var malfunctionid = $("#jjfa").attr("malfunctionid");
                             var solutionid = $("#jjfa").attr("solutionid");
                             var smid = $("#jjfa").attr("smid");
-                            getSolution(smid,deviceId,malfunctionid,0)
+                            getSolution(smid,seriesId,malfunctionid,0)
                         }
                     }
             )
@@ -2079,8 +1797,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#sm-dropdown-content-js ul li").css('display', 'none');
         }
     }
-    function deviceMalfunction(deviceId,brandId){
-        $.post(url+"/order/quick/deviceMalfunction",{deviceId:deviceId,brandId:brandId},function(d){
+    function deviceMalfunction(seriesId,brandId){
+        $.post(url+"/order/quick/deviceMalfunction",{seriesId:seriesId,brandId:brandId},function(d){
             var json=JSON.parse(d);
             var data=json.solutionMalfunctionList;
             var devices=json.deviceList;
@@ -2091,9 +1809,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
             for(var i=0;i<devices.length ;i++){
                 if(i==0){
-                    $(".tab-cont-brand .item .model-hd").append("<dd  class=\"cur\" data-deviceid='"+devices[i].id+"'>"+ devices[i].model+"</dd>");
+                    $(".tab-cont-brand .item .model-hd").append("<dd  class=\"cur\" data-seriesId='"+devices[i].id+"'>"+ devices[i].model+"</dd>");
                 }else{
-                    $(".tab-cont-brand .item .model-hd").append("<dd data-deviceid='"+devices[i].id+"'>"+ devices[i].model+"</dd>");
+                    $(".tab-cont-brand .item .model-hd").append("<dd data-seriesId='"+devices[i].id+"'>"+ devices[i].model+"</dd>");
                 }
             }
             var index=0;
@@ -2106,23 +1824,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     index=1;
                 }
                 if(data[i].status==1){
-                    $(".tab-cont-fault .con").find("ul").eq(index).append("<li deviceid ='"+deviceId+"' solutionid ='"+data[i].solutionId+"' fmid='"+data[i].malfunctionFid+"' smid ='"+data[i].id+"' malfunctionid ='"+data[i].malfunctionId+"' method='"+data[i].method+"'><p class=\"faultN\">"+data[i].malfunctionName+"</p><p class=\"price\">￥"+data[i].price+"<small>起</small><font>市场价:￥<del>"+gfprice+"</del></font></p><span class='baoxiu'><a href=\"#maodian\" >我要报修</a></span></li>");
+                    $(".tab-cont-fault .con").find("ul").eq(index).append("<li seriesId ='"+seriesId+"' solutionid ='"+data[i].solutionId+"' fmid='"+data[i].malfunctionFid+"' smid ='"+data[i].id+"' malfunctionid ='"+data[i].malfunctionId+"' method='"+data[i].method+"'><p class=\"faultN\">"+data[i].malfunctionName+"</p><p class=\"price\">￥"+data[i].price+"<small>起</small><font>市场价:￥<del>"+gfprice+"</del></font></p><span class='baoxiu'><a href=\"#maodian\" >我要报修</a></span></li>");
                 }else{
                     if(i<15){
-                        $(".tab-cont-fault .con").find("ul").eq(index).append("<li deviceid ='"+deviceId+"' solutionid ='"+data[i].solutionId+"' fmid='"+data[i].malfunctionFid+"' smid ='"+data[i].id+"' malfunctionid ='"+data[i].malfunctionId+"' method='"+data[i].method+"'><p class=\"faultN\">"+data[i].malfunctionName+"</p><p class=\"price\">￥"+data[i].price+"<font>市场价:￥<del>"+gfprice+"</del></font></p><span class='baoxiu'><a href=\"#maodian\">我要报修</a></span></li>");
+                        $(".tab-cont-fault .con").find("ul").eq(index).append("<li seriesId ='"+seriesId+"' solutionid ='"+data[i].solutionId+"' fmid='"+data[i].malfunctionFid+"' smid ='"+data[i].id+"' malfunctionid ='"+data[i].malfunctionId+"' method='"+data[i].method+"'><p class=\"faultN\">"+data[i].malfunctionName+"</p><p class=\"price\">￥"+data[i].price+"<font>市场价:￥<del>"+gfprice+"</del></font></p><span class='baoxiu'><a href=\"#maodian\">我要报修</a></span></li>");
                     }
                 }
             }
-            var deviceId=$(".item .model-hd .cur").attr("data-deviceid");
-            $("#morefault").append("<li class='more col4' deviceid ='"+deviceId +"' brandId='"+brandId+"'><span class='morePrice'><a href='#maodian'>更多故障报价>></a></span></li>");
+            var seriesId=$(".item .model-hd .cur").attr("data-seriesId");
+            $("#morefault").append("<li class='more col4' seriesId ='"+seriesId +"' brandId='"+brandId+"'><span class='morePrice'><a href='#maodian'>更多故障报价>></a></span></li>");
             devicechanage();
         });
     }
     function devicechanage(){
         $(".model-hd dd").unbind().bind("click",function(){
             var index= $(".model-hd dd").index(this);
-            var deviceId=$(this).attr("data-deviceid");
-            deviceMalfunction(deviceId,-1);
+            var seriesId=$(this).attr("data-seriesId");
+            deviceMalfunction(seriesId,-1);
             $(this).addClass("cur").siblings().removeClass("cur");
         });
     }
@@ -2130,23 +1848,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     //初始化设备
     function initDevice() {
         var brandId = $("#sjxh").attr("brandid");
-        $.post(url + "/order/quick/getModelByBrand", {brandId: brandId}, function (d) {
+        $.post(url + "brand/queryBrand", {brandId: brandId}, function (d) {
             var data = JSON.parse(d);
             var devices = data.deviceList;
             var colorid = $("#sjxh").attr("colorid");
             var valueid = $("#sjxh").attr("valueid");
-            var device = $("#sjxh").attr("deviceid");
+            var device = $("#sjxh").attr("seriesId");
 
             var context = "";
             if (devices != undefined) {
                 for (var i = 0; i < devices.length; i++) {
-                    /*if (device == undefined) {
-                        device = devices[0].id;
-                        $("#sjxh").attr("deviceid", device);
-                    }*/
                     $('#xh1_ul li').removeClass("mr");
                     var mr = (devices[i].id == device)?"mr" :"";
-                    context = context + "<li deviceid='" + devices[i].id + "' class='"+mr+"'>" + devices[i].model + "</li>";
+                    context = context + "<li seriesId='" + devices[i].id + "' class='"+mr+"'>" + devices[i].model + "</li>";
                 }
             }
             $('#xh1 ul').html(context);
@@ -2189,21 +1903,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $.post(url+"/order/quick/getModelByBrand",{brandId:brandId},function(d){
             var data=JSON.parse(d);
             var devices=data.deviceList;
-            var deviceid = $("#sjxh").attr("deviceid");
+            var seriesId = $("#sjxh").attr("seriesId");
             var context="";
             if(devices!=undefined){
                 for(var i=0;i<devices.length;i++){
-                    var mr = (deviceid == devices[i].id) ?"mr":"";
-                    deviceid == devices[i].id ? $("#myself_data").attr("value",devices[i].model):"";
-                    context=context+"<li deviceid='"+devices[i].id+"' class='"+mr+"'>"+devices[i].model+"</li>";
-                    if(deviceid == devices[i].id){
+                    var mr = (seriesId == devices[i].id) ?"mr":"";
+                    seriesId == devices[i].id ? $("#myself_data").attr("value",devices[i].model):"";
+                    context=context+"<li seriesId='"+devices[i].id+"' class='"+mr+"'>"+devices[i].model+"</li>";
+                    if(seriesId == devices[i].id){
                         $("#xh1_ul").removeClass("mr");
                     }
                 }
             }
             $('#xh1 ul').html(context);
             if($("#xh1 ul li").hasClass("mr")){
-                getColorlist(deviceid);
+                getColorlist(seriesId);
             }else{
                 $("#color-dropdown ul").html("");
             }
@@ -2233,8 +1947,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
-    function getMalFunction1(deviceId){
-        $.post(url+"/order/quick/getMalFunctionByModelId",{deviceId:deviceId},function(d){
+    function getMalFunction1(seriesId){
+        $.post(url+"/order/quick/getMalFunctionByModelId",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var malfunctionList=data.malfunctionList;
             $('.q_fault ul').empty();
@@ -2248,8 +1962,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         });
     }
-    function getMalFunction2(deviceId){
-        $.post(url+"/order/quick/getMalFunctionByModelId",{deviceId:deviceId},function(d){
+    function getMalFunction2(seriesId){
+        $.post(url+"/order/quick/getMalFunctionByModelId",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var malfunctionList=data.malfunctionList;
             $('.q_fault ul').empty();
@@ -2273,7 +1987,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(devices!=undefined){
                 for(var i=0;i<devices.length;i++){
                     //修改为要提平板的数据
-                    $('.q_model ul').append("<li deviceid='"+devices[i].id+"'>"+devices[i].model+"</li>");
+                    $('.q_model ul').append("<li seriesId='"+devices[i].id+"'>"+devices[i].model+"</li>");
 
                 }
             }
@@ -2293,8 +2007,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         });
     }
-    function getSolution(smid,deviceId,malfunctionId,flag){//获取维修方案  我要报修按钮的点击事件
-        $.post(url+"/order/quick/getSolutionMalfunction.json",{deviceId:deviceId,malfunctionId:malfunctionId,flag:flag},function(d){
+    function getSolution(smid,seriesId,malfunctionId,flag){//获取维修方案  我要报修按钮的点击事件
+        $.post(url+"/order/quick/getSolutionMalfunction.json",{seriesId:seriesId,malfunctionId:malfunctionId,flag:flag},function(d){
             var data=JSON.parse(d);
             var smlist=data.solutionMalfunctionList;
             var context="";
@@ -2316,9 +2030,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         });
     }
-    function initSolutionMalFunction(deviceId,malfunctionId,flag){
+    function initSolutionMalFunction(seriesId,malfunctionId,flag){
 
-        $.post(url+"/order/quick/getSolutionMalfunction.json",{deviceId:deviceId,malfunctionId:malfunctionId,flag:flag},function(d){
+        $.post(url+"/order/quick/getSolutionMalfunction.json",{seriesId:seriesId,malfunctionId:malfunctionId,flag:flag},function(d){
             var data=JSON.parse(d);
             var smlist=data.solutionMalfunctionList;
             var context="";
@@ -2367,9 +2081,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
 
     }
-    function getMalFunction(deviceId){
+    function getMalFunction(seriesId){
         $(".q_fault ul").siblings("code").text("设备故障").css("color","#999");
-        $.post(url+"/order/quick/getMalFunctionByModelId",{deviceId:deviceId},function(d){
+        $.post(url+"/order/quick/getMalFunctionByModelId",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var malfunctionList=data.malfunctionList;
             $('.q_fault ul').empty();
@@ -2380,28 +2094,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         });
     }
-    ////热门维修、维修方案点击  end
-
-    function writeDevice(brandId,deviceid){
-        $.post(url+"/order/quick/getModelByBrand",{brandId:brandId},function(d){
-            var data=JSON.parse(d);
-            var devices=data.deviceList;
-            var context="";
-            if(devices!=undefined){
-                for(var i=0;i<devices.length;i++){
-                    if (devices[i].id == deviceid) {
-                        // $("#sjxh").text(devices[i].model);
-                        $("#myself_data").attr("value",devices[i].model);
-                    }
-                }
-            }
-        });
-
-    }
-    function getSolutionMalFunction(deviceId,malfunctionId,flag){
+    function getSolutionMalFunction(seriesId,malfunctionId,flag){
         $(".hotbaojia").hide();
         $('.hotbaojia ul').empty();
-        $.post(url+"/order/quick/getSolutionMalfunction.json",{deviceId:deviceId,malfunctionId:malfunctionId,flag:flag},function(d){
+        $.post(url+"/order/quick/getSolutionMalfunction.json",{seriesId:seriesId,malfunctionId:malfunctionId,flag:flag},function(d){
             var data=JSON.parse(d);
             var solutionMalfunctionList=data.solutionMalfunctionList;
             if(solutionMalfunctionList) {
@@ -2419,21 +2115,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         });
     }
-    function getSolutionMalFunction2(smid,brandId,deviceId,malfunctionId,flag){
+    function getSolutionMalFunction2(smid,brandId,seriesId,malfunctionId,flag){
         $(".hotbaojia").hide();
         $('.hotbaojia ul').empty();
         $("#weixiu-dropdown-content").hide();
 
 
         $('.wxfa ul').empty();
-        $.post(url+"/order/quick/getSolutionMalfunction.json",{deviceId:deviceId,malfunctionId:malfunctionId,flag:flag},function(d){
+        $.post(url+"/order/quick/getSolutionMalfunction.json",{seriesId:seriesId,malfunctionId:malfunctionId,flag:flag},function(d){
             var data=JSON.parse(d);
             var solutionMalfunctionList=data.solutionMalfunctionList;
             if(solutionMalfunctionList) {
                 var scolorId= $("#sjxh").attr("colorId");
-                var sdeviceId = $("#sjxh").attr("deviceId");
+                var sseriesId = $("#sjxh").attr("seriesId");
                 for (var i = 0; i < solutionMalfunctionList.length; i++) {
-                    $.post(url + "/order/quick/getMalFunctionByModelId", {deviceId: deviceId}, function (d) {
+                    $.post(url + "/order/quick/getMalFunctionByModelId", {seriesId: seriesId}, function (d) {
                                 var data = JSON.parse(d);
                                 var condata = data.malfunctionList;
                                 var context = "";
@@ -2459,11 +2155,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
             }
         });
-        getSolution(smid, deviceId,malfunctionId,flag);
+        getSolution(smid, seriesId,malfunctionId,flag);
     }
     //选择手机设备
-    function getColorlist(deviceId) {
-        $.post(url+"/order/getDeviceAttributeList.json",{deviceId:deviceId},function(d){
+    function getColorlist(seriesId) {
+        $.post(url+"/order/getDeviceAttributeList.json",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var colorList=data.deviceAttributeList;
             var colorid =$("#sjxh").attr("colorid");
@@ -2502,11 +2198,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }, 50)
         }else{
             $("#sjgz-dropdown-content").show();
-            var deviceId = $("#sjxh").attr("deviceId");
+            var seriesId = $("#sjxh").attr("seriesId");
             $(".dropdown-content").hide();
             $("#sjgz-dropdown-content,.sjwt,#wxfa1").show();
             $(".sjwt ul li").removeClass("mr");
-            $.post(url + "/order/quick/getMalFunctionByModelId", {deviceId: deviceId}, function (d) {//初始化故障大类
+            $.post(url + "/order/quick/getMalFunctionByModelId", {seriesId: seriesId}, function (d) {//初始化故障大类
                             var data = JSON.parse(d);
                             var condata = data.malfunctionList;
                             var context = "";
@@ -2528,8 +2224,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
 
     }
-    function initColorlist2(brandId,deviceid) {
-        $.post(url+"/order/getDeviceAttributeList.json",{deviceId:deviceid},function(d){
+    function initColorlist2(brandId,seriesId) {
+        $.post(url+"/order/getDeviceAttributeList.json",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var colorList=data.deviceAttributeList;
             var context="";
@@ -2537,7 +2233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 // var context=context+"<li colorid='"+colorList[0].id+"' valueid='"+colorList[0].attributeId+"'>"+colorList[0].attributeValue+"</li>";
                 $("#sjxh").attr("colorId", colorList[0].id);
                 $("#sjxh").attr("valueId", colorList[0].attributeId);
-                $("#sjxh").attr("deviceId", deviceid);
+                $("#sjxh").attr("seriesId", seriesId);
                 $("#sjxh").attr("brandId", brandId);
                 var color = colorList[0].attributeValue;
                 var textShow = $("#sjxh").html();
@@ -2553,11 +2249,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         });
 
-        // getSolutionMalFunction2(smid,brandId, deviceid, malfunctionid, 0);
+        // getSolutionMalFunction2(smid,brandId, seriesId, malfunctionid, 0);
         // initSolution();
     }
-    function initColorlist(smid,brandId,deviceid,malfunctionid) {
-        $.post(url+"/order/getDeviceAttributeList.json",{deviceId:deviceid},function(d){
+    function initColorlist(smid,brandId,seriesId,malfunctionid) {
+        $.post(url+"/order/getDeviceAttributeList.json",{seriesId:seriesId},function(d){
             var data=JSON.parse(d);
             var colorList=data.deviceAttributeList;
             var context="";
@@ -2565,40 +2261,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 // var context=context+"<li colorid='"+colorList[0].id+"' valueid='"+colorList[0].attributeId+"'>"+colorList[0].attributeValue+"</li>";
                 $("#sjxh").attr("colorId", colorList[0].id);
                 $("#sjxh").attr("valueId", colorList[0].attributeId);
-                $("#sjxh").attr("deviceId", deviceid);
+                $("#sjxh").attr("seriesId", seriesId);
                 $("#sjxh").attr("brandId", brandId);
             }
         });
 
-        getSolutionMalFunction2(smid,brandId, deviceid, malfunctionid, 0);
-    }
-    //获取当前服务器时间
-    function getSysTime() {
-        $.ajax({
-            url: "/order/quick/getTime",
-            type: 'post',
-            data : {},
-            async: false,
-            dataType:"JSON",
-            success: function (data) {
-                $("#currentDate").attr("value",data.currentTime);
-            }
-        });
-    }
-    //初始化解决方案
-    function initSolution() {
-        // var malfuntionId = $('#jjfa').attr('malfunctionid');
-
-        // if (malfuntionId == null){
-        var  malfuntionId = $(".sjwt ul li:first").attr("malfunctionId");
-            // var malfuntionId = malfId;
-        // }
-        var deviceId = $("#sjxh").attr("deviceId");
-        var flag = 1;
-        if (malfuntionId == "" || malfuntionId == 0 || malfuntionId == "null") {
-            flag = 0;
-        }
-        initSolutionMalFunction(deviceId,malfuntionId,flag);
+        getSolutionMalFunction2(smid,brandId, seriesId, malfunctionid, 0);
     }
     //轮播
     function focusFun(obj,jdpic,jdmenu){
@@ -2613,7 +2281,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(jdpic).find("ul").append(banner);
 
         var len = $(jdpic).find("li").length;
-        var index = 1; //$(obj).find(".jdpic li").index(this);
+        var index = 1; 
         var time;
 
         for (var i = 1; i <= len; i++) {
@@ -2653,16 +2321,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if (r != null) return unescape(r[2]); return null;
         }
     }
-    //品牌选中样式滚动到可视范围
-    /*function scrollToLocation() {
-        if($('#xh1 ul li').hasClass("mr")){
-            var scrollToContainer = $(this);
-            $('#xh1 ul').animate({
-                // scrollTop: scrollToContainer.offset().top +  300
-            }, 1000);//2秒滑动到指定位置
-        }
-
-    }*/
     //显示加载
     function loadingShow(){
         $("#loading").find(".loaded").remove();

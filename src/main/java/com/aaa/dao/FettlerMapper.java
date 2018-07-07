@@ -14,6 +14,8 @@ public interface FettlerMapper {
 
 	List<Map<String, Object>> query(String empName, int page, int rows);
 
+	List<Map<String, Object>> queryAll();
+
 	long countByExample(FettlerExample example);
 
 	int deleteByExample(FettlerExample example);

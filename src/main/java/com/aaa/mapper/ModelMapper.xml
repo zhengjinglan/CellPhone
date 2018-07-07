@@ -290,10 +290,17 @@ on s.series_id=m.series_id
 	<if test="param1 !=null and param1.seriesId!=null">
 	m.series_id=#{param1.seriesId} and
 	</if>
-	
 </where>
 <if test="param2!=null and param3!=null">
 	limit #{param2},#{param3}
 	</if>
+  </select>
+  <select id="queryModel" parameterType="com.aaa.entity.Model" resultMap="BaseResultMap">
+  	select * from model
+  	<where>
+  		<if test="seriesId !=null">
+  			series_id=#{seriesId}
+  		</if>
+  	</where>
   </select>
 </mapper>

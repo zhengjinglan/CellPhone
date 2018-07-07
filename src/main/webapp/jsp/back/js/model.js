@@ -110,14 +110,14 @@ function edit(){
 	}
 }
 
-// 提交
+/*// 提交
 function submits(){
 	if($("#modelId").textbox("getValue")=="自动生成"){
 		$("#modelId").textbox("setValue",-1);
 	}
 	alert($("#modelPhoto").val());
 	$.post(url,{"modelId":$("#modelId").val(),"seriesId":$("#seriesId").val(),
-	"modelName":$("#modelName").val(),"Photo":$("#modelPhoto").val(),
+	"modelName":$("#modelName").val(),"photo":$("#modelPhoto").val(),
 	"colors":$("#colors").val(),
 	"modelDescription":$("#modelDescription").val(),"operator":$("#operator").val()}
 		,function(data){
@@ -136,7 +136,38 @@ function submits(){
 				});
 			}
 		});
+	}*/
+//图片上传
+function submits() {
+	if($("#modelId").textbox("getValue")=="自动生成"){
+		$("#modelId").textbox("setValue",-1);
 	}
+    var formdata = new FormData($("#usercodeform")[0]);
+    $.ajax({
+        async: false,
+        cache:false,
+        url:url,
+        data:formdata,
+        type:'POST',
+        contentType: false,
+        processData: false,
+        success:function (data) {
+        	if(data==1){
+				$.messager.show({
+					title:'提示',
+					msg:"操作成功！"
+				});
+				$("#datawindow").window("close");
+				$("#tables").datagrid("reload");
+			}else{
+				$.messager.show({
+					title:'提示',
+					msg:"操作失败！"
+				});
+			}
+        }
+    });
+}
 
 // 取消
 function concel(){

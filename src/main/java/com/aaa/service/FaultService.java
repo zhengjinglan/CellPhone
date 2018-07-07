@@ -36,9 +36,10 @@ public class FaultService {
 		return faultMapper.queryPage(fault, offer, rows);
 	}
 
+
 	public List<Fault> queryAll(Fault fault) {
-		FaultExample faultExample = new FaultExample();
-		return faultMapper.selectByExample(faultExample);
+		//FaultExample faultExample = new FaultExample();
+		return faultMapper.queryFault(fault);
 	}
 
 	public int add(Fault fault) {

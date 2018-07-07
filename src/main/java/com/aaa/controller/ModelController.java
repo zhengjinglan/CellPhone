@@ -54,10 +54,10 @@ public class ModelController {
 	@RequestMapping("add")
 	@ResponseBody
 	public int add(
-			@RequestParam(value = "Photo", required = false) MultipartFile[] Photo,
+			@RequestParam(value = "modelPhoto", required = false) MultipartFile[] photo,
 			Model model, HttpServletRequest request) {
 
-		List<String> rs = FileUpload.uplaods(Photo, request);
+		List<String> rs = FileUpload.uplaods(photo, request);
 		model.setModelPhoto(rs.get(0));
 		return modelService.add(model);
 	}

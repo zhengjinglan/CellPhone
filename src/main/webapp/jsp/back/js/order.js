@@ -60,9 +60,8 @@ $(function(){
 //打开新增窗口
 function add(){
 	$("#fm").form('reset');
-	loadSelect("fettlerId","fettler/queryByState","fettlerName","fettlerId",true);
+	loadSelect("fettlerId","fettler/queryByState","empName","fettlerId",true);
 	loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
-	loadSelect("colorId","color/queryAll","colorName","colorId",true);
 	loadSelect("faultId","fault/queryAll","faultName","faultId",true);
 	loadSelect("modelId","model/queryAll","modelName","modelId",true);
 	loadSelect("seriesId","series/querySeries","seriesName","seriesId",true);
@@ -107,14 +106,14 @@ function submits(){
 		$("#orderId").textbox("setValue",-1);
 	}	
 	$.post(url,{"orderId":$("#orderId").val(),"fettlerId":$("#fettlerId").val(),
-		"color":$("#colorId").val(),"modelId":$("#modelId").val(),
+		"color":$("#colorId").val(),"modelId":$("#modelId").val(),"orderPrice":$("#orderPrice").val(),
 		"brandId":$("#brandId").val(),"seriesId":$("#seriesId").val(),
 		"faultId":$("#faultId").val(),"assignTime":$("#assignTime").val(),
-		"address":$("#address").val(),
+		"address":$("#address").val(),"userName":$("$userName").val();
 		"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
 	"realEnd":$("#realEnd").val(),"diagnosisResult":$("#diagnosisResult").val(),
 	"realSolution":$("#realSolution").val(),"orderPrice":$("#orderPrice").val(),
-	"operator":$("#operator").val()},function(data){
+	"assigner":$("#operator").val()},function(data){
 	
 			if(data==1){
 				$.messager.show({

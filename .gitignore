@@ -1,7 +1,12 @@
 /target
 
 /.project
+<<<<<<< HEAD
 
 /.settings
 
 /.tern-project
+=======
+/.settings/
+/.tern-project
+>>>>>>> refs/remotes/origin/lqx
