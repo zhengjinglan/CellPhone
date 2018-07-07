@@ -257,7 +257,7 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.aaa.entity.OrderExample" resultType="java.lang.Long">
-    select count(*) from order
+    select count(*) from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
