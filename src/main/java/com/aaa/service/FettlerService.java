@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aaa.dao.EmpMapper;
 import com.aaa.dao.FettlerMapper;
 import com.aaa.dao.OrderMapper;
 import com.aaa.entity.Fettler;
@@ -20,6 +21,8 @@ public class FettlerService {
 	FettlerMapper fettlerMapper;
 	@Autowired
 	OrderMapper orderMapper;
+	@Autowired
+	EmpMapper empMapper;
 	public List<Fettler> queryPage(Integer pageNum, Integer pageSize) {
 		FettlerExample fettlerExample = new FettlerExample();
 		if (pageNum != null) {
@@ -91,8 +94,11 @@ public class FettlerService {
 	    String city = address.split("省")[1].split("市")[0];
 	    System.out.println(city);
 	    FettlerExample exp = new FettlerExample();
-	    exp.createCriteria().andWorkCityLike(city).andStateEqualTo("闲置");
+	    exp.createCriteria().andWorkCityLike("%"+city+"%").andStateEqualTo("闲置");
 	    List<Fettler> list = fettlerMapper.selectByExample(exp);
+	    for (Fettler fettler : list) {
+            fettler.setEmp(empMapper.selectByPrimaryKey(fettler.getEmpId()));
+        }
 	    return list;
 	}
 	public Fettler get(int fettlerId){

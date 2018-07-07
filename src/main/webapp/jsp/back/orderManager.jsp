@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
     
      <div id="tools">
-    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="allot()">订单分配</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="initAllot()">订单分配</a>
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
@@ -77,17 +77,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="concel()">取消</a>
 			</div>
 		</form>
+	</div>
+	<div id="allotWindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fmAllot" method="post">
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%" readonly="readonly"
-					id="orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
+					id="allot_orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
 			</div>	
-			
+			<div style="margin-bottom: 20px">
+				<input class="easyui-combobox" style="width:80%"
+					id="allot_fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
+			</div>	
 			<div style="margin-bottom: 20px;text-align: center">
-				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
-		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="resets()">重置</a>
-		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="concel()">取消</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="allot()">提交</a>
+		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="cancel()">取消</a>
 			</div>
 		</form>
 	</div>

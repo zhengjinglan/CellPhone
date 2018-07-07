@@ -38,7 +38,17 @@ public class OrderService {
 	    exp.createCriteria().andFettlerIdEqualTo(fettlerId);
 	    return maper.selectByExample(exp);
 	}
-	
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月7日 下午2:14:37
+	 *
+	 * @param orderId
+	 * @return
+	 */
+	public Order get(int orderId){
+	    return maper.selectByPrimaryKey(orderId);
+	}
 	public List<Map<String, Object>> query(Order order, int page, int rows) {
 		Integer offer = null;
 		if (page != 0) {

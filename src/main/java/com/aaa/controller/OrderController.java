@@ -66,14 +66,17 @@ public class OrderController {
 		System.out.println(order);
 		return oservice.update(order);
 	}
-	public int allot(Order order){
+	
+	@RequestMapping("allot")
+    @ResponseBody
+	public int allot(int orderId,int fettlerId){
 	    int res = 0;
-	    if(order.getFettlerId() != null){
-	        if(fettlerService.get(order.getFettlerId()) != null){
-	            order.setPredeterminedTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-	            res = oservice.update(order);
-	        }
-	    }
+	    Order order = oservice.get(orderId);
+        if(fettlerService.get(fettlerId) != null){
+            order.setFettlerId(fettlerId);
+            order.setPredeterminedTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            res = oservice.update(order);
+        }
 	    return res;
 	}
 }  

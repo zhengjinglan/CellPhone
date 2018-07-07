@@ -23,8 +23,18 @@ public class Fettler implements Serializable {
     private String state;
 
     private String operator;
-
+    
+    private Emp emp;
+    
     private static final long serialVersionUID = 1L;
+
+    public Emp getEmp() {
+        return emp;
+    }
+
+    public void setEmp(Emp emp) {
+        this.emp = emp;
+    }
 
     public Integer getFettlerId() {
         return fettlerId;
