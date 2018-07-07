@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.ApplyRecordMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.ApplyRecord">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="fettler_id" jdbcType="INTEGER" property="fettlerId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="apply_num" jdbcType="INTEGER" property="applyNum" />
+    <result column="real_num" jdbcType="INTEGER" property="realNum" />
+    <result column="deal_man" jdbcType="VARCHAR" property="dealMan" />
+    <result column="left_num" jdbcType="INTEGER" property="leftNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    record_id, fettler_id, item_id, apply_num, real_num, deal_man, left_num
+  </sql>
+  <select id="selectByExample" parameterType="com.aaa.entity.ApplyRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from apply_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aaa.entity.ApplyRecordExample">
+    delete from apply_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aaa.entity.ApplyRecord">
+    insert into apply_record (record_id, fettler_id, item_id, 
+      apply_num, real_num, deal_man, 
+      left_num)
+    values (#{recordId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+      #{applyNum,jdbcType=INTEGER}, #{realNum,jdbcType=INTEGER}, #{dealMan,jdbcType=VARCHAR}, 
+      #{leftNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.entity.ApplyRecord">
+    insert into apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="fettlerId != null">
+        fettler_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="applyNum != null">
+        apply_num,
+      </if>
+      <if test="realNum != null">
+        real_num,
+      </if>
+      <if test="dealMan != null">
+        deal_man,
+      </if>
+      <if test="leftNum != null">
+        left_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="fettlerId != null">
+        #{fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="applyNum != null">
+        #{applyNum,jdbcType=INTEGER},
+      </if>
+      <if test="realNum != null">
+        #{realNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealMan != null">
+        #{dealMan,jdbcType=VARCHAR},
+      </if>
+      <if test="leftNum != null">
+        #{leftNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aaa.entity.ApplyRecordExample" resultType="java.lang.Long">
+    select count(*) from apply_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update apply_record
+    <set>
+      <if test="record.recordId != null">
+        record_id = #{record.recordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fettlerId != null">
+        fettler_id = #{record.fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyNum != null">
+        apply_num = #{record.applyNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.realNum != null">
+        real_num = #{record.realNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.dealMan != null">
+        deal_man = #{record.dealMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leftNum != null">
+        left_num = #{record.leftNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update apply_record
+    set record_id = #{record.recordId,jdbcType=INTEGER},
+      fettler_id = #{record.fettlerId,jdbcType=INTEGER},
+      item_id = #{record.itemId,jdbcType=INTEGER},
+      apply_num = #{record.applyNum,jdbcType=INTEGER},
+      real_num = #{record.realNum,jdbcType=INTEGER},
+      deal_man = #{record.dealMan,jdbcType=VARCHAR},
+      left_num = #{record.leftNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.ApplyRecord">
+    update apply_record
+    <set>
+      <if test="fettlerId != null">
+        fettler_id = #{fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="applyNum != null">
+        apply_num = #{applyNum,jdbcType=INTEGER},
+      </if>
+      <if test="realNum != null">
+        real_num = #{realNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealMan != null">
+        deal_man = #{dealMan,jdbcType=VARCHAR},
+      </if>
+      <if test="leftNum != null">
+        left_num = #{leftNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.ApplyRecord">
+    update apply_record
+    set fettler_id = #{fettlerId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
+      apply_num = #{applyNum,jdbcType=INTEGER},
+      real_num = #{realNum,jdbcType=INTEGER},
+      deal_man = #{dealMan,jdbcType=VARCHAR},
+      left_num = #{leftNum,jdbcType=INTEGER}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>
