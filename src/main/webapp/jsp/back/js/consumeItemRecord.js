@@ -84,25 +84,25 @@ $(function() {
 //	url = "consumeItem/add";
 //}
 
-function edit() {
-	var rows = $("#tables").datagrid("getSelections");
-	if (rows.length == 1) {
-		$("#fm").form('reset');
-		$("#fm").form('load', rows[0]);
-		url = "consumeItem/update";
-		$("#datawindow").window("open").window('setTitle', "修改");
-	} else if (rows.length > 1) {
-		$.messager.show({
-			title : '提示',
-			msg : "一次只能修改一条数据,请重新选择！"
-		});
-	} else {
-		$.messager.show({
-			title : '提示',
-			msg : "请选择修改的数据！"
-		});
-	}
-}
+//function edit() {
+//	var rows = $("#tables").datagrid("getSelections");
+//	if (rows.length == 1) {
+//		$("#fm").form('reset');
+//		$("#fm").form('load', rows[0]);
+//		url = "consumeItem/update";
+//		$("#datawindow").window("open").window('setTitle', "修改");
+//	} else if (rows.length > 1) {
+//		$.messager.show({
+//			title : '提示',
+//			msg : "一次只能修改一条数据,请重新选择！"
+//		});
+//	} else {
+//		$.messager.show({
+//			title : '提示',
+//			msg : "请选择修改的数据！"
+//		});
+//	}
+//}
 
 //function submits() {
 //	if ($("#itemId").textbox("getValue") == "自动生成") {
