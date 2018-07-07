@@ -25,7 +25,6 @@ public class UserController {
 	public String queryOfa(User u,Model m){
 		List<Map<String,Object>>list=service.queryOfa(u);
 		m.addAttribute("olist", list);
-		System.out.println(list+"**************");
 		return "/before/personal";
 				
 	}

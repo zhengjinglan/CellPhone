@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link rel="shortcut icon" href="images/faviconie.png" />
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/jquery-1.7.2.min.js" ></script>
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/common/message.js" ></script>
-	  <link  type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/common.css" >
+	  <link  type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/common.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/animate.min.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/landing2017.css"/>
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
@@ -40,7 +40,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="http://static.shanxiuxia.com/weadoc/css/fixWay.css" rel="stylesheet">
     <link href="http://static.shanxiuxia.com/weadoc/css/laydate.css" rel="stylesheet">
     <link href="css/publicOrder2.css" rel="stylesheet">
-   <!--  <script src="js/repairOrder2.js"></script> -->
     <script src="js/config.js"></script>
     
     
@@ -158,38 +157,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="numbox">
         已成功复活<span class="timer"  data-speed="500"></span>部手机
     </div>
-    <article class="col brands_fault" id="col2">
-        <div class="hd">
-            <dl>
-                <dd class="hotBrand" title="热门手机维修"><em></em>热门维修</dd>
-                <dd brandid="8" title="苹果手机维修" class="iphone cur"><em></em><label>苹果</label><span><i></i>换屏送钢化膜</span></dd>
-                <dd brandid="12"title="华为手机维修"><em></em><label>华为</label></dd>
-                <dd brandid="10" title="小米手机维修"><em></em><label>小米</label></dd>
-                <dd brandid="11" title="三星手机维修"><em></em><label>三星</label></dd>
-                <dd brandid="14" title="魅族手机维修"><em></em><label>魅族</label></dd>
-                <dd brandid="17" title="oppo手机维修"><em></em><label>oppo</label></dd>
-                <dd brandid="16" title="vivo手机维修"><em></em><label>vivo</label></dd>
-                <dd brandid="19" title="乐视手机维修"><em></em><label>乐视</label></dd>
-            </dl>
-        </div>
-        <div class="wrap">
-            <div class="tab-cont-brand">
-                <div class="item" id="item_device">
-                    <dl class="model-hd">
-                    </dl>
-                    <div class="tab-cont-fault">
-                        <div class="con">
-                            <ul></ul>
-                            <ul id="morefault"></ul>
-                        </div>
-                        <div class="load"><s></s></div>
-                    </div>
-                </div>
-                <div class="load"><s></s></div>
-                <p class="ps">*同一机型不同颜色换屏价格略有差异，请以客服最终报价为准<font>其他故障请咨询：4008-112-112。</font></p>
-                
-        </div>
-    </article>
 
     <article class="col processBox">
         <h2>服务方式</h2>
@@ -313,7 +280,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                   	<p class="listTitle">快递单号：</p>
 	                </span>
 	                <input id="mailNum" name="mailNum" type="number" 
-	                 class="form-control phoneText" placeholder="输入快递单号">
+	                 class="form-control mailText" placeholder="输入快递单号">
 	                
 	            </div>
 				
@@ -330,21 +297,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <div id="centerDetails" class="centerDetails">
 	                </div>
 	            </div>
-	            </div>
-	
-	            
-	
+	            </div>		  	
 	            <div id="addressBox" class="input-group addressBox">
 	                <span class="input-group-addon addressPic">
                      	<img class="addressIcon" src="http://static.shanxiuxia.com/weadoc/fix_address2.png">
                      	<p class="listTitle">地址：</p>
 	                </span>
 	                	<select class="form-control province" id="s_province" name="s_province"
-	                	 diaabled onChange="javascript:doit(this.form);"></select>
+	                	  onChange="javascript:doit(this.form);"></select>
 	    				<select class="form-control province" id="s_city"  name="s_city" 
-	    				diaabled onChange="javascript:doit(this.form);"></select>
+	    				 onChange="javascript:doit(this.form);"></select>
 	    				<select class="form-control province" id="s_county" name="s_county" 
-	    				diaabled onChange="javascript:doit(this.form);"></select>
+	    				 onChange="javascript:doit(this.form);"></select>
 	            </div>
 	            <div id="streetBox" class="input-group streetBox">
 	                <span class="input-group-addon streetPic">
@@ -375,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	 <div class="input-group">   
             	 				<span>请选择品牌</span> <br>                           
                                <select id="brandId" class="form-control">  
-								<option value="">请选择</option>                            
+								<option value="请选择">请选择</option>                            
 								</select>
 								<span>请选择系列</span><br>
 								<select id="seriesId" class="form-control">                              
@@ -389,8 +353,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <span>请选择手机颜色</span><br>      
                                  <select id="colorId" class="form-control">                           
                                 </select>   
-                               <!--  <span id="price" name="orderPrice">预计价格:￥</span> -->
-                                <div id="price" name="orderPrice" >预计价格:￥</div>   
+                                	预计价格:￥<input  id="price" name="orderPrice" readonly/>
+                               
             </div>
         </div>
         
@@ -511,7 +475,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
-<!-- <script type="text/javascript" src="js/mac.js"></script> -->
+ <script type="text/javascript" src="js/fixWay.js"></script> 
     <script class="resources library" src="../before/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script>
 <script type="text/javascript"> 
@@ -540,6 +504,8 @@ var url;
  $("#brandId").append(html);
  //通过change方法调用
   $("#brandId"). change(function(){
+  
+  
   $("#seriesId").html("");
   $("#modelId"). html("");
   $("#faultId"). html("");
@@ -606,14 +572,13 @@ var url;
   			var html='';
   			var price='';
   			for(var i in data){
-  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
-  			price +='预计价格:￥<span name="orderPrice" value='+data[i].faultId+'>'+data[i]. faultPrice+' </span>';
-  			
+  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>'; 			
   			} 
+  			price += data[i]. faultPrice;  			
   			$("#price").html("");
   			 $("#faultId").append(html);
-  			 $("#price").append(price);
-  			
+  			 $("#price").val(price);
+  			 $("#price").append(price);  			 			
   		}
   	});  
   }
@@ -696,21 +661,19 @@ var url;
 	    $("#stepSix").html('06 杞处浠樻');
 	});
 	 
-	//表单提交	
-  $("#orderBtn").click(function() {  
+/* 	//表单提交	
+  $("#orderBtn").click(function() { 
             var params = $("#orderfm").serialize();  
             $.ajax( {  
                 type : "POST",  
                 url : url,  
                 data : params,  
-                success : function(msg) {  
-                	msg.
+                success : function(msg) {                	
                 	alert("订单提交成功");
                     window.location="macservice.jsp";
-                }  
-           
+                }
             });  
-  	});  
+  	});   */
 	
   });
   function repairSave(){

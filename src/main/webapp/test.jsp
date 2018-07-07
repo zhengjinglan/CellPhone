@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function submits(){
 	var p=$("#phone").val();
 	 $.post("user/checkUser",{userPhone:p},function(data){
+	 alert(data);
 					if(data==0){
 					window.location.href="user/queryOfa?userPhone="+p;	 	             	
 	 	             }else{

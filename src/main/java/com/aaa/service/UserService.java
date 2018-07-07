@@ -28,29 +28,11 @@ public class UserService {
 	}
 	public int queryuser(User u){
 		List<User>list=maper.queryUser(u);
-		if (list.size() == 1) {
-			System.out.println(list);
+		if (list.size() >= 1) {
 			return 0;
-		} else if (list.size() > 1) {
-			return 1;
-		} else {
+		}  else {
 			return 2;
 		}
 	}
 	
-/*	public int checkUser(User u, HttpSession session) {
-		UserExample user = new UserExample();
-		user.createCriteria().andUserPhoneEqualTo(u.getUserPhone());
-		List<User> list = maper.selectByExample(user);
-		if (list.size() == 1) {
-			session.setAttribute("logBeforeUser", list.get(0));
-			System.out.println(list);
-			return 0;
-		} else if (list.size() > 1) {
-			return 1;
-		} else {
-			return 2;
-		}
-	}*/
-
 }

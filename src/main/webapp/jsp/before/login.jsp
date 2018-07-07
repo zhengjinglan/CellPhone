@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="http://static.shanxiuxia.com/weadoc/css/public.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 </head>
-<body>
+<body style="background:url(images/login-banner.jpg) ">
 
 <div class="login">
 	<p class="login-title">让每一个手机的主人不再烦恼</p>
@@ -82,8 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
             });
         }else{
+         
              alert("请输入手机号");
-            return false;
+           return false;
         }
 
     });  
@@ -94,6 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }else{
             if(sms==code){
 	 				$.post("../../user/checkUser",{userPhone:$("#phone").val()},function(data){
+	 				alert(data);
 					if(data==0){
 					window.location.href="../../user/queryOfa?userPhone="+$("#phone").val();	 	             	
 	 	             }else{
