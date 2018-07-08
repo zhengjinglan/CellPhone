@@ -26,7 +26,7 @@ public class FileUpload {
 		String photoName = "";
 		String photoName2 = "";
 		String path = request.getSession().getServletContext()
-				.getRealPath("upload");
+				.getRealPath("image");
 		if (!photo.getOriginalFilename().equals("")) {
 			photoName = path + "/" + UUID.randomUUID() + "_"
 					+ photo.getOriginalFilename();

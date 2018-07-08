@@ -32,9 +32,9 @@ public class OrderController {
 	@ResponseBody
 	public int add(User u, Order o, Order_Fault ofa) {
 		int us = uservice.add(u);
-		System.out.println("us" + us);
+		System.out.println("u" + u);
 		int rs = oservice.add(o);
-		System.out.println("rs" + rs);
+		System.out.println("o" + o);
 		ofservice.add(ofa);
 		System.out.println("ofa" + ofa);
 		return rs;
@@ -55,4 +55,9 @@ public class OrderController {
 		return oservice.update(order);
 	}
 
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Map<String, Object>> queryAll(Order_Fault of) {
+		return ofservice.query(of);
+	}
 }

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.aaa.entity.Brand;
 import com.aaa.service.BrandService;
-import com.aaa.util.FileUploadUtils;
+import com.aaa.util.FileUpload;
 
 @Controller
 @RequestMapping("brand")
@@ -31,21 +31,11 @@ public class BrandController {
 
 	@RequestMapping("/add")
 	@ResponseBody
-	public int add(@RequestParam("brandIcon") MultipartFile[] brandIcon,
-			Brand b, HttpServletRequest request) {
+	public int add(@RequestParam("file") MultipartFile[] file, Brand b,
+			HttpServletRequest request) {
 
-		String path = request.getServletContext()
-				.getRealPath("jsp/back/upload");
-		String savePath = "";
-		System.out.println("path" + path);
-		for (MultipartFile m : brandIcon) {
-
-			savePath = FileUploadUtils.uploadFile(brandIcon, path);
-		}
-		// Integer i = savePath.lastIndexOf("");
-		// System.out.println("i" + i);
-
-		b.setBrandIcon(savePath);
+		List<String> rs = FileUpload.uplaods(file, request);
+		b.setBrandIcon(rs.get(0));
 		return service.add(b);
 	}
 

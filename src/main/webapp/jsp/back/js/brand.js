@@ -72,17 +72,17 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			}
 		}	
 		// 提交
-		function submits(){
+		function submits() {
 			if($("#brandId").textbox("getValue")=="自动生成"){
 				$("#brandId").textbox("setValue",-1);
 			}
-			alert($("#filebox_file_id_1").val());
-			$.post(url,{"brandId":$("#brandId").val(),
-			"brandName":$("#brandName").val(),"brandIcon":$("#filebox_file_id_1").val()//使用EasyUI　上传文件控件　获取数据时　不能使用创建时的ＩＤ　需要找到其自动给创建的 input 的ID
-			,"brandDescription":$("#brandDescription").val(),
-			"operator":$("#operator").val()},
-			function(data){
-					if(data==1){
+			alert(111);
+			alert(url);
+		   $("#fm").form('submit',{
+		    	url:url,
+		        success:function (data) {
+		        	alert(data);
+		        	if(data==1){
 						$.messager.show({
 							title:'提示',
 							msg:"操作成功！"
@@ -95,7 +95,8 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 							msg:"操作失败！"
 						});
 					}
-				});
+		        }
+		});
 		}
 		
 		// 取消

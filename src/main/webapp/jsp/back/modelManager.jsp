@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="modelName" name="modelName" />
 			</div>
 			<div style="margin-bottom: 20px">
-				<input type="file" id="modelPhoto" name="modelPhoto"/>
+				<input type="file" id="file" name="file"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'颜色:'" style="width:100%"

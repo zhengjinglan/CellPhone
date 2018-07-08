@@ -51,21 +51,120 @@ function Myquery(){
 }
 var url;
 var data;
+function queryFault(){
+		var rows = $("#tables").datagrid("getSelections");
+		alert(JSON.stringify(rows));
+		if(rows.length == 1){
+			var si = rows[0].orderId;
+			alert(si);
+			$('#tables').datagrid({    
+			    url:'order/queryAll?id=rows.orderId',    
+			    columns:[[    
+			          
+			    ]]    
+			}); 
+			$("#fault").window("open");
 
+
+		}else if(rows.length > 1){
+			$.messager.show({
+				title:'提示',
+				msg:"一次只能查看一个订单,请重新选择！"
+			});
+		}else{
+			$.messager.show({
+				title:'提示',
+				msg:"请选择要查看的订单！"
+			});
+		}
+}
 $(function(){
 	//数据窗口隐藏
-	$("#datawindow").window("close");
-
+	$("#datawindow,#fault").window("close");
+	$('#brandId').combobox({
+	    url:'brand/queryBrand', 
+	    editable:false, //不可编辑状态
+	    cache: false,
+	    panelHeight: 'auto',//自动高度适合
+	    valueField:'brandId',   
+	    textField:'brandName',
+	    
+	    onSelect: function(record){
+		    $("#seriesId").combobox("setValue",'');
+			var brandId = $('#brandId').combobox('getValue');		
+			
+			$.ajax({
+				type: "POST",
+				url: "series/querySeries?brandId="+record.brandId,
+				cache: false,
+				dataType : "json",
+				success: function(data){
+				$("#seriesId").combobox("loadData",data);
+							   }
+						}); 	
+					}		
+		});
+	$('#seriesId').combobox({ 
+	    editable:false, //不可编辑状态
+	    cache: false,
+	    panelHeight: 'auto',//自动高度适合
+	    valueField:'seriesId',   
+	    textField:'seriesName',
+	    onSelect: function(record){
+		    $("#modelId").combobox("setValue",'');
+			var seriesId = $('#seriesId').combobox('getValue');		
+			
+			$.ajax({
+				type: "POST",
+				url: "model/queryAll?seriesId="+record.seriesId,
+				cache: false,
+				dataType : "json",
+				success: function(data){
+				$("#modelId").combobox("loadData",data);
+							   }
+						}); 	
+					}		
+	   });
+	$('#modelId').combobox({ 
+	    editable:false, //不可编辑状态
+	    cache: false,
+	    panelHeight: 'auto',//自动高度适合
+	    valueField:'modelId',   
+	    textField:'modelName',
+	    onSelect: function(record){
+		    $("#faultId").combobox("setValue",'');
+			var modelId = $('#modelId').combobox('getValue');		
+			
+			$.ajax({
+				type: "POST",
+				url: "fault/queryAll?modelId="+record.modelId,
+				cache: false,
+				dataType : "json",
+				success: function(data){
+				$("#faultId").combobox("loadData",data);
+							   }
+						}); 	
+					}		
+	   });
+	$('#faultId').combobox({ 
+	    editable:false, //不可编辑状态
+	    cache: false,
+	    panelHeight: 'auto',//自动高度适合
+	    valueField:'faultId',   
+	    textField:'faultName'
+	   });
+	
 });
+
 //打开新增窗口
 function add(){
 	$("#fm").form('reset');
 	loadSelect("fettlerId","fettler/queryByState","empName","fettlerId",true);
-	loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
-	loadSelect("faultId","fault/queryAll","faultName","faultId",true);
-	loadSelect("modelId","model/queryAll","modelName","modelId",true);
-	loadSelect("seriesId","series/querySeries","seriesName","seriesId",true);
-	$("#datawindow").window("open").window('setTitle',"新增");
+	//loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
+/*	loadSelect("faultId","fault/queryAll?modelId="+$("#modelId").val(),"faultName","faultId",true);
+	loadSelect("modelId","model/queryAll?seriesId="+$("#seriesId").val(),"modelName","modelId",true);
+	loadSelect("seriesId","series/querySeries?brandId="+$("#brandId").val(),"seriesName","seriesId",true);*/
+	$("#datawindow").window("open").window('setTitle',"添加订单");
 	url = "order/add";
 }
 
@@ -105,14 +204,17 @@ function submits(){
 	if($("#orderId").textbox("getValue")=="自动生成"){
 		$("#orderId").textbox("setValue",-1);
 	}	
+	alert($("#orderPrice").val());
+	alert($("#operator").val());
+	alert($("#fettlerId").val());
 	$.post(url,{"orderId":$("#orderId").val(),"fettlerId":$("#fettlerId").val(),
-		"color":$("#colorId").val(),"modelId":$("#modelId").val(),"orderPrice":$("#orderPrice").val(),
+		"color":$("#color").val(),"modelId":$("#modelId").val(),
 		"brandId":$("#brandId").val(),"seriesId":$("#seriesId").val(),
 		"faultId":$("#faultId").val(),"assignTime":$("#assignTime").val(),
-		"address":$("#address").val(),"userName":$("$userName").val();
+		"address":$("#address").val(),"userName":$("#userName").val(),
 		"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
 	"realEnd":$("#realEnd").val(),"diagnosisResult":$("#diagnosisResult").val(),
-	"realSolution":$("#realSolution").val(),"orderPrice":$("#orderPrice").val(),
+	"realSolution":$("#realSolution").val(),"forecastPrice":$("#orderPrice").val(),
 	"assigner":$("#operator").val()},function(data){
 	
 			if(data==1){

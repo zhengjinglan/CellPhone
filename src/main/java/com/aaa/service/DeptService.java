@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aaa.dao.DeptMapper;
+import com.aaa.dao.EmpMapper;
 import com.aaa.entity.Dept;
 import com.aaa.entity.DeptExample;
 
@@ -15,6 +16,8 @@ public class DeptService {
 
 	@Autowired
 	DeptMapper deptMapper;
+	@Autowired
+	EmpMapper empMapper;
 
 	public List<Dept> queryPage(Integer pageNum, Integer pageSize) {
 		DeptExample deptExample = new DeptExample();
@@ -34,7 +37,9 @@ public class DeptService {
 	public int dels(Integer[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (Integer i : ids) {
+			// if (empMapper.selectAll(i).SIZE = 0) {
 			list.add(i);
+			// }
 		}
 		DeptExample dept = new DeptExample();
 		dept.createCriteria().andDeptIdIn(list);

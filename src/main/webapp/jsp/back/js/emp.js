@@ -38,17 +38,6 @@ $(function(){
 		}
 	});
 });
-$(function(){
-
-    $('#cc').combobox({    
-
-         required:true,    
-
-         multiple:true,
-
-         disabled:true  
-
-   });  
 $(document).ready(function(){
 	//自动搜索 
 	$('#dept').combobox({

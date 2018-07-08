@@ -50,17 +50,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				pointer-events:none;
  			}
  		</style>
-<<<<<<< HEAD
- 	
 <!--     <script type="text/javascript" >
         window.ctx = "";
         window.resourcePath = "//rs.jikexiu.com";
         var _Width = $(window).width();
      
     </script> -->
-=======
 
->>>>>>> refs/remotes/origin/lqx
 </head>
 
 <body>

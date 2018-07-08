@@ -51,14 +51,16 @@ public class ModelController {
 		return modelService.dels(ids);
 	}
 
-	@RequestMapping("add")
+	@RequestMapping(value = "add")
 	@ResponseBody
 	public int add(
-			@RequestParam(value = "modelPhoto", required = false) MultipartFile[] photo,
-			Model model, HttpServletRequest request) {
+			@RequestParam(value = "file", required = false) MultipartFile[] file,
+			Model model, HttpServletRequest request) throws Exception {
+		System.out.println("1111111");
 
-		List<String> rs = FileUpload.uplaods(photo, request);
+		List<String> rs = FileUpload.uplaods(file, request);
 		model.setModelPhoto(rs.get(0));
+
 		return modelService.add(model);
 	}
 
@@ -67,4 +69,5 @@ public class ModelController {
 	public int update(Model model) {
 		return modelService.update(model);
 	}
+
 }
