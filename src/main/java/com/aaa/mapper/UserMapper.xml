@@ -204,18 +204,20 @@
   
    	<select id="queryOfa" resultType="Map" 
    	parameterType="com.aaa.entity.User" >
- 	select u.user_name,m.model_name,f.fault_name,f.fault_price,
-	o.gmt_create,o.state
-	from order_fault ofa
-	join `order` o
-	on ofa.order_id=o.order_id
-	join  `user` u
-	on o.user_id=u.user_id
-	join fault f
-	on ofa.fault_id=f.fault_id
-	join model m
-	on m.model_id=f.model_id
-	where u.user_phone=#{userPhone}
+ 		select u.user_name,m.model_name,f.fault_name,f.fault_price,
+		o.gmt_create,o.state,mail.info_id,mail.mail_num
+		from order_fault ofa
+		left join `order` o
+		on ofa.order_id=o.order_id
+		left join  `user` u
+		on o.user_id=u.user_id
+		left join fault f
+		on ofa.fault_id=f.fault_id
+		left join model m
+		on m.model_id=f.model_id
+		left join mail_info mail
+		on mail.order_id=ofa.order_id
+		where u.user_phone=#{userPhone}
   	</select>
   	<select id="queryUser" parameterType="com.aaa.entity.User" resultType="User">
   		select * from `user`

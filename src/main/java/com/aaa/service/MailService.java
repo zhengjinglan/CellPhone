@@ -16,5 +16,9 @@ public class MailService {
 		return mapper.insert(m);
 		
 	}
+	
+	public int update(MailInfo m){
+		return mapper.updateMail(m);
+	}
 
 }

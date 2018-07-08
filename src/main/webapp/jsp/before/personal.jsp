@@ -18,6 +18,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="../jsp/before/assets/animate.css" />
 <link href="../jsp/before/assets/owl-carousel/owl.carousel.css" rel="stylesheet">
 <link  href="../jsp/before/assets/style.css" rel="stylesheet">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript">
+			$(function(){
+				//$("#fm").hide();
+				$("#mailNum").hide();
+				$("#sb").hide();
+				$("#o").show();
+				
+			});
+			function check(){
+				alert(111);
+					//$("fm").show();
+					$("#mailNum").show();
+					$("#sb").show();
+					$("#o").hide();
+				}
+			function sbcheck(){
+			$("#mailNum").hide();
+				$("#sb").hide();
+				$.post("../mail/updateMail",{"mailNum":$("#mailNum").val(),"infoId":$("#infoId").val()},
+			function(data){
+			alert(data);
+					if(data==1){
+					alert("确认成功");
+						$("#tables").datagrid("reload");
+					}else{
+						$.messager.show({
+							title:'提示',
+							msg:"操作失败！"
+						});
+						
+					}
+				});
+			}
+	  </script>
 
 
 </head>
@@ -25,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body id="home">
  <div class="shopping-cart">
  <a href="../jsp/before/macservice.jsp">返回首页</a>
-	 <table class="table table-hover text-center">
+	 <table class="table table-hover text-center" id="tables">
 			<thead>
 				<tr>
 					
@@ -35,6 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th>价格</th>
 					<th>创建时间</th>
 					<th>维修状态</th>
+					<th>维修方式</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -46,7 +83,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${ofa.fault_price }</td>
 					<td>${ofa.gmt_create }</td>
 					<td>${ofa.state }</td>
-					<td><a href="#" onclick="return confirm('你确定要删除吗？')">评价</a></td>
+					<td>
+					<c:if test="${ofa.info_id != null }">
+					
+					<c:if test="${ofa.mail_num == null }">					
+					<a href="javascrpt:void(0)" id="o" onclick="check()" >
+        			请填写快递单号</a>
+        			<form method="post" id="fm">
+        			<input type="hidden" id="infoId" name="infoId" value="${ofa.info_id}"/>
+        				<input type="number" id="mailNum" name="mailNum"/>
+        				<input type="submit" value="确定" id="sb" onclick="sbcheck()" />
+        			</form>
+					</c:if>
+					<c:if test="${ofa.mail_num != null }">	
+					<a href="javascrpt:void(0) " >邮寄维修</a>
+					</c:if>
+					</c:if>
+					
+					<c:if test="${ofa.info_id == null }">
+					<a href="javascrpt:void(0) " >上门维修</a>
+					</c:if>
+					</td>
 				</tr>
 				</c:forEach>
 					</tbody>

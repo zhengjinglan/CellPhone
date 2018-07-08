@@ -24,14 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/tuiguang_order.css">
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
- 	 <!-- 评价 -->
- 	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
-	  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
-	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	  <!-- 故障 -->
     <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
     <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap.min.css" rel="stylesheet">
@@ -53,63 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" 
-						aria-hidden="true">
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-				<div class="contact">
-			
-			<div class="container">
-				<h1>您的评价</h1>
-			<div class="contact-form">
-				
-				<div class="col-md-8 contact-grid">
-					<form action="assessment/inserts" method="post">	
-						<input type="text" name="fettlerId" value="维修工id" style="width:100px; height=20px;" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='维修工编号';}">
-					
-						<input type="text" name="userId" value="用户id" style="width:200px; height=20px;"onfocus="this.value='';" onblur="if (this.value == '') {this.value ='用户编号';}">
-							<select name="level"  >   
-								  <option value="0">请选择评分</option>   
-								  <option value="1" >1</option>  
-								  <option value="2" >2</option>
-								  <option value="3" >3</option>  
-                                  <option value="4" >4</option>
-                                  <option value="5" >5</option>   
-								  <option value="6" >6</option>  
-								  <option value="7" >7</option>
-								  <option value="8" >8</option>  
-                                  <option value="9" >9</option>
-                                  <option value="9" >10</option>
-                                  
-                            </select>
-						<textarea cols="77" rows="6" value=" " name="content" onfocus="this.value='';" style="width:440px; height=400px;" onblur="if (this.value == '') {this.value = '评价内容';}">评价内容</textarea>
-						<div class="send">
-							<input type="submit" value="提交" class="btn btn-primary btn-lg " onclick="addUser()">
-							<input type="button" value="关闭"class="btn btn-default" data-dismiss="modal">
-				         ${inserUser }<br>  
-						</div>
-					
-					</form>
-				</div>
-			</div>
-			
-		</div>
-	
-	</div>
-				</h4>
-			</div>
-			<div class="modal-body">
-				按下 ESC 按钮退出。
-			</div>
-			
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <header id="header">
     <div class="wrap">
@@ -274,16 +209,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </div>
 				<span id="telFixTips" class="fixTips">请输入正确的手机号码</span>
 				
-				<div id="mailBox" class="input-group phoneBox">
-	                <span class="input-group-addon phonePic">
-	                   <img class="phoneIcon" src="http://static.shanxiuxia.com/weadoc/fix_tabmenu2-2.png">
-	                   	<p class="listTitle">快递单号：</p>
-	                </span>
-	                <input id="mailNum" name="mailNum" type="number" 
-	                 class="form-control mailText" placeholder="输入快递单号">
-	                
-	            </div>
-				
 	            <div id="serviceCenterBox" class="input-group serviceCenterBox">
 	                <span class="input-group-addon serviceCenterPic">
                      	<img class="serviceCenterIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">
@@ -396,37 +321,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <!--bottom over-->
 </section>
-
-    <div class="kj-survice site-inner clearFix">
-        <!--dyh1031-->
-        <p class="title">用户对我们的信任</p>
-        <a href="#" data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-default btn-lg" >添加您的评价</button></a>
-            
-        <div class="float-left user-evaluate">
-            <div id="scroll">
-                <ul class="user-evaluate-list" style="top: 0px;">
-            <c:forEach items="${userList }" var="l">
-                            <li class="clearFix">
-                                <div class="user-img float-left">
-                                    <img src="//rs.jikexiu.com/resources/Nimages/landing/user.png" alt="">
-                                    <p>${l.id}</p>
-                                </div>
-                                <div class="user-name float-left">
-                                     <p class="mar-b-10 stars">
-                                        ${l.level }分
-                                    </p> 
-                                    <p class="col-hui" title="下完订单后，夏师傅很快联系我，预约上门时间，全过程录像，很专业，有问必答，耐心。非常满意！会推荐给同事～">${l.content }</p>
-                                    <p class="timeShow">${l.gmtCreate }</p>
-                                </div>
-                            </li>
-                            </c:forEach>
-                            </ul>
-            </div>
-        </div>
-        <div class="img-right">
-            <img src="//rs.jikexiu.com/resources/Nimages/landing/img-right.png" alt="">
-        </div>
-    </div>
 
     <article class="col problem" id="col5">
         <div class="wrap">
@@ -660,20 +554,6 @@ var url;
 	    $("#stepFive").html('05 鐢ㄦ埛楠屾敹');
 	    $("#stepSix").html('06 杞处浠樻');
 	});
-	 
-/* 	//表单提交	
-  $("#orderBtn").click(function() { 
-            var params = $("#orderfm").serialize();  
-            $.ajax( {  
-                type : "POST",  
-                url : url,  
-                data : params,  
-                success : function(msg) {                	
-                	alert("订单提交成功");
-                    window.location="macservice.jsp";
-                }
-            });  
-  	});   */
 	
   });
   function repairSave(){
@@ -693,12 +573,7 @@ var url;
 		Gid('s_county').setAttribute('onchange','showArea()');
 
     
-        function addUser(){  
-        var form = document.forms[0];  
-        form.action = "<%=basePath%>assessment/inserts";  
-        form.method="post";  
-        form.submit();  
-    }  
+ 
         
   </script>
 </body>

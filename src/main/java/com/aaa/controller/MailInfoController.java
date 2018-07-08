@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,7 +39,20 @@ public class MailInfoController {
 		int rs=oservice.add(o);
 		ofservice.add(ofa);
 		int ms=mserice.add(m);
-		return ms;
+		return ms;		
+	}
+	/**
+	 * 
+	 * @author lqx
+	 * @date 2018年7月8日
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/updateMail")
+	@ResponseBody
+	public int updateMail(MailInfo m){
+		
+		return mserice.update(m);
 		
 	}
 

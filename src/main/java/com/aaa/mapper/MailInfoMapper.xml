@@ -296,4 +296,14 @@
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where info_id = #{infoId,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateMail" parameterType="com.aaa.entity.MailInfo">
+  		update mail_info 
+  		<set>
+  			<if test="mailNum != null">
+  				mail_num=#{mailNum}
+  			</if>
+  			where info_id=#{infoId}
+  		</set>
+  </update>
 </mapper>

@@ -73,9 +73,10 @@ $("#orderBtn").click(function() {
         type : "POST",  
         url : url,  
         data : params,  
-        success : function(msg) {                	
+        success : function(msg) { 
+        	alert(111);
         	alert("订单提交成功");
-            window.location="macservice.jsp";
+            window.location="login.jsp";
         }
     });  
 });  
