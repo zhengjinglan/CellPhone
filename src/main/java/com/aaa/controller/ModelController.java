@@ -66,7 +66,11 @@ public class ModelController {
 
 	@RequestMapping("update")
 	@ResponseBody
-	public int update(Model model) {
+	public int update(
+			@RequestParam(value = "file", required = false) MultipartFile[] file,
+			Model model, HttpServletRequest request) {
+		List<String> rs = FileUpload.uplaods(file, request);
+		model.setModelPhoto(rs.get(0));
 		return modelService.update(model);
 	}
 

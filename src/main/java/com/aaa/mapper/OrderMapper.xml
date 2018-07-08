@@ -134,8 +134,7 @@
       color, forecast_price)
     values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL}, 
       #{payWay,jdbcType=VARCHAR}, now(), now(), 
-      '待处理', #{assigner,jdbcType=VARCHAR}, 
- now(), 
+      '待处理', #{assigner,jdbcType=VARCHAR},now(), 
       #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP}, 
       #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{color,jdbcType=VARCHAR}, #{forecastPrice,jdbcType=DECIMAL})

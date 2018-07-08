@@ -337,7 +337,7 @@ limit #{param2},#{param3}
 </if>
 
   </select>
-  <select id="selectAll" parameterType="param1" resultType="map">
-  	select * from emp where dept_id=#{param1}
-  </select>
+  <!-- <select id="selectAll" parameterType="id" resultType="map">
+  	select * from emp where dept_id=#{id}
+  </select> -->
 </mapper>

@@ -53,10 +53,10 @@ var url;
 var data;
 function queryFault(){
 		var rows = $("#tables").datagrid("getSelections");
+		alert(rows);
 		alert(JSON.stringify(rows));
 		if(rows.length == 1){
 			var si = rows[0].orderId;
-			alert(si);
 			$('#tables').datagrid({    
 			    url:'order/queryAll?id=rows.orderId',    
 			    columns:[[    
@@ -160,10 +160,6 @@ $(function(){
 function add(){
 	$("#fm").form('reset');
 	loadSelect("fettlerId","fettler/queryByState","empName","fettlerId",true);
-	//loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
-/*	loadSelect("faultId","fault/queryAll?modelId="+$("#modelId").val(),"faultName","faultId",true);
-	loadSelect("modelId","model/queryAll?seriesId="+$("#seriesId").val(),"modelName","modelId",true);
-	loadSelect("seriesId","series/querySeries?brandId="+$("#brandId").val(),"seriesName","seriesId",true);*/
 	$("#datawindow").window("open").window('setTitle',"添加订单");
 	url = "order/add";
 }
@@ -212,6 +208,7 @@ function submits(){
 		"brandId":$("#brandId").val(),"seriesId":$("#seriesId").val(),
 		"faultId":$("#faultId").val(),"assignTime":$("#assignTime").val(),
 		"address":$("#address").val(),"userName":$("#userName").val(),
+		"orderPrice":$("#orderPrice").val(),
 		"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
 	"realEnd":$("#realEnd").val(),"diagnosisResult":$("#diagnosisResult").val(),
 	"realSolution":$("#realSolution").val(),"forecastPrice":$("#orderPrice").val(),

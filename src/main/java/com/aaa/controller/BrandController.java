@@ -31,6 +31,15 @@ public class BrandController {
 
 	@RequestMapping("/add")
 	@ResponseBody
+	/**
+	 * 
+	 * @author zjl
+	 * @date 2018年7月8日 下午10:35:48
+	 * @param file
+	 * @param b
+	 * @param request
+	 * @return
+	 */
 	public int add(@RequestParam("file") MultipartFile[] file, Brand b,
 			HttpServletRequest request) {
 
@@ -47,7 +56,20 @@ public class BrandController {
 
 	@RequestMapping("/update")
 	@ResponseBody
-	public int update(Brand b) {
+	/**
+	 * 
+	 * @author zjl
+	 * @date 2018年7月8日 下午10:36:01
+	 * @param file
+	 * @param b
+	 * @param request
+	 * @return
+	 */
+	public int update(@RequestParam("file") MultipartFile[] file, Brand b,
+			HttpServletRequest request) {
+		List<String> rs = FileUpload.uplaods(file, request);
+		System.out.println("rs.get(0)" + rs.get(0));
+		b.setBrandIcon(rs.get(0));
 		return service.update(b);
 	}
 

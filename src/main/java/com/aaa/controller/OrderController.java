@@ -31,12 +31,14 @@ public class OrderController {
 	@RequestMapping("/add")
 	@ResponseBody
 	public int add(User u, Order o, Order_Fault ofa) {
+
 		int us = uservice.add(u);
-		System.out.println("u" + u);
+		// System.out.println("u" + u);
 		int rs = oservice.add(o);
-		System.out.println("o" + o);
+		// System.out.println("o" + o);
 		ofservice.add(ofa);
-		System.out.println("ofa" + ofa);
+		// System.out.println("ofa" + ofa);
+
 		return rs;
 	}
 

@@ -1,9 +1,10 @@
 package com.aaa.util;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,18 +23,25 @@ public class FileUpload {
 
 	public static String upload(MultipartFile photo, HttpServletRequest request) {
 
+		SimpleDateFormat simpl = new SimpleDateFormat("yyyyMMddHHssmm");
 		// 获取磁盘目录
 		String photoName = "";
 		String photoName2 = "";
 		String path = request.getSession().getServletContext()
-				.getRealPath("image");
+				.getRealPath("upload");
 		if (!photo.getOriginalFilename().equals("")) {
-			photoName = path + "/" + UUID.randomUUID() + "_"
+			/*
+			 * photoName = path + "/" + UUID.randomUUID() + "_" +
+			 * photo.getOriginalFilename();
+			 */
+			photoName = path + "/" + simpl.format(new Date()) + "_"
 					+ photo.getOriginalFilename();
 			File file = new File(photoName);
 			file.mkdirs();
-			photoName2 = UUID.randomUUID() + "_" + photo.getOriginalFilename();
-
+			// photoName2 = UUID.randomUUID() + "_" +
+			// photo.getOriginalFilename();
+			photoName2 = simpl.format(new Date()) + "_"
+					+ photo.getOriginalFilename();
 			try {
 				photo.transferTo(file);
 			} catch (Exception e) {
