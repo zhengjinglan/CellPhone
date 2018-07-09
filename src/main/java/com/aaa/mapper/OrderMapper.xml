@@ -325,7 +325,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
+    update `order`
     set order_id = #{record.orderId,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       fettler_id = #{record.fettlerId,jdbcType=INTEGER},
@@ -406,7 +406,7 @@
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Order">
-    update order
+    update `order`
     set user_id = #{userId,jdbcType=INTEGER},
       fettler_id = #{fettlerId,jdbcType=INTEGER},
       order_price = #{orderPrice,jdbcType=DECIMAL},
