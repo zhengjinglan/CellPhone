@@ -29,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			});
 			function check(){
-				alert(111);
 					//$("fm").show();
 					$("#mailNum").show();
 					$("#sb").show();
@@ -37,10 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			function sbcheck(){
 			$("#mailNum").hide();
-				$("#sb").hide();
+				$("#sb").hide();8
 				$.post("../mail/updateMail",{"mailNum":$("#mailNum").val(),"infoId":$("#infoId").val()},
 			function(data){
-			alert(data);
 					if(data==1){
 					alert("确认成功");
 						$("#tables").datagrid("reload");

@@ -278,7 +278,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <span>请选择手机颜色</span><br>      
                                  <select id="colorId" class="form-control">                           
                                 </select>   
-                                	预计价格:￥<input  id="price" name="orderPrice" readonly/>
+                                	预计价格:￥<input  id="price" name="forecastPrice" readonly/>
                                
             </div>
         </div>
@@ -302,7 +302,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p class="step">
                 <a id="stepB" class="btn btn-default menuBtn">上门服务</a>
                 <a id="stepA" class="btn btn-default menuBtn">邮寄服务</a>
-                <a id="stepC" class="btn btn-default menuBtn" type="button">到店服务</a>
             </p>
             <ul id="contentA" class="list-group content">
                 <li class="list-group-item pull-left menu">01 提交订单</li>
@@ -522,7 +521,6 @@ var url;
 	    $("#yjText").css("color","#f37b46");
 	    $("#imeiBox").show();
 	    $("#addressBox").show();
-	   // $("#addressAll").show();
 	    $("#imeiTips").show();
 	    $("#time").hide();
 	    $("#timeTipsBox").hide();
@@ -545,14 +543,9 @@ var url;
 	    $("#stepSix").html('06 设备寄回');
 	});
 	$('#stepB').hover(function () {
-	    $("#stepThree").html('03  鐢ㄦ埛楠屾敹');
-	    $("#stepFive").html('05 鐢ㄦ埛楠屾敹');
-	    $("#stepSix").html('06 杞处浠樻');
-	});
-	$('#stepC').hover(function () {
-	    $("#stepThree").html('03 鍒板簵缁翠慨');
-	    $("#stepFive").html('05 鐢ㄦ埛楠屾敹');
-	    $("#stepSix").html('06 杞处浠樻');
+	    $("#stepThree").html('03  上门维修');
+	    $("#stepFive").html('05 用户验收');
+	    $("#stepSix").html('06 转账付款');
 	});
 	
   });

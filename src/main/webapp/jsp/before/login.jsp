@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://static.shanxiuxia.com/weadoc/css/public.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+     <script type="text/javascript" src="js/fixWay.js"></script> 
 </head>
 <body style="background:url(images/login-banner.jpg) ">
 
@@ -27,9 +28,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form id="loginfm" method="post">
 	<div class="loginPhoneBox">
        <div class="loginPhone">
-           <input id="phone" name="userPhone" type="tel" class="login-text" maxlength="11" placeholder="输入我的手机号码">
+           <input id="telPhone" name="userPhone" type="tel"
+           class="login-text" maxlength="11" placeholder="输入我的手机号码">
        </div>
-       <span id="phoneTips" class="phoneTips">请输入正确的手机号码</span>
+       <span id="telFixTips" class="fixTips" style="color:#F4A460" >请输入正确的手机号码</span>
    </div>
    <div class="loginCodeBox">
        <div class="loginCode ">
@@ -45,9 +47,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 </div>
 <script type="text/javascript">
-  var InterValObj; //timer变量，控制时间
+    var InterValObj; //timer变量，控制时间
     var count = 60; //间隔函数，1秒执行
     var curCount;//当前剩余秒数
+   $(function(){
+   		 $("#telFixTips").hide();
+   });
+   
+   $("#telPhone").change(function(){
+    var filter1 = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+    if(!filter1.test($("#telPhone").val())){
+        $("#telFixTips").show();
+        return false;
+    }else{
+        $("#telFixTips").hide();
+    }
+});
+    
     function sendMessage(){curCount = count;
         $("#enterCodeLogin").attr("disabled", "true");
         $("#enterCodeLogin").val(curCount + "秒后可重新发送");
@@ -70,7 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var sms="";
     
     $("#enterCodeLogin").click(function(){
-        var phone=$("#phone").val();
+   
+        var phone=$("#telPhone").val();
         if(phone!="")
         {
             $.ajax({
@@ -82,8 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
             });
         }else{
-         
-             alert("请输入手机号");
+            //checkTel();
+           alert("请正确填写手机号");
            return false;
         }
 
@@ -94,10 +111,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             alert("请输入验证码");
         }else{
             if(sms==code){
-	 				$.post("../../user/checkUser",{userPhone:$("#phone").val()},function(data){
-	 				alert(data);
+	 				$.post("../../user/checkUser",{userPhone:$("#telPhone").val()},function(data){
 					if(data==0){
-					window.location.href="../../user/queryOfa?userPhone="+$("#phone").val();	 	             	
+					window.location.href="../../user/queryOfa?userPhone="+$("#telPhone").val();	 	             	
 	 	             }else{
 	 	            	alert("您还没有过订单！");           		
             			$("#loginfm").form('reset');
