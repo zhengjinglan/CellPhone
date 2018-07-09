@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</select>
 			</div>
 			<div style="margin-bottom: 20px">
-				<select data-options="label:'供货商:'" name="companyId"  id="companyId"  class="easyui-combobox" style="width:100%;">
+				<select data-options="label:'供货商:'" required="true" name="companyId"  id="companyId"  class="easyui-combobox" style="width:100%;">
 				</select>
 			</div>
 			<input name="newName" id="newName" style="display: none">
@@ -46,12 +46,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="easyui-textbox" 
 				data-options="label:'采购数量:'" 
 				style="width:100%"
+				required="true"
+				validType="integ"
 				id="purchaseNum" name="purchaseNum" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" 
 					data-options="label:'采购价格:'" 
 					style="width:100%"
+					required="true"
+				validType="money"
 					id="purchasePrice" name="purchasePrice" />
 			</div>
 			<div style="margin-bottom: 20px">
@@ -62,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'采购人:'" style="width:100%"
-					id="purchaseBuyer" name="purchaseBuyer" />
+					id="purchaseBuyer" name="purchaseBuyer" required="true"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

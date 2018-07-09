@@ -65,4 +65,17 @@ public class CompanyService {
     public List<Company> list(){
         return mapper.selectByExample(null);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午1:38:21
+     *
+     * @param companyName
+     * @return true表示存在,false表示不存在
+     */
+    public boolean existCompanyName(String companyName){
+        CompanyExample exp = new CompanyExample();
+        exp.createCriteria().andCompanyNameEqualTo(companyName);
+        return mapper.selectByExample(exp).size() > 0 ? true : false;
+    }
 }

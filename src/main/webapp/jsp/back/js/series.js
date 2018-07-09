@@ -56,7 +56,7 @@ var url;
 	function add(){
 		$("#fm").form('reset');
 		$("#datawindow").window("open").window('setTitle',"新增");
-		loadSelect("brandId","brand/queryBrand","brandName","brandId",true);
+		loadSelect("brandId","brand/queryBrand","brandName","brandId",false);
 		url = "series/add";
 	}
 	

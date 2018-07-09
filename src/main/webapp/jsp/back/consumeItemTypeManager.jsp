@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'类型名称:'" style="width:100%"
-					id="typeName" name="typeName" />
+					id="typeName" name="typeName" required="true" validType="remote['consumeItemType/existTypeName','typeName']" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

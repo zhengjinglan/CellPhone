@@ -24,7 +24,19 @@ public class BrandService {
 	public int add(Brand b) {
 		return dao.insert(b);
 	}
-
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:12:02
+	 *
+	 * @param brandName
+	 * @return true代表存在,false代表不存在
+	 */
+	public boolean existBrandName(String brandName){
+	    BrandExample exp = new BrandExample();
+	    exp.createCriteria().andBrandNameEqualTo(brandName);
+	    return dao.selectByExample(exp).size() > 0 ? true : false;
+	}
 	public int del(int[] ids) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i : ids) {

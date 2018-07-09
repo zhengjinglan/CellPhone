@@ -52,4 +52,17 @@ public class JobController {
 		System.out.println(job);
 		return jobService.update(job);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:53:04
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param jobName
+	 * @return
+	 */
+	@RequestMapping("existJobName")
+    @ResponseBody
+	public boolean existJobName(String jobName){
+	    return jobService.existJobName(jobName);
+	}
 }

@@ -45,23 +45,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="empId" name="empId" data-options="label:'员工编号:'" value="自动生成"/>
 			</div>
 			<div style="margin-bottom: 20px">
-
 				<input class="easyui-combobox" style="width:100%"
-					id="deptId" name="deptId" data-options="label:'部门编号:'"/>
+					id="deptId" name="deptId" data-options="label:'部门编号:'" required="true"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-combobox" data-options="label:'职位编号:'" style="width:100%"
-					id="jobId" name="jobId" />
+					id="jobId" name="jobId" required="true"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'员工姓名:'" style="width:100%"
-					id="empName" name="empName" />
+					id="empName" name="empName" required="true" validType="remote['emp/existEmpName','empName']"/>
 			</div>
 			<div style="margin-bottom: 20px" style="width:100%">
             <select class="easyui-combobox" data-options="label:'性别:'" style="width:100%"
-					id="empSex" name="empSex" id="cc" >
+					id="empSex" name="empSex" id="cc" required="true">
 					<option>---请选择---</option>
 					<option value="男">男</option>
 					<option value="女">女</option>
@@ -70,12 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'员工联系方式:'" style="width:100%"
-					id="empPhone" name="empPhone" />
+					id="empPhone" name="empPhone" required="true" vaildType="mobileAndTel"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'地址:'" style="width:100%"
-					id="empAddress" name="empAddress" />
+					id="empAddress" name="empAddress" required="true" />
 			</div>
 
 

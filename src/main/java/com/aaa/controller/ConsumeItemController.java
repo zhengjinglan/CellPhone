@@ -53,4 +53,13 @@ public class ConsumeItemController {
     public List<ConsumeItem> queryAll(){
         return service.list();
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:19:42
+     * @see com.aaa.controller.CompanyController#existCompanyName(String)
+     */
+    public boolean existItemName(String itemName){
+        return service.existItemName(itemName);
+    }
 }

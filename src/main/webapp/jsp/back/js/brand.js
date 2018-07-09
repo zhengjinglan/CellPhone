@@ -83,6 +83,9 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			}
 		   $("#fm").form('submit',{
 		    	url:url,
+		    	onSubmit:function(){
+		    		return $(this).form('validate');
+		    	},
 		        success:function (data) {
 		        	if(data==1){
 						$.messager.show({

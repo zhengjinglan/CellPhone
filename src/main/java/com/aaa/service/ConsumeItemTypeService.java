@@ -52,4 +52,17 @@ public class ConsumeItemTypeService {
     public List<ConsumeItemType> list(){
         return mapper.selectByExample(null);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:24:14
+     * @see com.aaa.service.ConsumeItemService#existItemName(String)
+     * @param typeName
+     * @return 
+     */
+    public boolean existTypeName(String typeName){
+        ConsumeItemTypeExample exp = new ConsumeItemTypeExample();
+        exp.createCriteria().andTypeNameEqualTo(typeName);
+        return mapper.selectByExample(exp).size() > 0 ? true : false;
+    }
 }

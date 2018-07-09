@@ -48,15 +48,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'维修工电话:'" style="width:100%"
-					id="fettlerPhone" name="fettlerPhone" />
+					id="fettlerPhone" name="fettlerPhone" required="true" validType="mobile"/>
 			</div>
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'所在在城市:'" style="width:100%"
-					id="workCity" name="workCity" />
+					id="workCity" name="workCity" required="true" />
 			</div>		
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'当前状态:'" style="width:100%"
-					id="state" name="state" value="休息中" />
+					id="state" name="state" value="闲置" readonly="true"/>
 			</div>				
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

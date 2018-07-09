@@ -203,5 +203,21 @@ $.extend($.fn.validatebox.defaults.rules, {
         }
       },
       message:'请输入0到1000之间的最多俩位小数的数字'
-    }
+    },
+    remote: {
+		validator: function(value, param){
+			var data = {};
+			data[param[1]] = value;
+			var response = $.ajax({
+				url:param[0],
+				dataType:'json',
+				data:data,
+				async:false,
+				cache:false,
+				type:'post'
+			}).responseText;
+			return response == "false";
+		},
+		message: 'Please fix this field.'
+	}
 }); 

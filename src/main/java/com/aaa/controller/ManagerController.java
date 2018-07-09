@@ -67,5 +67,18 @@ public class ManagerController {
 		System.out.println(manager);
 		return managerService.update(manager);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:59:08
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param uname
+	 * @return
+	 */
+	@RequestMapping("existUname")
+    @ResponseBody
+	public boolean existUname(String uname){
+	    return managerService.existUname(uname);
+	}
 
 }

@@ -48,4 +48,17 @@ public class ConsumeItemTypeController {
     public List<ConsumeItemType> queryAll() {
         return service.list();
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:27:54
+     * @see com.aaa.controller.CompanyController#existCompanyName(String)
+     * @param typeName
+     * @return
+     */
+    @RequestMapping("existTypeName")
+    @ResponseBody
+    public boolean existTypeName(String typeName){
+        return service.existTypeName(typeName);
+    }
 }

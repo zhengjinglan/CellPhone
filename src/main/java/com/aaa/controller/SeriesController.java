@@ -52,4 +52,17 @@ public class SeriesController {
     public int update(Series s) {
         return service.update(s);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午3:14:16
+     * @see com.aaa.controller.CompanyController#existCompanyName(String)
+     * @param seriesName
+     * @return
+     */
+    @RequestMapping("existSeriesName")
+    @ResponseBody
+    public boolean existSeriesName(String seriesName){
+        return service.existSeriesName(seriesName);
+    }
 }

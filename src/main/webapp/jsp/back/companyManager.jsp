@@ -120,14 +120,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if($("#companyId").textbox("getValue")=="自动生成"){
 				$("#companyId").textbox("setValue",-1);
 			}	
-			$.post(url,{"companyId":$("#companyId").val(),"companyName":$("#companyName").val(),
-			"companyAddress":$("#companyAddress").val(),"companyLinkman":$("#companyLinkman").val(),
-			"companyTel":$("#companyTel").val(),"gmtCreate":$("#gmtCreate").val(),
-			"gmtModified":$("#gmtModified").val(),"operator":$("#operator").val()}
-				,function(data){
-				alert(url);
-				alert(data);
-					if(data==1){
+		    $("#fm").form('submit',{
+		    	url:url,
+		    	onSubmit:function(){
+		    		return $(this).form('validate');
+		    	},
+		        success:function (data) {
+		        	if(data==1){
 						$.messager.show({
 							title:'提示',
 							msg:"操作成功！"
@@ -140,8 +139,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							msg:"操作失败！"
 						});
 					}
-				});
-			}
+				}
+			});
+		}
 		
 		// 取消
 		function concel(){
@@ -176,20 +176,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'公司名称:'" style="width:100%"
-					id="companyName" name="companyName" />
+					id="companyName" name="companyName" required="true" required="true" validType="remote['company/existCompanyName','companyName']" />
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'公司地址:'" style="width:100%"
-					id="companyAddress" name="companyAddress" />
+					id="companyAddress" name="companyAddress" required="true" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'联系人:'" style="width:100%"
-					id="companyLinkman" name="companyLinkman" />
+					id="companyLinkman" name="companyLinkman" required="true" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'公司电话:'" style="width:100%"
-					id="companyTel" name="companyTel" />
+					id="companyTel" name="companyTel" required="true" validType="mobileAndTel" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

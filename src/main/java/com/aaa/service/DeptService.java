@@ -66,4 +66,17 @@ public class DeptService {
     public long getCount() {
         return deptMapper.countByExample(null);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:30:17
+     * @see com.aaa.service.ConsumeItemService#existItemName(String)
+     * @param deptName
+     * @return
+     */
+    public boolean existDeptName(String deptName){
+        DeptExample exp = new DeptExample();
+        exp.createCriteria().andDeptNameEqualTo(deptName);
+        return deptMapper.selectByExample(exp).size() > 0 ? true : false;
+    }
 }

@@ -71,4 +71,17 @@ public class ConsumeItemService {
     public List<ConsumeItem> list(){
         return mapper.selectByExample(null);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:16:10
+     *
+     * @param itemName
+     * @return true 表示存在, false 表示不存在
+     */
+    public boolean existItemName(String itemName){
+        ConsumeItemExample exp = new ConsumeItemExample();
+        exp.createCriteria().andItemNameEqualTo(itemName);
+        return mapper.selectByExample(exp).size() > 0 ? true : false;
+    }
 }

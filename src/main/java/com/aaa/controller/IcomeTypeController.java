@@ -53,4 +53,15 @@ public class IcomeTypeController {
 
 		return incomeService.update(income);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:35:50
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param incomeTypeName
+	 * @return
+	 */
+	public boolean existIncomeTypeName(String incomeTypeName){
+	    return incomeService.existIncomeTypeName(incomeTypeName);
+	}
 }

@@ -49,4 +49,17 @@ public class FaultTypeController {
 	public int update(FaultType fault) {
 		return faultService.update(fault);
 	}
+	/**
+	 * 
+	 * @author 小黑 
+	 * @date 2018年7月10日 上午2:44:08
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param typeName
+	 * @return
+	 */
+	@RequestMapping("existTypeName")
+    @ResponseBody
+	public boolean existTypeName(String typeName){
+	    return faultService.existTypeName(typeName);
+	}
 }

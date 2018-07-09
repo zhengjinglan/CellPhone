@@ -59,11 +59,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-combobox" data-options="label:'品牌:'" style="width:100%"
-					id="brandId" name="brandId" data-options="required:true" validtype="idcard"/>
+					id="brandId" name="brandId" data-options="required:true" />
 			</div>
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" data-options="label:'产品名称:'" style="width:100%"
-					id="seriesName" name="seriesName"/>
+				<input class="easyui-textbox" data-options="label:'系列名称:'" style="width:100%"
+					id="seriesName" name="seriesName" required="true" validType="remote['series/existSeriesName','seriesName']"/>
 			</div>
 			
 			<div style="margin-bottom: 20px">

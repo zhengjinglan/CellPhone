@@ -2,8 +2,6 @@ package com.aaa.controller;
 
 import java.util.List;
 
-import net.sf.json.JSONArray;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +25,8 @@ public class CompanyController {
     }
     @RequestMapping("add")
     @ResponseBody
-    public boolean add(Company company){
-        return service.add(company)>0?true:false;
+    public int add(Company company){
+        return service.add(company);
     }
     @RequestMapping("update")
     @ResponseBody
@@ -45,5 +43,20 @@ public class CompanyController {
     @ResponseBody
     public List<Company> queryAll(){
         return service.list();
+    }
+    /**
+     * 返回布尔值，但会被转为字符串。
+     * 在js中要使用 response=="true"这样的判断
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午1:46:20
+     * 
+     * @param companyName
+     * @return true表示存在,false表示不存在
+     */
+    @RequestMapping("existCompanyName")
+    @ResponseBody
+    public boolean existCompanyName(String companyName){
+        return service.existCompanyName(companyName);
     }
 }

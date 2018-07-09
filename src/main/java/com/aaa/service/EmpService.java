@@ -69,4 +69,17 @@ public class EmpService {
 	public long getCount() {
 		return empMapper.countByExample(null);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:38:42
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param empName
+	 * @return
+	 */
+	public boolean existEmpName(String empName){
+	    EmpExample exp = new EmpExample();
+	    exp.createCriteria().andEmpNameEqualTo(empName);
+	    return empMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 }

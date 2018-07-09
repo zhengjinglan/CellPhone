@@ -41,23 +41,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-combobox" style="width:100%"
-					id="seriesId" name="seriesId" data-options="label:'系列名称:'"/>
+					id="seriesId" name="seriesId" data-options="label:'系列名称:'" required="true"/>
 			</div>
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'机型名称:'" style="width:100%"
-					id="modelName" name="modelName" />
+					id="modelName" name="modelName" required="true" validType="remote['model/existModelName','modelName']"/>
 			</div>
 			<div style="margin-bottom: 20px">
-				<input type="file" id="file" name="file"/>
+				<input type="file" id="file" name="file" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'颜色:'" style="width:100%"
-					id="colors" name="colors" />
+					id="colors" name="colors" required="true"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'机型描述:'" style="width:100%"
-					id="modelDescription" name="modelDescription" />
+					id="modelDescription" name="modelDescription" required="true" />
 			</div>
 					
 			<div style="margin-bottom: 20px">

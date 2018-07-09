@@ -61,5 +61,18 @@ public class FaultTypeService {
 	public long getCount() {
 		return faultMapper.countByExample(null);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:43:27
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param typeName
+	 * @return
+	 */
+	public boolean existTypeName(String typeName){
+	    FaultTypeExample exp = new FaultTypeExample();
+	    exp.createCriteria().andTypeNameEqualTo(typeName);
+	    return faultMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 
 }

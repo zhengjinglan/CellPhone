@@ -56,7 +56,6 @@ public class ModelController {
 	public int add(
 			@RequestParam(value = "file", required = false) MultipartFile[] file,
 			Model model, HttpServletRequest request) throws Exception {
-		System.out.println("1111111");
 
 		List<String> rs = FileUpload.uplaods(file, request);
 		model.setModelPhoto(rs.get(0));
@@ -73,5 +72,17 @@ public class ModelController {
 		model.setModelPhoto(rs.get(0));
 		return modelService.update(model);
 	}
-
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午3:04:13
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param modelName
+	 * @return
+	 */
+	@RequestMapping("existModelName")
+    @ResponseBody
+	public boolean existModelName(String modelName){
+	    return modelService.existModelName(modelName);
+	}
 }

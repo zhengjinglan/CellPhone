@@ -72,5 +72,17 @@ public class BrandController {
 		b.setBrandIcon(rs.get(0));
 		return service.update(b);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:17:18
+	 *
+	 * @see com.aaa.service.BrandService#existBrandName(String)
+	 */
+	@RequestMapping("existBrandName")
+    @ResponseBody
+	public boolean existBrandName(String brandName){
+	    return service.existBrandName(brandName);
+	}
 
 }

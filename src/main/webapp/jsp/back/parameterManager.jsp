@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'核心数:'" style="width:100%"
-					id="coreNum" name="coreNum"/>
+					id="coreNum" name="coreNum" validType="integ"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'运行内存:'" style="width:100%"

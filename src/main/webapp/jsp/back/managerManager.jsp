@@ -39,39 +39,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options=" label:'用户名:'" style="width:100%"
-					id="uname" name="uname" />
+					id="uname" name="uname" required="true" validType="remote['manager/existUname','uname']"/>
 			</div>
 			
-<<<<<<< HEAD
-			<div style="margin-bottom: 20px" id="pwdDiv">
-=======
 			<div style="margin-bottom: 20px" id="password">
->>>>>>> origin/zzl
 				<input class="easyui-passwordbox" data-options="label:'密码:'" style="width:100%"
-					id="pwd" name="pwd" value="111"/>
+					id="pwd" name="pwd" value="111" required="true" />
 			</div>
 			
-<<<<<<< HEAD
-			<div style="margin-bottom: 20px" id="repwdDiv">
-=======
 			<div style="margin-bottom: 20px" id="repassword">
->>>>>>> origin/zzl
 				<input class="easyui-passwordbox" data-options="label:'确认密码:'" style="width:100%"
-					id="repwd" value="111"/>
+					id="repwd" value="111" required="true" validType="equals['pwd']"/>
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-combobox" data-options="label:'员工:'" style="width:100%"
-					id="empId" name="empId"/>
+					id="empId" name="empId" required="true"/>
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-combobox" data-options="label:'角色:'" style="width:100%"
-					id="rid" name="rid"/>
+					id="rid" name="rid" required="true"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<select class="easyui-combobox" data-options="label:'状态:'" style="width:100%"
-					id="state" name="state">
+					id="state" name="state" required="true">
 					<option value="0">启用</option>
 					<option value="1">禁用</option>
 					</select>

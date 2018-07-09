@@ -41,12 +41,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'部门名称:'" style="width:100%"
-					id="deptName" name="deptName" />
+					id="deptName" name="deptName" required="true" validType="remote['dept/existDeptName','deptName']"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'部门城市:'" style="width:100%"
-					id="deptLoc" name="deptLoc" />
+					id="deptLoc" name="deptLoc" required="true"/>
 			</div>
 
 

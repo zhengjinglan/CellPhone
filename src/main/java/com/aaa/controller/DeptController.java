@@ -52,4 +52,17 @@ public class DeptController {
         System.out.println(dept);
         return deptService.update(dept);
     }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午2:31:03
+     * @see com.aaa.controller.CompanyController#existCompanyName(String)
+     * @param deptName
+     * @return
+     */
+    @RequestMapping("existDeptName")
+    @ResponseBody
+    public boolean existDeptName(String deptName){
+        return deptService.existDeptName(deptName);
+    }
 }

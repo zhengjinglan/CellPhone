@@ -39,12 +39,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="itemId" name="itemId" data-options="label:'耗材编号:'" value="自动生成"/>
 			</div>
 			<div style="margin-bottom: 20px">
-				<select data-options="label:'耗材类型:'"  id="cc" name="typeId" class="easyui-combobox" style="width:100%;">
+				<select data-options="label:'耗材类型:'"  id="cc" name="typeId" required="true" class="easyui-combobox" style="width:100%;">
 				</select>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'耗材名称:'" style="width:100%"
-					id="itemName" name="itemName" />
+					id="itemName" name="itemName" required="true" validType="remote['consumeItem/existItemName'],'itemName'"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"

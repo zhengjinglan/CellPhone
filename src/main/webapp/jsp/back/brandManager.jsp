@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'品牌名称:'" style="width:100%"
-					id="brandName" name="brandName" />
+					id="brandName" name="brandName" required="true" validType="remote['brand/existBrandName','brandName']"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input type="file" data-options="label:'图片:'" style="width:100%"

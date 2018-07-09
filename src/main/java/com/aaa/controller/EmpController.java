@@ -59,4 +59,17 @@ public class EmpController {
 	public int update(Emp emp) {
 		return empService.update(emp);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:39:25
+	 * @see com.aaa.controller.CompanyController#existCompanyName(String)
+	 * @param empName
+	 * @return
+	 */
+	@RequestMapping("existEmpName")
+    @ResponseBody
+	public boolean existEmpName(String empName){
+	    return empService.existEmpName(empName);
+	}
 }

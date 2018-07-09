@@ -60,4 +60,17 @@ public class IncomeTypeService {
 	public long getCount() {
 		return incomeMapper.countByExample(null);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:35:18
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param incomeTypeName
+	 * @return
+	 */
+	public boolean existIncomeTypeName(String incomeTypeName){
+	    IncomeTypeExample exp = new IncomeTypeExample();
+	    exp.createCriteria().andIncomeTypeNameEqualTo(incomeTypeName);
+	    return incomeMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 }

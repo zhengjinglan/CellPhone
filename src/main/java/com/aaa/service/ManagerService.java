@@ -79,4 +79,17 @@ public class ManagerService {
 	public List<Map<String, Object>> query() {
 		return managerMapper.query();
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:58:22
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param uname
+	 * @return
+	 */
+	public boolean existUname(String uname){
+	    ManagerExample exp = new ManagerExample();
+	    exp.createCriteria().andUnameEqualTo(uname);
+	    return managerMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 }

@@ -61,4 +61,17 @@ public class JobService {
 	public long getCount() {
 		return jobMapper.countByExample(null);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午2:52:27
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param jobName
+	 * @return
+	 */
+	public boolean existJobName(String jobName){
+	    JobExample exp = new JobExample();
+	    exp.createCriteria().andJobNameEqualTo(jobName);
+	    return jobMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 }

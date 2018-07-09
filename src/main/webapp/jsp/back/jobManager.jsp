@@ -42,12 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'职位名称:'" style="width:100%"
-					id="jobName" name="jobName" />
+					id="jobName" name="jobName" required="true" validType="remote['job/existJobName','jobName']"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'职位工资:'" style="width:100%"
-					id="jobSalary" name="jobSalary" />
+					id="jobSalary" name="jobSalary" required="true" validType="money"/>
 			</div>
 
 

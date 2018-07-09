@@ -70,4 +70,17 @@ public class ModelService {
 		}
 		return modelMapper.query(model, offer, rows);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午3:03:12
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param modelName
+	 * @return
+	 */
+	public boolean existModelName(String modelName){
+	    ModelExample exp = new ModelExample();
+	    exp.createCriteria().andModelNameEqualTo(modelName);
+	    return modelMapper.selectByExample(exp).size() > 0 ? true : false;
+	}
 }

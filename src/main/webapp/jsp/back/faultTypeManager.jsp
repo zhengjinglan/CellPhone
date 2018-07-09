@@ -42,16 +42,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'类型名称:'" style="width:100%"
-					id="typeName" name="typeName" />
+					id="typeName" name="typeName" required="true" validType="remote['faultType/existTypeName','typeName2']"/>
 			</div>
 			
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'类型图标:'" style="width:100%"
-					id="typeIcon" name="typeIcon" />
+					id="typeIcon" name="typeIcon" required="true" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'类型描述:'" style="width:100%"
-					id="typeDescription" name="typeDescription" />
+					id="typeDescription" name="typeDescription" required="true"/>
 			</div>
 			
 			

@@ -60,5 +60,18 @@ public class SeriesService {
 	public long getCount() {
 		return maper.countByExample(null);
 	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月10日 上午3:13:26
+	 * @see com.aaa.service.ConsumeItemService#existItemName(String)
+	 * @param seriesName
+	 * @return
+	 */
+	public boolean existSeriesName(String seriesName){
+	    SeriesExample exp = new SeriesExample();
+	    exp.createCriteria().andSeriesNameEqualTo(seriesName);
+	    return maper.selectByExample(exp).size() > 0 ? true : false;
+	}
 
 }

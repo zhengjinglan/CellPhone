@@ -45,32 +45,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%"
-					id="typeId" name="typeId" data-options="label:'类型编号:'"/>
+					id="typeId" name="typeId" data-options="label:'类型编号:'" required="true"/>
 			</div>
 
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'机型编号:'" style="width:100%"
-					id="modelId" name="modelId" />
+					id="modelId" name="modelId" required="true"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'故障名称:'" style="width:100%"
-					id="faultName" name="faultName" />
+					id="faultName" name="faultName" required="true" validType="remote['fault/existFaultName','faultName']"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'故障价格:'" style="width:100%"
-					id="faultPrice" name="faultPrice" />
+					id="faultPrice" name="faultPrice" required="true" validType="money"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'故障描述:'" style="width:100%"
-					id="faultDescription" name="faultDescription" />
+					id="faultDescription" name="faultDescription" required="true" />
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'故障预测:'" style="width:100%;datebox"
-					name="predictionFault" id="predictionFault" />
+					name="predictionFault" id="predictionFault" required="true"/>
 			</div>
 			<div style="margin-bottom: 20px">
 				<input class="easyui-textbox" data-options="label:'预测解决方案:'" style="width:100%;datebox"
-					name="predictionSolution" id="predictionSolution" />
+					name="predictionSolution" id="predictionSolution" required="true"/>
 			</div>
 
 
