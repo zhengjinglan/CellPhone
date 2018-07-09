@@ -1,6 +1,5 @@
 package com.aaa.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import com.aaa.entity.Order;
 import com.aaa.entity.Order_Fault;
 import com.aaa.entity.User;
 import com.aaa.service.FettlerService;
-//import com.aaa.entity.Model;
 import com.aaa.service.OrderService;
 import com.aaa.service.Order_FalutService;
 import com.aaa.service.UserService;
@@ -24,59 +22,76 @@ import com.aaa.service.UserService;
 @RequestMapping("order")
 public class OrderController {
 
-	@Autowired
-	OrderService oservice;
-	@Autowired
-	UserService uservice;
-	@Autowired
-	Order_FalutService ofservice;
-	@Autowired
-	FettlerService fettlerService;
-	@RequestMapping("/add")
-	@ResponseBody
-	public int add(User u, Order o, Order_Fault ofa) {
-		int us = uservice.add(u);
-		int rs = oservice.add(o);
-		ofservice.add(ofa);
-		System.out.println(ofa);
-		return rs;
-	}
+    @Autowired
+    OrderService oservice;
+    @Autowired
+    UserService uservice;
+    @Autowired
+    Order_FalutService ofservice;
+    @Autowired
+    FettlerService fettlerService;
 
-	@RequestMapping("query")
-	@ResponseBody
-	public EasyuiPage query(Order order, int page, int rows) {
-		List<Map<String, Object>> list = oservice.query(order, page, rows);
-		long total = oservice.count();
-		return new EasyuiPage(list, total);
-	}
-	/**
-	 * 
-	 * @author 小黑
-	 * @date 2018年7月5日
-	 * @return
-	 */
-	@RequestMapping("list")
-	@ResponseBody
-	public List<Order> list(){
-	    return oservice.list();
-	}
-	@RequestMapping("update")
-	@ResponseBody
-	public int query(Order order) {
-		System.out.println(order);
-		return oservice.update(order);
-	}
-	
-	@RequestMapping("allot")
+    @RequestMapping("/add")
     @ResponseBody
-	public int allot(int orderId,int fettlerId){
-	    int res = 0;
-	    Order order = oservice.get(orderId);
-        if(fettlerService.get(fettlerId) != null){
-            order.setFettlerId(fettlerId);
-            order.setPredeterminedTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+    public int add(User u, Order o, Order_Fault ofa) {
+        int us = uservice.add(u);
+        int rs = oservice.add(o);
+        ofservice.add(ofa);
+        System.out.println(ofa);
+        return rs;
+    }
+
+    @RequestMapping("query")
+    @ResponseBody
+    public EasyuiPage query(Order order, int page, int rows) {
+        List<Map<String, Object>> list = oservice.query(order, page, rows);
+        long total = oservice.count();
+        return new EasyuiPage(list, total);
+    }
+
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月5日
+     * @return
+     */
+    @RequestMapping("list")
+    @ResponseBody
+    public List<Order> list() {
+        return oservice.list();
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public int query(Order order) {
+        System.out.println(order);
+        return oservice.update(order);
+    }
+
+    @RequestMapping("allot")
+    @ResponseBody
+    public int allot(Integer orderId, Integer fettlerId) {
+        int res = 0;
+        if (orderId != null && fettlerId != null) {
+            Order order = oservice.get(orderId);
+            if(order != null){
+                if (fettlerService.get(fettlerId) != null) {
+                    order.setFettlerId(fettlerId);
+                    order.setAssignTime(new Date());
+                    res = oservice.update(order);
+                }
+            }
+        }
+        return res;
+    }
+
+    @RequestMapping("orderDone")
+    @ResponseBody
+    public int orderDone(Order order) {
+        int res = 0;
+        if (order.getOrderId() != null) {
             res = oservice.update(order);
         }
-	    return res;
-	}
-}  
+        return res;
+    }
+}

@@ -104,20 +104,27 @@ $(function() {
 	$("#datawindow").window("close");
 	$("#fmAllot").window("close");
 });
-// 打开修改窗口
-function edit() {
+
+function orderDone(){
 	// 判断是否有选中项
 	var rows = $("#tables").datagrid("getSelections");
 	if (rows.length == 1) {
-		// loadSelect("fettlerId","fettler/queryByState?city=","empName","fettlerId",true);
+		var fettlerId = rows[0].fettlerId;
+		if(typeof(fettlerId) == "undefined"){
+			$.messager.show({
+				title : '提示',
+				msg : "请先分配订单再完成订单！"
+			});
+			return ;
+		}
 		// 重置表单
 		$("#fm").form('reset');
 		// 加载修改的数据信息
 		$("#fm").form('load', rows[0]);
 		// 设置表单提交路径
-		url = "order/update";
+		url = "order/orderDone";
 		// 打开窗口
-		$("#datawindow").window("open").window('setTitle', "分配订单");
+		$("#datawindow").window("open").window('setTitle', "完成订单");
 
 	} else if (rows.length > 1) {
 		$.messager.show({
@@ -177,9 +184,6 @@ function resets() {
 	$("#fm").form('reset');
 }
 function allot() {
-	if ($("#allot_orderId").textbox("getValue") == "自动生成") {
-		$("#allot_orderId").textbox("setValue", -1);
-	}
 	alert($("#allot_orderId").val());
 	alert($("#allot_fettlerId").combobox("getValue"));
 	$.post(url, {

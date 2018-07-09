@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="initAllot()">订单分配</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="orderDone()">订单完成</a>
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
@@ -65,7 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="easyui-textbox" style="width:100%"
 					id="orderPrice" name="orderPrice" data-options="label:'订单价格:'"/>
 			</div>	
-			
 			<div style="margin-bottom: 20px">
 				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
 					data-options="label:'修改人:'" style="width:100%"/>
@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="allot_fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
 			</div>	
 			<div style="margin-bottom: 20px;text-align: center">
-				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="allot()">提交</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="allot()">分配</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="cancel()">取消</a>
 			</div>
 		</form>

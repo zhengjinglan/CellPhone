@@ -1,5 +1,6 @@
 package com.aaa.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -62,6 +63,7 @@ public class OrderService {
 	}
 
 	public int update(Order order) {
+	    order.setGmtModified(new Date());
 	    return maper.updateByPrimaryKeySelective(order);
 	}
 }

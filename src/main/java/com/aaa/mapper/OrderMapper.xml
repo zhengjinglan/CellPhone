@@ -349,7 +349,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Order">
-    update order
+    update `order`
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
