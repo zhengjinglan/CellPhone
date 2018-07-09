@@ -1,0 +1,1576 @@
+body,p,ul,li,a,button {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-size: 16px;
+	font-family: 'PingFangSC-Light', 'Microsoft YaHei';
+}
+li{
+	list-style: none;
+}
+.container-fluid {
+	padding: 0;
+}
+
+button {
+	outline: none;
+}
+::-webkit-scrollbar  
+{  
+    width: 8px;  
+    height: 16px;  
+    background-color: #fff;  
+}  
+
+/*瀹氫箟婊氬姩鏉¤建閬� 鍐呴槾褰�+鍦嗚*/  
+::-webkit-scrollbar-track  
+{  
+/*    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */ 
+    border-radius: 10px;  
+    background-color: #fff;  
+}  
+  
+/*瀹氫箟婊戝潡 鍐呴槾褰�+鍦嗚*/  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #C9C9C9;  
+} 
+
+.brand .page-two {
+	/*padding-left: 87px;
+	padding-right: 87px;*/
+	background-color: #fff;
+	display: none;
+}
+
+.brand .page-two .tow-name {
+	font-size: 18px;
+	color: #333;
+	/*padding-top: 55px;*/
+	float: left;
+	line-height: 98px;
+	/*margin-left: 104px;*/
+	margin-left: 5%;
+}
+.brand .page-two .name-box {
+    border-bottom: 2px solid #DCDCDC;
+    height: 98px;
+    position: fixed;
+    z-index: 1000;
+    background-color: #fff;
+    top: 80;
+    width: 1200px;
+}
+.brand .page-two .returnBtn {
+	cursor: pointer;
+	-moz-user-select: none; /*鐏嫄*/
+    -webkit-user-select: none; /*webkit娴忚鍣�*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*鏃╂湡娴忚鍣�*/
+    user-select: none;
+	margin-top: 50px;
+	color: #777371;
+	float: right;
+	margin-right: 40px;
+}
+.brand .page-two .choose-model {
+	padding-top: 182px;
+	margin-left: 47px;
+}
+.brand .page-two .model-name {
+    color: #333;
+    font-size: 18px;	
+}
+.brand .page-two .returnBtn img {
+	display: block;
+	margin-right: 10px;
+	float: left;
+	vertical-align: initial;
+	/*margin-top: 39px;*/
+	/*margin-top: 50px;*/
+}
+.brand .page-two .two-brand {
+	margin-top: 30px;
+}
+.brand .page-two #two-brand2 {
+	margin-top: 30px;
+	display: none;
+}
+.brand .page-two .two-brand .brandList {
+    width: 150px;
+    height: 56px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border: 1px solid #dcdcdc;
+    float: left;
+    margin-bottom: 27px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 56px;
+}
+.brand .page-two .two-brand .brandMore {
+	width: 150px;
+    height: 56px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    float: left;
+    margin-bottom: 27px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 56px;
+    border: 1px solid #dcdcdc;
+}
+.brand .page-two .two-brand .meizu {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/meizu.png) no-repeat;
+	background-position: 10px 0;
+}
+.brand .page-two .two-brand .ruoqi {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/meizu.png) no-repeat;
+	background-position: 10px 0;
+}
+.brand .page-two .two-brand .model-btnHover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active2.png) no-repeat 100% 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.brand .page-two .two-brand .brandChoice {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active.png) no-repeat 100% 100%;
+    background-size: contain;
+    border: none;
+}
+.brand .page-two .two-brand .model2-btnHover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/meizu1.png) no-repeat 100% 100% ;
+   	background-size: contain;
+  	border: none !important;
+}
+.brand .page-two .two-brand .brand2Choice {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/meizu2.png) no-repeat 100% 100%;
+    background-size: contain;
+    border: none;
+}
+.brand .page-two .two-brand li .brand-pic {
+	width: 92px;
+	height: 37px;
+}
+
+.brand .page-two .two-brand .nameact {
+	color: #1A0800;
+}
+.brand .page-two .t-model-name {
+	color: #777371;
+	font-size: 16px;
+	float: left;
+	line-height: 37px;
+}
+/*.brand .page-two .two-model .phoneBtn:hover {
+    background-color: #777371 !important;
+    color: #fff !important;
+}*/
+
+.brand .page-two .two-model .model-btn {
+	font-size: 16px;
+	height: 31px;
+	background-color: #fff;
+	border: 0;
+	margin-right: 19px;
+	margin-bottom: 10px;
+	outline: none;
+}
+
+.brand .page-two .two-model .model-btn-c {
+	background-color: #333;
+	color: #fff;
+	border-radius: 5px;
+}
+.brand .page-two .two-model .seriesAct {
+    background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active.png) no-repeat 100% 100% !important;
+    background-size: contain;
+    border: none !important;
+}
+.brand .page-two .two-model .phoneAct {
+	background-color: #777371 !important;
+	color: #fff !important;	
+}
+.brand .page-two .two-model .seriesBtn {
+    width: 150px;
+    height: 56px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border: 1px solid #dcdcdc;
+    float: left;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 56px;
+}
+.brand .page-two .two-model .series-btnHover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active2.png) no-repeat 100% 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.brand .page-two .two-model .phoneBtn {
+	/*background-color: #f7f7f7;
+	padding: 0 12px;
+	margin-right: 5px;
+	border-radius: 15px;
+	font-size: 16px;
+	color: #777371;
+	line-height: 30px;
+	float: left;
+	margin-top: 5px;
+	cursor: pointer;*/
+    height: 56px;
+    line-height: 56px;
+    cursor: pointer;
+    box-sizing: border-box;
+    float: left;
+    margin-right: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    text-align: center;
+    padding:0 30px;
+    border: 1px solid #fff;
+    -moz-user-select: none; /*鐏嫄*/
+	-webkit-user-select: none; /*webkit娴忚鍣�*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*鏃╂湡娴忚鍣�*/
+	user-select: none;
+}
+.brand .page-two .two-model .phone-btnHover{
+	border: 1px solid #f37b46 !important;
+}
+.brand .page-two .two-model .phoneChoice{
+	background: #fff url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/oBtn.png) no-repeat;
+	background-position: 95% 80%;
+	border: 1px solid #f37b46 !important;
+}
+.brand .page-two .choose-classify {
+    margin-top: 22px;
+    font-size: 18px;
+    margin-left: 47px;
+}
+.brand .page-two .seriesMain {
+	margin: 30px 0 0 47px;
+}
+
+.brand .page-two .iphoneBox {
+	background-color: #F7F7F7;
+	width: 1110px;
+	margin-left: 47px;
+	margin-bottom: 0;
+	padding-top: 10px;
+	padding-left: 27px;
+}
+.brand .page-two .iphoneBox .t-model-series {
+	color: #777371;
+	float: left;
+	line-height: 37px;
+}
+.btn-submit {
+	margin-top: 50px;
+	padding-bottom: 43px;
+}
+.brand .page-two #fault {
+	text-align: center;
+	border-radius: 20px;
+	float: right;
+	width: 171px;
+	height: 42px;
+	background-color: #F37B46;
+	margin-right: 153px;
+	border: none;
+}
+.brand .page-two #fault p{
+	font-family: "PingFangSC-Regular", "Microsoft YaHei";
+	font-size: 20px;
+	color: #fff;
+}
+.brand .page-two .two-submit {
+	float: left;
+	width: 201px;
+	height: 57px;
+	background-color: #F37B46;
+	border: 0;
+	margin-left: 29px;
+}
+
+.brand .page-two .two-submit p {
+	font-family: "PingFangSC-Regular", "Microsoft YaHei";
+	font-size: 20px;
+	float: left;
+	color: #fff;
+	padding-left: 40px;
+}
+
+.brand .page-two .two-submit img {
+	margin-top: 5px;
+	width: 12px;
+	height: 20px;
+	float: left;
+	margin-left: 30px;
+}
+.brandBox {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 80px;
+}
+.brandBox .brand-top {
+	border-bottom: 2px solid #dcdcdc;
+	height: 98px;
+	width: 1200px;
+	position: fixed;
+	top: 80px;
+	z-index: 1000;
+	background-color: #fff;
+}
+.brandBox .phone-name {
+	-moz-user-select: none; /*鐏嫄*/
+    -webkit-user-select: none; /*webkit娴忚鍣�*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*鏃╂湡娴忚鍣�*/
+    user-select: none
+	display: inline-block;
+	font-size: 30px;
+	/*width: 170px;*/
+	float: left;
+	line-height: 98px;
+	margin-left: 5%;
+}
+.brandBox .modify{
+	float: left;
+	line-height: 120px;
+	color: #f48352;
+	font-size: 16px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+.brandBox .brand-name {
+	/*display: inline-block;
+	font-size: 16px;
+	width: 100px;
+	float: left;
+	margin-top: 11px;*/
+    font-size: 16px;
+    color: #777371;
+}
+.brandBox .search-bar {
+	width: 331px;
+	background-color: #F7F7F7;
+	float: right;
+	/*margin-left: 30.5%;*/
+	height: 41px;
+	border-radius: 20px;
+	margin-top: 40px;
+}
+.brandBox .search-text {
+	width: 287px;
+	background : none;
+	border: none;
+	outline: none;
+	padding-left: 28px;
+	height:39px;
+	text-transform: lowercase;
+}
+.brandBox .sure-btn {
+    border: 0;
+    background: none;
+    outline: none;
+}
+.brandBox .sure-btn img {
+	width: 22px;
+	height: 22px;
+}
+.brandBox .more {
+	margin: 50px 43px 0 43px;
+	float: right;
+	cursor: pointer;
+}
+.brandBox .more img {
+	float: left;
+}
+.brandBox .more p {
+	-moz-user-select: none; /*鐏嫄*/
+
+    -webkit-user-select: none; /*webkit娴忚鍣�*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*鏃╂湡娴忚鍣�*/
+    user-select: none;
+	color: #777371;
+	float: left;
+	margin-left: 12px;
+}
+.brandBox .brand-main {
+	width: 100%;
+	position: relative;
+}
+.brandBox .brand-left {
+	text-align: center;
+	position: absolute;	
+	top: 0px;
+	right: 90px;
+	margin-top: 168px;
+	width: 270px;
+	height: 305px;
+}
+.brand-none {
+	display: none !important;
+}
+.brand-block {
+	display: block;
+}
+.brandBox .brand-left img {
+	width: auto;
+	height: 100%;
+}
+.brandBox .brandActive {
+	opacity: 0.6;
+    -webkit-filter: blur(11px);
+    -moz-filter: blur(11px);
+    -o-filter: blur(11px);
+    -ms-filter: blur(11px);
+    filter: blur(11px);
+}
+
+.brandBox .modalIntroduce {
+	position: absolute;
+	top: 175px;
+	right: 90px;
+	text-align: center;
+	/*width: 338px;*/
+	width: 270px;
+	height: 329px;
+	z-index: 900;
+}
+.brandBox .modalIntroduce .describeTitle {
+	text-align: center;
+	color: #1a0800;
+	font-size: 18px;
+	margin-top: 97px;
+}
+.brandBox .modalIntroduce .describeMain {
+	text-align: center;
+	color: #1a0800;
+	font-size: 14px;
+	margin-top: 29px;
+	padding: 0 42px;
+}
+.brandBox .brand-main .brand-left .model-pic {
+	margin-left: 128px;
+	height: 329px;
+	margin: 0 auto;
+	width: auto;
+	display: block;
+}
+.brandBox .brand-main .brand-right {
+	margin-left: 47px;
+	float: left;
+	width: 740px;
+}
+.brandBox .brand-main .brand-right .color {
+	/*margin-top:182px;*/
+	margin-top: 155px;
+}
+.brandBox .brand-main .brand-right .color .color-name {
+	font-size: 18px;
+}
+.brandBox .brand-main .brand-right .color .color-list {
+	width: 640px;
+	margin-top: 27px;
+}
+.brandBox .brand-main .brand-right .color .color-btn {
+	border: none;
+	width: 150px;
+    height: 56px;;
+	margin-right: 10px;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	float: left;
+	margin-bottom: 27px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.brandBox .brand-main .brand-right .color .color-btnHover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active2.png) no-repeat 100% 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.color .color-btn .btnColor {
+	display: block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	float: left;
+	margin: 16px 16px 0 30px;
+}
+.color .color-btn .colorName {
+	margin-top: 16px;
+	display: inline-block;
+	font-size: 16px;
+	color: #777371;
+	float: right;
+	margin-right: 30px;
+}
+.brand-right .color .white {
+	border:1px solid #DCDCDC;
+}
+.brandBox .brand-main .brand-right .color .colorChoice {
+    background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color-active.png) no-repeat 100% 100%;
+    background-size: contain;
+    border: none;
+}
+.brandBox .brand-main .brand-right .color .colorActive {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color_arrow.png) no-repeat;
+}
+.brandBox .brand-main .choose-bx {
+    margin-top: 22px;
+    font-size: 18px;
+}
+.brandBox .brand-main .within,.abroad {
+	border: none;
+    width: 172px;
+    height: 54px;
+    box-sizing: border-box;
+    border: 1px solid #dcdcdc;
+    float: left;
+    margin: 30px 10px 27px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 54px;
+}
+.brandBox .brand-main .within-btnHover{
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active2.png) no-repeat 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.brandBox .brand-main .within-hover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active2.png) no-repeat 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.brandBox .brand-main .abroad-hover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active2.png) no-repeat 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.brandBox .brand-main .within-choose,.abroad-choose {
+    background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active.png) no-repeat 100% 100% ;
+    background-size: contain;
+    border: none;
+}
+
+.brandBox .brand-main  .bx-main{
+	display: none;
+}
+
+.brandBox .brand-main .brand-right .choose-wrong {
+	margin-top: 22px;
+	font-size: 18px;
+}
+.brandBox .brand-main .brand-right .break {
+	margin-top: 30px;
+	width: 745px;
+}
+.break-hover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active2.png) no-repeat 100%;
+   	background-size: contain;
+  	border: none !important;
+}
+.break-box, .break-box2, .break-box3 {
+	width: 172px;
+	height: 54px;
+	margin-right: 10px;
+	float: left;
+	border: 1px solid #dcdcdc;
+	margin-bottom: 15px;
+	border-radius: 6px;
+	line-height: 56px;
+	cursor: pointer;
+	position: relative;
+	box-sizing: border-box;
+}
+.noneText {
+	position: absolute;
+	width: auto;
+	left: 5px;
+	top: 60px;
+	height: 26px;
+	z-index: 600;
+	padding: 0 5px;
+	text-align: center;
+	line-height: 26px;
+	background-color: #FAF7F9;
+	border: 1px solid #96768B;
+	border-radius: 4px;
+	font-size: 12px;
+	display: none;
+	color: #96768B;
+}
+.mal-active {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/cla-active.png) no-repeat 100% 100%;   
+	/*background-size: 171px 53px;*/
+	background-size: contain;
+	border: none;
+}
+.break-title {
+	height: 54px;
+	line-height: 54px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.malImg {
+	width: 44px;
+	float: left;
+	margin: 6px 0 0 26px;
+}
+.break-classify {
+	color: #777371;
+	font-size: 16px;
+	float: left;
+	padding-left: 8px;
+	width: 85px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.right {
+	float: right;
+	margin-top: 25px;
+	margin-right: 36px;
+}
+#detailed1, #detailed2, #detailed3 {
+	display: none;
+	width: 720px;
+	background-color: #f7f7f7;
+	padding: 10px 0 0px 26px;
+	margin-bottom: 10px;
+}
+.b-list {
+	min-width: 218px;
+	height: 56px;
+	line-height: 56px;
+	cursor: pointer;
+	box-sizing: border-box;
+	float: left;
+	margin-right: 10px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-radius: 6px;
+}
+.none{
+	display: none;
+}
+.block{
+	display: block;
+}
+.b-listHover {
+	background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/mal-active2.png) no-repeat;   
+    border: none;
+   	background-color: #fff;
+}
+.b-list .break-name {
+	width: 95px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	color: #777371;
+	margin-left: 30px;
+}
+ .break-active {
+    background: url(http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/mal-active.png) no-repeat;   
+    border: none;
+   	background-color: #fff;
+}
+.break-price {
+	font-size:18px;
+	font-family:PingFangSC-Medium;
+	color:rgba(243,123,70,1);
+	line-height:14px;
+	height: 14px;
+	text-align: center;
+	margin-top: 13px;
+}
+.price_box {
+	float: right;
+	margin-right: 30px;
+}
+.price_market {
+	height:12px; 
+	font-size:14px;
+	font-family:PingFangSC-Medium;
+	color:rgba(212,195,187,1);
+	line-height:12px;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: line-through;
+}
+.brandBox .brand-main .other-title {
+	color: #f48352;
+	font-size: 18px;
+	margin: 40px 0 0 27px;
+}
+.brandBox .brand-main .other-title img {
+	margin-right: 16px;
+}
+.autocomplete-suggestions {
+    width: 331px !important;
+    border: 1px solid #C9C9C9;
+    background-color: #fff;
+    overflow: scroll;
+    height: 400px;
+    top: 177px !important;
+    position: fixed !important;
+}
+.autocomplete-suggestions .autocomplete-suggestion {
+    padding-top: 8px;
+    padding-left: 10px;
+    line-height: 54px;
+}
+.autocomplete-suggestions .autocomplete-suggestion:hover {
+	background-color: #FFF4EB;
+	color: #f37b46;
+}
+.describe {
+	margin-top: 110px;
+	padding-top: 40px;
+	width: 100%;
+	background-color: #FAF7F9;
+	padding-bottom: 57px;
+}
+.repairOrder .breakQuestion .questionIcon {
+	width: 62px;
+	height: 57px;
+	margin: 0 auto;
+/*	margin-top: 70px;*/
+	margin-top: 120px;
+	display: block;
+}
+
+.repairOrder .breakQuestion .questionTitle {
+	font-size: 24px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.questionEdit {
+    resize: none;
+	height: 120px;
+	width: 734px;
+	background-color: #f7f7f7;
+	border: 0;
+	margin: 30px auto;
+	outline: none;
+	padding-left: 42px;
+	padding-top: 30px;
+	color: #c1bebd;
+	border-radius: 6px;
+}
+.nextBox {
+	margin: 76px 0 0 72px;
+}
+.nextBtn {
+	width: 250px;
+	height: 50px;
+	background-color: #f37b46;
+	color: #fff;
+	font-size: 23px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 25px;
+	float: left;
+}
+.nextText {
+	float: left;
+	font-size: 18px;
+	color: #777371;
+	margin: 18px 0 0 76px;
+}
+.nextText span {
+	color: #f37b46;
+	font-size: 18px;
+}
+.nextText .nextItem {
+	margin-left: 16px;
+	
+}
+.mal-title{
+	font-weight: 600;
+	display: none;
+	float: left;
+	color: #f37b46;
+	font-size: 22px;
+    margin: 13px 0 0 20px;
+}
+.meizu-title{
+	display: none;
+	float: left;
+	margin: 21px 0 0 100px;
+	font-size: 14px;		
+}
+.meizu-title a{
+	color: #f37b46;
+}
+.meizu-title a:hover{
+	color: #f37b46 !important;
+}
+.repairOrder .serviceRepair {
+	margin-bottom: 100px;
+}
+
+.repairOrder .serviceRepair .TabBarS {
+	background-color: #fff;
+}
+
+.repairOrder .serviceRepair .TabBarS .tabBarWarp {
+	margin-top: 120px;
+}
+
+.repairOrder .serviceRepair .TabBarS .tabBarWarp .fixMenuBtn {
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 70px;
+	padding-right: 70px;
+	cursor: pointer;
+}
+
+.repairOrder .serviceRepair .TabBarS .tabBarWarp .fixMenuBtn .title {
+	font-size: 24px;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 30px;
+}
+
+.repairOrder .serviceRepair .service_grids {
+	margin-top: 40px;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box {
+	margin-bottom: 30px;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box .icon_pic {
+	width: 23%;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box .icon_pic .icon img {
+	width: 61px;
+	height: 61px;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box .icon_info {
+	width: 74%;
+	margin-left: 3%;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box .icon_info h4 {
+	color: #777371;
+	font-size: 20px;
+}
+
+.repairOrder .serviceRepair .service_grids .grid_box .icon_info p {
+	font-size: 14px;
+	color: #777371;
+}
+
+.repairOrder .serviceRepair .questionListRepair {
+	display: none;
+}
+
+.repairOrder .serviceRepair .questionListRepair .questionsBox {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.repairOrder .serviceRepair .questionListRepair .questionsBox .questionsMenu {
+	margin-top: 34px;
+}
+
+.repairOrder .serviceRepair .questionListRepair .questionsBox .questionsMenu a {
+	font-size: 18px;
+	color: #777371;
+}
+
+.repairOrder .serviceRepair .questionListRepair .questionsBox .questionsMenu .menuInfo {
+	margin-top: 20px;
+	font-size: 14px;
+	color: #777371;
+}
+
+.repairOrder .shopCart {
+	background-color: #FFF4EB;
+	position: fixed;
+	bottom: 0;
+	z-index: 999;
+	margin-bottom: 0;
+}
+
+.repairOrder .shopCart tr {
+	height: 134px;
+}
+
+.repairOrder .shopCart tr td {
+	border: 0;
+	vertical-align: middle;
+}
+
+.repairOrder .shopCart tr td .cartPic {
+	padding-left: 60px;
+	box-sizing: border-box;
+	display: block;
+	height: 100px;
+}
+
+.repairOrder .shopCart tr td .cartMenu .cartSubMenu {
+	font-size: 16px;
+	padding: 2px 5px;
+	border: 1px solid #8d6b5b;
+	color: #8d6b5b;
+	background: none;
+	border-radius: 5px;
+	margin-right: 40px;
+	margin-bottom: 0px;
+}
+.repairOrder .shopCart .mallist{
+
+}
+.repairOrder .shopCart .cartMenu{
+	min-height: 28px;
+	margin-top: 26px;
+}
+.repairOrder .shopCart .phoneName{
+	margin-top: 17px;
+	color: #8D6B5B;
+	font-size: 18px;
+}
+.repairOrder .shopCart tr td .cartMenu .cartSubMenu .fixDelIcon {
+	/*margin-top: -14px;*/
+	margin-top: -21px;
+	margin-right: -12px;
+	width: 17px;
+	height: 17px;
+	background: url("http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_del2.png") no-repeat;
+	border: 0;
+	display: block;
+	float: right;
+}
+.repairOrder .shopCart tr td .cartMenu .cartSubMenu .shop-price{
+	margin-left: 9px;
+}
+.repairOrder .shopCart tr td .orderTotal{
+	text-align: center;
+	color: #8d6b5b;
+}
+.repairOrder .shopCart tr td .orderTotal span {
+	font-size: 36px;
+	color: #f37b46;
+}
+
+.repairOrder .shopCart tr td .orderTotal .totalName {
+	font-size: 36px;
+	color: #f37b46;
+	margin-left: 30px;
+}
+
+.repairOrder .shopCart tr td .orderSubmit {
+	width: 170px;
+	height: 40px;
+	background-color: #f37b46;
+	color: #fff;
+	border: 0;
+	border-radius: 20px;
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 40px;
+	outline: none;
+}
+
+.repairOrder .shopCart tr td .orderSubmit img {
+	width: 10px;
+	height: 18px;
+	margin-left: 24px;
+}
+
+.repairOrder .shopCart tr td .orderSubmit:hover {
+	background-color: #f66e32;
+}
+
+.colorOrder .bannerC {
+	width: 100%;
+	height: auto;
+	background: url("http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/color_banner_bg.jpg") repeat-x;
+	margin-top: 80px;
+	background-size: cover;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .rosePic .rose {
+	margin-top: 100px;
+	width: 543px;
+	height: 240px;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .rosePic .roseName {
+	font-size: 24px;
+	color: #ecb3c1;
+	text-align: center;
+	padding-top: 60px;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .pinkPic {
+	display: none;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .pinkPic .rose {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 70%;
+	margin-left: 5%;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .pinkPic .roseName {
+	font-size: 24px;
+	color: #ecb3c1;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .redPic {
+	display: none;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .redPic .rose {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 70%;
+	margin-left: 15%;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .redPic .roseName {
+	font-size: 24px;
+	color: #ecb3c1;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .blackPic {
+	display: none;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .blackPic .rose {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 70%;
+	margin-left: 15%;
+}
+
+.colorOrder .bannerC .bannerBox .roseL .blackPic .roseName {
+	font-size: 24px;
+	color: #ecb3c1;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .shell {
+	color: #fff;
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar {
+	margin-top: 20px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar .roseBtn {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 0;
+	background-color: #edccbd;
+	margin-right: 30px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar .pinkBtn {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 0;
+	background-color: #eea5d1;
+	margin-right: 30px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar .redBtn {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 0;
+	background-color: #f568c4;
+	margin-right: 30px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar .blackBtn {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	border: 0;
+	background-color: #000000;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .colorBar .shellChoice {
+	border: 1px solid #fff;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .model {
+	color: #fff;
+	font-size: 18px;
+	padding-top: 60px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .modelBar .modelBtn {
+	border-radius: 20px;
+	border: 1px solid #fff;
+	height: 38px;
+	background: 0;
+	color: #fff;
+	margin-right: 40px;
+	margin-top: 20px;
+	outline: none;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .modelBar .modelChoice {
+	background-color: #fff;
+	color: #333;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .modelBar :hover {
+	background-color: #fff;
+	color: #333;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .price {
+	color: #fff;
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .price span {
+	font-size: 30px;
+	padding-left: 28px;
+	color: #f17b4d;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .priceBox .totalNane {
+	color: #fff;
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .priceBox .totalNane span {
+	font-size: 30px;
+	padding-left: 28px;
+	color: #f17b4d;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .priceBox .totalNum {
+	font-size: 30px;
+	color: #f17b4d;
+	padding-top: 40px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .submitBtn {
+	width: 170px;
+	height: 40px;
+	background-color: #f17b4d;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	border-radius: 20px;
+	border: 0;
+	margin-top: 40px;
+	outline: none;
+	margin-bottom: 120px;
+}
+
+.colorOrder .bannerC .bannerBox .roseR .submitBtn:hover {
+	background-color: #f66e32;
+}
+
+.colorOrder .colorTipsBanner {
+	background-color: #f9f7f9;
+}
+
+.colorOrder .colorTipsBanner .tipBox .menu {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+
+.colorOrder .colorTipsBanner .tipBox .menu img {
+	width: 40px;
+	height: 40px;
+}
+
+.colorOrder .colorTipsBanner .tipBox .menu span {
+	font-size: 18px;
+	color: #deced0;
+	padding-left: 20px;
+}
+
+.colorOrder .service {
+	margin-bottom: 100px;
+}
+
+.colorOrder .service .TabBarS {
+	background-color: #fff;
+}
+
+.colorOrder .service .TabBarS .tabBarWarp {
+	margin-top: 120px;
+	margin-bottom: 40px;
+}
+
+.colorOrder .service .TabBarS .tabBarWarp .fixMenuBtn {
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 70px;
+	padding-right: 70px;
+	cursor: pointer;
+}
+
+.colorOrder .service .TabBarS .tabBarWarp .fixMenuBtn .title {
+	font-size: 24px;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+.colorOrder .service .service_grids .grid_box {
+	margin-bottom: 30px;
+}
+
+.colorOrder .service .service_grids .grid_box .icon_pic {
+	width: 23%;
+}
+
+.colorOrder .service .service_grids .grid_box .icon_pic .icon img {
+	width: 61px;
+	height: 61px;
+}
+
+.colorOrder .service .service_grids .grid_box .icon_info {
+	width: 74%;
+	margin-left: 3%;
+}
+
+.colorOrder .service .service_grids .grid_box .icon_info h4 {
+	font-size: 20px;
+	color: #777371;
+}
+
+.colorOrder .service .service_grids .grid_box .icon_info p {
+	font-size: 14px;
+	color: #777371;
+}
+
+.colorOrder .service .questionList {
+	display: none;
+}
+
+.colorOrder .service .questionList .questionsBox {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.colorOrder .service .questionList .questionsBox .questionsMenu {
+	margin-top: 34px;
+}
+
+.colorOrder .service .questionList .questionsBox .questionsMenu a {
+	font-size: 18px;
+	color: #777371;
+}
+
+.colorOrder .service .questionList .questionsBox .questionsMenu .menuInfo {
+	margin-top: 20px;
+	font-size: 14px;
+	color: #777371;
+}
+
+.romOrder .banner {
+	margin-top: 80px;
+}
+
+.romOrder .banner .bannerL .rosePic .rose {
+	margin: 0 auto;
+	margin-top: 110px;
+	width: 70%;
+	margin-left: 15%;
+}
+
+.romOrder .banner .bannerL .rosePic .roseName {
+	font-size: 24px;
+	color: #333;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.romOrder .banner .bannerR .shell {
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.romOrder .banner .bannerR .colorBar {
+	margin-top: 20px;
+}
+
+.romOrder .banner .bannerR .colorBar .btnS {
+	border: 0;
+	margin-right: 20px;
+	background: 0;
+	padding: 1px 10px;
+	border-radius: 14px;
+	margin-bottom: 10px;
+}
+
+.romOrder .banner .bannerR .colorBar :hover {
+	background-color: #000;
+	color: #fff;
+	padding: 1px 10px;
+	border-radius: 14px;
+}
+
+.romOrder .banner .bannerR .colorBar .romPhoneChoice {
+	background-color: #000;
+	color: #fff;
+	padding: 1px 10px;
+	border-radius: 14px;
+}
+
+.romOrder .banner .bannerR .model {
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.romOrder .banner .bannerR .modelBar .modelBtn {
+	border-radius: 20px;
+	border: 1px solid #000;
+	height: 38px;
+	background: 0;
+	margin-right: 40px;
+	margin-top: 20px;
+	outline: none;
+}
+
+.romOrder .banner .bannerR .modelBar .romModelChoice {
+	background-color: #333;
+	color: #fff;
+}
+
+.romOrder .banner .bannerR .romPriceBox .romtotalNane {
+	color: #333;
+	font-size: 18px;
+	padding-top: 40px;
+}
+
+.romOrder .banner .bannerR .romPriceBox .romtotalNane span {
+	font-size: 30px;
+	padding-left: 28px;
+	color: #f17b4d;
+}
+
+.romOrder .banner .bannerR .romPriceBox .romtotalNum {
+	font-size: 30px;
+	color: #f17b4d;
+	padding-top: 40px;
+}
+
+.romOrder .banner .bannerR .submitBtn {
+	width: 170px;
+	height: 40px;
+	background-color: #f17b4d;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	border-radius: 20px;
+	border: 0;
+	margin-top: 56px;
+	outline: none;
+}
+
+.romOrder .banner .bannerR .submitBtn:hover {
+	background-color: #f66e32;
+}
+
+.colorTips {
+	background-color: #f9f7f9;
+	margin-top: 80px;
+}
+
+.colorTips .tipBox .menu {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+
+.colorTips .tipBox .menu img {
+	width: 40px;
+	height: 40px;
+}
+
+.colorTips .tipBox .menu span {
+	font-size: 18px;
+	color: #deced0;
+	padding-left: 20px;
+}
+
+.service {
+	margin-bottom: 100px;
+}
+
+.service .TabBarS {
+	background-color: #fff;
+}
+
+.service .TabBarS .tabBarWarp {
+	margin-top: 120px;
+	margin-bottom: 40px;
+}
+
+.service .TabBarS .tabBarWarp .fixMenuBtn {
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 70px;
+	padding-right: 70px;
+	cursor: pointer;
+}
+
+.service .TabBarS .tabBarWarp .fixMenuBtn .title {
+	font-size: 24px;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 30px;
+}
+
+.service .service_grids .grid_box {
+	margin-bottom: 30px;
+}
+
+.service .service_grids .grid_box .icon_pic {
+	width: 23%;
+}
+
+.service .service_grids .grid_box .icon_pic .icon img {
+	width: 61px;
+	height: 61px;
+}
+
+.service .service_grids .grid_box .icon_info {
+	width: 74%;
+	margin-left: 3%;
+}
+
+.service .service_grids .grid_box .icon_info h4 {
+	font-size: 20px;
+}
+
+.service .service_grids .grid_box .icon_info p {
+	font-size: 14px;
+}
+
+.service .questionListRom {
+	display: none;
+}
+
+.service .questionListRom .questionsBox {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.service .questionListRom .questionsBox .questionsMenu {
+	margin-top: 34px;
+}
+
+.service .questionListRom .questionsBox .questionsMenu a {
+	font-size: 18px;
+	color: #333;
+}
+
+.service .questionListRom .questionsBox .questionsMenu .menuInfo {
+	margin-top: 20px;
+	font-size: 14px;
+	color: #333;
+}
+
+.service .questionListRom .questionsBox .statement {
+	padding-top: 40px;
+}
+
+#shopPicBox{
+	padding-top: 17px;
+}
+.description {
+	width: 100%;
+	margin-top: 120px;
+	padding-bottom: 100px;
+    background: -moz-linear-gradient(left, #ff5943 0%, #ffac0c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff5943), color-stop(100%,#ffac0c));
+    background: -webkit-linear-gradient(left, #ff5943 0%,#ffac0c 100%);
+    background: -o-linear-gradient(left, #ff5943 0%,#ffac0c 100%);
+    background: -ms-linear-gradient(left, #ff5943 0%,#ffac0c 100%);
+    background: linear-gradient(to right, #ff5943 0%,#ffac0c 100%);
+}
+.d-main {
+	width: 1200px;
+	margin: 0 auto;
+	line-height: 25px;
+}
+.d-title {
+	padding-top: 57px;
+	/*border-bottom: 1px solid #fff;*/
+	padding-bottom: 10px;
+}
+.d-img {
+	float: left;
+	width: 55px;
+	height: 57px;
+	margin-left: 30px;
+}
+.p-text {
+	color: #fff !important;
+	font-size: 24px;
+	line-height: 24px;
+	float: left;
+	margin:30px 0  0 30px;
+}
+.d-text{
+	color: #fff;
+	font-size: 14px;
+	margin: 30px 0 0 95px;
+}
+.main-title span{
+	color: #fff !important;
+	margin-right: 15px;
+}
+.main-title{
+	color: #fff !important;
+}
+.main-text{
+	color: #fff !important;
+	margin-left: 20px;
+}
+
+/*iphone6p 鎹㈠睆鎻愮ず鏄剧ず*/
+.iphone6p-show {
+	margin-left: 47px;
+	width: 740px;
+	font-size: 13px;
+	color: #f48352;
+	font-weight: 600;
+	margin-top: 6px;
+}
+.iphone6p-show.hide {
+	display: none;
+}
+/*iphone6p 鎹㈠睆鎻愮ず鏄剧ず缁撴潫*/

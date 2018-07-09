@@ -4,88 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>项目管理系统后台登录界面模板</title>
-<style>
-*{
-	padding:0px;
-	margin:0px;
-	}
-
-body{
-	font-family:Arial, Helvetica, sans-serif;
-	background:url(images/grass.jpg);
-	font-size:13px;
-    
-	}
-img{
-	border:0;
-	}
-.lg{width:468px; height:468px; margin:100px auto; background:url(../before/images/login_bg.png) no-repeat;}
-.lg_top{ height:200px; width:468px;}
-.lg_main{width:400px; height:180px; margin:0 25px;}
-.lg_m_1{
-	width:290px;
-	height:100px;
-	padding:60px 55px 20px 55px;
-}
-.ur{
-	height:37px;
-	border:0;
-	color:#666;
-	width:236px;
-	margin:4px 28px;
-	background:url(../before/images/users.png) no-repeat;
-	padding-left:10px;
-	font-size:16pt;
-	font-family:Arial, Helvetica, sans-serif;
-}
-.pw{
-	height:37px;
-	border:0;
-	color:#666;
-	width:236px;
-	margin:4px 28px;
-	background:url(../before/images/password.png) no-repeat;
-	padding-left:10px;
-	font-size:16pt;
-	font-family:Arial, Helvetica, sans-serif;
-}
-.bn{width:330px; height:72px; background:url(../before/images/enter.png) no-repeat; border:0; display:block; font-size:18px; color:#FFF; font-family:Arial, Helvetica, sans-serif; font-weight:bolder;}
-.lg_foot{
-	height:80px;
-	width:330px;
-	padding: 6px 68px 0 68px;
-}
-</style>
-</head>
-
-<body class="b">
-<div class="lg">
-<form action="#">
-    <div class="lg_top"></div>
-    <div class="lg_main">
-        <div class="lg_m_1">
-        
-        <input name="username" value="username" class="ur" />
-        <input name="password" type="password" value="password" class="pw" />
-        
-        </div>
-    </div>
-    <div class="lg_foot">
-    <input type="submit" value="Login In" class="bn" /></div>
-</form>
-</div>
-
-</body>
-</html>
-
-
-<!-- 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,55 +17,115 @@ img{
     <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
     <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://static.shanxiuxia.com/weadoc/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+     <script type="text/javascript" src="js/fixWay.js"></script> 
 </head>
-<body>
+<body style="background:url(images/login-banner.jpg) ">
 
 <div class="login">
 	<p class="login-title">让每一个手机的主人不再烦恼</p>
 	<p class="login-item">采用严选品质配件，免费的快速上门服务，来自手机生产一线的专业设备和队伍，为每一部手机保驾护航</p>
+	<form id="loginfm" method="post">
 	<div class="loginPhoneBox">
        <div class="loginPhone">
-           <input name="myInput" id="loginPhone" type="tel" class="login-text" maxlength="11" placeholder="输入我的手机号码">
+           <input id="telPhone" name="userPhone" type="tel"
+           class="login-text" maxlength="11" placeholder="输入我的手机号码">
        </div>
-       <span id="phoneTips" class="phoneTips">请输入正确的手机号码</span>
-   </div>
-   <div class="loginCodeBox">
-       <div class="loginCode">
-           <input id="feeedCode" type="text" class="pull-left login-text" placeholder="输入图形验证码">
-           <p id="code-box" class="pull-right"></p>
-           <div class="clearfix"></div>
-       </div>
-       <span id="codeTips" class="codeTips"></span>
+       <span id="telFixTips" class="fixTips" style="color:#F4A460" >请输入正确的手机号码</span>
    </div>
    <div class="loginCodeBox">
        <div class="loginCode ">
-           <input id="loginCode" type="text" class="pull-left login-text" placeholder="验证码">
-           <button id="enterCodeLogin" type="submit" class="pull-right loginSend">
-               发送验证码
-           </button>
+           <input  id="code" name="code" type="text" class="pull-left login-text" placeholder="验证码">
+           <input id="enterCodeLogin" type="submit" class="pull-right loginSend" 
+           name="btn" value="发送验证码" onclick="sendMessage()" />
+          <!--  </button> -->
            <div class="clearfix"></div>
        </div>
        <span id="codeTips" class="codeTips"></span>
    </div>
    <button id="loginSubmit" type="submit" class="btn-default loginSubmit">查询订单</button>
-	
+	</form>
 </div>
+<script type="text/javascript">
+    var InterValObj; //timer变量，控制时间
+    var count = 60; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+   $(function(){
+   		 $("#telFixTips").hide();
+   });
+   
+   $("#telPhone").change(function(){
+    var filter1 = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+    if(!filter1.test($("#telPhone").val())){
+        $("#telFixTips").show();
+        return false;
+    }else{
+        $("#telFixTips").hide();
+    }
+});
+    
+    function sendMessage(){curCount = count;
+        $("#enterCodeLogin").attr("disabled", "true");
+        $("#enterCodeLogin").val(curCount + "秒后可重新发送");
+        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次请求后台发送验证码 TODO
+    }
+    //timer处理函数
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);//停止计时器
+            $("#enterCodeLogin").removeAttr("disabled");//启用按钮
+            $("#enterCodeLogin").val("重新发送验证码");
+        }
+        else {
+            curCount--;
+            $("#enterCodeLogin").val(curCount + "秒后可重新发送");
+        }
+    }
 
-<script type="text/javascript" src="http://static.shanxiuxia.com/weadoc/js/jquery.min.js"></script>
-<script src="http://static.shanxiuxia.com/weadoc/js/respond.min.js"></script>
-<script src="http://static.shanxiuxia.com/weadoc/js/baidu.js"></script>
-<script src="http://static.shanxiuxia.com/weadoc/js/config.js"></script>
-<script type="text/javascript" src="http://static.shanxiuxia.com/weadoc/js/public.js"></script>
-<script src="http://static.shanxiuxia.com/weadoc/js/laiyuan.js"></script>
-<script src="http://static.shanxiuxia.com/weadoc/js/statistics.js"></script>
-<script>
-	var newDate = new Date();
-	var newhour = newDate.getTime();
-	if(newhour - localStorage.myHour < 10800000){
-		window.location.href = 'personalCenter.html';
-	}else{
-		localStorage.removeItem("mobile");
-	}
-</script>
+
+    var sms="";
+    
+    $("#enterCodeLogin").click(function(){
+   
+        var phone=$("#telPhone").val();
+        if(phone!="")
+        {
+            $.ajax({
+                url:"../../sendSMS",
+                type:"post",
+                data:{"userPhone":phone},
+                success:function(result){
+                    sms=result;
+                }
+            });
+        }else{
+            //checkTel();
+           alert("请正确填写手机号");
+           return false;
+        }
+
+    });  
+    $("#loginSubmit").click(function(){
+        var code=$("#code").val();
+        if(code==""){
+            alert("请输入验证码");
+        }else{
+            if(sms==code){
+	 				$.post("../../user/checkUser",{userPhone:$("#telPhone").val()},function(data){
+					if(data==0){
+					window.location.href="../../user/queryOfa?userPhone="+$("#telPhone").val();	 	             	
+	 	             }else{
+	 	            	alert("您还没有过订单！");           		
+            			$("#loginfm").form('reset');
+	 	             }
+	 	       }); 
+            }else{
+                alert("验证码错误");
+
+            };
+        };
+
+    });
+</script> 
 </body>
-</html> -->
+</html>

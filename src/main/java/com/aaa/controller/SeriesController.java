@@ -51,6 +51,5 @@ public class SeriesController {
     @ResponseBody
     public int update(Series s) {
         return service.update(s);
-
     }
 }

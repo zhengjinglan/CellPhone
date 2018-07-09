@@ -7,3 +7,4 @@
 <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="easyui/themes/insdep/jquery.insdep-extend.min.js"></script>
 <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="easyui/validator.js"></script>

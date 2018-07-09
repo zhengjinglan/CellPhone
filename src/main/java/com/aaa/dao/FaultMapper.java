@@ -37,4 +37,5 @@ public interface FaultMapper {
     int updateByPrimaryKey(Fault record);
 
     List<Fault> selectFullByExample(FaultExample fault, Integer typeId);
+    List<Fault> queryFault(Fault f);
 }

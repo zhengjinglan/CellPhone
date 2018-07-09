@@ -6,7 +6,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<<<<<<< HEAD
   <head>
     <base href="<%=basePath%>">
 
@@ -543,8 +542,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }else{
   	$('.companyNumber').html('杭州维时科技有限公司 浙ICP备15007035号-1');
   }
-
+  });
+  
+    //根据品牌获取系列
+  function getSeries(id){
+  $.ajax({
+  url:'series/querySeries',
+  data: {brandId:id},//传入的id
+  success: function(data){
+  if(! data)return;
+  var html='';
+  for(var i in data){
+  html +='<option value='+data[i].seriesId+'>' +data[i]. seriesName+' </option>';
+  }
+  $("#seriesId").append(html);
+  //通辻change方法去調用
+  $("#seriesId"). change(function(){
+  $("#modelId") . html("");
+  $("#faultId"). html(""); 
+  getModel($(this) .val());
+  });
+  $("#seriesId").get(0). selectedIndex=0;
+ 	getModel($("#seriesId").val());	
+  }
+  });
+  }
+  
+  //根据系列选择机型
+  function getModel(id){
+  	$.ajax({
+  		url:'model/queryAll',
+  		data:{seriesId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			for(var i in data){
+  			html +='<option value='+data[i].modelId+'>' +data[i]. modelName+' </option>';
+  			} 
+  			 $("#modelId").append(html);
+  			  $("#modelId"). change(function(){
+              $("#faultId"). html(""); 
+              getFault($(this) .val());
+  });
+  			$("#modelId").get(0). selectedIndex=0;
+ 			getFault($("#modelId").val());	  			
+  		}
+  	});  
+  }
+  
+  function getFault(id){
+  	$.ajax({
+  		url:'fault/queryAll',
+  		data:{modelId:id},
+  		success:function(data){
+			if(! data)return;
+  			var html='';
+  			var price='';
+  			for(var i in data){
+  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
+  			price +='<div value='+data[i].faultId+'>'+data[i]. faultPrice+' </div>';
+  			
+  			} 
+  			$("#price").html("");
+  			 $("#faultId").append(html);
+  			 $("#price").append(price);
+  			
+  		}
+  	});  
+  }
+  
+  
+  
+ });
 </script>
 </body>
->>>>>>> refs/remotes/origin/lqx
 </html>

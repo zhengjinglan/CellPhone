@@ -27,4 +27,6 @@ public interface MailInfoMapper {
     int updateByPrimaryKeySelective(MailInfo record);
 
     int updateByPrimaryKey(MailInfo record);
+    
+    int updateMail(MailInfo m);
 }

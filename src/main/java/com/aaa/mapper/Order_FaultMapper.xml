@@ -11,4 +11,5 @@
 	</selectKey>
 	insert into order_fault (fault_id,order_id) values(#{faultId},#{orderId})
   	</insert> 
+  	
 </mapper>

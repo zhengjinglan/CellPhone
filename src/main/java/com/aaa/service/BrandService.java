@@ -44,6 +44,6 @@ public class BrandService {
 		BrandExample brand = new BrandExample();
 		brand.createCriteria().andBrandIdEqualTo(b.getBrandId());
 		return dao.updateByExampleSelective(b, brand);
-	}
 
+	}
 }

@@ -1,5 +1,8 @@
 package com.aaa.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +15,18 @@ public class Order_FalutService {
 	@Autowired
 	Order_FaultMapper maper;
 	
+		/**
+		 * 
+		 * @author lqx
+		 * @date 2018年7月5日
+		 * @param o
+		 * @return
+		 */
 	public int add(Order_Fault o){
 		
 		return maper.add(o);
 		
 	}
+	
 	
 }

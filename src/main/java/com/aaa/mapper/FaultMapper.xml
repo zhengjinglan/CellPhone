@@ -335,4 +335,12 @@
     </if>
      
   </select>
+    <select id="queryFault" parameterType="com.aaa.entity.Fault" resultMap="BaseResultMap">
+  	select * from fault
+  	<where>
+  		<if test="modelId !=null">
+  			model_id=#{modelId}
+  		</if>
+  	</where>
+  </select>
 </mapper>

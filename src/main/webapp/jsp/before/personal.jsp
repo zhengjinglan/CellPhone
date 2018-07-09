@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,129 +11,110 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>订单详情</title>
-
-<!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic' rel='stylesheet' type='text/css'>
-
-
-<!-- font awesome -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-<!-- bootstrap -->
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-
-
-<!-- animate.css -->
-<link rel="stylesheet" href="assets/animate.css" />
-
-
-
-<!-- Owl Carousel Assets -->
-<link href="assets/owl-carousel/owl.carousel.css" rel="stylesheet">
-
-<link  href="assets/style.css" rel="stylesheet">
-
-<!-- favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="../jsp/before/assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../jsp/before/assets/animate.css" />
+<link href="../jsp/before/assets/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link  href="../jsp/before/assets/style.css" rel="stylesheet">
+	  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript">
+			$(function(){
+				//$("#fm").hide();
+				$("#mailNum").hide();
+				$("#sb").hide();
+				$("#o").show();
+				
+			});
+			function check(){
+					//$("fm").show();
+					$("#mailNum").show();
+					$("#sb").show();
+					$("#o").hide();
+				}
+			function sbcheck(){
+			$("#mailNum").hide();
+				$("#sb").hide();8
+				$.post("../mail/updateMail",{"mailNum":$("#mailNum").val(),"infoId":$("#infoId").val()},
+			function(data){
+					if(data==1){
+					alert("确认成功");
+						$("#tables").datagrid("reload");
+					}else{
+						$.messager.show({
+							title:'提示',
+							msg:"操作失败！"
+						});
+						
+					}
+				});
+			}
+	  </script>
 
 
 </head>
 
 <body id="home">
-
-
-
-
-
-
-<div class="header">
-<nav class="navbar  navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-   
-    </div>
-
-   
-
-
-<div class="container">
-
-<!-- checkout -->
-<div class="content inside-page checkout">
-		
-
-<div class="shopping-cart">
-	<!-- fieldsets -->
-
-			
-			<div class="row product-list title hidden-xs">
-            	<div class="col-xs-8">订单详情</div>
-            	<div class="col-xs-2 center price">Price</div>
-            	<div class="col-xs-1">Qty</div>
-            	<div class="col-xs-1 center">Action</div>
-          	</div>
-            <hr>
-			<div class="row product-list">
-            	<div class="col-xs-3 col-sm-2"><a href="product.html"><img src="images/photos/1.jpg" class="img-responsive"  alt="product"></a></div>
-            	<div class="col-xs-9 col-sm-6 title"><a href="product.html">White V-neck Tshirt</a></div>
-            	<div class="col-xs-4 col-sm-2 center price">$1000.00</div>
-            	<div class="col-xs-3 col-sm-1"><input class="form-control"></div>
-            	<div class="col-xs-2 col-sm-1 center"><a href="#"><i class="fa fa-close"></i></a></div>
-          	</div>
-
-          	<div class="row product-list">
-            	<div class="col-xs-3 col-sm-2"><a href="product.html"><img src="images/photos/2.jpg" class="img-responsive" alt="product"></a></div>
-            	<div class="col-xs-9 col-sm-6 title"><a href="product.html">White V-neck Tshirt</a></div>
-            	<div class="col-xs-4 col-sm-2 center price">$1000.00</div>
-            	<div class="col-xs-3 col-sm-1"><input class="form-control"></div>
-            	<div class="col-xs-2 col-sm-1 center"><a href="#"><i class="fa fa-close"></i></a></div>
-          	</div>
-
-          	
-
-          	<div class="row product-list grandtotal">
-            	<div class="col-xs-8">Total</div>
-            	<div class="col-xs-2 center price">$3000.00</div>            	
-          	</div>
-
-
-</div>
-<hr>
+ <div class="shopping-cart">
+ <a href="../jsp/before/macservice.jsp">返回首页</a>
+	 <table class="table table-hover text-center" id="tables">
+			<thead>
+				<tr>
+					
+					<th>用户姓名</th>
+					<th>故障机型</th>
+					<th>故障信息</th>
+					<th>价格</th>
+					<th>创建时间</th>
+					<th>维修状态</th>
+					<th>维修方式</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${olist }" var="ofa">
+				<tr>		
+					<td>${ofa.user_name }</td>
+					<td>${ofa.model_name }</td>
+					<td>${ofa.fault_name }</td>
+					<td>${ofa.fault_price }</td>
+					<td>${ofa.gmt_create }</td>
+					<td>${ofa.state }</td>
+					<td>
+					<c:if test="${ofa.info_id != null }">
+					
+					<c:if test="${ofa.mail_num == null }">					
+					<a href="javascrpt:void(0)" id="o" onclick="check()" >
+        			请填写快递单号</a>
+        			<form method="post" id="fm">
+        			<input type="hidden" id="infoId" name="infoId" value="${ofa.info_id}"/>
+        				<input type="number" id="mailNum" name="mailNum"/>
+        				<input type="submit" value="确定" id="sb" onclick="sbcheck()" />
+        			</form>
+					</c:if>
+					<c:if test="${ofa.mail_num != null }">	
+					<a href="javascrpt:void(0) " >邮寄维修</a>
+					</c:if>
+					</c:if>
+					
+					<c:if test="${ofa.info_id == null }">
+					<a href="javascrpt:void(0) " >上门维修</a>
+					</c:if>
+					</td>
+				</tr>
+				</c:forEach>
+					</tbody>
+		</table> 
 	
 </div>
 <!-- form -->
-
-
-
-<script src="assets/jquery.js"></script>
-
-
-
-<!-- owlcarousel -->
-<script src="assets/owl-carousel/owl.carousel.min.js"></script>
-
-<!-- boostrap -->
-<script src="assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
-
-<!-- jquery mobile -->
-<script src="assets/mobile/touchSwipe.min.js"></script>
-<script src="assets/respond/respond.js"></script>
-
-
-
-
-
-<!-- custom script -->
-<script src="assets/script.js"></script>
+<script src="../jsp/before/assets/jquery.js"></script>
+<script src="../jsp/before/assets/owl-carousel/owl.carousel.min.js"></script>
+<script src="../jsp/before/assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+<script src="../jsp/before/assets/mobile/touchSwipe.min.js"></script>
+<script src="../jsp/before/assets/respond/respond.js"></script>
+<script src="../jsp/before/assets/script.js"></script> 
 
 </body>
 </html>
