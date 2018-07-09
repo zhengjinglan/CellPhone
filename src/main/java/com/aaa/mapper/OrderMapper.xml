@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="fettler_id" jdbcType="INTEGER" property="fettlerId" />
+    <result column="order_price" jdbcType="DECIMAL" property="orderPrice" />
+    <result column="pay_way" jdbcType="VARCHAR" property="payWay" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="assigner" jdbcType="VARCHAR" property="assigner" />
+    <result column="predetermined_time" jdbcType="VARCHAR" property="predeterminedTime" />
+    <result column="real_begin" jdbcType="TIMESTAMP" property="realBegin" />
+    <result column="real_end" jdbcType="TIMESTAMP" property="realEnd" />
+    <result column="assign_time" jdbcType="TIMESTAMP" property="assignTime" />
+    <result column="diagnosis_result" jdbcType="VARCHAR" property="diagnosisResult" />
+    <result column="real_solution" jdbcType="VARCHAR" property="realSolution" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="forecast_price" jdbcType="DECIMAL" property="forecastPrice" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    order_id, user_id, fettler_id, order_price, pay_way, gmt_create, gmt_modified, state,
+    assigner, predetermined_time, real_begin, real_end, assign_time, diagnosis_result,
+    real_solution, address, color, forecast_price
+  </sql>
+  <!-- 订单季度报表 -->
+  <select id="OrderReport" resultType="java.util.Map">
+		select YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1 gmt_create,count(*) idds
+        from `order`
+        group by YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1;
+  </select>
+<!-- 订单月份报表 -->
+  <select id="OrderReportMonth" resultType="java.util.Map">
+	    SELECT count(s.order_id) idds,
+		date_format(s.gmt_create,'%m') gmt_create
+		FROM `order` s
+		group by date_format(s.gmt_create,'%m')
+  </select>
+  <select id="selectByExample" parameterType="com.aaa.entity.OrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from `order`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `order`
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aaa.entity.OrderExample">
+    delete from order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aaa.entity.Order">
+   <selectKey keyColumn="userId" keyProperty="userId" order="BEFORE" resultType="Integer">
+			SELECT max(user_id) userId FROM user
+	</selectKey>
+    insert into `order` (user_id, fettler_id, order_price,
+      pay_way, gmt_create, gmt_modified,
+      state, assigner, predetermined_time,
+      real_begin, real_end, assign_time,
+      diagnosis_result, real_solution, address,
+      color, forecast_price)
+    values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL},
+      #{payWay,jdbcType=VARCHAR}, now(), now(),
+      '待处理', #{assigner,jdbcType=VARCHAR},now(),
+      #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP},
+      #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{color,jdbcType=VARCHAR}, #{forecastPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.entity.Order">
+    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+<!--     <selectKey keyColumn="userId" keyProperty="userId" order="BEFORE" resultType="Integer">
+			SELECT max(userId) userId FROM user
+	</selectKey>  -->
+    insert into `order`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fettlerId != null">
+        fettler_id,
+      </if>
+      <if test="orderPrice != null">
+        order_price,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="assigner != null">
+        assigner,
+      </if>
+      <if test="predeterminedTime != null">
+        predetermined_time,
+      </if>
+      <if test="realBegin != null">
+        real_begin,
+      </if>
+      <if test="realEnd != null">
+        real_end,
+      </if>
+      <if test="assignTime != null">
+        assign_time,
+      </if>
+      <if test="diagnosisResult != null">
+        diagnosis_result,
+      </if>
+      <if test="realSolution != null">
+        real_solution,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="color != null">
+        color,
+      </if>
+      <if test="forecastPrice != null">
+        forecast_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fettlerId != null">
+        #{fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="assigner != null">
+        #{assigner,jdbcType=VARCHAR},
+      </if>
+      <if test="predeterminedTime != null">
+        #{predeterminedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="realBegin != null">
+        #{realBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realEnd != null">
+        #{realEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignTime != null">
+        #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="diagnosisResult != null">
+        #{diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="realSolution != null">
+        #{realSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="forecastPrice != null">
+        #{forecastPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aaa.entity.OrderExample" resultType="java.lang.Long">
+    select count(*) from `order`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update `order`
+    <set>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fettlerId != null">
+        fettler_id = #{record.fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderPrice != null">
+        order_price = #{record.orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payWay != null">
+        pay_way = #{record.payWay,jdbcType=VARCHAR},
+      </if>
+
+      <if test="record.assigner != null">
+        assigner = #{record.assigner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.predeterminedTime != null">
+        predetermined_time = #{record.predeterminedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realBegin != null">
+        real_begin = #{record.realBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.realEnd != null">
+        real_end = #{record.realEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.assignTime != null">
+        assign_time = #{record.assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.diagnosisResult != null">
+        diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realSolution != null">
+        real_solution = #{record.realSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.color != null">
+        color = #{record.color,jdbcType=VARCHAR},
+      </if>
+      <if test="record.forecastPrice != null">
+        forecast_price = #{record.forecastPrice,jdbcType=DECIMAL},
+      </if>
+        state = '处理中',
+        gmt_modified = now()
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update `order`
+    set order_id = #{record.orderId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      fettler_id = #{record.fettlerId,jdbcType=INTEGER},
+      order_price = #{record.orderPrice,jdbcType=DECIMAL},
+      pay_way = #{record.payWay,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=VARCHAR},
+      assigner = #{record.assigner,jdbcType=VARCHAR},
+      predetermined_time = #{record.predeterminedTime,jdbcType=VARCHAR},
+      real_begin = #{record.realBegin,jdbcType=TIMESTAMP},
+      real_end = #{record.realEnd,jdbcType=TIMESTAMP},
+      assign_time = #{record.assignTime,jdbcType=TIMESTAMP},
+      diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
+      real_solution = #{record.realSolution,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      color = #{record.color,jdbcType=VARCHAR},
+      forecast_price = #{record.forecastPrice,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.Order">
+    update `order`
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fettlerId != null">
+        fettler_id = #{fettlerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        order_price = #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="assigner != null">
+        assigner = #{assigner,jdbcType=VARCHAR},
+      </if>
+      <if test="predeterminedTime != null">
+        predetermined_time = #{predeterminedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="realBegin != null">
+        real_begin = #{realBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realEnd != null">
+        real_end = #{realEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignTime != null">
+        assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="diagnosisResult != null">
+        diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="realSolution != null">
+        real_solution = #{realSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="forecastPrice != null">
+        forecast_price = #{forecastPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.Order">
+    update `order`
+    set user_id = #{userId,jdbcType=INTEGER},
+      fettler_id = #{fettlerId,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=DECIMAL},
+      pay_way = #{payWay,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
+      assigner = #{assigner,jdbcType=VARCHAR},
+      predetermined_time = #{predeterminedTime,jdbcType=VARCHAR},
+      real_begin = #{realBegin,jdbcType=TIMESTAMP},
+      real_end = #{realEnd,jdbcType=TIMESTAMP},
+      assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
+      real_solution = #{realSolution,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      forecast_price = #{forecastPrice,jdbcType=DECIMAL}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <select id="query" resultType="map">
+  select o.order_id orderId,o.user_id userId,
+o.fettler_id fettlerId,o.order_price orderPrice,
+o.pay_way payWay,o.gmt_create gmtCreate,
+o.gmt_modified gmtModified,o.state state,
+o.assigner assigner,o.predetermined_time predeterminedTime,
+o.real_begin realBegin,o.real_end realEnd,
+o.assign_time assignTime,o.diagnosis_result diagnosisResult,
+o.real_solution realSolution,o.address address,
+o.color color,o.forecast_price forecastPrice ,u.user_id userId,
+u.user_name userName,f.fettler_id fettlerId,e.emp_name fettlerName
+from `order` o
+left join `user` u
+on u.user_id=o.user_id
+left join fettler f
+on o.fettler_id=f.fettler_id
+left join emp e
+on f.emp_id=e.emp_id
+<where>
+	<if test="param1 != null and param1.fettlerId != null">
+	o.fettler_id=#{param1.fettlerId} and
+	</if>
+	<if test="param1 != null and param1.state != null">
+	o.state=#{param1.state}
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+  </select>
+</mapper>

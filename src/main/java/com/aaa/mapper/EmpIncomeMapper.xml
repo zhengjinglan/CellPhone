@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.EmpIncomeMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.EmpIncome">
+    <id column="income_id" jdbcType="INTEGER" property="incomeId" />
+    <result column="income_type_id" jdbcType="INTEGER" property="incomeTypeId" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="income_price" jdbcType="DECIMAL" property="incomePrice" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    income_id, income_type_id, emp_id, income_price, gmt_create, gmt_modified, operator
+  </sql>
+  <select id="selectByExample" parameterType="com.aaa.entity.EmpIncomeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from emp_income
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from emp_income
+    where income_id = #{incomeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from emp_income
+    where income_id = #{incomeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aaa.entity.EmpIncomeExample">
+    delete from emp_income
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aaa.entity.EmpIncome">
+    <selectKey keyProperty="incomeId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into emp_income (income_type_id, emp_id, income_price, 
+      gmt_create, gmt_modified, operator
+      )
+    values (#{incomeTypeId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{incomePrice,jdbcType=DECIMAL}, 
+      now(), now(), #{operator,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.entity.EmpIncome">
+    <selectKey keyProperty="incomeId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into emp_income
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="incomeTypeId != null">
+        income_type_id,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="incomePrice != null">
+        income_price,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="incomeTypeId != null">
+        #{incomeTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="incomePrice != null">
+        #{incomePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aaa.entity.EmpIncomeExample" resultType="java.lang.Long">
+    select count(*) from emp_income
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update emp_income
+    <set>
+      <if test="record.incomeId != null">
+        income_id = #{record.incomeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.incomeTypeId != null">
+        income_type_id = #{record.incomeTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
+      <if test="record.incomePrice != null">
+        income_price = #{record.incomePrice,jdbcType=DECIMAL},
+      </if>
+     
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+     
+        gmt_modified = now()
+    
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update emp_income
+    set income_id = #{record.incomeId,jdbcType=INTEGER},
+      income_type_id = #{record.incomeTypeId,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
+      income_price = #{record.incomePrice,jdbcType=DECIMAL},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.EmpIncome">
+    update emp_income
+    <set>
+      <if test="incomeTypeId != null">
+        income_type_id = #{incomeTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="incomePrice != null">
+        income_price = #{incomePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where income_id = #{incomeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.EmpIncome">
+    update emp_income
+    set income_type_id = #{incomeTypeId,jdbcType=INTEGER},
+      emp_id = #{empId,jdbcType=INTEGER},
+      income_price = #{incomePrice,jdbcType=DECIMAL},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
+    where income_id = #{incomeId,jdbcType=INTEGER}
+  </update>
+  <select id="query" resultType="map" parameterType="map">
+  select em.income_id incomeId,em.income_type_id incomeTypeId,
+em.emp_id empId,em.income_price incomePrice,
+em.gmt_create gmtCreate,em.gmt_modified gmtModified,
+em.operator operator,type.income_type_name incomeTypeName,
+e.emp_Name empName
+from emp_income em
+left join income_type type
+on em.income_type_id=type.income_type_id
+left join emp e
+on em.emp_id=e.emp_id
+<where>
+	<if test="param1 != null and param1.incomeTypeId != null">
+	em.income_type_id=#{param1.incomeTypeId} and
+	</if>
+	<if test="param1 != null and param1.incomeTypeId != null">
+	em.emp_name like CONCAT(CONCAT('%',#{param1.empName}),'%')
+	</if>
+</where>
+<if test="param2 != null and param3 != null">
+limit #{param2},#{param3}
+</if>
+  </select>
+</mapper>

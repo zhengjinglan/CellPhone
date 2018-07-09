@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.ConsumeItemRecordMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.ConsumeItemRecord">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="use_num" jdbcType="INTEGER" property="useNum" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    record_id, order_id, item_id, use_num, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByExample" parameterType="com.aaa.entity.ConsumeItemRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consume_item_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consume_item_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from consume_item_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aaa.entity.ConsumeItemRecordExample">
+    delete from consume_item_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aaa.entity.ConsumeItemRecord">
+    insert into consume_item_record (record_id, order_id, item_id, 
+      use_num, gmt_create, gmt_modified
+      )
+    values (#{recordId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+      #{useNum,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.entity.ConsumeItemRecord">
+    insert into consume_item_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="useNum != null">
+        use_num,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aaa.entity.ConsumeItemRecordExample" resultType="java.lang.Long">
+    select count(*) from consume_item_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consume_item_record
+    <set>
+      <if test="record.recordId != null">
+        record_id = #{record.recordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=INTEGER},
+      </if>
+      <if test="record.useNum != null">
+        use_num = #{record.useNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consume_item_record
+    set record_id = #{record.recordId,jdbcType=INTEGER},
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      item_id = #{record.itemId,jdbcType=INTEGER},
+      use_num = #{record.useNum,jdbcType=INTEGER},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.entity.ConsumeItemRecord">
+    update consume_item_record
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        use_num = #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.entity.ConsumeItemRecord">
+    update consume_item_record
+    set order_id = #{orderId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
+      use_num = #{useNum,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <!-- 涉及多表 -->
+  <!-- ConsumeItem -->
+  <resultMap type="com.aaa.entity.ConsumeItemRecord" id="fullMap" extends="BaseResultMap">
+  	<association property="consumeItem"
+  				resultMap="com.aaa.dao.ConsumeItemMapper.BaseResultMap"
+  				columnPrefix="ref1_">
+  	</association>
+	<association property="order"
+				resultMap="com.aaa.dao.OrderMapper.BaseResultMap"
+				columnPrefix="ref2_">
+	</association>
+  </resultMap>
+  
+  <select id="selectFullByExample" parameterType="map" resultMap="fullMap">
+  	select 
+  		base.record_id,base.order_id,base.item_id,base.use_num,base.gmt_create,base.gmt_modified,
+  		item.item_id as ref1_item_id,item.type_id as ref1_type_id,item.item_name as ref1_item_name,
+  		item.item_num as ref1_item_num,item.gmt_create as ref1_gmt_create,item.operator as ref1_operator,
+  		o.order_id as ref2_orer_id,o.user_id as ref2_user_id,o.fettler_id as ref2_fettler_id,o.order_price as ref2_order_price,
+  		o.pay_way as ref2_pay_way,o.gmt_create as ref2_gmt_create,o.gmt_modified as ref2_gmt_modified,o.state as ref2_state,
+  		o.assigner as ref2_assigner,o.predetermined_time as ref2_predetermined_time,
+		o.real_begin as ref2_real_begin,o.real_end as ref2_realend,
+		o.assign_time as ref2_assign_time,o.diagnosis_result as ref2_diagnosis_result,
+		o.real_solution as ref2_real_solution,o.address as ref2_address,
+		o.color as ref2_color,o.forecast_price as ref2_forecast_price
+  	from consume_item_record base,consume_item item,`order` o
+  	<where>
+  		and (base.order_id = o.order_id) and (base.item_id = item.item_id)
+  		<if test="orderId != null">
+  			and (o.order_id = #{orderId})
+  		</if>
+  		<if test="itemId != null">
+  			and (item.item_id = #{itemId})
+  		</if>
+  	</where>
+  	<if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    <if test="example.limit != null">
+      <if test="example.offset != null">
+        limit ${example.offset}, ${example.limit}
+      </if>
+      <if test="example.offset == null">
+        limit ${example.limit}
+      </if>
+    </if>
+  </select>
+</mapper>

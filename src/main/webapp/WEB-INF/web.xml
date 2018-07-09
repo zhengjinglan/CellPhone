@@ -15,7 +15,7 @@
   </listener>
   <context-param>
   	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
+  	<param-value>classpath*:applicationContext.xml</param-value>
   </context-param>
   
   <!-- springmvc的前端控制器 -->
@@ -24,7 +24,7 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
+      <param-value>classpath*:spring-mvc.xml</param-value>
     </init-param>
   </servlet>
   <!-- springmvc默认servlet映射,默认控制器拦截之后,springmvc的前端控制器将不再拦截 -->
@@ -36,6 +36,10 @@
   <servlet-mapping>
   	<servlet-name>default</servlet-name>
   	<url-pattern>/easyui/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>default</servlet-name>
+  	<url-pattern>/before/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>default</servlet-name>

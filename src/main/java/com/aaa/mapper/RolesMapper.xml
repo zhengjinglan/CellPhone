@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.RolesDao">
+	
+	<select id="queryAll" resultType="Map">
+		SELECT r.rid,
+		r.rname,
+		r.uid,
+		r.uptime,
+		m.uname upuname,
+		rl.lids
+		from roles r
+		left join (SELECT rid,GROUP_CONCAT(lid) lids from role_lib group by rid) rl
+		on r.rid = rl.rid
+		left join manager m
+		on m.uid=r.uid
+	</select>
+	<delete id="dels"> 
+	delete from role_lib where rid =#{rid} 
+	</delete>
+	<insert id="add" parameterType="map">
+	insert into role_lib(rid,lid) values 
+	<foreach separator="," item="item" index="index" collection="param2">
+	 (#{param1},#{item})
+	 </foreach>
+	</insert>
+	<insert id="insert" parameterType="roles">
+		insert into roles values
+		(null,#{rname},#{uid},now())
+	</insert>
+</mapper>

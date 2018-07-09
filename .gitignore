@@ -1,1 +1,10 @@
-/target
+# Eclipse Project files
+.classpath
+.project
+.settings/
+.tern-project
+/.externalToolBuilders/
+
+# maven
+target/
+
