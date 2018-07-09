@@ -11,6 +11,8 @@ import com.aaa.entity.EmpExample;
 public interface EmpMapper {
 	List<Map<String, Object>> query(Emp emp, int page, int rows);
 
+	Integer selectAll(Integer deptId);
+
 	long countByExample(EmpExample example);
 
 	int deleteByExample(EmpExample example);

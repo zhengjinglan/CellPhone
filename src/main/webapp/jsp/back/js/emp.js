@@ -3,9 +3,9 @@ $(function(){
 	$("#tables").datagrid({
 		url:"emp/query",
 		columns:[[
-		  {field:'empId',title:'员工编号',width:40,checkbox:true},  
-		  {field:'deptId',title:'部门编号',width:40,hidden:true}, 
-		  {field:'deptName',title:'部门名称',width:40},  
+		  {field:'empId',title:'员工编号',width:40,checkbox:true},
+		  {field:'deptId',title:'部门编号',width:40,hidden:true},
+		  {field:'deptName',title:'部门名称',width:40},
 		  {field:'jobId',title:'职位编号',width:60,hidden:true},
 		  {field:'jobName',title:'职位名称',width:60},
 		  {field:'empName',title:'员工名称',width:60},
@@ -26,7 +26,7 @@ $(function(){
 		striped:true,
 		loadFilter:function(data){//所有数据,源数据被修改
 			var rows = data.rows;
-			
+
 			for(var i=0;i<rows.length;i++){
 				if(rows[i].state==0){
 					rows[i].state ="在职";
@@ -38,9 +38,8 @@ $(function(){
 		}
 	});
 });
-
 $(document).ready(function(){
-	//自动搜索 
+	//自动搜索
 	$('#dept').combobox({
 	mode:'remote' ,
 	url:'dept/queryAll' ,
@@ -48,7 +47,7 @@ $(document).ready(function(){
 	textField:'deptName' ,
 	delay:500
 	});
-	//自动搜索 
+	//自动搜索
 	$('#job').combobox({
 	mode:'remote' ,
 	url:'job/queryAll' ,
@@ -78,22 +77,22 @@ $(function(){
 function dels(){
 	// 获取所有选中行
 	var rows = $("#tables").datagrid("getChecked");
-	
+
 	if(rows!=""){
-	
+
 		var ids=[];
-		
+
 		for(var i=0;i<rows.length;i++){
 			ids[i] = rows[i].empId;
 		}
-		
+
 		$.post("emp/dels",{"ids":ids.toString()},function(data){
 			if(data==0){
 				$.messager.show({
 					title:'提示',
 					msg:"删除成功！"
 				});
-				$("#tables").datagrid("reload");	
+				$("#tables").datagrid("reload");
 			}
 		});
 	}else{
@@ -103,7 +102,7 @@ function dels(){
 
 // 打开新增窗口
 function add(){
-	
+
 	$("#fm").form('reset');
 	$("#datawindow").window("open").window('setTitle',"新增");
 	loadSelect("jobId","job/queryAll","jobName","jobId",true);
@@ -118,12 +117,12 @@ function edit(){
 		// 重置表单
 		$("#fm").form('reset');
 		// 加载修改的数据信息
-		$("#fm").form('load',rows[0]);				
+		$("#fm").form('load',rows[0]);
 		// 设置表单提交路径
 		url = "emp/update";
 		// 打开窗口
 		$("#datawindow").window("open").window('setTitle',"修改");
-		
+
 	}else if(rows.length > 1){
 		$.messager.show({
 			title:'提示',
@@ -141,12 +140,12 @@ function edit(){
 function submits(){
 	if($("#empId").textbox("getValue")=="自动生成"){
 		$("#empId").textbox("setValue",-1);
-	}	
+	}
 	$.post(url,{"empId":$("#empId").val(),"deptId":$("#deptId").val(),
 	"jobId":$("#jobId").val(),"empName":$("#empName").val(),
-	"empSex":$("#empSex").val(),"empPhone":$("#empPhone").val(),
+	"empSex":$("input[name='empSex']").val(),"empPhone":$("#empPhone").val(),
 	"empAddress":$("#empAddress").val(),"operator":$("#operator").val()},function(data){
-	
+
 			if(data==1){
 				$.messager.show({
 					title:'提示',

@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    fault_id, type_id, model_id, fault_price, fault_name, fault_description, gmt_create, 
+    fault_id, type_id, model_id, fault_price, fault_name, fault_description, gmt_create,
     gmt_modified, prediction_fault, prediction_solution, operator
   </sql>
   <select id="selectByExample" parameterType="com.aaa.entity.FaultExample" resultMap="BaseResultMap">
@@ -99,7 +99,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from fault
     where fault_id = #{faultId,jdbcType=INTEGER}
@@ -118,13 +118,13 @@
     <selectKey keyProperty="faultId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into fault (type_id, model_id, fault_price, 
-      fault_name, fault_description, gmt_create, 
-      gmt_modified, prediction_fault, prediction_solution, 
+    insert into fault (type_id, model_id, fault_price,
+      fault_name, fault_description, gmt_create,
+      gmt_modified, prediction_fault, prediction_solution,
       operator)
-    values (#{typeId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER}, #{faultPrice,jdbcType=DECIMAL}, 
-      #{faultName,jdbcType=VARCHAR}, #{faultDescription,jdbcType=VARCHAR},now(), 
-      now(), #{predictionFault,jdbcType=VARCHAR}, #{predictionSolution,jdbcType=VARCHAR}, 
+    values (#{typeId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER}, #{faultPrice,jdbcType=DECIMAL},
+      #{faultName,jdbcType=VARCHAR}, #{faultDescription,jdbcType=VARCHAR},now(),
+      now(), #{predictionFault,jdbcType=VARCHAR}, #{predictionSolution,jdbcType=VARCHAR},
       #{operator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Fault">
@@ -224,7 +224,7 @@
       <if test="record.faultDescription != null">
         fault_description = #{record.faultDescription,jdbcType=VARCHAR},
       </if>
-      
+
       <if test="record.predictionFault != null">
         prediction_fault = #{record.predictionFault,jdbcType=VARCHAR},
       </if>
@@ -234,9 +234,9 @@
       <if test="record.operator != null">
         operator = #{record.operator,jdbcType=VARCHAR},
       </if>
-     
+
         gmt_modified = now(),
-     
+
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -315,7 +315,7 @@
 		f.gmt_create gmtCreate,f.gmt_modified gmtModified,f.type_id typeId,
 		f.prediction_fault predictionFault,f.prediction_solution predictionSolution,
 		f.operator operator,type.type_id,type.type_name typeName,
-		model.model_id,model.model_name modelName 
+		model.model_id,model.model_name modelName
 		from fault f
 		LEFT join fault_type type
 		on f.type_id=type.type_id
@@ -326,14 +326,14 @@
      	f.model_id=#{param1.modelId} and
     </if>
     <if test="param1 != null and param1.typeId != null">
-     	f.type_id=#{param1.typeId} 
+     	f.type_id=#{param1.typeId}
     </if>
   <!--    order by f.fault_id desc -->
     </where>
      <if test="param2 != null and param3 !=null">
         limit #{param2},#{param3}
     </if>
-     
+
   </select>
     <select id="queryFault" parameterType="com.aaa.entity.Fault" resultMap="BaseResultMap">
   	select * from fault

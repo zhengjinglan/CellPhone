@@ -30,22 +30,16 @@ public class FettlerController {
 
 	@RequestMapping("queryAll")
 	@ResponseBody
-	public List<Fettler> queryAll(Fettler fettler) {
-
-		return fettlerService.queryAll(fettler);
+	public List<Map<String, Object>> queryAll() {
+		System.out.println("queryAll" + fettlerService.queryAll());
+		return fettlerService.queryAll();
 	}
 
 	@RequestMapping("queryByState")
 	@ResponseBody
 	public List<Map<String, Object>> queryByState() {
-		return fettlerService.queryByState(null);
-	}
-
-	@RequestMapping("query")
-	@ResponseBody
-	public List<Map<String, Object>> query(String city, Integer orderId) {
-		System.out.println(orderId);
-		return fettlerService.queryByState(city);
+		System.out.println("queryByState" + fettlerService.queryByState());
+		return fettlerService.queryByState();
 	}
 
 	@RequestMapping("dels")
@@ -68,7 +62,7 @@ public class FettlerController {
 		System.out.println(fettler);
 		return fettlerService.update(fettler);
 	}
-	
+
 	public List<Fettler> queryWithOrder(int orderId){
 	    return fettlerService.listWithOrder(orderId);
 	}

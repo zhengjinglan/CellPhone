@@ -80,8 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    order_id, user_id, fettler_id, order_price, pay_way, gmt_create, gmt_modified, state, 
-    assigner, predetermined_time, real_begin, real_end, assign_time, diagnosis_result, 
+    order_id, user_id, fettler_id, order_price, pay_way, gmt_create, gmt_modified, state,
+    assigner, predetermined_time, real_begin, real_end, assign_time, diagnosis_result,
     real_solution, address, color, forecast_price
   </sql>
   <!-- 订单季度报表 -->
@@ -120,7 +120,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from order
     where order_id = #{orderId,jdbcType=INTEGER}
@@ -136,22 +136,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.aaa.entity.Order">
-
    <selectKey keyColumn="userId" keyProperty="userId" order="BEFORE" resultType="Integer">
 			SELECT max(user_id) userId FROM user
-	</selectKey> 
-
-    insert into `order` (user_id, fettler_id, order_price, 
-      pay_way, gmt_create, gmt_modified, 
-      state, assigner, predetermined_time, 
-      real_begin, real_end, assign_time, 
-      diagnosis_result, real_solution, address, 
+	</selectKey>
+    insert into `order` (user_id, fettler_id, order_price,
+      pay_way, gmt_create, gmt_modified,
+      state, assigner, predetermined_time,
+      real_begin, real_end, assign_time,
+      diagnosis_result, real_solution, address,
       color, forecast_price)
-    values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL}, 
-      #{payWay,jdbcType=VARCHAR}, now(), now(), 
-      '未分配', #{assigner,jdbcType=VARCHAR}, #{predeterminedTime,jdbcType=VARCHAR}, 
-      #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP}, 
-      #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{fettlerId,jdbcType=INTEGER}, #{orderPrice,jdbcType=DECIMAL},
+      #{payWay,jdbcType=VARCHAR}, now(), now(),
+      '待处理', #{assigner,jdbcType=VARCHAR},now(),
+      #{realBegin,jdbcType=TIMESTAMP}, #{realEnd,jdbcType=TIMESTAMP}, #{assignTime,jdbcType=TIMESTAMP},
+      #{diagnosisResult,jdbcType=VARCHAR}, #{realSolution,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
       #{color,jdbcType=VARCHAR}, #{forecastPrice,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.entity.Order">
@@ -275,6 +273,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update `order`
     <set>
@@ -293,15 +292,7 @@
       <if test="record.payWay != null">
         pay_way = #{record.payWay,jdbcType=VARCHAR},
       </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.state != null">
-        state = #{record.state,jdbcType=VARCHAR},
-      </if>
+
       <if test="record.assigner != null">
         assigner = #{record.assigner,jdbcType=VARCHAR},
       </if>
@@ -332,6 +323,8 @@
       <if test="record.forecastPrice != null">
         forecast_price = #{record.forecastPrice,jdbcType=DECIMAL},
       </if>
+        state = '处理中',
+        gmt_modified = now()
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -440,29 +433,29 @@
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
   <select id="query" resultType="map">
-  select o.order_id orerId,o.user_id userId,
-	o.fettler_id fettlerId,o.order_price orderPrice,
-	o.pay_way payWay,o.gmt_create gmtCreate,
-	o.gmt_modified gmtModified,o.state state,
-	o.assigner assigner,o.predetermined_time predeterminedTime,
-	o.real_begin realBegin,o.real_end realEnd,
-	o.assign_time assignTime,o.diagnosis_result diagnosisResult,
-	o.real_solution realSolution,o.address address,
-	o.color color,o.forecast_price forecastPrice ,u.user_id userId,
-	u.user_name userName,f.fettler_id fettlerId,e.emp_name fettlerName 
-	from `order` o 
-	left join `user` u 
-	on u.user_id=o.user_id 
-	left join fettler f 
-	on o.fettler_id=f.fettler_id 
-	left join emp e
-	on f.emp_id=e.emp_id
-	<where>
-	<if test="param1 != null and param1.userId != null">
-	o.user_id=#{param1.userId} and
-	</if>
+  select o.order_id orderId,o.user_id userId,
+o.fettler_id fettlerId,o.order_price orderPrice,
+o.pay_way payWay,o.gmt_create gmtCreate,
+o.gmt_modified gmtModified,o.state state,
+o.assigner assigner,o.predetermined_time predeterminedTime,
+o.real_begin realBegin,o.real_end realEnd,
+o.assign_time assignTime,o.diagnosis_result diagnosisResult,
+o.real_solution realSolution,o.address address,
+o.color color,o.forecast_price forecastPrice ,u.user_id userId,
+u.user_name userName,f.fettler_id fettlerId,e.emp_name fettlerName
+from `order` o
+left join `user` u
+on u.user_id=o.user_id
+left join fettler f
+on o.fettler_id=f.fettler_id
+left join emp e
+on f.emp_id=e.emp_id
+<where>
 	<if test="param1 != null and param1.fettlerId != null">
-	o.fettler_id=#{param1.fettlerId}
+	o.fettler_id=#{param1.fettlerId} and
+	</if>
+	<if test="param1 != null and param1.state != null">
+	o.state=#{param1.state}
 	</if>
 </where>
 <if test="param2 != null and param3 != null">

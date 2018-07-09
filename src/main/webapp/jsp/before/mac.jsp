@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <title>手机维修</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta http-equiv="Content-Language" content="zh-CN" />
-  
+
       <meta http-equiv="X-UA-Compatible" content="IE=edge" >
       <meta itemprop="name" content="值得信赖的手机维修平台">
       <meta itemprop="image" content="images/logo.jpg">
@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/web_index.css" />
 	  <link type="text/css" rel="stylesheet" href="//rs.jikexiu.com/resources/css/tuiguang_order.css">
 	  <script type="text/javascript" src="//rs.jikexiu.com/resources/js/web_index.js"></script>
- 
+
     <script type="text/javascript" >
         window.ctx = "";
         window.resourcePath = "//rs.jikexiu.com";
         var _Width = $(window).width();
-     
+
     </script>
     <style type="text/css">
  			.disabled{
@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="#col5" target="_self">常见问题</a></li>
             <li><a href="company.jsp" target="_self">公司动态</a></li>
             <li><a href="contact.jsp" target="_self">意见反馈</a></li>
-            
-  
+
+
              <li><a href="personal.jsp" target="_self">个人中心</a></li>
         </ul>
         <span><s></s>预约热线:4008-112-112</span>
@@ -300,7 +300,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="load"><s></s></div>
                 <p class="ps">*同一机型不同颜色换屏价格略有差异，请以客服最终报价为准<font>其他故障请咨询：4008-112-112。</font></p>
-                
+
         </div>
     </article>
 
@@ -384,7 +384,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="weixiu-cotent">
                                     <div id="weixiu-dropdown-content" class="dropdown-content">
                                         <ul id="weixiu_ul">
-                                        
                                         </ul>
                                     </div>
                                     <div id="xh1" class="sj-dropdown-content">
@@ -393,7 +392,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <div class="color-dropdown-content" id="color-dropdown">
                                         <ul>
-                                       
                                         </ul>
                                     </div>
                                 </div>
@@ -586,7 +584,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="float-left user-evaluate">
             <div id="scroll">
                 <ul class="user-evaluate-list" style="top: 0px;">
-           
+
                             <li class="clearFix">
                                 <div class="user-img float-left">
                                     <img src="//rs.jikexiu.com/resources/Nimages/landing/user.png" alt="">
@@ -672,10 +670,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <p class="timeShow">2018-06-01 08:34</p>
                                 </div>
                             </li>
-                          
-                          
-                            
-                       
+
+
+
+
                 </ul>
             </div>
         </div>
@@ -733,10 +731,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <footer id="footer">
     <div class="wrap">
         <div class="webInfo">
-               
+
              <p class="info_aboutUs"><a href="">关于我们</a></p>
                 <p class="info_aboutUs"><a href="">联系我们</a></p>
- 
+
 
             <p class="Cust_Ser"><a href="javascript:void(0);"class="robot">在线客服</a><span>40008-000-00<time>服务时间：8:00-22:00</time></span></p>
         </div>
@@ -830,7 +828,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //loadingShow();
             $(this).addClass("cur").siblings("dd").removeClass("cur");
         });
-        
+
         getPrivince();
         devicechanage();
         deviceMalfunction(-1, 8);
@@ -966,7 +964,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             getDevice(brandId);
         });
 
-        
+
         $("#xh1 ul").on('click','li',function () {//设备-设备名 选择点击事件
             $("#sjxh").text("选择需要维修的设备").css("color","#999");
             if($('#weixiu-dropdown-content ul li').hasClass("mr")){
@@ -1820,7 +1818,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $(this).addClass("cur").siblings().removeClass("cur");
         });
     }
-   
+
     //初始化设备
     function initDevice() {
         var brandId = $("#sjxh").attr("brandid");
@@ -2257,7 +2255,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(jdpic).find("ul").append(banner);
 
         var len = $(jdpic).find("li").length;
-        var index = 1; 
+        var index = 1;
         var time;
 
         for (var i = 1; i <= len; i++) {

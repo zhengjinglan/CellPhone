@@ -7,7 +7,7 @@ $(function(){
 		  {field:'seriesId',title:'系列编号',width:40,hidden:true}, 
 		  {field:'seriesName',title:'系列名称',width:40}, 
 		  {field:'modelName',title:'机型名称',width:60},
-		  {field:'modelPhoto',title:'机型图片',width:100},
+		  {field:'modelPhoto',title:'机型图片',width:100,formatter:formatState},
 		  {field:'colors',title:'颜色',width:100},
 		  {field:'modelDescription',title:'机型描述',width:40},  
 		  {field:'gmtCreate',title:'创建时间',width:100},
@@ -26,6 +26,11 @@ $(function(){
 		}
 	});
 });
+function formatState(value, row,index){//使用formatter格式化刷子
+	if(row.modelPhoto){
+	  return "<img style='width:50px;height:50px;' src='upload/"+row.modelPhoto+"'/>";
+	}  
+	}
 $(document).ready(function(){
 	//自动搜索 
 	$('#series').combobox({
@@ -107,20 +112,15 @@ function edit(){
 		});
 	}
 }
-
-
-// 提交
-function submits(){
+//图片上传
+function submits() {
 	if($("#modelId").textbox("getValue")=="自动生成"){
 		$("#modelId").textbox("setValue",-1);
-	}	
-	$.post(url,{"modelId":$("#modelId").val(),"seriesId":$("#seriesId").val(),
-	"modelName":$("#modelName").val(),"modelPhoto":$("#modelPhoto").val(),
-	"colors":$("#colors").val(),
-	"modelDescription":$("#modelDescription").val(),"operator":$("#operator").val()}
-		,function(data){
-		
-			if(data==1){
+	}
+   $("#fm").form('submit',{
+    	url:url,
+        success:function (data) {
+        	if(data==1){
 				$.messager.show({
 					title:'提示',
 					msg:"操作成功！"
@@ -133,8 +133,9 @@ function submits(){
 					msg:"操作失败！"
 				});
 			}
-		});
-	}
+        }
+});
+}
 
 // 取消
 function concel(){

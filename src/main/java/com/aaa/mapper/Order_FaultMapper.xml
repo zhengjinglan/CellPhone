@@ -10,6 +10,19 @@
 			SELECT max(order_id) order_id FROM `order`
 	</selectKey>
 	insert into order_fault (fault_id,order_id) values(#{faultId},#{orderId})
-  	</insert> 
-  	
+  	</insert>
+  	<select id="query" resultType="map" parameterType="Order_Fault">
+  	select of.*,o.*,f.*,m.*,ft.*,
+f.fault_name faultName,m.model_name modelName,ft.type_name typeName
+from order_fault of
+RIGHT join `order` o
+on of.order_id=o.order_id
+left join fault f
+on of.fault_id=f.fault_id
+left join fault_type ft
+on f.type_id=ft.type_id
+left join model m
+on f.model_id=m.model_id
+where of.order_id=#{orderId}
+  	</select>
 </mapper>

@@ -31,13 +31,18 @@ public class OrderController {
 	Order_FalutService ofservice;
 	@Autowired
 	FettlerService fettlerService;
+
 	@RequestMapping("/add")
 	@ResponseBody
 	public int add(User u, Order o, Order_Fault ofa) {
+
 		int us = uservice.add(u);
+		// System.out.println("u" + u);
 		int rs = oservice.add(o);
+		// System.out.println("o" + o);
 		ofservice.add(ofa);
-		System.out.println(ofa);
+		// System.out.println("ofa" + ofa);
+
 		return rs;
 	}
 
@@ -81,4 +86,11 @@ public class OrderController {
 	public List<Map<String, Object>> testMonth() {
 		return oservice.OrderReportsMonth();
 	}
-}  
+}
+
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Map<String, Object>> queryAll(Order_Fault of) {
+		return ofservice.query(of);
+	}
+}

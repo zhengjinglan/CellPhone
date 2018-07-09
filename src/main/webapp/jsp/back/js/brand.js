@@ -4,8 +4,13 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 		$(function(){
 			//数据窗口隐藏
 			$("#datawindow").window("close");
+			
 		});
-	
+		function formatState(value, row,index){//使用formatter格式化刷子
+			if(row.brandIcon){
+			  return "<img style='width:50px;height:50px;' src='upload/"+row.brandIcon+"'/>";
+			}  
+			}
 		
 		// 删除
 		function dels(){
@@ -70,17 +75,16 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 				});
 			}
 		}	
+		
 		// 提交
-		function submits(){
+		function submits() {
 			if($("#brandId").textbox("getValue")=="自动生成"){
 				$("#brandId").textbox("setValue",-1);
 			}
-			$.post(url,{"brandId":$("#brandId").val(),
-			"brandName":$("#brandName").val(),"brandIcon":$("#brandIcon").val()
-			,"brandDescription":$("#brandDescription").val(),
-			"operator":$("#operator").val()},
-			function(data){
-					if(data==1){
+		   $("#fm").form('submit',{
+		    	url:url,
+		        success:function (data) {
+		        	if(data==1){
 						$.messager.show({
 							title:'提示',
 							msg:"操作成功！"
@@ -93,7 +97,8 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 							msg:"操作失败！"
 						});
 					}
-				});
+		        }
+		});
 		}
 		
 		// 取消

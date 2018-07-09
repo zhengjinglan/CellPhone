@@ -64,7 +64,6 @@ public class FaultService {
 	public int update(Fault fault) {
 		FaultExample faultExample = new FaultExample();
 		faultExample.createCriteria().andTypeIdEqualTo(fault.getFaultId());
-
 		return faultMapper.updateByExampleSelective(fault, faultExample);
 	}
 

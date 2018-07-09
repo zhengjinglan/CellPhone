@@ -18,9 +18,14 @@ public class SeriesService {
 	SeriesMapper maper;
 
 	public List<Series> querySeries(Series s) {
+<<<<<<< HEAD
 		SeriesExample series = new SeriesExample();
 		return maper.selectByExample(series);
 
+=======
+		// SeriesExample series=new SeriesExample();
+		return maper.querySeries(s);
+>>>>>>> origin/zzl
 	}
 
 	public List<Map<String, Object>> query(Series series, int page, int rows) {

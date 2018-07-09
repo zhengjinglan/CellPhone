@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aaa.dao.OrderMapper;
+import com.aaa.entity.Fettler;
 import com.aaa.entity.Order;
 import com.aaa.entity.OrderExample;
 
@@ -15,19 +16,28 @@ public class OrderService {
 
 	@Autowired
 	OrderMapper maper;
-	/*
-	 * 订单季度报表
+
+	@Autowired
+	FettlerService fettlerService;
+
+	/**
+	 *
+	 * @author zjl
+	 * @date 2018年7月8日 下午10:34:39
+	 * @param o
+	 * @return 后台添加订单时添加判断条件
 	 */
-    public List<Map<String, Object>> OrderReports() {
-			return maper.OrderReport();
-		}
-    /*
-	 * 订单月份报表
-	 */
-    public List<Map<String, Object>> OrderReportsMonth() {
-			return maper.OrderReportMonth();
-		}
 	public int add(Order o) {
+		Fettler fettler = new Fettler();
+		fettler.setFettlerId(o.getFettlerId());
+		fettler.setState("维修中");
+		Order order = new Order();
+		order.setOrderId(o.getOrderId());
+		order.setState("处理中");
+		if (o.getFettlerId() != null) {
+			fettlerService.update(fettler);
+			update(order);
+		}
 		return maper.insert(o);
 	}
 
@@ -48,7 +58,18 @@ public class OrderService {
 	public long count() {
 		return maper.countByExample(null);
 	}
-
+	/*
+	 * 订单季度报表
+	 */
+    public List<Map<String, Object>> OrderReports() {
+			return maper.OrderReport();
+		}
+    /*
+	 * 订单月份报表
+	 */
+    public List<Map<String, Object>> OrderReportsMonth() {
+			return maper.OrderReportMonth();
+		}
 	public int update(Order order) {
 	    return maper.updateByPrimaryKeySelective(order);
 	}

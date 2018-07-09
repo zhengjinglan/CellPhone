@@ -4,21 +4,27 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登录</title>
-    <meta name="Description" content="闪修侠-高品质的手机上门维修平台,提供苹果、三星、华为等主流机型的专业维修服务,正规认证、方便快捷、专业靠谱。维修从未如此好用,一个电话,服务到家:4000105678。 "/>
-    <meta name="Keywords" content="闪修侠官网,手机上门维修,苹果手机维修,iPhone维修,三星手机维修,小米手机维修"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="renderer" content="webkit">
-    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
-    <link href="http://static.shanxiuxia.com/weadoc/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://static.shanxiuxia.com/weadoc/css/public.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-     <script type="text/javascript" src="js/fixWay.js"></script> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html>
+  <head>
+    <base href="<%=basePath%>">
+
+    <title>My JSP 'Login.jsp' starting page</title>
+
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" href="jsp/before/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="jsp/before/css/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" src="jsp/before/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="jsp/before/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        #login{ width:450px; height:100px; margin:50px auto;}
+        #btn{ margin-left:100px; margin-top:-25px; width: 120px;height: 25px; font-size: 11px; }
+        body{ background-color: #ecfcf9;}
+    </style>
 </head>
 <body style="background:url(images/login-banner.jpg) ">
 
@@ -36,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="loginCodeBox">
        <div class="loginCode ">
            <input  id="code" name="code" type="text" class="pull-left login-text" placeholder="验证码">
-           <input id="enterCodeLogin" type="submit" class="pull-right loginSend" 
+           <input id="enterCodeLogin" type="submit" class="pull-right loginSend"
            name="btn" value="发送验证码" onclick="sendMessage()" />
           <!--  </button> -->
            <div class="clearfix"></div>
@@ -53,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    $(function(){
    		 $("#telFixTips").hide();
    });
-   
+
    $("#telPhone").change(function(){
     var filter1 = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
     if(!filter1.test($("#telPhone").val())){
@@ -63,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $("#telFixTips").hide();
     }
 });
-    
+
     function sendMessage(){curCount = count;
         $("#enterCodeLogin").attr("disabled", "true");
         $("#enterCodeLogin").val(curCount + "秒后可重新发送");
@@ -84,9 +90,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     var sms="";
-    
+
     $("#enterCodeLogin").click(function(){
-   
+
         var phone=$("#telPhone").val();
         if(phone!="")
         {
@@ -104,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            return false;
         }
 
-    });  
+    });
     $("#loginSubmit").click(function(){
         var code=$("#code").val();
         if(code==""){
@@ -113,12 +119,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(sms==code){
 	 				$.post("../../user/checkUser",{userPhone:$("#telPhone").val()},function(data){
 					if(data==0){
-					window.location.href="../../user/queryOfa?userPhone="+$("#telPhone").val();	 	             	
+					window.location.href="../../user/queryOfa?userPhone="+$("#telPhone").val();
 	 	             }else{
-	 	            	alert("您还没有过订单！");           		
+	 	            	alert("您还没有过订单！");
             			$("#loginfm").form('reset');
 	 	             }
-	 	       }); 
+	 	       });
             }else{
                 alert("验证码错误");
 
@@ -126,6 +132,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         };
 
     });
-</script> 
+</script>
 </body>
 </html>

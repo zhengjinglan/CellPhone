@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr>
     			<th data-options="field:'brandId',width:20,checkbox:true,align:'center'">编号</th>
     			<th data-options="field:'brandName',width:20,align:'center'">品牌名称</th>
-    			<th data-options="field:'brandIcon',width:40,align:'center'">图片</th>
+    			<th data-options="field:'brandIcon',width:40,align:'center',formatter:formatState">图片</th>
     			<th data-options="field:'brandDescription',width:40,align:'center'">简介</th>
     			<th data-options="field:'gmtCreate',width:40,align:'center'">创建时间</th>
     			<th data-options="field:'gmtModified',width:40,align:'center'">修改时间</th>
@@ -56,11 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div style="margin-bottom: 20px"> 
 				<input class="easyui-textbox" data-options="label:'品牌名称:'" style="width:100%"
-					id="brandName" name="brandName" data-options="required:true" validtype="idcard"/>
+					id="brandName" name="brandName" />
 			</div>
 			<div style="margin-bottom: 20px">
-				<input class="easyui-filebox" data-options="label:'图片:'" style="width:100%"
-					id="brandIcon" name="brandIcon"/>
+				<input type="file" data-options="label:'图片:'" style="width:100%"
+					id="file" name="file"/>
 			</div>
 			
 			<div style="margin-bottom: 20px">

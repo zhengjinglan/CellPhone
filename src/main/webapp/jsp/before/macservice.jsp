@@ -6,12 +6,12 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <head>
       <title>手机维修</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta http-equiv="Content-Language" content="zh-CN" />
-  
+
       <meta http-equiv="X-UA-Compatible" content="IE=edge" >
       <meta itemprop="name" content="值得信赖的手机维修平台">
       <meta itemprop="image" content="images/logo.jpg">
@@ -33,9 +33,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="http://static.shanxiuxia.com/weadoc/css/laydate.css" rel="stylesheet">
     <link href="css/publicOrder2.css" rel="stylesheet">
     <script src="js/config.js"></script>
-    
-    
- 	
+
+
+
  		<style type="text/css">
  			.disabled{
  				pointer-events:none;
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="#col5" target="_self">常见问题</a></li>
             <li><a href="company.jsp" target="_self">公司动态</a></li>
             <li><a href="contact.jsp" target="_self">意见反馈</a></li>
-            
+
              <li><a href="login.jsp" target="_self">查询订单</a></li>
         </ul>
         <span><s></s>预约热线:4008-112-112</span>
@@ -189,13 +189,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="listBox-left">
             	<div id="nameBox" class="input-group nameBox">
 	                <span class="input-group-addon namePic">
-	                    <img class="nameIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">	
+	                    <img class="nameIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">
                     	<p class="listTitle">姓名：</p>
 	                </span>
-	                
+
 	                <input id="userName" name="userName" type="text" class="form-control nameText"
 	                 placeholder="输入我的姓名">
-	                
+
 	            </div>
 				<span id="nameFixTips" class="fixTips">请输入2-4个中文英文或者数字</span>
 	            <div id="phoneBox" class="input-group phoneBox">
@@ -205,10 +205,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </span>
 	                <input id="telPhone" name="userPhone" type="number" maxlength="11"
 	                 class="form-control phoneText" placeholder="输入我的手机号码">
-	                
+
 	            </div>
 				<span id="telFixTips" class="fixTips">请输入正确的手机号码</span>
-				
+
 	            <div id="serviceCenterBox" class="input-group serviceCenterBox">
 	                <span class="input-group-addon serviceCenterPic">
                      	<img class="serviceCenterIcon" src="http://static.shanxiuxia.com/weadoc/fix_name2.png">
@@ -222,7 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <div id="centerDetails" class="centerDetails">
 	                </div>
 	            </div>
-	            </div>		  	
+	            </div>
 	            <div id="addressBox" class="input-group addressBox">
 	                <span class="input-group-addon addressPic">
                      	<img class="addressIcon" src="http://static.shanxiuxia.com/weadoc/fix_address2.png">
@@ -230,9 +230,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </span>
 	                	<select class="form-control province" id="s_province" name="s_province"
 	                	  onChange="javascript:doit(this.form);"></select>
-	    				<select class="form-control province" id="s_city"  name="s_city" 
+	    				<select class="form-control province" id="s_city"  name="s_city"
 	    				 onChange="javascript:doit(this.form);"></select>
-	    				<select class="form-control province" id="s_county" name="s_county" 
+	    				<select class="form-control province" id="s_county" name="s_county"
 	    				 onChange="javascript:doit(this.form);"></select>
 	            </div>
 	            <div id="streetBox" class="input-group streetBox">
@@ -252,42 +252,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </div>
 	            <div id="imeiTips"  class="imeiTipsBox">
 	                <p class="tips">在拨号面板入输 *#06#；或查看设置－通用－关于本机即可获得IMEI码</p>
-	            </div>	
+	            </div>
 	             <div class="fixBtn">
 	                <button  class="btn btn-default  next" type="submit" id="orderBtn"
-	                >提交订单</button> 
+	                >提交订单</button>
 	               、</div>
-	           
+
             </div>
             <div class="listBox-right">
             	<li class="fault-title">故障维修信息</li>
-            	 <div class="input-group">   
-            	 				<span>请选择品牌</span> <br>                           
-                               <select id="brandId" class="form-control">  
-								<option value="请选择">请选择</option>                            
+            	 <div class="input-group">
+            	 				<span>请选择品牌</span> <br>
+                               <select id="brandId" class="form-control">
+								<option value="请选择">请选择</option>
 								</select>
 								<span>请选择系列</span><br>
-								<select id="seriesId" class="form-control">                              
-								</select> 
+								<select id="seriesId" class="form-control">
+								</select>
 								<span>请选择手机型号</span><br>
-								 <select id="modelId" class="form-control">                               
+								 <select id="modelId" class="form-control">
 								</select>
 								<span>请选择故障信息</span><br>
-								 <select id="faultId" name="faultId" class="form-control">                               
-								</select> 
-								  <span>请选择手机颜色</span><br>      
-                                 <select id="colorId" class="form-control">                           
-                                </select>   
+								 <select id="faultId" name="faultId" class="form-control">
+								</select>
+								  <span>请选择手机颜色</span><br>
+                                 <select id="colorId" class="form-control">
+                                </select>
                                 	预计价格:￥<input  id="price" name="forecastPrice" readonly/>
-                               
+
             </div>
         </div>
-        
+
         </form>
     </div>
-   
+
     </div>
-     
+
     <!--from over-->
 	<div class="invoice-box">
     	<div class="invoice-prompt">
@@ -320,6 +320,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <!--bottom over-->
 </section>
+
+        </div>
+        <div class="img-right">
+            <img src="//rs.jikexiu.com/resources/Nimages/landing/img-right.png" alt="">
+        </div>
+    </div>
 
     <article class="col problem" id="col5">
         <div class="wrap">
@@ -368,10 +374,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      -->
 </section>
- <script type="text/javascript" src="js/fixWay.js"></script> 
+ <script type="text/javascript" src="js/fixWay.js"></script>
     <script class="resources library" src="../before/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script>
-<script type="text/javascript"> 
+<script type="text/javascript">
 var url;
   $(document).ready(function(){
 	  //默认显示上门服务
@@ -384,8 +390,8 @@ var url;
 	    $("#serviceCenterBox").hide();
 	    $("#serviceCenterInfoBox").hide();
 	    $("#mailBox").hide();
-	   
-	  
+
+
   $.ajax({
   url: '../../brand/queryBrand' ,
   success: function(data){
@@ -397,8 +403,8 @@ var url;
  $("#brandId").append(html);
  //通过change方法调用
   $("#brandId"). change(function(){
-  
-  
+
+
   $("#seriesId").html("");
   $("#modelId"). html("");
   $("#faultId"). html("");
@@ -406,14 +412,14 @@ var url;
   });
   }
   });
-  
+
     //根据品牌获取系列
   function getSeries(id){
   $.ajax({
   url:'../../series/querySeries',
   data: {brandId:id},//传入的id
   success: function(data){
-  
+
   if(! data)return;
   var html='';
   for(var i in data){
@@ -423,15 +429,15 @@ var url;
   //通辻change方法去調用
   $("#seriesId"). change(function(){
   $("#modelId") . html("");
-  $("#faultId"). html(""); 
+  $("#faultId"). html("");
   getModel($(this) .val());
   });
   $("#seriesId").get(0). selectedIndex=0;
- 	getModel($("#seriesId").val());	
+ 	getModel($("#seriesId").val());
   }
   });
   }
-  
+
   //根据系列选择机型
   function getModel(id){
   	$.ajax({
@@ -442,19 +448,19 @@ var url;
   			var html='';
   			for(var i in data){
   			html +='<option value='+data[i].modelId+'>' +data[i]. modelName+' </option>';
-  			} 
+  			}
   			 $("#modelId").append(html);
   			  $("#modelId"). change(function(){
-              $("#faultId"). html(""); 
+              $("#faultId"). html("");
               getFault($(this) .val());
   });
   			$("#modelId").get(0). selectedIndex=0;
- 			getFault($("#modelId").val());	  	
-    			
+ 			getFault($("#modelId").val());
+
   		}
-  	});  
+  	});
   }
-  
+
     //根据机型选择故障
   function getFault(id){
   	$.ajax({
@@ -465,15 +471,15 @@ var url;
   			var html='';
   			var price='';
   			for(var i in data){
-  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>'; 			
-  			} 
-  			price += data[i]. faultPrice;  			
+  			html +='<option value='+data[i].faultId+'>' +data[i]. faultName+' </option>';
+  			}
+  			price += data[i]. faultPrice;
   			$("#price").html("");
   			 $("#faultId").append(html);
   			 $("#price").val(price);
-  			 $("#price").append(price);  			 			
+  			 $("#price").append(price);
   		}
-  	});  
+  	});
   }
 //显示颜色
 	$.ajax({
@@ -487,7 +493,7 @@ var url;
 	 $("#colorId").append(html);
 	 }
 	 });
-		
+
 	 //点击上门维修
 	$("#fixMenuBtnOne").click(function () {
 		url = "../../order/add";
@@ -502,7 +508,7 @@ var url;
 	    $("#serviceCenterBox").hide();
 	    $("#serviceCenterInfoBox").hide();
 	    $("#mailBox").hide();
-	    
+
 	    if(localStorage.invoice == 1){
 	    	$(".listBox-right").css("min-height","610px");
 	    	$(".listBox-right").css("height","610px");
@@ -530,12 +536,12 @@ var url;
 	    if(localStorage.invoice == 1){
 	    	$(".listBox-right").css("min-height","896px");
 	    }else if(localStorage.invoice == 0){
-	    	$(".listBox-right").css("min-height","816px");   	
+	    	$(".listBox-right").css("min-height","816px");
 	    }
-		
+
 	    $("#fixMenuBtnOne #menuL").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu1.png");
 	    $("#fixMenuBtnTwo #menuR").attr("src","http://sxxcdn.oss-cn-hangzhou.aliyuncs.com/weadoc/fix_tabmenu2_select2.png");
-	});        
+	});
 	//点击底部
 	$('#stepA').hover(function () {
 	    $("#stepThree").html('03邮寄设备');
@@ -547,28 +553,24 @@ var url;
 	    $("#stepFive").html('05 用户验收');
 	    $("#stepSix").html('06 转账付款');
 	});
-	
+
   });
   function repairSave(){
 			window.location.href="fixWay.jsp";
 		}
 		 //地址
-		 function doit(ofrm){ 
-		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;  
-		}   
+		 function doit(ofrm){
+		ofrm.address.value=ofrm.s_province.value+ofrm.s_city.value+ofrm.s_county.value;
+		}
         //城市选择
-        var Gid  = document.getElementById ;		
+        var Gid  = document.getElementById ;
 		var showArea = function(){
-			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
-			Gid('s_city').value + " - 县/区" + 
+			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+			Gid('s_city').value + " - 县/区" +
 			Gid('s_county').value + "</h3>"
-     }  
+     }
 		Gid('s_county').setAttribute('onchange','showArea()');
 
-    
- 
-        
   </script>
 </body>
 </html>
-    
