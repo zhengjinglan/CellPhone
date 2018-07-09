@@ -86,7 +86,6 @@ public class OrderController {
 	public List<Map<String, Object>> testMonth() {
 		return oservice.OrderReportsMonth();
 	}
-}
 
 	@RequestMapping("queryAll")
 	@ResponseBody
