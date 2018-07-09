@@ -278,7 +278,8 @@ function orderDone() {
 		// 重置表单
 		$("#fmDone").form('reset');
 		// 加载修改的数据信息
-		$("#fmDone").form('load', rows[0]);
+		$("#done_orderId").textbox("setValue", rows[0].orderId);
+		$("#done_fettlerId").textbox("setValue", rows[0].fettlerId);
 		// 设置表单提交路径
 		url = "order/orderDone";
 		// 打开窗口
@@ -298,14 +299,14 @@ function orderDone() {
 }
 function done() {
 	$.post(url, {
-		"orderId" : $("#orderId").val(),
-		"fettlerId" : $("#fettlerId").val(),
-		"payWay" : $("#payWay").val(),
-		"realBegin" : $("#realBegin").val(),
-		"realEnd" : $("#realEnd").val(),
-		"diagnosisResult" : $("#diagnosisResult").val(),
-		"realSolution" : $("#realSolution").val(),
-		"orderPrice" : $("#orderPrice").val()
+		"orderId" : $("#done_orderId").val(),
+		"fettlerId" : $("#done_fettlerId").val(),
+		"payWay" : $("#done_payWay").val(),
+		"realBegin" : $("#done_realBegin").val(),
+		"realEnd" : $("#done_realEnd").val(),
+		"diagnosisResult" : $("#done_diagnosisResult").val(),
+		"realSolution" : $("#done_realSolution").val(),
+		"orderPrice" : $("#done_orderPrice").val()
 	}, function(data) {
 
 		if (data == 1) {
@@ -313,7 +314,7 @@ function done() {
 				title : '提示',
 				msg : "操作成功！"
 			});
-			$("#datawindow").window("close");
+			$("#doneWindow").window("close");
 			$("#tables").datagrid("reload");
 		} else {
 			$.messager.show({
@@ -330,7 +331,7 @@ function allot() {
 	$.post(url, {
 		"orderId" : $("#allot_orderId").val(),
 		"fettlerId" : $("#allot_fettlerId").combobox("getValue"),
-		"assigner" : $("#assigner").val()
+		"assigner" : $("#allot_assigner").val()
 	}, function(data) {
 		if (data == 1) {
 			$.messager.show({
@@ -404,9 +405,13 @@ function initAllot() {
 // 取消
 function concel() {
 	$("#datawindow").window("close");
+	$("#allotWindow").window("close");
+	$("#doneWindow").window("close");
 }
 function cancel() {
 	$("#allotWindow").window("close");
+	$("#datawindow").window("close");
+	$("#doneWindow").window("close");
 }
 
 // 重置
@@ -415,7 +420,6 @@ function resets() {
 }
 function queryFault() {
 	var rows = $("#tables").datagrid("getSelections");
-	alert(JSON.stringify(rows[0].orderId));
 	if (rows.length == 1) {
 		var si = rows[0].orderId;
 		$('#fault').datagrid({
