@@ -71,10 +71,7 @@ public class FettlerService {
 	}
 
 	public int update(Fettler fettler) {
-		FettlerExample fettlerExample = new FettlerExample();
-		fettlerExample.createCriteria().andFettlerIdEqualTo(
-				fettler.getFettlerId());
-		return fettlerMapper.updateByExampleSelective(fettler, fettlerExample);
+		return fettlerMapper.updateByPrimaryKeySelective(fettler);
 	}
 
 	public long getCount() {

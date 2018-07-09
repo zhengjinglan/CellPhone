@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.entity.EasyuiPage;
+import com.aaa.entity.Fettler;
 import com.aaa.entity.Order;
 import com.aaa.entity.Order_Fault;
 import com.aaa.entity.User;
@@ -97,13 +98,16 @@ public class OrderController {
         if (orderId != null && fettlerId != null) {
             Order order = oservice.get(orderId);
             if(order != null){
-                if (fettlerService.get(fettlerId) != null) {
+                Fettler fettler = fettlerService.get(fettlerId);
+                if (fettler != null) {
                     order.setFettlerId(fettlerId);
                     order.setAssignTime(new Date());
                     order.setState("已分配");
                     order.setAssigner(assigner);
                     System.out.println(order);
                     res = oservice.update(order);
+                    fettler.setState("维修中");
+                    res = fettlerService.update(fettler);
                 }
             }
         }
@@ -114,10 +118,12 @@ public class OrderController {
     @ResponseBody
     public int orderDone(Order order) {
         int res = 0;
-        System.out.println(order);
         if (order.getOrderId() != null) {
             order.setState("已完成");
             res = oservice.update(order);
+            Fettler fettler = fettlerService.get(order.getFettlerId());
+            fettler.setState("闲置");
+            res = fettlerService.update(fettler);
         }
         return res;
     }
