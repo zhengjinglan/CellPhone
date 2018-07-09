@@ -70,14 +70,18 @@ public class OrderController {
 
     @RequestMapping("allot")
     @ResponseBody
-    public int allot(Integer orderId, Integer fettlerId) {
+    public int allot(Integer orderId, Integer fettlerId,String assigner) {
         int res = 0;
+        System.out.println("==================="+assigner);
         if (orderId != null && fettlerId != null) {
             Order order = oservice.get(orderId);
             if(order != null){
                 if (fettlerService.get(fettlerId) != null) {
                     order.setFettlerId(fettlerId);
                     order.setAssignTime(new Date());
+                    order.setState("已分配");
+                    order.setAssigner(assigner);
+                    System.out.println(order);
                     res = oservice.update(order);
                 }
             }
@@ -89,7 +93,9 @@ public class OrderController {
     @ResponseBody
     public int orderDone(Order order) {
         int res = 0;
+        System.out.println(order);
         if (order.getOrderId() != null) {
+            order.setState("已完成");
             res = oservice.update(order);
         }
         return res;

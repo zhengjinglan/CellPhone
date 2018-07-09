@@ -84,7 +84,7 @@ $(function() {
 			width : 100
 		}, {
 			field : 'assigner',
-			title : '修改人',
+			title : '分配人',
 			width : 100
 		}, ] ],
 		idField : 'orderId',
@@ -102,12 +102,13 @@ var data;
 $(function() {
 	// 数据窗口隐藏
 	$("#datawindow").window("close");
-	$("#fmAllot").window("close");
+	$("#allotWindow").window("close");
 });
 
 function orderDone(){
 	// 判断是否有选中项
 	var rows = $("#tables").datagrid("getSelections");
+	console.log(rows[0]);
 	if (rows.length == 1) {
 		var fettlerId = rows[0].fettlerId;
 		if(typeof(fettlerId) == "undefined"){
@@ -120,6 +121,7 @@ function orderDone(){
 		// 重置表单
 		$("#fm").form('reset');
 		// 加载修改的数据信息
+		
 		$("#fm").form('load', rows[0]);
 		// 设置表单提交路径
 		url = "order/orderDone";
@@ -137,13 +139,11 @@ function orderDone(){
 			msg : "请选择要分配的订单！"
 		});
 	}
+	 $('#tables').datagrid('clearSelections'); 
 }
 
 // 提交
 function submits() {
-	if ($("#orderId").textbox("getValue") == "自动生成") {
-		$("#orderId").textbox("setValue", -1);
-	}
 	$.post(url, {
 		"orderId" : $("#orderId").val(),
 		"fettlerId" : $("#fettlerId").val(),
@@ -184,18 +184,17 @@ function resets() {
 	$("#fm").form('reset');
 }
 function allot() {
-	alert($("#allot_orderId").val());
-	alert($("#allot_fettlerId").combobox("getValue"));
 	$.post(url, {
 		"orderId" : $("#allot_orderId").val(),
-		"fettlerId" : $("#allot_fettlerId").combobox("getValue")
+		"fettlerId" : $("#allot_fettlerId").combobox("getValue"),
+		"assigner" : $("#assigner").val()
 	}, function(data) {
 		if (data == 1) {
 			$.messager.show({
 				title : '提示',
 				msg : "操作成功！"
 			});
-			$("#datawindow").window("close");
+			$("#allotWindow").window("close");
 			$("#tables").datagrid("reload");
 		} else {
 			$.messager.show({
@@ -204,14 +203,24 @@ function allot() {
 			});
 		}
 	});
+	 $('#tables').datagrid('clearSelections'); 
 }
 function initAllot() {
 	// 判断是否有选中项
 	var rows = $("#tables").datagrid("getSelections");
 	if (rows.length == 1) {
+		var fettlerId = rows[0].fettlerId;
+		if(typeof(fettlerId) != "undefined"){
+			$.messager.show({
+				title : '提示',
+				msg : "该订单已经分配过维修工！请勿重复分配！"
+			});
+			return ;
+		}
+		console.log(rows[0]);
 		$("#allot_fettlerId").combobox(
 				{
-					url : "fettler/queryWithOrder?orderId=" + rows[0].orerId,
+					url : "fettler/queryWithOrder?orderId=" + rows[0].orderId,
 					required : true,
 					editable : false,
 					valueField : 'fettlerId',
@@ -229,7 +238,7 @@ function initAllot() {
 		// 重置表单
 		$("#fmAllot").form('reset');
 		// 加载修改的数据信息
-		$("#allot_orderId").textbox("setValue", rows[0].orerId);
+		$("#allot_orderId").textbox("setValue", rows[0].orderId);
 		// 设置表单提交路径
 		url = "order/allot";
 		// 打开窗口

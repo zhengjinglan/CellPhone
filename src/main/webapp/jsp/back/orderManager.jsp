@@ -34,43 +34,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fm" method="post">
 			<div style="margin-bottom: 20px">
-				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%" readonly="readonly"
-					id="orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
+					id="orderId" name="orderId" data-options="label:'订单编号:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-combobox" style="width:100%"
+				<input class="easyui-textbox" style="width:100%" readonly="readonly"
 					id="fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%" 
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="payWay" name="payWay" data-options="label:'支付途径:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%"
+				<input class="easyui-datetimebox" style="width:100%" required="true" 
 					id="realBegin" name="realBegin" data-options="label:'实际开始时间:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%"
+				<input class="easyui-datetimebox" style="width:100%" required="true" 
 					id="realEnd" name="realEnd" data-options="label:'实际结束时间:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="diagnosisResult" name="diagnosisResult" data-options="label:'诊断结果:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="realSolution" name="realSolution" data-options="label:'处理方式:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-textbox" style="width:100%"
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="orderPrice" name="orderPrice" data-options="label:'订单价格:'"/>
 			</div>	
-			<div style="margin-bottom: 20px">
-				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
-					data-options="label:'修改人:'" style="width:100%"/>
-			</div>
-			
 			<div style="margin-bottom: 20px;text-align: center">
 				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="submits()">提交</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="resets()">重置</a>
@@ -89,6 +83,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="easyui-combobox" style="width:80%"
 					id="allot_fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
 			</div>	
+			<div style="margin-bottom: 20px">
+				<input 
+				name="assigner" 
+				id="assigner" 
+				class="easyui-textbox" 
+				value="${logUser.uname }" 
+				readonly="readonly"
+				data-options="label:'分配人:'" style="width:100%"/>
+			</div>
 			<div style="margin-bottom: 20px;text-align: center">
 				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="allot()">分配</a>
 		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="cancel()">取消</a>
