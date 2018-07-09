@@ -53,15 +53,18 @@ var url;
 var data;
 function queryFault(){
 		var rows = $("#tables").datagrid("getSelections");
-		alert(rows);
-		alert(JSON.stringify(rows));
+		alert(JSON.stringify(rows[0].orderId));
 		if(rows.length == 1){
 			var si = rows[0].orderId;
-			$('#tables').datagrid({    
-			    url:'order/queryAll?id=rows.orderId',    
+			$('#fault').datagrid({    
+			    url:'order/queryAll?orderId='+si,    
 			    columns:[[    
-			          
-			    ]]    
+{field:'faultName',width:30,title:'故障名称'},
+{field:'modelName',width:30,title:'机型名称'},
+{field:'typeName',width:30,title:'类型名称'},
+			    ]],
+			    fitColumns:true,
+			
 			}); 
 			$("#fault").window("open");
 
@@ -81,6 +84,7 @@ function queryFault(){
 $(function(){
 	//数据窗口隐藏
 	$("#datawindow,#fault").window("close");
+	
 	$('#brandId').combobox({
 	    url:'brand/queryBrand', 
 	    editable:false, //不可编辑状态
@@ -125,6 +129,7 @@ $(function(){
 						}); 	
 					}		
 	   });
+	var orderPrice="";
 	$('#modelId').combobox({ 
 	    editable:false, //不可编辑状态
 	    cache: false,
@@ -134,25 +139,33 @@ $(function(){
 	    onSelect: function(record){
 		    $("#faultId").combobox("setValue",'');
 			var modelId = $('#modelId').combobox('getValue');		
-			
 			$.ajax({
 				type: "POST",
 				url: "fault/queryAll?modelId="+record.modelId,
 				cache: false,
 				dataType : "json",
 				success: function(data){
+					/*console.log(data[0].faultPrice);
+					alert(data[0].faultPrice);*/
+					orderPrice=data[0].faultPrice;
+					//alert(orderPrice);
 				$("#faultId").combobox("loadData",data);
+				$("#orderPrice").textbox("setValue",orderPrice);
+				//alert($("#orderPrice").val());
 							   }
 						}); 	
 					}		
 	   });
+	
 	$('#faultId').combobox({ 
 	    editable:false, //不可编辑状态
 	    cache: false,
 	    panelHeight: 'auto',//自动高度适合
 	    valueField:'faultId',   
-	    textField:'faultName'
+	    textField:'faultName',
+	   
 	   });
+	
 	
 });
 
@@ -206,13 +219,13 @@ function submits(){
 	$.post(url,{"orderId":$("#orderId").val(),"fettlerId":$("#fettlerId").val(),
 		"color":$("#color").val(),"modelId":$("#modelId").val(),
 		"brandId":$("#brandId").val(),"seriesId":$("#seriesId").val(),
-		"faultId":$("#faultId").val(),"assignTime":$("#assignTime").val(),
+		"faultId":$("#faultId").val(),
 		"address":$("#address").val(),"userName":$("#userName").val(),
 		"orderPrice":$("#orderPrice").val(),
 		"payWay":$("#payWay").val(),"realBegin":$("#realBegin").val(),
 	"realEnd":$("#realEnd").val(),"diagnosisResult":$("#diagnosisResult").val(),
 	"realSolution":$("#realSolution").val(),"forecastPrice":$("#orderPrice").val(),
-	"assigner":$("#operator").val()},function(data){
+	"assigner":$("#assigner").val()},function(data){
 	
 			if(data==1){
 				$.messager.show({

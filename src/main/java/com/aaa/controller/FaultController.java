@@ -42,10 +42,10 @@ public class FaultController {
 		return new EasyuiPage(list, total);
 	}
 
-
 	@RequestMapping("queryAll")
 	@ResponseBody
 	public List<Fault> queryAll(Fault fault) {
+		System.out.println("faultQueryAll" + faultService.queryAll(fault));
 		return faultService.queryAll(fault);
 	}
 

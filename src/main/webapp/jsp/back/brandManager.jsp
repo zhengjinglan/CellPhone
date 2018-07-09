@@ -31,8 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr>
     			<th data-options="field:'brandId',width:20,checkbox:true,align:'center'">编号</th>
     			<th data-options="field:'brandName',width:20,align:'center'">品牌名称</th>
-    			<th data-options="field:'brandIcon',width:40,align:'center',formatter:function(value, rec){//使用formatter格式化刷子
-			  return '<img src=upload/'+value+'/>'}">图片</th>
+    			<th data-options="field:'brandIcon',width:40,align:'center',formatter:formatState">图片</th>
     			<th data-options="field:'brandDescription',width:40,align:'center'">简介</th>
     			<th data-options="field:'gmtCreate',width:40,align:'center'">创建时间</th>
     			<th data-options="field:'gmtModified',width:40,align:'center'">修改时间</th>

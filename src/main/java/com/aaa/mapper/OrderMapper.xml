@@ -420,7 +420,7 @@
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
   <select id="query" resultType="map">
-  select o.order_id orerId,o.user_id userId,
+  select o.order_id orderId,o.user_id userId,
 o.fettler_id fettlerId,o.order_price orderPrice,
 o.pay_way payWay,o.gmt_create gmtCreate,
 o.gmt_modified gmtModified,o.state state,

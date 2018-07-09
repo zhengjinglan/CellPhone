@@ -88,10 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="margin-bottom: 20px,auto;">
 			<input class="easyui-textbox" style="width:30%"
 					id="address" name="address" data-options="label:'地址:'"/>
-					<input class="easyui-datetimebox" style="width:30%"
-					id="assignTime" name="assignTime" data-options="label:'分配时间:'"/>
-				<input name="operator" id="operator" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
-					data-options="label:'修改人:'" style="width:50%,auto;" />
+				<input name="assigner" id="assigner" class="easyui-textbox" value="${logUser.uname }" readonly="readonly"
+					data-options="label:'分配人:'" style="width:50%,auto;" />
 			</div>
 			
 			<div style="margin-bottom: 20px;text-align: center">
@@ -102,18 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 	</div>
 	<div id="fault" class="easyui-window" style="width:100%;max-width:700px;padding:30px 40px">
-	<table id="tables" style="width:100%;height: 100%">
-    	<thead>
-    		<tr>
-    			<th data-options="field:'faultName',width:20,align:'center'">故障名称</th>
-    			<th data-options="field:'modelName',width:40,align:'center'">机型名称</th>
-    			<th data-options="field:'typeName',width:40,align:'center'">类型名称</th>
-<!--     			<th data-options="field:'gmtCreate',width:40,align:'center'">创建时间</th>
-    			<th data-options="field:'gmtModified',width:40,align:'center'">修改时间</th>
-    			<th data-options="field:'operator',width:40,align:'center'">修改人</th> -->
-    		</tr>
-    	</thead>
-    </table>
+	 <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
 	</div>
   </body>
   <script type="text/javascript" src="jsp/back/js/order.js"></script>

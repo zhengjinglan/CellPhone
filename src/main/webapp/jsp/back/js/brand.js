@@ -6,7 +6,11 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			$("#datawindow").window("close");
 			
 		});
-	
+		function formatState(value, row,index){//使用formatter格式化刷子
+			if(row.brandIcon){
+			  return "<img style='width:50px;height:50px;' src='upload/"+row.brandIcon+"'/>";
+			}  
+			}
 		
 		// 删除
 		function dels(){
@@ -71,17 +75,15 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 				});
 			}
 		}	
+		
 		// 提交
 		function submits() {
 			if($("#brandId").textbox("getValue")=="自动生成"){
 				$("#brandId").textbox("setValue",-1);
 			}
-			alert(111);
-			alert(url);
 		   $("#fm").form('submit',{
 		    	url:url,
 		        success:function (data) {
-		        	alert(data);
 		        	if(data==1){
 						$.messager.show({
 							title:'提示',
