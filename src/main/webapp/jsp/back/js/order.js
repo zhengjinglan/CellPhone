@@ -371,6 +371,7 @@ function initAllot() {
 					textField : 'empName',
 					panelHeight : 'auto',
 					formatter : function(row) {
+						console.log(row);
 						return '<span class="item-text">' + row.emp.empName
 								+ '(工作点:' + row.workCity + ')' + '</span>';
 					},
