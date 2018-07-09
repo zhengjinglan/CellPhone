@@ -31,7 +31,7 @@ public class ConsumeItemService {
     }
     public boolean remove(List<Integer> ids){
         ConsumeItemExample exp = new ConsumeItemExample();
-        exp.createCriteria().andTypeIdIn(ids);
+        exp.createCriteria().andItemIdIn(ids);
         int res = mapper.deleteByExample(exp);
         return res>0?true:false;
     }
@@ -53,6 +53,9 @@ public class ConsumeItemService {
         if(pageNum != null){
             exp.setOffset((pageNum - 1) * pageSize);
             exp.setLimit(pageSize);
+        }
+        if(typeId == 0){
+            typeId = null;
         }
         return mapper.selectFullByExample(exp,typeId);
     }

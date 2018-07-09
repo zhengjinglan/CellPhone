@@ -3,35 +3,39 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%--
+<%@ taglib prefix="fmt" 
+           uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
+--%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
-
-    <title>consumeItemTypeManager</title>
-
+    
+    <title>My JSP 'ConsumeItemRecordManager.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">
+	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-<!-- 引入easyui -->
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<!-- 引入easyui -->
 	<%@include file="top.jsp" %>
   </head>
-
+  
   <body>
     <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
-
      <div id="tools">
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="add()">新增</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="edit()">修改</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="dels()">删除</a>
-    	<select  data-options="label:'类型选择:'"  id="query" name="type" class="easyui-combobox" style="width:15%;">
-		</select>
     </div>
-
-	<div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
+    <div id="datawindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
 		<form id="fm" method="post">
 			<div style="margin-bottom: 20px">
 				<!-- disabled：不提交 -->
@@ -59,5 +63,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 	</div>
   </body>
-  <script type="text/javascript" src="jsp/back/js/consumeItem.js"></script>
+  <script type="text/javascript" src="jsp/back/js/consumeItemRecord.js"></script>
 </html>

@@ -62,8 +62,9 @@ public class FettlerController {
 		System.out.println(fettler);
 		return fettlerService.update(fettler);
 	}
-
-	public List<Fettler> queryWithOrder(int orderId){
+	@RequestMapping("queryWithOrder")
+    @ResponseBody
+	public List<Fettler> queryWithOrder(Integer orderId){
 	    return fettlerService.listWithOrder(orderId);
 	}
 }

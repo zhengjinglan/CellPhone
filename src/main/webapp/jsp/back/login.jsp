@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
   </head>
   
-  <body style="background:url(image/login.jpg) no-repeat ; width: 100%;height: 100%">
+  <body style="background:url(image/login.jpg) no-repeat ;background-size:100% 100%; background-attachment: fixed;">
   	<div class="easyui-window" title="登录" maximizable="false" style="top:50px;left:60%;width:500px;height:305px;padding:30px 40px;"
   		data-options="collapsible:false,minimizable:false,closable:false,draggable:false,resizable:false,border:false" >
   		<form id="fm" method="post">

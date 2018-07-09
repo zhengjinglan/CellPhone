@@ -1,5 +1,6 @@
 package com.aaa.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,13 +41,36 @@ public class OrderService {
 		}
 		return maper.insert(o);
 	}
-
-	public List<Order> queryOrder(Order o) {
-		OrderExample order = new OrderExample();
-		return maper.selectByExample(order);
-
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月5日
+	 * @return
+	 */
+	public List<Order> list(){
+	    return maper.selectByExample(null);
 	}
-
+	/**
+	 * @author 小黑
+	 * @param fettlerId
+	 * @return
+	 */
+	public List<Order> listByFettler(int fettlerId){
+	    OrderExample exp = new OrderExample();
+	    exp.createCriteria().andFettlerIdEqualTo(fettlerId);
+	    return maper.selectByExample(exp);
+	}
+	/**
+	 * 
+	 * @author 小黑
+	 * @date 2018年7月7日 下午2:14:37
+	 *
+	 * @param orderId
+	 * @return
+	 */
+	public Order get(int orderId){
+	    return maper.selectByPrimaryKey(orderId);
+	}
 	public List<Map<String, Object>> query(Order order, int page, int rows) {
 		Integer offer = null;
 		if (page != 0) {
@@ -71,6 +95,7 @@ public class OrderService {
 			return maper.OrderReportMonth();
 		}
 	public int update(Order order) {
+	    order.setGmtModified(new Date());
 	    return maper.updateByPrimaryKeySelective(order);
 	}
 }
