@@ -95,11 +95,14 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 			if($("#deptId").textbox("getValue")=="自动生成"){
 				$("#deptId").textbox("setValue",-1);
 			}	
-			$.post(url,
-			{"deptId":$("#deptId").val(),"deptName":$("#deptName").val(),
-			"deptLoc":$("#deptLoc").val(),"operator":$("#operator").val()}
-				,function(data){
-					if(data==1){
+			
+			$("#fm").form('submit',{
+		    	url:url,
+		    	onSubmit:function(){
+		    		return $(this).form('validate');
+		    	},
+		        success:function (data) {
+		        	if(data==1){
 						$.messager.show({
 							title:'提示',
 							msg:"操作成功！"
@@ -112,7 +115,8 @@ document.write("<script language=javascript src='jsp/back/js/util.js'></script>"
 							msg:"操作失败！"
 						});
 					}
-				});
+				}
+			});
 			}
 		
 		// 取消

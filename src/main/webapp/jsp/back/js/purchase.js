@@ -152,8 +152,6 @@ function submits(){
 		"newName" : $("#newName").val()
 		}
 		,function(data){
-		alert(url);
-		alert(data);
 			if(data==1){
 				$.messager.show({
 					title:'提示',

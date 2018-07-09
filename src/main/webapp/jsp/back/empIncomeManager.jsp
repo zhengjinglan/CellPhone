@@ -51,9 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="empId" name="empId" />
 			</div>		
 			<div style="margin-bottom: 20px">
-				<!-- disabled：不提交 -->
 				<input class="easyui-textbox" style="width:100%"
-					id="incomePrice" name="incomePrice" data-options="label:'薪资金额:'"/>
+					id="incomePrice" name="incomePrice" data-options="label:'薪资金额:'" required="true" validType="money"/>
 			</div>	
 				
 			<div style="margin-bottom: 20px">

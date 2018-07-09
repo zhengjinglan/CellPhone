@@ -114,12 +114,14 @@ function submits(){
 	if($("#incomeId").textbox("getValue")=="自动生成"){
 		$("#incomeId").textbox("setValue",-1);
 	}	
-	$.post(url,
-	{"incomeId":$("#incomeId").val(),"incomeTypeId":$("#incomeTypeId").val(),
-	"empId":$("#empId").val(),"incomePrice":$("#incomePrice").val(),
-	"operator":$("#operator").val()}
-		,function(data){
-			if(data==1){
+	
+	$("#fm").form('submit',{
+    	url:url,
+    	onSubmit:function(){
+    		return $(this).form('validate');
+    	},
+        success:function (data) {
+        	if(data==1){
 				$.messager.show({
 					title:'提示',
 					msg:"操作成功！"
@@ -132,7 +134,8 @@ function submits(){
 					msg:"操作失败！"
 				});
 			}
-		});
+		}
+	});
 	}
 
 // 取消

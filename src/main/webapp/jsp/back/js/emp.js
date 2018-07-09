@@ -141,12 +141,13 @@ function submits(){
 	if($("#empId").textbox("getValue")=="自动生成"){
 		$("#empId").textbox("setValue",-1);
 	}
-	$.post(url,{"empId":$("#empId").val(),"deptId":$("#deptId").val(),
-	"jobId":$("#jobId").val(),"empName":$("#empName").val(),
-	"empSex":$("input[name='empSex']").val(),"empPhone":$("#empPhone").val(),
-	"empAddress":$("#empAddress").val(),"operator":$("#operator").val()},function(data){
-
-			if(data==1){
+	$("#fm").form('submit',{
+    	url:url,
+    	onSubmit:function(){
+    		return $(this).form('validate');
+    	},
+        success:function (data) {
+        	if(data==1){
 				$.messager.show({
 					title:'提示',
 					msg:"操作成功！"
@@ -159,7 +160,8 @@ function submits(){
 					msg:"操作失败！"
 				});
 			}
-		});
+		}
+	});
 	}
 // 取消
 function concel(){

@@ -96,13 +96,13 @@ function submits(){
 	if($("#typeId").textbox("getValue")=="自动生成"){
 		$("#typeId").textbox("setValue",-1);
 	}	
-	$.post(url,{"typeId":$("#typeId").val(),
-	"typeName":$("#typeName").val(),"typeIcon":$("#typeIcon").val(),
-	"typeDescription":$("#typeDescription").val(),
-	"operator":$("#operator").val()}
-		,function(data){
-	
-			if(data==1){
+	$("#fm").form('submit',{
+    	url:url,
+    	onSubmit:function(){
+    		return $(this).form('validate');
+    	},
+        success:function (data) {
+        	if(data==1){
 				$.messager.show({
 					title:'提示',
 					msg:"操作成功！"
@@ -115,7 +115,8 @@ function submits(){
 					msg:"操作失败！"
 				});
 			}
-		});
+		}
+	});
 	}
 
 // 取消

@@ -136,15 +136,13 @@ function submits(){
 	if($("#itemId").textbox("getValue")=="自动生成"){
 		$("#itemId").textbox("setValue",-1);
 	}
-	var typeId = ($("#cc").combobox('getValue'));
-	$.post(url,{"itemId":$("#itemId").val(),"typeId":typeId,
-	"itemName":$("#itemName").val(),"itemNum":$("#itemNum").val(),
-	"gmtCreate":$("#gmtCreate").val(),
-	"gmtModified":$("#gmtModified").val(),"operator":$("#operator").val()}
-		,function(data){
-		console.log(url);
-		console.log(data);
-			if(data==1){
+	$("#fm").form('submit',{
+    	url:url,
+    	onSubmit:function(){
+    		return $(this).form('validate');
+    	},
+        success:function (data) {
+        	if(data==1){
 				$.messager.show({
 					title:'提示',
 					msg:"操作成功！"
@@ -157,7 +155,8 @@ function submits(){
 					msg:"操作失败！"
 				});
 			}
-		});
+		}
+	});
 	}
 
 // 取消
