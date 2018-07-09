@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.aaa.entity.ConsumeItemRecord;
 import com.aaa.entity.EasyuiPage;
 import com.aaa.service.ConsumeItemRecordService;
 
@@ -33,5 +35,18 @@ public class ConsumeItemRecordController {
     @ResponseBody
     public EasyuiPage queryPage(Integer page, Integer rows) {
         return new EasyuiPage(service.queryPage(page, rows), service.getCount());
+    }
+    /**
+     * 
+     * @author 小黑
+     * @date 2018年7月10日 上午4:27:43
+     *
+     * @param record
+     * @return
+     */
+    @RequestMapping("add")
+    @ResponseBody
+    public int add(ConsumeItemRecord record){
+        return service.add(record);
     }
 }

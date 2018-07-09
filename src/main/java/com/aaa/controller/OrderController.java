@@ -121,10 +121,17 @@ public class OrderController {
         if (order.getOrderId() != null) {
             order.setState("已完成");
             res = oservice.update(order);
-            Fettler fettler = fettlerService.get(order.getFettlerId());
-            fettler.setState("闲置");
-            res = fettlerService.update(fettler);
+            if(res > 0){
+                Fettler fettler = fettlerService.get(order.getFettlerId());
+                fettler.setState("闲置");
+                res = fettlerService.update(fettler);
+            }else{
+                order.setState("已分配");
+                oservice.update(order);
+                res = 0;
+            }
         }
         return res;
     }
+    
 }

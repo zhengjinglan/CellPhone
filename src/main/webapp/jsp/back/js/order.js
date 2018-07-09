@@ -115,10 +115,12 @@ var url;
 var data;
 
 $(function() {
+	loadSelect('itemId','consumeItem/queryAll','itemName','itemId',false);
 	// 数据窗口隐藏
 	$("#datawindow,#fault").window("close");
 	$("#allotWindow").window("close");
 	$("#doneWindow").window("close");
+	$("#itemWindow").window("close");
 	$('#brandId').combobox({
 		url : 'brand/queryBrand',
 		editable : false, // 不可编辑状态
@@ -401,6 +403,69 @@ function initAllot() {
 	}
 }
 /*
+ * 添加耗材使用記錄
+ */
+function useItem(){
+	initSelect("itemId","itemId");
+	var rows = $("#tables").datagrid("getSelections");
+	if (rows.length == 1) {
+		var state = rows[0].state;
+		if (state != "已完成") {
+			$.messager.show({
+				title : '提示',
+				msg : "请先進行完成訂單操作 ！"
+			});
+			return;
+		}
+		// 重置表单
+		$("#fmItem").form('reset');
+		// 加载修改的数据信息
+		$("#item_orderId").textbox("setValue", rows[0].orderId);
+		$("#item_fettlerId").textbox("setValue", rows[0].fettlerId);
+		// 设置表单提交路径
+		url = "record/add";
+		// 打开窗口
+		$("#itemWindow").window("open").window('setTitle', "使用耗材");
+	} else if (rows.length > 1) {
+		$.messager.show({
+			title : '提示',
+			msg : "一次只能添加一个订单的耗材使用记录,请重新选择！"
+		});
+	} else {
+		$.messager.show({
+			title : '提示',
+			msg : "请选择要添加耗材使用记录的订单！"
+		});
+	}
+	$('#tables').datagrid('clearSelections');
+}
+function addRecord(){
+	if($("#itemId").textbox("getValue")=="自动生成"){
+		$("#itemId").textbox("setValue",-1);
+	}
+	$("#fmItem").form('submit',{
+    	url:url,
+    	onSubmit:function(){
+    		return $(this).form('validate');
+    	},
+        success:function (data) {
+        	if(data==1){
+				$.messager.show({
+					title:'提示',
+					msg:"操作成功！"
+				});
+				$("#itemWindow").window("close");
+				$("#tables").datagrid("reload");
+			}else{
+				$.messager.show({
+					title:'提示',
+					msg:"操作失败！"
+				});
+			}
+		}
+	});
+}
+/*
  * 常规操作
  */
 // 取消
@@ -408,11 +473,13 @@ function concel() {
 	$("#datawindow").window("close");
 	$("#allotWindow").window("close");
 	$("#doneWindow").window("close");
+	$("#itemWindow").window("close");
 }
 function cancel() {
 	$("#allotWindow").window("close");
 	$("#datawindow").window("close");
 	$("#doneWindow").window("close");
+	$("#itemWindow").window("close");
 }
 
 // 重置

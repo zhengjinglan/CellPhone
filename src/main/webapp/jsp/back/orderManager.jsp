@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<a onclick="Myquery()" class="easyui-linkbutton" iconCls="icon-search">搜索</a>	
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="initAllot()">订单分配</a>
     	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="orderDone()">订单完成</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" onclick="useItem()">添加耗材使用记录</a>
     </div>
     
 	<div id="datawindow" class="easyui-window" style="width:100%;max-width:700px;padding:30px 40px">
@@ -123,15 +124,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					id="done_realEnd" name="realEnd" data-options="label:'实际结束时间:'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%" required="true" 
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="done_diagnosisResult" name="diagnosisResult" data-options="label:'诊断结果'"/>
 			</div>	
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%" required="true" 
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="done_realSolution" name="realSolution" data-options="label:'处理方式'"/>
 			</div>
 			<div style="margin-bottom: 20px">
-				<input class="easyui-datetimebox" style="width:100%" required="true" 
+				<input class="easyui-textbox" style="width:100%" required="true" 
 					id="done_orderPrice" name="orderPrice" data-options="label:'订单价格'" validType="money"/>
 			</div>
 			<div style="margin-bottom: 20px;text-align: center">
@@ -168,6 +169,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</form>
 	</div>
+	
+	<div id="itemWindow" class="easyui-window" style="width:100%;max-width:400px;padding:30px 40px">
+		<form id="fmItem" method="post">
+			<div style="margin-bottom: 20px">
+				<!-- disabled：不提交 -->
+				<input class="easyui-textbox" style="width:100%" readonly="readonly"
+					id="item_orderId" name="orderId" data-options="label:'订单编号:'" value="自动生成"/>
+			</div>	
+			<div style="margin-bottom: 20px">
+				<input class="easyui-textbox" style="width:100%" readonly="readonly"
+				id="item_fettlerId" name="fettlerId" data-options="label:'维修工:'"/>
+			</div>	
+			<div style="margin-bottom: 20px">
+				<select  data-options="label:'已有耗材:'"  id="itemId" name="itemId" class="easyui-combobox" style="width:100%;">
+				</select>
+			</div>
+			<div style="margin-bottom: 20px">
+				<input class="easyui-textbox" 
+				data-options="label:'使用数量:'" 
+				style="width:100%"
+				required="true"
+				validType="integ"
+				id="useNum" name="useNum" />
+			</div>
+			<div style="margin-bottom: 20px;text-align: center">
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="addRecord()">添加</a>
+		    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" onclick="cancel()">取消</a>
+			</div>
+		</form>
+	</div>
+	
 	<div id="fault" class="easyui-window" style="width:100%;max-width:700px;padding:30px 40px">
 	 <table id="tables" style="width:100%;height:100%" data-options="toolbar:'#tools'"></table>
 	</div>
