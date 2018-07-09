@@ -9,7 +9,15 @@ import com.aaa.entity.Order;
 import com.aaa.entity.OrderExample;
 
 public interface OrderMapper {
-
+	/*
+	 * 订单季度报表
+	 */
+	public List<Map<String, Object>> OrderReport();
+	/*
+	 * 订单月份报表
+	 */
+	public List<Map<String, Object>> OrderReportMonth();
+	
 	List<Map<String, Object>> query(Order order, int page, int rows);
 
 	long countByExample(OrderExample example);

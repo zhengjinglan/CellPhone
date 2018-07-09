@@ -15,7 +15,18 @@ public class OrderService {
 
 	@Autowired
 	OrderMapper maper;
-
+	/*
+	 * 订单季度报表
+	 */
+    public List<Map<String, Object>> OrderReports() {
+			return maper.OrderReport();
+		}
+    /*
+	 * 订单月份报表
+	 */
+    public List<Map<String, Object>> OrderReportsMonth() {
+			return maper.OrderReportMonth();
+		}
 	public int add(Order o) {
 		return maper.insert(o);
 	}

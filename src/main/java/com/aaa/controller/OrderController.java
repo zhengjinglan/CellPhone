@@ -66,4 +66,20 @@ public class OrderController {
 	    }
 	    return res;
 	}
+	/*
+	 * 订单季度报表
+	 */
+	@RequestMapping("/OrderReport")
+	@ResponseBody
+	public List<Map<String, Object>> test() {
+		return oservice.OrderReports();
+	}
+	/*
+	 * 订单月份报表
+	 */
+	@RequestMapping("/OrderReportMonth")
+	@ResponseBody
+	public List<Map<String, Object>> testMonth() {
+		return oservice.OrderReportsMonth();
+	}
 }  

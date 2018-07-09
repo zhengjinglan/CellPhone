@@ -84,6 +84,19 @@
     assigner, predetermined_time, real_begin, real_end, assign_time, diagnosis_result, 
     real_solution, address, color, forecast_price
   </sql>
+  <!-- 订单季度报表 -->
+  <select id="OrderReport" resultType="java.util.Map">
+		select YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1 gmt_create,count(*) idds
+        from `order`
+        group by YEAR(gmt_create)*10+((MONTH(gmt_create)-1) DIV 3) +1;
+  </select>
+<!-- 订单月份报表 -->
+  <select id="OrderReportMonth" resultType="java.util.Map">
+	    SELECT count(s.order_id) idds,
+		date_format(s.gmt_create,'%m') gmt_create
+		FROM `order` s
+		group by date_format(s.gmt_create,'%m')
+  </select>
   <select id="selectByExample" parameterType="com.aaa.entity.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
